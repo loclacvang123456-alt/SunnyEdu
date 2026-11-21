@@ -1,0 +1,11 @@
+{% extends 'catalog/base.html' %}
+{% block title %}{{ course.name }} | Sunny Edu{% endblock %}
+{% block content %}
+<a class="catalog-back" href="{% url 'course_catalog' %}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Tất cả khóa học</a>
+<header class="course-detail-hero"><div><span class="catalog-eyebrow">{{ course.get_category_display }}</span><h1>{{ course.name }}</h1>{% if course.description %}<p>{{ course.description }}</p>{% endif %}<div class="detail-meta"><span>{{ course.exercise_count }} bài tập</span><span class="course-stars" aria-label="Độ khó {{ course.difficulty }} trên 5">{{ course.stars }}</span></div></div><div class="course-detail-symbol" aria-hidden="true">✦</div></header>
+{% if course.tags.all %}<section class="detail-section"><h2>Kỹ năng và chủ đề</h2><div class="course-tags">{% for tag in course.tags.all %}<span class="course-tag">{{ tag.name }}</span>{% endfor %}</div></section>{% endif %}
+<section class="detail-section"><div class="catalog-list-head"><h2>Bài tập</h2>{% if unlocked %}<span>Đã mở khóa</span>{% else %}<span>{% if request.user.is_authenticated %}Chưa mở khóa{% else %}Đăng nhập để xem{% endif %}</span>{% endif %}</div>
+{% if unlocked %}<p class="detail-hint">Bài tập thầy cô đã giao cho em.</p><div class="detail-list">{% for item in exercises %}<article class="detail-exercise"><div><h3>{{ item.assignment.title }}</h3><p><span class="course-stars" aria-label="Độ khó {{ item.difficulty }} trên 5">{{ item.stars }}</span>{% for tag in item.tags.all %}<span class="course-tag">{{ tag.name }}</span>{% endfor %}</p></div>{% if item.can_start or item.recipient.current_attempt_id %}<a class="detail-open" href="{% url 'student_assignment' item.assignment_id %}">Xem bài <span class="btn-mascot" aria-hidden="true"></span></a>{% else %}<span class="detail-closed">Chưa mở hoặc đã đóng</span>{% endif %}</article>{% empty %}<div class="catalog-empty"><h3>Chưa có bài tập</h3><p>Thầy cô chưa giao bài trong khóa này.</p></div>{% endfor %}</div>
+{% else %}<div class="catalog-empty">{% if not request.user.is_authenticated %}<h3>Khóa học chưa mở</h3><p>Đăng nhập để xem khóa học và bài tập của em.</p><a class="detail-open" href="/login/">Vào học</a>{% else %}<h3>Khóa học chưa mở</h3><p>Hãy nhờ thầy cô mở khóa cho lớp của em.</p>{% endif %}</div>{% endif %}
+</section>
+{% endblock %}

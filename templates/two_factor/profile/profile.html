@@ -1,0 +1,20 @@
+{% extends "two_factor/_base.html" %}
+{% load two_factor_tags %}
+{% block title %}Bảo mật tài khoản | Sunny Edu{% endblock %}
+{% block content %}
+<div class="auth-head">
+  
+  <h1>Xác thực hai bước (TOTP)</h1>
+</div>
+{% if default_device %}
+  <p>Phương thức hiện tại: <strong>{{ default_device|as_action }}</strong></p>
+  <p>Mã dự phòng còn lại: <strong>{{ backup_tokens }}</strong></p>
+  <div class="stack-actions">
+    <a href="{% url 'two_factor:backup_tokens' %}" class="button primary full">Xem / tạo mã dự phòng</a>
+    <a href="/teacher/settings/" class="button secondary full"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Về cài đặt</a>
+  </div>
+{% else %}
+  <p>Giáo viên cần bật xác thực hai bước để sử dụng hệ thống.</p>
+  <a href="{% url 'two_factor:setup' %}" class="button primary full">Bật TOTP ngay</a>
+{% endif %}
+{% endblock %}

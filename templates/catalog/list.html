@@ -1,0 +1,80 @@
+{% extends 'catalog/base.html' %}
+{% block title %}Khóa học | Sunny Edu{% endblock %}
+{% block content %}
+<section class="catalog-hero-card">
+  <form method="get" class="catalog-toolbar" role="search">
+    <div class="catalog-top-row">
+      <div class="catalog-title-group">
+        <span class="catalog-eyebrow">CÙNG SUNNY HỌC TIẾNG ANH</span>
+        <div class="catalog-title-line">
+          <h1>Tất cả khóa học</h1>
+          <span class="catalog-count-pill">{{ total_courses }} khóa</span>
+        </div>
+        <p>Chọn khóa học phù hợp với em.</p>
+      </div>
+      <div class="catalog-controls-bar">
+        <div class="catalog-search-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label class="sr-only" for="course-query">Tìm khóa học</label>
+          <input id="course-query" name="q" value="{{ q }}" placeholder="Tìm tên khóa học...">
+          <button type="submit" class="catalog-search-submit">Tìm</button>
+        </div>
+        <button type="button" class="catalog-sort-btn{% if category or skill or type or tag or sort %} has-active{% endif %}" id="catalog-sort-toggle" aria-expanded="false" aria-controls="catalog-sort-drawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+          <span>Sắp xếp &amp; Lọc</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="catalog-sort-drawer" id="catalog-sort-drawer" hidden>
+      <div class="catalog-sort-grid">
+        <div><label for="course-category">Cấp học / Kỳ thi</label><select id="course-category" name="category"><option value="">Tất cả cấp học</option>{% for value,label in categories %}<option value="{{ value }}" {% if category == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+        <div><label for="course-skill">Kỹ năng</label><select id="course-skill" name="skill"><option value="">Tất cả kỹ năng</option><option value="LISTENING" {% if skill == 'LISTENING' %}selected{% endif %}>Nghe</option><option value="SPEAKING" {% if skill == 'SPEAKING' %}selected{% endif %}>Nói</option><option value="READING" {% if skill == 'READING' %}selected{% endif %}>Đọc</option><option value="WRITING" {% if skill == 'WRITING' %}selected{% endif %}>Viết</option></select></div>
+        <div><label for="course-type">Dạng bài</label><select id="course-type" name="type"><option value="">Tất cả dạng bài</option>{% for value,label in types %}<option value="{{ value }}" {% if type == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+        <div><label for="course-tag">Chủ đề</label><select id="course-tag" name="tag"><option value="">Tất cả chủ đề</option>{% for item in tags %}<option value="{{ item.code }}" {% if tag == item.code %}selected{% endif %}>{{ item.name }}</option>{% endfor %}</select></div>
+        <div><label for="course-sort">Sắp xếp</label><select id="course-sort" name="sort"><option value="">Tên khóa học</option><option value="most" {% if sort == 'most' %}selected{% endif %}>Nhiều bài nhất</option><option value="least" {% if sort == 'least' %}selected{% endif %}>Ít bài nhất</option></select></div>
+      </div>
+      <div class="catalog-sort-actions">
+        <a class="catalog-reset-btn" href="{% url 'course_catalog' %}">Đặt lại</a>
+        <button type="submit" class="catalog-apply-btn">Áp dụng</button>
+      </div>
+    </div>
+  </form>
+</section>
+<div class="catalog-grid">{% for course in courses %}<a class="course-card category-card-{{ course.category|lower }}" href="{% url 'course_detail' course.id %}">
+  <div class="course-card-cover"><h3>{{ course.name }}</h3></div>
+  <div class="course-card-body">
+    <span class="course-category">{{ course.get_category_display }}{% if course.is_sample %} · Mẫu{% endif %}</span>
+    {% if course.description %}<p>{{ course.description|truncatechars:100 }}</p>{% endif %}
+    <div class="course-tags">{% for tag in course.tags.all|slice:':4' %}<span class="course-tag">{{ tag.name }}</span>{% endfor %}</div>
+  </div>
+  <div class="course-card-footer"><span>{{ course.exercise_count }} bài tập</span><span class="course-stars" aria-label="Độ khó {{ course.difficulty }} trên 5">{{ course.stars }}</span></div>
+</a>{% empty %}<div class="catalog-empty"><h3>Chưa tìm thấy khóa học</h3><p>Hãy thử từ khóa hoặc bộ lọc khác.</p><a href="{% url 'course_catalog' %}">Xem tất cả</a></div>{% endfor %}</div>
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="catalog-pagination" aria-label="Phân trang khóa học">
+  {% if page_obj.has_previous %}<a class="page-link" href="?page={{ page_obj.previous_page_number }}{{ page_query }}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Trước</a>{% endif %}
+  {% for num in page_obj.paginator.page_range %}<a class="page-link{% if num == page_obj.number %} is-active{% endif %}" href="?page={{ num }}{{ page_query }}" {% if num == page_obj.number %}aria-current="page"{% endif %}>{{ num }}</a>{% endfor %}
+  {% if page_obj.has_next %}<a class="page-link" href="?page={{ page_obj.next_page_number }}{{ page_query }}">Sau <span class="btn-mascot" aria-hidden="true"></span></a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+(() => {
+  const toggle = document.getElementById('catalog-sort-toggle');
+  const drawer = document.getElementById('catalog-sort-drawer');
+  if (!toggle || !drawer) return;
+  function setOpen(open) {
+    drawer.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  }
+  toggle.addEventListener('click', () => setOpen(drawer.hidden));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !drawer.hidden) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+})();
+</script>
+{% endblock %}

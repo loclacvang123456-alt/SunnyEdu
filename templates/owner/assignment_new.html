@@ -1,0 +1,89 @@
+{% extends "owner/base.html" %}
+{% block title %}Giao bài mới — Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_assignments' %}">Bài giao</a><span>/</span><span>Giao bài mới</span></div>
+<div class="page-heading">
+  <div>
+    <h1>Giao bài mới</h1>
+    <p>Chọn đề và lớp nhận bài.</p>
+  </div>
+</div>
+
+<section class="panel">
+  <form method="post" id="assignment-new-form">
+    {% csrf_token %}
+    <div class="owner-grid-2">
+      <div>
+        <div class="field-group">
+          <label for="a-title">Tiêu đề bài giao</label>
+          <input id="a-title" name="title" required maxlength="200" placeholder="VD: Tuần 4 — Listening &amp; Writing">
+        </div>
+        <div class="field-group">
+          <label for="a-mode">Cách học sinh làm bài</label>
+          <select id="a-mode" name="mode">
+            <option value="PRACTICE">Luyện tập: từng câu một</option>
+            <option value="EXAM">Kiểm tra: hiển thị các câu như bài thi</option>
+          </select>
+          <p class="hint">Không đổi được sau khi giao.</p>
+        </div>
+        <div class="field-group">
+          <label class="check-row"><input type="checkbox" name="game_feedback_enabled" {% if missing_pirate_assets %}disabled{% endif %}> <span>Bắn thuyền · hiện đúng sai ngay</span></label>
+          <p class="hint">Chỉ dùng cho bài luyện tập, không tính xếp hạng. Sau khi giao không thể đổi đáp án.</p>
+          {% if missing_pirate_assets %}<p class="hint">Game thiếu {{ missing_pirate_assets|length }} ảnh.</p>{% endif %}
+        </div>
+        <div class="field-group">
+          <label for="a-version">Đề đã phát hành</label>
+          <select id="a-version" name="version_id" required>
+            <option value="">-- Chọn đề bài --</option>
+            {% for v in versions %}
+              <option value="{{ v.id }}">{{ v.exam.title }} — v{{ v.number }} ({{ v.exam.code }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group">
+            <label for="a-opens">Mở bài</label>
+            <input id="a-opens" name="opens_at" type="datetime-local" required value="{{ default_opens|date:'Y-m-d\TH:i' }}">
+          </div>
+          <div class="field-group">
+            <label for="a-due">Hạn nộp</label>
+            <input id="a-due" name="due_at" type="datetime-local" required value="{{ default_due|date:'Y-m-d\TH:i' }}">
+          </div>
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group">
+            <label for="a-late-policy">Chính sách nộp muộn</label>
+            <select id="a-late-policy" name="late_policy">
+              <option value="ALLOW">Cho phép nộp muộn đến hạn cuối</option>
+              <option value="BLOCK">Chặn nộp sau hạn</option>
+            </select>
+          </div>
+          <div class="field-group" id="a-late-until-wrap">
+            <label for="a-late-until">Hạn nộp muộn cuối</label>
+            <input id="a-late-until" name="late_until" type="datetime-local" value="{{ default_late|date:'Y-m-d\TH:i' }}">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label>Lớp tiếng Anh nhận bài</label>
+        <div class="checkbox-list" id="a-class-checks">
+          {% for c in classes %}
+            <label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }} ({{ c.school_year }} — {{ c.code }})</span></label>
+          {% empty %}
+            <p class="empty">Chưa có lớp tiếng Anh. Hãy tạo lớp trước.</p>
+          {% endfor %}
+        </div>
+        <p class="muted" id="a-recipient-preview">Chọn lớp để xem số học sinh.</p>
+        <p class="banner-warn" id="a-noschool-warn" hidden></p>
+      </div>
+    </div>
+
+    <div class="wizard-actions">
+      <button type="submit" class="button primary">Tạo bản nháp</button>
+      <a class="button secondary" href="{% url 'owner_assignments' %}">Hủy</a>
+    </div>
+  </form>
+</section>
+<script type="application/json" id="assignment-class-members">{{ class_members_json|safe }}</script>
+{% endblock %}

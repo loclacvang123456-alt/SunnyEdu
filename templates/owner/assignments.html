@@ -1,0 +1,48 @@
+{% extends "owner/base.html" %}
+{% block title %}Bài giao — Sunny Edu{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Bài đã giao</h1>
+    <p>Theo dõi hạn nộp và tiến độ làm bài.</p>
+  </div>
+  <a class="button primary" href="{% url 'owner_assignment_new' %}">Giao bài mới</a>
+</div>
+
+<div class="tabs" aria-label="Lọc bài giao">
+  <a href="{% url 'owner_assignments' %}" {% if not status_filter and not overdue %}aria-current="page"{% endif %}>Tất cả</a>
+  <a href="?status=DRAFT" {% if status_filter == 'DRAFT' %}aria-current="page"{% endif %}>Nháp</a>
+  <a href="?status=PUBLISHED" {% if status_filter == 'PUBLISHED' %}aria-current="page"{% endif %}>Đã phát hành</a>
+  <a href="?overdue=1" {% if overdue %}aria-current="page"{% endif %}>Có học sinh quá hạn</a>
+  <a href="?status=CANCELLED" {% if status_filter == 'CANCELLED' %}aria-current="page"{% endif %}>Đã hủy</a>
+</div>
+
+<section class="panel">
+  {% if rows %}
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Mã / Tên bài</th><th>Đề bài</th><th>Trạng thái</th><th>Hạn nộp</th><th>Đã nộp / Được giao</th><th></th></tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              <td>
+                <strong><a href="{% url 'owner_assignment_detail' row.assignment.id %}">{{ row.assignment.title }}</a></strong>
+                <div><small class="mono">{{ row.assignment.code }}</small></div>
+              </td>
+              <td>{{ row.assignment.version.exam.title }} (v{{ row.assignment.version.number }})</td>
+              <td><span class="pill {% if row.assignment.status == 'PUBLISHED' %}pill-success{% elif row.assignment.status == 'CANCELLED' %}pill-danger{% endif %}">{% if row.assignment.status == 'PUBLISHED' %}Đã phát hành{% elif row.assignment.status == 'DRAFT' %}Bản nháp{% elif row.assignment.status == 'CANCELLED' %}Đã hủy{% else %}{{ row.assignment.status }}{% endif %}</span></td>
+              <td>{{ row.assignment.due_at|date:"d/m/Y H:i" }}<br><small>Muộn đến: {{ row.assignment.late_until|date:"d/m/Y H:i" }}</small></td>
+              <td>{{ row.submitted_count }} / {{ row.recipient_count }}</td>
+              <td><a class="button secondary" href="{% url 'owner_assignment_detail' row.assignment.id %}">Quản lý</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="empty">Không tìm thấy bài giao.</p>
+  {% endif %}
+</section>
+{% endblock %}

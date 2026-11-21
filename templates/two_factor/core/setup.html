@@ -1,0 +1,24 @@
+{% extends "two_factor/_base_focus.html" %}
+{% block title %}Thiết lập TOTP | Sunny Edu{% endblock %}
+{% block extra_media %}{{ form.media }}{% endblock %}
+{% block content %}
+<div class="auth-head">
+  
+  <h1>Thiết lập xác thực</h1>
+  {% if wizard.steps.current == 'welcome' %}
+    <p>Giáo viên cần bật xác thực hai bước bằng ứng dụng như Google Authenticator.</p>
+  {% elif wizard.steps.current == 'method' %}
+    <p>Chọn cách nhận mã xác thực.</p>
+  {% elif wizard.steps.current == 'generator' %}
+    <p>Quét mã QR bằng ứng dụng xác thực, rồi nhập mã 6 số.</p>
+    <div class="qr-box"><img src="{{ QR_URL }}" alt="Mã QR thiết lập TOTP" /></div>
+    <p class="hint">Khóa nhập thủ công: <code>{{ secret_key }}</code></p>
+  {% endif %}
+</div>
+<form action="" method="post">
+  {% csrf_token %}
+  {% include "two_factor/_wizard_forms.html" %}
+  <input type="submit" value="" hidden />
+  {% include "two_factor/_wizard_actions.html" %}
+</form>
+{% endblock %}

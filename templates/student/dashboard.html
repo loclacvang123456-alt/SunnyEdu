@@ -1,0 +1,1526 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block title %}Bài tập | Sunny Edu{% endblock %}
+
+{% block head %}
+<style>
+  .student-dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 980px) {
+    .student-dashboard-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Toolbar Filter & Search */
+  .assignment-toolbar {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  }
+  .toolbar-row-top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .toolbar-search-wrap {
+    flex: 1;
+    position: relative;
+  }
+  .student-main .toolbar-search-wrap input[type="search"] {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 14px 8px 38px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #f8fafc;
+  }
+  .toolbar-search-wrap input:focus {
+    background: #fff;
+    border-color: var(--primary);
+  }
+  .toolbar-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-size: 15px;
+    pointer-events: none;
+  }
+  .toolbar-row-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    align-items: center;
+  }
+  .toolbar-row-filters select {
+    min-height: 40px;
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    background: #ffffff;
+    color: var(--text);
+  }
+  .toolbar-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #e2e8f0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .assignment-toolbar { position: relative; z-index: 3; padding: 12px; }
+  .toolbar-row-filters { display: flex; gap: 5px; flex-wrap: wrap; }
+  .filter-menu { min-height: 32px; padding: 6px 8px; border: 1px solid #d8e1e9; border-radius: 7px; background: #fff; color: #475569; font-size: 12px; font-weight: 650; }
+  .filter-menu.is-filtered, .filter-menu[aria-expanded="true"] { color: var(--primary); border-color: var(--primary); background: #eff6ff; }
+  .filter-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .18s ease, opacity .18s ease; }
+  .filter-panel.is-open { grid-template-rows: 1fr; opacity: 1; }
+  .filter-options { min-height: 0; max-height: 200px; overflow-y: auto; border-radius: 8px; }
+  .filter-options button { display: block; width: 100%; height: 40px; padding: 0 12px; overflow: hidden; border: 0; background: #f8fafc; color: #334155; text-align: left; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+  .filter-options button:hover, .filter-options button[aria-pressed="true"] { color: var(--primary); background: #e8f1ff; }
+  .clear-filters { margin-top: 10px; padding: 5px 0; border: 0; background: transparent; color: var(--primary); font-size: 13px; font-weight: 700; }
+  .sidebar-search { margin-bottom: 10px; }
+  .sidebar-search .toolbar-search-icon { font-size: 24px; line-height: 1; }
+  @media (prefers-reduced-motion: reduce) { .filter-panel { transition: none; } }
+
+  .assignment-list-frame { overflow: hidden; border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 4px 20px rgba(15,23,42,.05); }
+  .assignment-state-tabs { display: flex; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+  .assignment-state-tabs button { flex: 1; min-height: 52px; padding: 12px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #64748b; font-size: 14px; font-weight: 700; }
+  .assignment-state-tabs button[aria-selected="true"] { border-bottom-color: var(--primary); background: #fff; color: var(--primary); }
+  .assignment-list-frame [role="tabpanel"] { padding: 16px; }
+  .assignment-list-frame .assignment-card[hidden] { display: none; }
+  .assignment-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 18px; font-size: 13px; color: #475569; }
+  .assignment-pagination[hidden] { display: none; }
+  .assignment-pagination button { border: 1px solid #dbe4ed; border-radius: 8px; padding: 7px 10px; background: #fff; color: var(--primary); font-size: 13px; font-weight: 700; }
+
+  /* Assignment card layout */
+  .assignment-list {
+    gap: 16px;
+  }
+  .assignment-card {
+    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(54px, 1fr));
+    align-items: stretch;
+    gap: 0;
+    border-radius: 14px;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  }
+  .assignment-card-header {
+    background: #c9e1d1;
+    color: #243c33;
+    display: flex;
+    align-items: stretch;
+    border-radius: 13px 13px 0 0;
+  }
+  .assignment-header-title { flex: 1; min-width: 0; padding: 10px 16px; }
+  .assignment-card-header h3 {
+    margin: 0;
+    color: #243c33;
+    font-size: 17px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  .assignment-header-sub {
+    margin-top: 4px;
+    color: #486456;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .assignment-card-body {
+    display: flex;
+    align-items: stretch;
+    min-height: 54px;
+    background: #edfafa;
+    border-radius: 0 0 13px 13px;
+  }
+  .assignment-body-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    padding: 10px 20px;
+  }
+  .status-ribbon-row {
+    display: flex;
+    align-items: center;
+  }
+  .status-ribbon {
+    --ribbon-bg: #c9e1d1;
+    --ribbon-fold: #aac5b2;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 12px 0 18px;
+    margin-left: -29px;
+    background: var(--ribbon-bg);
+    color: #243c33;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    filter: drop-shadow(0 2px 3px rgba(15, 23, 42, 0.16));
+  }
+  .status-ribbon::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    border-top: 7px solid var(--ribbon-fold);
+    border-left: 9px solid transparent;
+  }
+  .status-ribbon::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 12px solid var(--ribbon-bg);
+  }
+  .ribbon-unattempted {
+    --ribbon-bg: #f9d2d2;
+    --ribbon-fold: #e8aeae;
+    color: #792f35;
+  }
+  .ribbon-in_progress {
+    --ribbon-bg: #fae8b5;
+    --ribbon-fold: #dec98d;
+    color: #69501a;
+  }
+  .ribbon-completed {
+    --ribbon-bg: #d1ebd5;
+    --ribbon-fold: #a6caaa;
+    color: #315d3b;
+  }
+  .assignment-body-right {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 230px;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 0 0 13px 0;
+  }
+  .deadline-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 230px;
+    min-width: 0;
+    min-height: 52px;
+    padding: 8px 10px;
+    border-radius: 0 13px 0 0;
+    background: #f3f1e7;
+    color: #283e35;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .deadline-bar.is-urgent { background: #e6efd9; color: #283e35; }
+  .assignment-card .button.assignment-action-btn {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    min-height: 54px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 0;
+    background: #d5ead7;
+    color: #243c33;
+    font-size: 14px;
+    font-weight: 750;
+    text-align: center;
+    white-space: normal;
+    transition: background .2s, box-shadow .2s;
+  }
+  .assignment-card .button.assignment-action-btn:hover { background: #c2dfc8; color: #243c33; box-shadow: inset 0 0 0 2px rgba(36, 60, 51, .16); }
+  @media (max-width: 480px) {
+    .assignment-body-right, .assignment-card-header .deadline-bar { flex-basis: 62%; }
+    .assignment-header-title { padding-inline: 14px; }
+    .assignment-body-left { padding-inline: 14px; }
+    .status-ribbon { margin-left: -23px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .assignment-card .button.assignment-action-btn { transition: none; } }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  /* Right Sidebar: Achievements & Activity */
+  .achievement-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  }
+
+  .dashboard-sidebar-card { overflow: hidden; border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 4px 20px rgba(15,23,42,.05); }
+  .dashboard-sidebar-tabs { display: flex; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+  .dashboard-sidebar-tabs button { flex: 1; min-width: 0; min-height: 52px; padding: 12px 8px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #64748b; font-size: 13px; font-weight: 700; }
+  .dashboard-sidebar-tabs button[aria-selected="true"] { border-bottom-color: var(--primary); background: #fff; color: var(--primary); }
+  .dashboard-sidebar-tabs button:hover { color: var(--primary); }
+  .dashboard-sidebar-card .achievement-panel, .dashboard-sidebar-card .leaderboard-panel { margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+  .dashboard-sidebar-card [role="tabpanel"][hidden] { display: none; }
+  .dashboard-sidebar-card .leaderboard-panel > .panel-title-row { justify-content: flex-end; }
+
+  /* Leaderboard Widget & Modal */
+  .leaderboard-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    margin-top: 24px;
+  }
+  .leaderboard-tabs {
+    display: flex;
+    gap: 4px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .lb-tab-btn {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    padding: 7px 6px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .lb-tab-btn:hover {
+    color: #1e293b;
+  }
+  .lb-tab-btn.active {
+    background: #ffffff;
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  .lb-tab-hint {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .lb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lb-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid transparent;
+    transition: background 0.15s ease;
+  }
+  .lb-item:hover {
+    background: #f1f5f9;
+  }
+  .lb-item.is-me {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+  .lb-rank {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .lb-rank.rank-1, .lb-rank.rank-2, .lb-rank.rank-3 {
+    font-size: 16px;
+  }
+  .lb-rank-other {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .lb-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .lb-item.is-me .lb-avatar {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+  .lb-name-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+  .lb-name {
+    font-size: 13px;
+    font-weight: 650;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lb-item.is-me .lb-name {
+    color: #1d4ed8;
+    font-weight: 800;
+  }
+  .lb-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    background: #ffffff;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lb-my-callout {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #eff6ff;
+    border: 1px dashed #93c5fd;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #1d4ed8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Modal Popup Styles */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-backdrop[hidden] {
+    display: none !important;
+  }
+  .modal-card {
+    background: #ffffff;
+    border-radius: 20px;
+    width: min(620px, 100%);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+    overflow: hidden;
+    animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .modal-close-btn {
+    border: 0;
+    background: #f1f5f9;
+    color: #64748b;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  .modal-close-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+  }
+  .modal-tabs-wrap {
+    padding: 12px 24px 0;
+    background: #ffffff;
+  }
+  .modal-body {
+    padding: 12px 24px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .modal-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .modal-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  .modal-table tr:hover td {
+    background: #f8fafc;
+  }
+  .modal-table tr.is-me td {
+    background: #eff6ff !important;
+    font-weight: 700;
+    color: #1d4ed8;
+  }
+  .modal-my-banner {
+    padding: 10px 24px;
+    background: #eff6ff;
+    border-top: 1px solid #bfdbfe;
+    font-size: 13px;
+    color: #1e40af;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-pagination {
+    padding: 14px 24px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pagination-info {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+  }
+  .pagination-btns {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .page-btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #1e293b;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-btn:hover:not(:disabled) {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .page-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+  .page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .panel-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .panel-title-row h3 {
+    margin: 0;
+    font-size: 17px;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Stats grid */
+  .stats-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .stat-box.highlight {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+  .stat-box.highlight .stat-num {
+    color: #166534;
+  }
+  .stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+  }
+  .stat-num small {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .stat-desc {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* 30-Day Activity Heatmap (GitHub Commit style) */
+  .heatmap-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 12px;
+  }
+  .heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .heatmap-header strong {
+    font-size: 13px;
+    color: #1e293b;
+  }
+  .heatmap-header span {
+    font-size: 11px;
+    color: #64748b;
+  }
+  .heatmap-calendar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .heatmap-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 2px;
+  }
+  .heatmap-week-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .heat-cell {
+    aspect-ratio: 1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    user-select: none;
+    position: relative;
+  }
+  .heat-cell.empty {
+    background: transparent;
+    cursor: default;
+    border: 0;
+  }
+  .heat-cell:not(.empty):hover {
+    transform: scale(1.18);
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  }
+
+  /* Git commit style green intensity colors */
+  .level-0 {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #94a3b8;
+  }
+  .level-1 {
+    background: #9be9a8;
+    border: 1px solid #82e191;
+    color: #14532d;
+  }
+  .level-2 {
+    background: #40c463;
+    border: 1px solid #33af53;
+    color: #ffffff;
+  }
+  .level-3 {
+    background: #30a14e;
+    border: 1px solid #238b3f;
+    color: #ffffff;
+  }
+  .level-4 {
+    background: #216e39;
+    border: 1px solid #19562c;
+    color: #ffffff;
+  }
+
+  .heat-cell.is-today {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+  }
+
+  .heatmap-info-banner {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.4;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  /* Legend */
+  .heatmap-legend-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #64748b;
+  }
+  .legend-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="student-dashboard-layout">
+  <!-- Cột bên trái: Danh sách bài tập + Bộ lọc, Tìm kiếm, Sắp xếp -->
+  <div class="student-dashboard-main">
+    <div class="assignment-list-frame">
+      <div class="assignment-state-tabs" role="tablist" aria-label="Trạng thái bài tập">
+        <button type="button" role="tab" id="assignments-pending-tab" aria-controls="assignment-list-panel" aria-selected="true" tabindex="0" data-assignment-tab="pending">Chưa làm</button>
+        <button type="button" role="tab" id="assignments-completed-tab" aria-controls="assignment-list-panel" aria-selected="false" tabindex="-1" data-assignment-tab="completed">Đã làm</button>
+      </div>
+      <div id="assignment-list-panel" role="tabpanel" aria-labelledby="assignments-pending-tab">
+    <div class="assignment-list" id="assignment-cards-container">
+      {% for item in assignments %}
+      <article class="assignment-card"
+               data-title="{{ item.title|lower }}"
+               data-status="{{ item.status_code }}"
+               data-classes="{{ item.class_ids }}"
+               data-courses="{{ item.course_ids }}"
+               data-due="{{ item.due_timestamp }}"
+               data-created="{{ item.created_timestamp }}"{% if item.status_code == 'completed' or forloop.counter > 10 %} hidden{% endif %}>
+        <div class="assignment-card-header">
+          <div class="assignment-header-title">
+          <h3>{{ item.title }}</h3>
+          {% if item.class_names or item.course_names %}
+          <div class="assignment-header-sub">
+            {% if item.class_names %}
+              <span>Lớp: {{ item.class_names|join:", " }}</span>
+            {% endif %}
+            {% if item.course_names %}
+              <span>{% if item.class_names %} · {% endif %}Khóa: {{ item.course_names|join:", " }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+          </div>
+          <div class="deadline-bar {% if item.is_due_soon %}is-urgent{% endif %}">
+            <span>Hạn nộp: {{ item.due_at|date:"H:i d/m/Y" }}</span>
+            {% if item.late_until and item.is_late %}<span>Có thể nộp muộn đến {{ item.late_until|date:"H:i d/m/Y" }}</span>{% endif %}
+          </div>
+        </div>
+        <div class="assignment-card-body">
+          <div class="assignment-body-left">
+            <div class="status-ribbon-row">
+              <span class="status-ribbon ribbon-{{ item.status_code }}">{{ item.status_label|default:"Bài tập" }}</span>
+            </div>
+          </div>
+          <div class="assignment-body-right">
+            {% if item.url %}
+            <a class="button assignment-action-btn" href="{{ item.url }}">{{ item.action_label|default:"Xem bài" }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div id="filter-empty-state" class="empty-state" hidden>
+      <img class="empty-illustration" src="{% static 'img/sunny-edu/empty-assignments.png' %}" width="512" height="512" alt="">
+      <h3>Không có bài tập phù hợp</h3>
+      <p>Thử chọn tab khác hoặc thay đổi bộ lọc nhé.</p>
+    </div>
+    <nav class="assignment-pagination" aria-label="Phân trang bài tập" hidden>
+      <button type="button" id="assignment-page-prev" aria-label="Trang trước">← Trước</button>
+      <span id="assignment-page-info" aria-live="polite"></span>
+      <button type="button" id="assignment-page-next" aria-label="Trang tiếp theo">Sau →</button>
+    </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cột bên phải: Thành tích của bản thân + Bảng ô vuông xanh (Git commit heatmap 30 ngày) -->
+  <aside class="student-dashboard-sidebar">
+    <div class="assignment-toolbar">
+      <div class="toolbar-search-wrap sidebar-search">
+        <span class="toolbar-search-icon" aria-hidden="true">⌕</span>
+        <input type="search" id="filter-search" placeholder="Tìm tên bài tập..." aria-label="Tìm bài tập">
+      </div>
+      <div class="toolbar-row-filters" role="group" aria-label="Lọc bài tập">
+        <button type="button" class="filter-menu" data-filter="filter-class" aria-expanded="false" aria-controls="filter-options">Lớp</button>
+        <button type="button" class="filter-menu" data-filter="filter-course" aria-expanded="false" aria-controls="filter-options">Khóa</button>
+        <button type="button" class="filter-menu" data-filter="sort-by" aria-expanded="false" aria-controls="filter-options">Hạn nộp</button>
+        <select id="filter-class" aria-label="Lọc theo lớp" hidden><option value="">Tất cả lớp học</option>{% for ec in student_classes %}<option value="{{ ec.id }}">{{ ec.name }}</option>{% endfor %}</select>
+        <select id="filter-course" aria-label="Lọc theo khóa học" hidden><option value="">Tất cả khóa học</option>{% for crs in student_courses %}<option value="{{ crs.id }}">{{ crs.name }}</option>{% endfor %}</select>
+        <select id="sort-by" aria-label="Sắp xếp theo hạn nộp" hidden><option value="due_asc">Gần nhất</option><option value="due_desc">Xa nhất</option></select>
+      </div>
+      <div id="filter-options" class="filter-panel" aria-hidden="true" inert><div class="filter-options"></div></div>
+      <div class="toolbar-status-bar">
+        <span>Tìm thấy: <strong id="visible-count">0</strong> bài tập</span>
+      </div>
+      <button type="button" id="reset-filters" class="clear-filters" hidden>Bỏ lọc</button>
+    </div>
+
+    <div class="dashboard-sidebar-card">
+      <div class="dashboard-sidebar-tabs" role="tablist" aria-label="Thành tích và xếp hạng">
+        <button type="button" id="dashboard-ranking-tab" role="tab" aria-selected="true" aria-controls="dashboard-ranking-panel" tabindex="0">Bảng xếp hạng</button>
+        <button type="button" id="dashboard-achievement-tab" role="tab" aria-selected="false" aria-controls="dashboard-achievement-panel" tabindex="-1">Thành tích của em</button>
+      </div>
+    <!-- Bảng xếp hạng học sinh -->
+    <div class="leaderboard-panel" id="dashboard-ranking-panel" role="tabpanel" aria-labelledby="dashboard-ranking-tab">
+      <!-- 3 Tabs cho loại xếp hạng -->
+      <div class="leaderboard-tabs" role="tablist" aria-label="Loại xếp hạng">
+        <button type="button" class="lb-tab-btn active" data-tab="hours" role="tab" aria-selected="true">
+          ⏱ Giờ học
+        </button>
+        <button type="button" class="lb-tab-btn" data-tab="score" role="tab" aria-selected="false">
+          ⭐ Điểm TB
+        </button>
+        <button type="button" class="lb-tab-btn" data-tab="courses" role="tab" aria-selected="false">
+          📚 Khóa học
+        </button>
+      </div>
+
+      <div class="lb-tab-hint" id="lb-widget-hint">
+        Top 10 học sinh có thời gian học bài nhiều nhất
+      </div>
+
+      <!-- Danh sách Top 10 cho tab: Giờ học -->
+      <div class="lb-tab-content active" id="lb-tab-content-hours">
+        <div class="lb-list">
+          {% for item in leaderboards.hours.top10 %}
+            <div class="lb-item {% if item.is_me %}is-me{% endif %}">
+              <div class="lb-rank rank-{{ item.rank }}">
+                {% if item.rank == 1 %}🥇{% elif item.rank == 2 %}🥈{% elif item.rank == 3 %}🥉{% else %}<span class="lb-rank-other">#{{ item.rank }}</span>{% endif %}
+              </div>
+              <div class="lb-avatar">{{ item.avatar_letter }}</div>
+              <div class="lb-name-wrap">
+                <div class="lb-name" title="{{ item.name }}">
+                  {{ item.name }}
+                  {% if item.is_me %}<span class="badge-tag" style="background:#dbeafe;color:#1e40af;font-size:10px;padding:1px 5px;margin-left:4px;">Em</span>{% endif %}
+                </div>
+              </div>
+              <div class="lb-value">{{ item.display_value }}</div>
+            </div>
+          {% empty %}
+            <div style="text-align:center;padding:16px;color:var(--muted);font-size:13px;">Chưa có dữ liệu xếp hạng</div>
+          {% endfor %}
+        </div>
+        {% if leaderboards.hours.my_entry and not leaderboards.hours.is_in_top10 %}
+          <div class="lb-my-callout">
+            <span>Vị trí của em: <strong>#{{ leaderboards.hours.my_entry.rank }}</strong></span>
+            <span style="font-weight:700;">{{ leaderboards.hours.my_entry.display_value }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Danh sách Top 10 cho tab: Điểm TB -->
+      <div class="lb-tab-content" id="lb-tab-content-score" hidden>
+        <div class="lb-list">
+          {% for item in leaderboards.score.top10 %}
+            <div class="lb-item {% if item.is_me %}is-me{% endif %}">
+              <div class="lb-rank rank-{{ item.rank }}">
+                {% if item.rank == 1 %}🥇{% elif item.rank == 2 %}🥈{% elif item.rank == 3 %}🥉{% else %}<span class="lb-rank-other">#{{ item.rank }}</span>{% endif %}
+              </div>
+              <div class="lb-avatar">{{ item.avatar_letter }}</div>
+              <div class="lb-name-wrap">
+                <div class="lb-name" title="{{ item.name }}">
+                  {{ item.name }}
+                  {% if item.is_me %}<span class="badge-tag" style="background:#dbeafe;color:#1e40af;font-size:10px;padding:1px 5px;margin-left:4px;">Em</span>{% endif %}
+                </div>
+              </div>
+              <div class="lb-value">{{ item.display_value }}</div>
+            </div>
+          {% empty %}
+            <div style="text-align:center;padding:16px;color:var(--muted);font-size:13px;">Chưa có dữ liệu xếp hạng</div>
+          {% endfor %}
+        </div>
+        {% if leaderboards.score.my_entry and not leaderboards.score.is_in_top10 %}
+          <div class="lb-my-callout">
+            <span>Vị trí của em: <strong>#{{ leaderboards.score.my_entry.rank }}</strong></span>
+            <span style="font-weight:700;">{{ leaderboards.score.my_entry.display_value }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Danh sách Top 10 cho tab: Số khóa học -->
+      <div class="lb-tab-content" id="lb-tab-content-courses" hidden>
+        <div class="lb-list">
+          {% for item in leaderboards.courses.top10 %}
+            <div class="lb-item {% if item.is_me %}is-me{% endif %}">
+              <div class="lb-rank rank-{{ item.rank }}">
+                {% if item.rank == 1 %}🥇{% elif item.rank == 2 %}🥈{% elif item.rank == 3 %}🥉{% else %}<span class="lb-rank-other">#{{ item.rank }}</span>{% endif %}
+              </div>
+              <div class="lb-avatar">{{ item.avatar_letter }}</div>
+              <div class="lb-name-wrap">
+                <div class="lb-name" title="{{ item.name }}">
+                  {{ item.name }}
+                  {% if item.is_me %}<span class="badge-tag" style="background:#dbeafe;color:#1e40af;font-size:10px;padding:1px 5px;margin-left:4px;">Em</span>{% endif %}
+                </div>
+              </div>
+              <div class="lb-value">{{ item.display_value }}</div>
+            </div>
+          {% empty %}
+            <div style="text-align:center;padding:16px;color:var(--muted);font-size:13px;">Chưa có dữ liệu xếp hạng</div>
+          {% endfor %}
+        </div>
+        {% if leaderboards.courses.my_entry and not leaderboards.courses.is_in_top10 %}
+          <div class="lb-my-callout">
+            <span>Vị trí của em: <strong>#{{ leaderboards.courses.my_entry.rank }}</strong></span>
+            <span style="font-weight:700;">{{ leaderboards.courses.my_entry.display_value }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Nút xem thêm popup -->
+      <button type="button" class="button secondary full open-ranking-modal-btn" style="margin-top:14px;min-height:38px;font-size:13px;width:100%;">
+        Xem thêm danh sách (Tối đa 50) <span class="btn-mascot" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="achievement-panel" id="dashboard-achievement-panel" role="tabpanel" aria-labelledby="dashboard-achievement-tab" hidden>
+      <!-- Thống kê tổng quan -->
+      <div class="stats-cards-grid">
+        <div class="stat-box highlight">
+          <div class="stat-num">{{ study_stats.avg_hours_per_day }}<small>h</small></div>
+          <div class="stat-desc">TB giờ học / ngày</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">{{ study_stats.total_hours }}<small>h</small></div>
+          <div class="stat-desc">Tổng giờ học (30 ngày)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">{{ study_stats.active_days_count }}<small>/30</small></div>
+          <div class="stat-desc">Số ngày chăm chỉ</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">{{ study_stats.completed_count }}<small> bài</small></div>
+          <div class="stat-desc">Đã hoàn thành</div>
+        </div>
+      </div>
+
+      <!-- Biểu đồ thời gian học 30 ngày dạng ô vuông xanh (Git commit heatmap) -->
+      <div class="heatmap-section">
+        <div class="heatmap-header">
+          <strong>Lịch học tập 30 ngày</strong>
+          <span>{{ study_stats.start_date_str }} → {{ study_stats.today_str }}</span>
+        </div>
+
+        <div class="heatmap-calendar-grid">
+          <!-- Thứ trong tuần -->
+          <div class="heatmap-weekdays">
+            <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+          </div>
+
+          <!-- Các tuần (mỗi tuần 1 hàng ngang, đi dọc từ tuần cũ đến tuần mới) -->
+          {% for week in study_stats.calendar_weeks %}
+          <div class="heatmap-week-row">
+            {% for day in week %}
+              {% if day %}
+                <div class="heat-cell level-{{ day.level }} {% if day.is_today %}is-today{% endif %}"
+                     title="{{ day.tooltip }}"
+                     data-tooltip="{{ day.tooltip }}">
+                  <span>{{ day.day_number }}</span>
+                </div>
+              {% else %}
+                <div class="heat-cell empty"></div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Hộp thông tin khi hover -->
+        <div id="heat-hover-info" class="heatmap-info-banner">
+          💡 Rê chuột vào từng ô ngày để xem số giờ học và số bài tập đã làm.
+        </div>
+
+        <!-- Chú thích mức độ màu xanh -->
+        <div class="heatmap-legend-row">
+          <span>Ít</span>
+          <span class="legend-box level-0" title="0 giờ"></span>
+          <span class="legend-box level-1" title="< 30 phút"></span>
+          <span class="legend-box level-2" title="30 - 60 phút"></span>
+          <span class="legend-box level-3" title="1 - 2 giờ"></span>
+          <span class="legend-box level-4" title="≥ 2 giờ"></span>
+          <span>Nhiều</span>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </aside>
+</div>
+
+<!-- Modal Popup: Xếp hạng đầy đủ (tối đa 50, có phân trang) -->
+<div id="ranking-modal" class="modal-backdrop" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ranking-modal-title">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div>
+        <h3 id="ranking-modal-title" style="margin:0;font-size:18px;display:flex;align-items:center;gap:8px;">
+          🏆 Bảng xếp hạng học sinh
+        </h3>
+        <p style="margin:4px 0 0;font-size:13px;color:var(--muted);">
+          Danh sách tối đa 50 học sinh dẫn đầu toàn hệ thống
+        </p>
+      </div>
+      <button type="button" class="modal-close-btn" id="close-ranking-modal" aria-label="Đóng">&times;</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div class="modal-tabs-wrap">
+      <div class="leaderboard-tabs" role="tablist">
+        <button type="button" class="modal-tab-btn active lb-tab-btn" data-tab="hours">⏱ Giờ học</button>
+        <button type="button" class="modal-tab-btn lb-tab-btn" data-tab="score">⭐ Điểm TB</button>
+        <button type="button" class="modal-tab-btn lb-tab-btn" data-tab="courses">📚 Khóa học</button>
+      </div>
+    </div>
+
+    <!-- Modal Table List -->
+    <div class="modal-body">
+      <table class="modal-table">
+        <thead>
+          <tr>
+            <th style="width:70px;text-align:center;">Hạng</th>
+            <th>Học sinh</th>
+            <th id="modal-metric-col-title" style="text-align:right;width:140px;">Thời gian học</th>
+          </tr>
+        </thead>
+        <tbody id="modal-table-body">
+          <!-- Rendered by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- My rank banner in modal -->
+    <div id="modal-my-rank-banner" class="modal-my-banner">
+      <!-- "Vị trí của em: Hạng #X · Y giờ" -->
+    </div>
+
+    <!-- Pagination controls -->
+    <div class="modal-pagination">
+      <div class="pagination-info" id="modal-page-info">
+        Hiển thị 1 - 10 / 50 học sinh
+      </div>
+      <div class="pagination-btns" id="modal-page-controls">
+        <!-- Rendered by JS: [‹ Trước] [1] [2] [3]... [Sau ›] -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="leaderboards-data" type="application/json">{{ leaderboards_json|safe }}</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarTabs = Array.from(document.querySelectorAll('.dashboard-sidebar-tabs [role="tab"]'));
+    function activateSidebarTab(tab) {
+      sidebarTabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    sidebarTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateSidebarTab(tab));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = event.key === 'Home' ? 0 : event.key === 'End' ? sidebarTabs.length - 1 :
+          (index + (event.key === 'ArrowRight' ? 1 : -1) + sidebarTabs.length) % sidebarTabs.length;
+        activateSidebarTab(sidebarTabs[next]);
+        sidebarTabs[next].focus();
+      });
+    });
+
+    const searchInput = document.getElementById('filter-search');
+    const classSelect = document.getElementById('filter-class');
+    const courseSelect = document.getElementById('filter-course');
+    const sortSelect = document.getElementById('sort-by');
+    const cardsContainer = document.getElementById('assignment-cards-container');
+    const visibleCountEl = document.getElementById('visible-count');
+    const emptyStateEl = document.getElementById('filter-empty-state');
+    const resetBtn = document.getElementById('reset-filters');
+    const hoverInfo = document.getElementById('heat-hover-info');
+    const storageKey = 'sunny-assignment-filters-{{ request.user.pk|escapejs }}';
+    const filterInputs = [classSelect, courseSelect, sortSelect];
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      if (typeof saved.search === 'string' && searchInput) searchInput.value = saved.search;
+      filterInputs.forEach(input => {
+        if (input && typeof saved[input.id] === 'string' && Array.from(input.options).some(option => option.value === saved[input.id])) input.value = saved[input.id];
+      });
+    } catch (_) { /* Filtering still works when storage is unavailable. */ }
+    const filterMenus = Array.from(document.querySelectorAll('.filter-menu'));
+    const filterPanel = document.getElementById('filter-options');
+    const filterOptions = filterPanel.querySelector('.filter-options');
+    let activeFilter = null;
+    let filterTimer = null;
+    function updateFilterMenus() {
+      filterMenus.forEach(button => {
+        const select = document.getElementById(button.dataset.filter);
+        button.classList.toggle('is-filtered', select.value !== (select.id === 'sort-by' ? 'due_asc' : ''));
+      });
+      if (activeFilter) {
+        const selected = document.getElementById(activeFilter.dataset.filter).value;
+        filterOptions.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.value === selected)));
+      }
+    }
+    function closeFilter() {
+      clearTimeout(filterTimer);
+      filterPanel.classList.remove('is-open');
+      filterPanel.setAttribute('aria-hidden', 'true');
+      filterPanel.inert = true;
+      filterMenus.forEach(button => button.setAttribute('aria-expanded', 'false'));
+      activeFilter = null;
+    }
+    function openFilter(button) {
+      const select = document.getElementById(button.dataset.filter);
+      filterOptions.replaceChildren();
+      Array.from(select.options).forEach(option => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.textContent = option.textContent;
+        item.dataset.value = option.value;
+        item.addEventListener('click', () => {
+          select.value = option.value;
+          select.dispatchEvent(new Event('change'));
+          closeFilter();
+          button.focus();
+        });
+        filterOptions.appendChild(item);
+      });
+      activeFilter = button;
+      button.setAttribute('aria-expanded', 'true');
+      filterPanel.inert = false;
+      filterPanel.setAttribute('aria-hidden', 'false');
+      filterPanel.classList.add('is-open');
+      updateFilterMenus();
+    }
+    filterMenus.forEach(button => button.addEventListener('click', () => {
+      const previous = activeFilter;
+      closeFilter();
+      if (previous === button) return;
+      if (previous) filterTimer = setTimeout(() => openFilter(button), 180);
+      else openFilter(button);
+    }));
+    document.addEventListener('click', event => { if (!event.target.closest('.assignment-toolbar')) closeFilter(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && activeFilter) { const button = activeFilter; closeFilter(); button.focus(); } });
+
+    if (!cardsContainer) return;
+    const cards = Array.from(cardsContainer.querySelectorAll('.assignment-card'));
+
+    const assignmentTabs = Array.from(document.querySelectorAll('[data-assignment-tab]'));
+    const assignmentPanel = document.getElementById('assignment-list-panel');
+    const pageNav = document.querySelector('.assignment-pagination');
+    const pageInfo = document.getElementById('assignment-page-info');
+    const pagePrev = document.getElementById('assignment-page-prev');
+    const pageNext = document.getElementById('assignment-page-next');
+    let assignmentTab = 'pending';
+    let assignmentPage = 1;
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      if (saved.assignmentTab === 'completed') assignmentTab = 'completed';
+    } catch (_) { /* Filtering still works when storage is unavailable. */ }
+
+    function applyFilters(resetPage = true) {
+      if (resetPage) assignmentPage = 1;
+      const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+      const classId = classSelect ? classSelect.value : '';
+      const courseId = courseSelect ? courseSelect.value : '';
+      const sortBy = sortSelect ? sortSelect.value : 'due_asc';
+      const filtered = cards.filter(card => {
+        const isCompleted = card.dataset.status === 'completed';
+        const classes = (card.dataset.classes || '').split(',').filter(Boolean);
+        const courses = (card.dataset.courses || '').split(',').filter(Boolean);
+        return isCompleted === (assignmentTab === 'completed') &&
+          (!q || (card.dataset.title || '').includes(q)) &&
+          (!classId || classes.includes(classId)) && (!courseId || courses.includes(courseId));
+      });
+      filtered.sort((a, b) => sortBy === 'due_desc' ?
+        (parseFloat(b.dataset.due) || 0) - (parseFloat(a.dataset.due) || 0) :
+        (parseFloat(a.dataset.due) || 0) - (parseFloat(b.dataset.due) || 0));
+      const pageCount = Math.max(1, Math.ceil(filtered.length / 10));
+      assignmentPage = Math.min(assignmentPage, pageCount);
+      const visibleCards = new Set(filtered.slice((assignmentPage - 1) * 10, assignmentPage * 10));
+      cards.forEach(card => { card.hidden = !visibleCards.has(card); card.style.display = ''; });
+      filtered.forEach(card => cardsContainer.appendChild(card));
+      assignmentTabs.forEach(tab => {
+        const selected = tab.dataset.assignmentTab === assignmentTab;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected) assignmentPanel.setAttribute('aria-labelledby', tab.id);
+      });
+      if (visibleCountEl) visibleCountEl.textContent = filtered.length;
+      if (emptyStateEl) emptyStateEl.hidden = filtered.length > 0;
+      if (pageNav) pageNav.hidden = pageCount <= 1;
+      if (pageInfo) pageInfo.textContent = `Trang ${assignmentPage} / ${pageCount}`;
+      if (pagePrev) pagePrev.disabled = assignmentPage <= 1;
+      if (pageNext) pageNext.disabled = assignmentPage >= pageCount;
+      if (resetBtn) resetBtn.hidden = !Boolean(q || classId || courseId || sortBy !== 'due_asc');
+      updateFilterMenus();
+      try {
+        const saved = {search: searchInput ? searchInput.value : '', assignmentTab};
+        filterInputs.forEach(input => { if (input) saved[input.id] = input.value; });
+        localStorage.setItem(storageKey, JSON.stringify(saved));
+      } catch (_) { /* Filtering still works when storage is unavailable. */ }
+    }
+
+    assignmentTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => { assignmentTab = tab.dataset.assignmentTab; applyFilters(); });
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? assignmentTabs.length - 1 : (index + 1) % assignmentTabs.length;
+        assignmentTabs[next].focus();
+        assignmentTab = assignmentTabs[next].dataset.assignmentTab;
+        applyFilters();
+      });
+    });
+    pagePrev.addEventListener('click', () => { assignmentPage--; applyFilters(false); });
+    pageNext.addEventListener('click', () => { assignmentPage++; applyFilters(false); });
+    window.resetAllFilters = function () {
+      if (searchInput) searchInput.value = '';
+      if (classSelect) classSelect.value = '';
+      if (courseSelect) courseSelect.value = '';
+      if (sortSelect) sortSelect.value = 'due_asc';
+      applyFilters();
+    };
+    if (searchInput) searchInput.addEventListener('input', () => applyFilters());
+    if (classSelect) classSelect.addEventListener('change', () => applyFilters());
+    if (courseSelect) courseSelect.addEventListener('change', () => applyFilters());
+    if (sortSelect) sortSelect.addEventListener('change', () => applyFilters());
+    if (resetBtn) resetBtn.addEventListener('click', window.resetAllFilters);
+    applyFilters();
+
+    // Heatmap hover tooltip live updater
+    const defaultHoverText = '💡 Rê chuột vào từng ô ngày để xem số giờ học và số bài tập đã làm.';
+    const heatCells = document.querySelectorAll('.heat-cell:not(.empty)');
+    heatCells.forEach(cell => {
+      cell.addEventListener('mouseenter', function () {
+        if (hoverInfo && cell.dataset.tooltip) {
+          hoverInfo.innerHTML = '<strong>' + cell.dataset.tooltip + '</strong>';
+          hoverInfo.style.background = '#f0fdf4';
+          hoverInfo.style.borderColor = '#86efac';
+        }
+      });
+      cell.addEventListener('mouseleave', function () {
+        if (hoverInfo) {
+          hoverInfo.innerHTML = defaultHoverText;
+          hoverInfo.style.background = '#f8fafc';
+          hoverInfo.style.borderColor = '#e2e8f0';
+        }
+      });
+    });
+
+    // Leaderboard & Modal Logic
+    const lbDataEl = document.getElementById('leaderboards-data');
+    let leaderboardsData = { hours: [], score: [], courses: [] };
+    if (lbDataEl) {
+      try {
+        leaderboardsData = JSON.parse(lbDataEl.textContent);
+      } catch (e) {
+        console.error('Failed to parse leaderboards data', e);
+      }
+    }
+
+    const widgetTabBtns = document.querySelectorAll('.leaderboard-panel .lb-tab-btn');
+    const widgetTabContents = {
+      hours: document.getElementById('lb-tab-content-hours'),
+      score: document.getElementById('lb-tab-content-score'),
+      courses: document.getElementById('lb-tab-content-courses'),
+    };
+    const widgetHintEl = document.getElementById('lb-widget-hint');
+    const hints = {
+      hours: 'Top 10 học sinh có thời gian học bài nhiều nhất',
+      score: 'Top học sinh có điểm trung bình cao nhất (tối thiểu 5 bài đã công bố điểm)',
+      courses: 'Top 10 học sinh tham gia nhiều khóa học nhất',
+    };
+    const metricTitles = {
+      hours: 'Thời gian học',
+      score: 'Điểm TB khóa học',
+      courses: 'Số khóa tham gia',
+    };
+
+    let currentTab = 'hours';
+    let modalPage = 1;
+    const pageSize = 10;
+
+    function switchWidgetTab(tabKey) {
+      currentTab = tabKey;
+      widgetTabBtns.forEach(btn => {
+        const isActive = btn.dataset.tab === tabKey;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      Object.keys(widgetTabContents).forEach(key => {
+        if (widgetTabContents[key]) {
+          const isMatch = key === tabKey;
+          widgetTabContents[key].hidden = !isMatch;
+          widgetTabContents[key].classList.toggle('active', isMatch);
+        }
+      });
+      if (widgetHintEl && hints[tabKey]) {
+        widgetHintEl.textContent = hints[tabKey];
+      }
+    }
+
+    widgetTabBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        switchWidgetTab(btn.dataset.tab);
+      });
+    });
+
+    // Modal elements
+    const modalEl = document.getElementById('ranking-modal');
+    const openModalBtns = document.querySelectorAll('.open-ranking-modal-btn');
+    const closeModalBtn = document.getElementById('close-ranking-modal');
+    const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+    const modalTableBody = document.getElementById('modal-table-body');
+    const modalColTitle = document.getElementById('modal-metric-col-title');
+    const modalPageInfo = document.getElementById('modal-page-info');
+    const modalPageControls = document.getElementById('modal-page-controls');
+    const modalMyBanner = document.getElementById('modal-my-rank-banner');
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function renderModal() {
+      const list = leaderboardsData[currentTab] || [];
+      const totalItems = list.length;
+      const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+      if (modalPage > totalPages) modalPage = totalPages;
+      if (modalPage < 1) modalPage = 1;
+
+      // Update Modal Tabs
+      modalTabBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === currentTab);
+      });
+      if (modalColTitle) {
+        modalColTitle.textContent = metricTitles[currentTab] || 'Thành tích';
+      }
+
+      // Render table rows
+      const startIndex = (modalPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, totalItems);
+      const pageItems = list.slice(startIndex, endIndex);
+
+      if (modalTableBody) {
+        if (pageItems.length === 0) {
+          modalTableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;padding:24px;color:#64748b;">Chưa có dữ liệu học sinh</td></tr>';
+        } else {
+          modalTableBody.innerHTML = pageItems.map(item => {
+            let rankHtml = '#' + item.rank;
+            if (item.rank === 1) rankHtml = '🥇';
+            else if (item.rank === 2) rankHtml = '🥈';
+            else if (item.rank === 3) rankHtml = '🥉';
+
+            const isMeClass = item.is_me ? 'is-me' : '';
+            const meTag = item.is_me ? '<span class="badge-tag" style="background:#dbeafe;color:#1e40af;font-size:10px;padding:1px 5px;margin-left:4px;">Em</span>' : '';
+
+            return `<tr class="${isMeClass}">
+              <td style="text-align:center;font-weight:800;font-size:${item.rank <= 3 ? '16px' : '13px'};">${rankHtml}</td>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="lb-avatar">${escapeHtml(item.avatar_letter)}</div>
+                  <div style="font-weight:${item.is_me ? '800' : '650'};color:${item.is_me ? '#1d4ed8' : '#1e293b'};">
+                    ${escapeHtml(item.name)} ${meTag}
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:right;">
+                <span class="lb-value">${escapeHtml(item.display_value)}</span>
+              </td>
+            </tr>`;
+          }).join('');
+        }
+      }
+
+      // Update page info
+      if (modalPageInfo) {
+        if (totalItems > 0) {
+          modalPageInfo.textContent = `Hiển thị ${startIndex + 1} - ${endIndex} / ${totalItems} học sinh (Tối đa 50)`;
+        } else {
+          modalPageInfo.textContent = '0 học sinh';
+        }
+      }
+
+      // Render pagination buttons
+      if (modalPageControls) {
+        let controlsHtml = '';
+        controlsHtml += `<button type="button" class="page-btn" id="modal-prev-btn" ${modalPage <= 1 ? 'disabled' : ''}>‹ Trước</button>`;
+
+        for (let p = 1; p <= totalPages; p++) {
+          controlsHtml += `<button type="button" class="page-btn ${p === modalPage ? 'active' : ''}" data-page="${p}">${p}</button>`;
+        }
+
+        controlsHtml += `<button type="button" class="page-btn" id="modal-next-btn" ${modalPage >= totalPages ? 'disabled' : ''}>Sau ›</button>`;
+        modalPageControls.innerHTML = controlsHtml;
+
+        // Bind events
+        const prevBtn = document.getElementById('modal-prev-btn');
+        const nextBtn = document.getElementById('modal-next-btn');
+        if (prevBtn) prevBtn.addEventListener('click', () => { if (modalPage > 1) { modalPage--; renderModal(); } });
+        if (nextBtn) nextBtn.addEventListener('click', () => { if (modalPage < totalPages) { modalPage++; renderModal(); } });
+
+        modalPageControls.querySelectorAll('button[data-page]').forEach(pBtn => {
+          pBtn.addEventListener('click', () => {
+            modalPage = parseInt(pBtn.dataset.page, 10);
+            renderModal();
+          });
+        });
+      }
+
+      // Update My Rank Banner in Modal
+      if (modalMyBanner) {
+        const myItem = list.find(it => it.is_me);
+        if (myItem) {
+          modalMyBanner.hidden = false;
+          modalMyBanner.innerHTML = `<span>Vị trí của em: <strong>Hạng #${myItem.rank}</strong> (${escapeHtml(myItem.name)})</span><span style="font-weight:700;">${escapeHtml(myItem.display_value)}</span>`;
+        } else {
+          modalMyBanner.hidden = true;
+        }
+      }
+    }
+
+    function openModal() {
+      if (!modalEl) return;
+      modalPage = 1;
+      modalEl.hidden = false;
+      modalEl.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      renderModal();
+    }
+
+    function closeModal() {
+      if (!modalEl) return;
+      modalEl.hidden = true;
+      modalEl.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+    if (modalEl) {
+      modalEl.addEventListener('click', function (e) {
+        if (e.target === modalEl) closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl && !modalEl.hidden) {
+        closeModal();
+      }
+    });
+
+    modalTabBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        currentTab = btn.dataset.tab;
+        modalPage = 1;
+        switchWidgetTab(currentTab);
+        renderModal();
+      });
+    });
+  });
+</script>
+{% endblock %}

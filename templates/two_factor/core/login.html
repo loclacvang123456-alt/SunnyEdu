@@ -1,0 +1,40 @@
+{% extends "two_factor/_base_focus.html" %}
+{% load two_factor_tags static %}
+{% block title %}Đăng nhập giáo viên | Sunny Edu{% endblock %}
+{% block extra_media %}<link rel="stylesheet" href="{% static 'css/teacher-login.css' %}?v=1">{{ form.media }}{% endblock %}
+{% block auth_layout_class %}teacher-login-layout{% endblock %}
+{% block auth_background %}<div class="teacher-ocean" aria-hidden="true"><div class="teacher-islands"></div></div>
+<svg class="teacher-filter" aria-hidden="true" width="0" height="0"><filter id="handDrawnNoise"><feTurbulence result="noise" numOctaves="5" baseFrequency="0.0065" type="fractalNoise"/><feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale="900" in2="noise" in="SourceGraphic"/></filter></svg>{% endblock %}
+{% block auth_art %}<div class="teacher-login-art" aria-hidden="true"><img src="{% static 'img/sunny-edu/logo-transparent.png' %}" alt="" width="420" height="420"></div>{% endblock %}
+{% block content %}
+<div class="auth-head">
+  
+  <h1>{% if wizard.steps.current == 'auth' %}Đăng nhập giáo viên{% elif wizard.steps.current == 'backup' %}Dùng mã dự phòng{% else %}Xác thực đăng nhập{% endif %}</h1>
+  {% if wizard.steps.current == 'auth' %}
+
+  {% elif wizard.steps.current == 'token' %}
+    <p>Nhập mã 6 số từ ứng dụng xác thực.</p>
+  {% elif wizard.steps.current == 'backup' %}
+    <p>Nhập một mã dự phòng dùng một lần.</p>
+  {% endif %}
+</div>
+<form action="" method="post">
+  {% csrf_token %}
+  {% include "two_factor/_wizard_forms.html" %}
+  <input type="submit" value="" hidden />
+  {% if wizard.steps.current == 'auth' %}<label class="check-row remember-device teacher-remember"><span class="neon-checkbox"><input type="checkbox" name="remember_device"><span class="neon-checkbox__frame" aria-hidden="true"><span class="neon-checkbox__box"><svg viewBox="0 0 24 24" class="neon-checkbox__check"><path d="M3,12.5l7,7L21,5"></path></svg></span><span class="neon-checkbox__burst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span></span><span>Ghi nhớ đăng nhập<small>Duy trì đăng nhập trên thiết bị này tối đa 30 ngày.</small></span></label>{% endif %}
+  <div class="wizard-actions">
+    <button type="submit" class="button primary">{% if wizard.steps.current == 'auth' %}Đăng nhập{% else %}Xác nhận{% endif %}</button>
+    {% if wizard.steps.prev %}<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}" class="button secondary" formnovalidate>Quay lại</button>{% endif %}
+  </div>
+</form>
+{% if backup_tokens %}
+  <hr class="divider">
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <button name="wizard_goto_step" type="submit" value="backup" class="button secondary full">Dùng mã dự phòng</button>
+  </form>
+{% endif %}
+{% if wizard.steps.current == 'auth' %}<p class="teacher-link"><a href="/login/">Đăng nhập học sinh</a></p>{% endif %}
+{% endblock %}

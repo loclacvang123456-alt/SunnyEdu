@@ -1,0 +1,375 @@
+{% extends "owner/base.html" %}
+{% block title %}Học sinh &amp; lớp | Sunny Edu{% endblock %}
+{% block content %}
+<header class="page-heading">
+  <div>
+    <h1>Học sinh &amp; lớp</h1>
+    <p>Quản lý danh sách học sinh, lớp tiếng Anh và lớp chính khóa.</p>
+  </div>
+  <div class="inline-form">
+    {% if tab == 'students' %}
+      <button type="button" class="button primary" data-modal-open="modal-create-student">+ Thêm học sinh</button>
+    {% elif tab == 'english' %}
+      <button type="button" class="button primary" data-modal-open="modal-create-english-class">+ Tạo lớp tiếng Anh</button>
+    {% elif tab == 'school' %}
+      <button type="button" class="button secondary" data-modal-open="modal-create-school">+ Thêm trường mới</button>
+      <button type="button" class="button primary" data-modal-open="modal-create-school-class">+ Thêm lớp trường mới</button>
+    {% endif %}
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Phân mục học sinh và lớp">
+  <a href="?tab=students" {% if tab == 'students' %}aria-current="page"{% endif %}>Học sinh</a>
+  <a href="?tab=english" {% if tab == 'english' %}aria-current="page"{% endif %}>Lớp tiếng Anh</a>
+  <a href="?tab=school" {% if tab == 'school' %}aria-current="page"{% endif %}>Trường &amp; Lớp trường</a>
+  <a href="?tab=import" {% if tab == 'import' %}aria-current="page"{% endif %}>Nhập danh sách (CSV/XLSX)</a>
+</nav>
+
+{% if tab == 'students' %}
+<div class="card-stack">
+  <form method="get" class="panel toolbar">
+    <input type="hidden" name="tab" value="students">
+    <div>
+      <label for="search-q">Tìm theo tên hoặc mã HS</label>
+      <input id="search-q" type="search" name="q" value="{{ q }}" placeholder="Ví dụ: DEMO001 hoặc Minh">
+    </div>
+    <div>
+      <label for="filter-status">Trạng thái</label>
+      <select id="filter-status" name="status">
+        <option value="ACTIVE" {% if status_filter == 'ACTIVE' %}selected{% endif %}>Đang học</option>
+        <option value="SUSPENDED" {% if status_filter == 'SUSPENDED' %}selected{% endif %}>Tạm khóa</option>
+        <option value="ARCHIVED" {% if status_filter == 'ARCHIVED' %}selected{% endif %}>Đã lưu trữ</option>
+      </select>
+    </div>
+    <div>
+      <label for="filter-ec">Lớp tiếng Anh</label>
+      <select id="filter-ec" name="english_class_id">
+        <option value="">Tất cả lớp</option>
+        {% for ec in english_classes %}
+          <option value="{{ ec.id }}" {% if ec_filter == ec.id|stringformat:'s' %}selected{% endif %}>{{ ec.name }} ({{ ec.code }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="button secondary">Lọc</button>
+  </form>
+
+  <section class="panel">
+    <h2>Danh sách học sinh ({{ student_rows|length }})</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Học sinh</th><th>Lớp trường</th><th>Lớp tiếng Anh</th><th>Mã truy cập</th><th></th></tr></thead>
+        <tbody>
+          {% for row in student_rows %}
+          <tr>
+            <td><a href="{% url 'owner_student_detail' row.user.id %}"><strong>{{ row.user.display_name }}</strong></a><br><small>{{ row.student_ref }} · {% if row.user.status == 'ACTIVE' %}Đang học{% elif row.user.status == 'SUSPENDED' %}Tạm khóa{% elif row.user.status == 'ARCHIVED' %}Đã lưu trữ{% else %}{{ row.user.get_status_display }}{% endif %}</small></td>
+            <td>{{ row.school_label }}</td>
+            <td>{% for lbl in row.english_labels %}<span class="pill">{{ lbl }}</span> {% empty %}—{% endfor %}</td>
+            <td>{% if row.has_code %}<span class="pill pill-success">Đã cấp</span>{% else %}<span class="pill pill-warning">Chưa cấp</span>{% endif %}</td>
+            <td><a class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" href="{% url 'owner_student_detail' row.user.id %}">Hồ sơ <span class="btn-mascot" aria-hidden="true"></span></a></td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="5" class="empty">Chưa có học sinh phù hợp bộ lọc.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<div id="modal-create-student" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-stu-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-stu-title">Thêm học sinh mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_student">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="new-name">Tên học sinh <span style="color:var(--danger, #dc2626)">*</span></label>
+          <input id="new-name" name="display_name" required maxlength="120" placeholder="Ví dụ: Nguyễn Văn An" autofocus>
+          <p class="hint" style="margin:4px 0 0">Mã học sinh sẽ được hệ thống tự động sinh.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="new-school">Trường học</label>
+          <select id="new-school" name="school_id">
+            <option value="">-- Chọn trường học (tùy chọn) --</option>
+            {% for s in schools %}
+              <option value="{{ s.id }}">{{ s.name }}</option>
+            {% endfor %}
+            <option value="__other__">➕ Khác (nhập trường mới)...</option>
+          </select>
+        </div>
+
+        <div id="new-school-manual-wrap" class="field-group" hidden style="background:var(--bg-subtle, #f8fafc);padding:10px 12px;border-radius:6px;border:1px dashed var(--border, #cbd5e1);">
+          <label for="new-school-name">Tên trường mới <span style="color:var(--danger, #dc2626)">*</span></label>
+          <input id="new-school-name" name="new_school_name" maxlength="160" placeholder="Ví dụ: THCS Lê Quý Đôn">
+          <p class="hint" style="margin:4px 0 0">Trường này sẽ được lưu để chọn lại cho các học sinh sau.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="new-class">Lớp mặc định</label>
+          <select id="new-class" name="english_class_id">
+            <option value="">-- Chọn 1 lớp mặc định (tùy chọn) --</option>
+            {% for ec in english_classes %}
+              <option value="{{ ec.id }}">{{ ec.name }} ({{ ec.code }})</option>
+            {% endfor %}
+          </select>
+          <p class="hint" style="margin:4px 0 0">Học sinh sẽ được thêm vào lớp này ngay. Sau này có thể thêm vào các lớp khác.</p>
+        </div>
+
+        <div class="field-group" style="margin-bottom:0">
+          <label for="new-note">Ghi chú (tùy chọn)</label>
+          <textarea id="new-note" name="owner_note" rows="2" placeholder="Ghi chú thêm về học sinh..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo hồ sơ học sinh</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% elif tab == 'english' %}
+<section class="panel">
+  <h2>Danh sách lớp tiếng Anh ({{ english_classes|length }})</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Tên lớp</th><th>Mã lớp</th><th>Năm học</th><th></th></tr></thead>
+      <tbody>
+        {% for ec in english_classes %}
+        <tr>
+          <td><a href="{% url 'owner_students' %}?english_class_id={{ ec.id }}"><strong>{{ ec.name }}</strong></a></td>
+          <td><code>{{ ec.code }}</code></td>
+          <td>{{ ec.school_year }}</td>
+          <td>
+            <form method="post" data-confirm="Lưu trữ lớp này?">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="archive_english_class">
+              <input type="hidden" name="class_id" value="{{ ec.id }}">
+              <button class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" type="submit">Lưu trữ</button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div id="modal-create-english-class" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-ec-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-ec-title">Tạo lớp tiếng Anh mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_english_class">
+      <div class="modal-body">
+        <p class="hint" style="margin-top:0">Mã lớp <code>ENG-XXXXXX</code> được tạo tự động.</p>
+        <div class="field-group">
+          <label for="ec-name">Tên lớp</label>
+          <input id="ec-name" name="name" required maxlength="120" placeholder="Ví dụ: Lớp 6A - Thứ 3/5">
+        </div>
+        <div class="field-group" style="margin-bottom:0">
+          <label for="ec-year">Năm học (YYYY-YYYY+1)</label>
+          <input id="ec-year" name="school_year" required pattern="\d{4}-\d{4}" value="2026-2027">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo lớp tiếng Anh</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% elif tab == 'school' %}
+<div class="card-stack">
+  <section class="panel">
+    <h2>Danh sách trường ({{ schools|length }})</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Mã trường</th><th>Tên trường</th><th></th></tr></thead>
+        <tbody>
+          {% for s in schools %}
+          <tr>
+            <td><code>{{ s.code }}</code></td>
+            <td><strong>{{ s.name }}</strong></td>
+            <td>
+              <form method="post" data-confirm="Lưu trữ trường này?">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="archive_school">
+                <input type="hidden" name="school_id" value="{{ s.id }}">
+                <button type="submit" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">Lưu trữ</button>
+              </form>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="3" class="empty">Chưa có trường học nào.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Danh sách lớp trường ({{ school_classes|length }})</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Trường</th><th>Năm học</th><th>Khối</th><th>Lớp</th><th></th></tr></thead>
+        <tbody>
+          {% for sc in school_classes %}
+          <tr>
+            <td>{{ sc.school.name }}</td>
+            <td>{{ sc.school_year }}</td>
+            <td>Khối {{ sc.grade }}</td>
+            <td><strong>{{ sc.name }}</strong></td>
+            <td>
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="archive_school_class">
+                <input type="hidden" name="class_id" value="{{ sc.id }}">
+                <button type="submit" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">Lưu trữ</button>
+              </form>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="5" class="empty">Chưa có lớp trường nào.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<div id="modal-create-school" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-sch-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-sch-title">Thêm trường mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_school">
+      <div class="modal-body">
+        <div class="field-group"><label for="sch-code">Mã trường</label><input id="sch-code" name="code" required maxlength="32" placeholder="THCS-NVT"></div>
+        <div class="field-group" style="margin-bottom:0"><label for="sch-name">Tên trường</label><input id="sch-name" name="name" required maxlength="160"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo trường</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-create-school-class" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-sc-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-sc-title">Thêm lớp trường mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_school_class">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="sc-school">Trường</label>
+          <select id="sc-school" name="school_id" required>
+            {% for s in schools %}<option value="{{ s.id }}">{{ s.name }} ({{ s.code }})</option>{% endfor %}
+          </select>
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="sc-year">Năm học</label><input id="sc-year" name="school_year" required value="2026-2027"></div>
+          <div class="field-group"><label for="sc-grade">Khối (1..12)</label><input id="sc-grade" name="grade" type="number" min="1" max="12" required value="6"></div>
+        </div>
+        <div class="field-group" style="margin-bottom:0"><label for="sc-name">Tên lớp trường</label><input id="sc-name" name="name" required maxlength="40" placeholder="6A1"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo lớp trường</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% else %}
+<section class="panel" id="student-import-app">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+    <div>
+      <h2 style="margin:0 0 6px">Nhập danh sách học sinh từ CSV / XLSX</h2>
+      <p class="hint" style="margin:0">Tải tệp mẫu để điền danh sách học sinh theo đúng cấu trúc trước khi tải lên.</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <a class="button secondary" href="{% url 'owner_student_template' %}?format=xlsx" download="mau_nhap_hoc_sinh.xlsx">Tải mẫu Excel</a>
+      <a class="button secondary" href="{% url 'owner_student_template' %}?format=csv" download="mau_nhap_hoc_sinh.csv">Tải mẫu CSV</a>
+    </div>
+  </div>
+
+  <div class="help-box" style="margin-bottom:18px;background:var(--bg-subtle, #f8fafc);border:1px solid var(--border, #e2e8f0);padding:12px 16px;border-radius:8px;">
+    <strong>Cấu trúc các cột trong tệp mẫu:</strong>
+    <ul style="margin:6px 0 0;padding-left:20px;font-size:13px;line-height:1.6">
+      <li><code>student_ref</code>: Mã học sinh duy nhất (bắt buộc, ví dụ: <em>HS2026-0001</em>).</li>
+      <li><code>display_name</code>: Họ và tên học sinh (bắt buộc, ví dụ: <em>Nguyễn Văn An</em>).</li>
+      <li><code>school_code</code>, <code>school_year</code>, <code>grade</code>, <code>school_class_name</code>: Thông tin trường và lớp chính khóa (tùy chọn: có thể để trống hoặc điền đầy đủ cả 4 cột, ví dụ: <em>THCS-LQD, 2026-2027, 6, 6A1</em>).</li>
+    </ul>
+    <p class="hint" style="margin:6px 0 0">Quy định tệp: tối đa 2 MiB, 1.000 dòng. Đối với tệp Excel, tên sheet bắt buộc phải là <code>students</code>.</p>
+  </div>
+
+  <form id="import-preview-form" data-kind="STUDENTS" class="card-stack">
+    {% csrf_token %}
+    <div class="field-group">
+      <label for="stu-import-file">Tệp CSV / XLSX</label>
+      <input id="stu-import-file" type="file" name="file" accept=".csv,.xlsx" required>
+    </div>
+    <div class="field-group">
+      <label for="stu-import-class">Thêm vào lớp tiếng Anh (tùy chọn)</label>
+      <select id="stu-import-class" name="class_id">
+        <option value="">Không thêm vào lớp nào</option>
+        {% for ec in english_classes %}<option value="{{ ec.id }}">{{ ec.name }} ({{ ec.code }})</option>{% endfor %}
+      </select>
+    </div>
+    <div><button type="submit" class="button secondary">Xem trước tệp</button></div>
+  </form>
+  <div id="import-result" hidden>
+    <hr class="divider">
+    <div id="import-summary" role="status"></div>
+    <div class="table-wrap"><table class="data-table" id="import-table"></table></div>
+    <div class="wizard-actions">
+      <button type="button" id="import-commit-btn" class="button primary" disabled>Xác nhận nhập học sinh</button>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const schoolSelect = document.getElementById('new-school');
+    const manualWrap = document.getElementById('new-school-manual-wrap');
+    const manualInput = document.getElementById('new-school-name');
+    if (schoolSelect && manualWrap && manualInput) {
+      function syncSchoolInput() {
+        const isOther = schoolSelect.value === '__other__';
+        manualWrap.hidden = !isOther;
+        manualInput.required = isOther;
+        if (isOther) {
+          manualInput.focus();
+        } else {
+          manualInput.value = '';
+        }
+      }
+      schoolSelect.addEventListener('change', syncSchoolInput);
+      syncSchoolInput();
+    }
+  });
+</script>
+{% endblock %}

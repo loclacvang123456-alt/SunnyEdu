@@ -1,0 +1,293 @@
+{% extends "owner/base.html" %}
+{% load static %}
+{% block title %}{{ exam.title }} | Nội dung bài tập | Sunny Edu{% endblock %}
+{% block owner_head %}<style>
+.choice-variants { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border: 1px solid #dbe4ee; border-radius: 10px; background: #f8fafc; }
+.choice-variants[hidden] { display: none; }
+.choice-variant { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: #334155; font-weight: 650; }
+.choice-variant.is-selected { border-color: #2563eb; background: #eaf2ff; color: #1d4ed8; }
+.choice-variants .hint { width: 100%; margin: 0; }
+.field-help { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; margin-left: 5px; border: 1px solid #94a3b8; border-radius: 50%; color: #475569; font-size: 12px; font-weight: 700; line-height: 1; cursor: help; vertical-align: middle; }
+.field-help-text { position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); z-index: 20; width: max-content; max-width: min(260px, 70vw); padding: 9px 11px; border-radius: 9px; background: #173447; color: #fff; box-shadow: 0 4px 16px #0003; white-space: normal; font-size: 12px; line-height: 1.4; font-weight: 400; visibility: hidden; opacity: 0; pointer-events: none; }
+.field-help:hover .field-help-text, .field-help:focus .field-help-text { visibility: visible; opacity: 1; }
+</style>{% endblock %}
+{% block content %}
+<div class="breadcrumb">
+  {% if linked_course %}
+    <a href="{% url 'owner_courses' %}">Khóa học</a><span>→</span>
+    <a href="{% url 'owner_course_detail' linked_course.id %}">{{ linked_course.name }}</a><span>→</span>
+  {% else %}
+    <a href="{% url 'owner_exams' %}">Kho đề bài</a><span>→</span>
+  {% endif %}
+  <span>{{ exam.title }} (v{{ version.number }})</span>
+</div>
+
+<header class="page-heading">
+  <div>
+    {% if linked_course %}
+      <a class="back-link" style="margin-bottom:8px" href="{% url 'owner_course_detail' linked_course.id %}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Quay lại khóa học: {{ linked_course.name }}</a>
+    {% else %}
+      <a class="back-link" style="margin-bottom:8px" href="{% url 'owner_exams' %}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Quay lại kho đề bài</a>
+    {% endif %}
+    <h1>{{ exam.title }}</h1>
+    <p>
+      <span class="pill {% if version.status == 'PUBLISHED' %}pill-success{% elif version.status == 'DRAFT' %}pill-warning{% endif %}">
+        {% if version.status == 'PUBLISHED' %}Đang mở{% elif version.status == 'DRAFT' %}Bản nháp{% else %}Đã lưu trữ{% endif %}
+      </span>
+      · Tổng số: <strong id="total-q-count">{{ questions|length }}</strong> câu hỏi
+      · Tổng điểm: <strong id="total-q-points">{{ total_points }}</strong>
+    </p>
+  </div>
+  <div class="inline-form">
+    {% if version.status != 'ARCHIVED' %}
+      <button type="button" id="add-question-btn" class="button primary">+ Thêm câu hỏi mới</button>
+      <button type="button" class="button secondary" data-modal-open="modal-passages">Tài liệu đọc / nghe</button>
+    {% endif %}
+    <a class="button secondary" href="{% url 'owner_version_preview' exam.id version.id %}">Xem thử</a>
+    {% if version.status == 'DRAFT' and not publish_issues %}
+      <form method="post" class="inline-form" style="margin:0">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="publish_version">
+        <input type="hidden" name="expected_revision" value="{{ version.revision }}">
+        <button type="submit" class="button secondary">Mở bài ngay</button>
+      </form>
+    {% endif %}
+  </div>
+</header>
+
+{% if version.status == 'ARCHIVED' %}
+  <div class="banner-warn">Phiên bản này đã lưu trữ và chỉ được xem.</div>
+{% endif %}
+
+<div id="version-editor" data-readonly="{% if version.status == 'ARCHIVED' %}1{% else %}0{% endif %}">
+  {% csrf_token %}
+  <div id="editor-global-status" role="status" class="notice" hidden></div>
+  <div id="editor-q-list" class="q-cards-list"></div>
+</div>
+
+<!-- Pop-up Modal: Thêm / Sửa Câu Hỏi -->
+<div id="modal-question-editor" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="qe-heading">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2 id="qe-heading">Thêm câu hỏi mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form id="question-form">
+      <div class="modal-body card-stack" style="gap:16px">
+        <div id="qe-status" role="status" class="notice notice-error" hidden></div>
+
+        <!-- Bước 1: Chọn loại câu hỏi -->
+        <div>
+          <label style="margin-bottom:8px" data-help="Chọn cách học sinh trả lời câu hỏi.">1. Chọn loại câu hỏi</label>
+          <input type="hidden" id="q-type" value="SINGLE_CHOICE">
+          <div id="q-type-grid" class="type-selector-grid">
+            <button type="button" class="type-chip is-selected" data-qgroup="choice">
+              <span class="type-chip-head">Trắc nghiệm</span>
+              <span class="type-chip-body">Chọn một hoặc nhiều đáp án</span>
+            </button>
+            <div id="q-choice-variants" class="choice-variants" role="group" aria-label="Kiểu trắc nghiệm">
+              <button type="button" class="choice-variant is-selected" data-qtype="SINGLE_CHOICE" data-game="false">Một đáp án</button>
+              <button type="button" class="choice-variant" data-qtype="MULTIPLE_CHOICE" data-game="false">Nhiều đáp án</button>
+              <button type="button" class="choice-variant" data-qtype="SINGLE_CHOICE" data-game="true">Một đáp án · Bắn tàu</button>
+              <p id="q-game-hint" class="hint" hidden>Chọn chế độ luyện tập và bật Bắn thuyền khi giao bài để học sinh chơi; bài kiểm tra hiển thị trắc nghiệm thông thường.</p>
+            </div>
+            <button type="button" class="type-chip" data-qtype="WORD_ORDER">
+              <span class="type-chip-head">🧩 Sắp xếp từ thành câu</span>
+              <span class="type-chip-body">Xếp các thẻ từ theo đúng trật tự</span>
+            </button>
+            <button type="button" class="type-chip" data-qtype="SENTENCE_TRANSFORM">
+              <span class="type-chip-head">🔄 Đổi câu / Viết lại câu</span>
+              <span class="type-chip-body">Trực tiếp sang gián tiếp, thì, bị động</span>
+            </button>
+            <button type="button" class="type-chip" data-qtype="STRESS_CHOICE">
+              <span class="type-chip-head">🗣️ Chọn trọng âm</span>
+              <span class="type-chip-body">Nhấn vào âm tiết mang trọng âm</span>
+            </button>
+            <button type="button" class="type-chip" data-qtype="MATCH_IMAGE">
+              <span class="type-chip-head">🖼️ Nối tranh với từ</span>
+              <span class="type-chip-body">Ghép hình ảnh và từ vựng</span>
+            </button>
+            <button type="button" class="type-chip" data-qtype="TEXT">
+              <span class="type-chip-head">✍️ Tự luận / Viết câu</span>
+              <span class="type-chip-body">Viết lại câu, đoạn văn, bài luận</span>
+            </button>
+            <button type="button" class="type-chip" data-qtype="AUDIO">
+              <span class="type-chip-head">🎙️ Nói / Thu âm</span>
+              <span class="type-chip-body">Học sinh ghi âm câu trả lời</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bước 2: Ngữ cảnh bài đọc / File nghe (3 Header Tabs gắn liền nội dung) -->
+        <input type="hidden" id="q-skill" value="READING">
+        <div id="q-context-section">
+          <label style="margin-bottom:8px" data-help="Chọn tài liệu chung nếu câu hỏi cần đoạn đọc hoặc âm thanh.">2. Kèm bài đọc hoặc file nghe? <span class="muted" style="font-weight:400">(không bắt buộc)</span></label>
+          <div class="context-tabs-container">
+            <div class="context-pills" id="q-context-pills" role="tablist">
+              <button type="button" class="context-pill is-selected" data-ctx="NONE" role="tab">Câu hỏi độc lập</button>
+              <button type="button" class="context-pill" data-ctx="READING" role="tab">📖 Kèm đoạn văn đọc hiểu</button>
+              <button type="button" class="context-pill" data-ctx="LISTENING" role="tab">🎧 Kèm file nghe (MP3)</button>
+            </div>
+            <div class="context-tab-body">
+              <div id="q-ctx-none-pane">
+                <p class="hint" style="margin:0;color:var(--primary-dark);font-weight:600">✓ Câu hỏi độc lập (Ngữ pháp, từ vựng, ôn tập...) — không đính kèm đoạn văn hay file nghe.</p>
+              </div>
+              <div id="q-passage-picker-box" hidden>
+                <div id="q-passage-select-wrap" class="field-group" style="margin-bottom:12px" hidden>
+                  <label id="q-passage-label" for="q-passage">Dùng lại tài liệu đã có (hoặc nhập mới bên dưới)</label>
+                  <select id="q-passage"><option value="">-- Nhập tài liệu mới bên dưới --</option></select>
+                </div>
+                <div id="qp-text-wrap" class="field-group" style="margin:0">
+                  <label for="qp-text">Nội dung đoạn văn đọc hiểu</label>
+                  <textarea id="qp-text" rows="8" maxlength="20000" style="min-height:180px" placeholder="Nhập hoặc dán đoạn văn đọc hiểu vào đây (hỗ trợ văn bản dài tối đa 20.000 ký tự)..."></textarea>
+                </div>
+                <div id="qp-audio-wrap" class="card-stack" style="gap:10px" hidden>
+                  <div class="field-group" style="margin:0">
+                    <label for="qp-audio-search">Tìm kiếm file nghe</label>
+                    <input id="qp-audio-search" type="search" placeholder="🔍 Gõ tên file nghe để tìm nhanh trong kho đã tải..." style="margin-bottom:8px">
+                  </div>
+                  <div id="qp-audio-library-wrap" class="field-group" style="margin-bottom:10px">
+                    <label for="qp-audio-asset-select">Chọn từ kho file nghe đã tải lên</label>
+                    <select id="qp-audio-asset-select">
+                      <option value="">-- Chọn file nghe từ kho (hoặc tải file mới bên dưới) --</option>
+                    </select>
+                  </div>
+                  <div class="field-group" style="margin:0">
+                    <label for="qp-audio-file">Hoặc tải tệp nghe mới (MP3/M4A/Ogg/WebM &le; 30 MiB)</label>
+                    <input id="qp-audio-file" type="file" accept="audio/*">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bước 3: Nội dung câu hỏi -->
+        <div class="field-group" style="margin-bottom:0">
+          <label for="q-prompt">Nội dung câu hỏi</label>
+          <textarea id="q-prompt" rows="3" required maxlength="10000" placeholder="Nhập câu hỏi hoặc đề bài tại đây..."></textarea>
+        </div>
+
+        <!-- Khu vực đáp án động theo từng loại câu hỏi -->
+        <div id="q-choice-box" class="card-stack" style="gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <label style="margin:0" data-help="Nhập các lựa chọn và đánh dấu đáp án đúng.">Các lựa chọn &amp; tick vào đáp án đúng</label>
+            <button type="button" id="q-add-opt-ef" class="text-button" style="padding:0;min-height:auto;font-size:13px">+ Thêm đáp án E, F</button>
+          </div>
+          <div id="q-options-rows" class="card-stack" style="gap:8px"></div>
+        </div>
+
+        <div id="q-word-order-box" class="field-group" style="margin-bottom:0" hidden>
+          <label for="q-word-tokens">Nhập câu đáp án đúng (hoặc mỗi cụm từ 1 dòng)</label>
+          <textarea id="q-word-tokens" rows="3" placeholder="Ví dụ: She goes to school every day"></textarea>
+          <p class="hint" style="margin:4px 0">Gõ 1 dòng sẽ tự tách từng từ. Muốn giữ nguyên cụm (VD: Da Nang), hãy xuống dòng cho mỗi thẻ từ.</p>
+          <div id="q-word-preview" class="word-preview-list" hidden></div>
+        </div>
+
+        <div id="q-transform-box" class="field-group" style="margin-bottom:0" hidden>
+          <label for="q-transform-standard">Câu trả lời chuẩn của giáo viên (để tự động chấm)</label>
+          <textarea id="q-transform-standard" rows="3" placeholder="Ví dụ: He said that he was watching TV."></textarea>
+          <p class="hint" style="margin:4px 0">Hệ thống sẽ so sánh câu của học sinh với câu chuẩn này: nếu sai cấu trúc chuyển đổi sẽ trừ hết điểm, nếu chỉ sai chính tả/dấu câu/viết hoa sẽ trừ 0.5 điểm mỗi lỗi và hiển thị mũi tên đỏ chỉ lỗi.</p>
+        </div>
+
+        <div id="q-stress-box" class="field-group" style="margin-bottom:0" hidden>
+          <label for="q-stress-syllables">Nhập từ tách theo âm tiết bằng dấu gạch ngang (-)</label>
+          <input id="q-stress-syllables" type="text" placeholder="Ví dụ: in-for-ma-tion hoặc el-e-phant">
+          <input id="q-stress-index" type="hidden">
+          <p class="hint" style="margin:6px 0 4px">Bấm chọn trực tiếp âm tiết mang trọng âm bên dưới:</p>
+          <div id="q-stress-picker" class="syllable-picker"></div>
+        </div>
+
+        <div id="q-match-box" class="card-stack" style="gap:10px" hidden>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <label style="margin:0" data-help="Thêm từ 2 đến 6 cặp, mỗi cặp gồm một ảnh và từ tiếng Anh tương ứng.">Các cặp tranh và từ tương ứng (2–6 cặp)</label>
+            <button type="button" id="q-match-add" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">+ Thêm cặp</button>
+          </div>
+          <div id="q-match-rows" class="card-stack" style="gap:10px"></div>
+        </div>
+
+        <div id="q-rubric-box" hidden>
+          <details>
+            <summary style="cursor:pointer;font-weight:650;font-size:14px;color:var(--primary-dark)">⚙️ Tùy chỉnh tiêu chí chấm điểm (mặc định đã đủ 4 tiêu chí chuẩn)</summary>
+            <div id="q-rubric-rows" class="card-stack" style="margin-top:12px"></div>
+          </details>
+        </div>
+
+        <!-- Bước 4: Điểm, độ khó & Giải thích -->
+        <div class="owner-grid-2">
+          <div class="field-group" style="margin:0">
+            <label for="q-points">Điểm câu hỏi</label>
+            <input id="q-points" type="number" step="0.01" min="0.01" max="100" value="1.00" required>
+          </div>
+          <div class="field-group" style="margin:0">
+            <label for="q-diff">Mức độ</label>
+            <select id="q-diff">
+              <option value="FOUNDATION">Cơ bản</option>
+              <option value="STANDARD" selected>Trung bình</option>
+              <option value="CHALLENGE">Nâng cao</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin:0">
+          <label for="q-explanation">Giải thích đáp án <span class="muted" style="font-weight:400">(tùy chọn)</span></label>
+          <textarea id="q-explanation" rows="2" placeholder="Giải thích ngắn gọn giúp học sinh hiểu tại sao đúng..."></textarea>
+        </div>
+
+        <details>
+          <summary style="cursor:pointer;font-size:13px;color:var(--muted)">Tùy chọn nâng cao (Nhãn chủ đề / Nhãn lỗi)</summary>
+          <div class="owner-grid-2" style="margin-top:10px">
+            <div class="field-group" style="margin:0"><label for="q-topics">Nhãn chủ đề (tự động nếu bỏ trống)</label><input id="q-topics" placeholder="Ôn tập chung"></div>
+            <div class="field-group" style="margin:0"><label for="q-errors" data-error-help="">Nhãn lỗi (tùy chọn)</label><input id="q-errors" placeholder="Chia động từ"></div>
+          </div>
+        </details>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="delete-question-btn" class="button danger-btn" style="margin-right:auto" hidden>Xóa câu hỏi</button>
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary" id="save-question-btn">Lưu câu hỏi</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Quản lý Đoạn văn / File nghe chung -->
+<div id="modal-passages" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-passages-title">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2 id="modal-passages-title">Đoạn văn đọc hiểu &amp; File nghe chung</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="modal-body card-stack">
+      <div id="passage-list-box" class="card-stack" style="gap:8px"></div>
+      <hr class="divider" style="margin:6px 0">
+      <form id="passage-form" class="card-stack" style="gap:12px">
+        <h3 style="margin:0">Thêm tài liệu đọc / nghe mới</h3>
+        <div id="passage-status" role="status" class="hint" style="margin:0"></div>
+        <div class="field-group" style="margin:0"><label for="pas-ref">Mã / Tên tài liệu (ref)</label><input id="pas-ref" maxlength="40" required placeholder="VD: P1 hoặc Listening Part 1"></div>
+        <div class="field-group" style="margin:0"><label for="pas-text">Đoạn văn đọc hiểu</label><textarea id="pas-text" rows="3" placeholder="Nhập đoạn văn tiếng Anh..."></textarea></div>
+        <div class="owner-grid-2">
+          <div class="field-group" style="margin:0">
+            <label for="pas-audio-file">Tải tệp nghe mới (MP3/M4A)</label>
+            <input id="pas-audio-file" type="file" accept="audio/*">
+            <button type="button" id="upload-audio-btn" class="button secondary" style="margin-top:6px;min-height:36px;font-size:13px">Tải tệp lên</button>
+          </div>
+          <div class="field-group" style="margin:0">
+            <label for="pas-audio-select">Hoặc chọn tệp đã tải</label>
+            <input id="pas-audio-search" type="search" placeholder="🔍 Gõ tên file nghe để tìm nhanh..." style="margin-bottom:8px">
+            <select id="pas-audio-select">
+              <option value="">Không gắn audio</option>
+              {% for a in assets %}<option value="{{ a.id }}">{{ a.original_name }} ({{ a.detected_mime }})</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="field-group" style="margin:0"><label for="pas-transcript">Lời thoại / Transcript (tùy chọn)</label><textarea id="pas-transcript" rows="2"></textarea></div>
+        <div><button type="submit" class="button primary">Lưu tài liệu</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script id="editor-bootstrap" type="application/json">{{ editor_json|safe }}</script>
+{% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'js/owner_editor.js' %}?v=20261120v7"></script>{% endblock %}

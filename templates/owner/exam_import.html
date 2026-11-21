@@ -1,0 +1,63 @@
+{% extends "owner/base.html" %}{% load static %}
+{% block title %}Nhập đề CSV/XLSX | Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_exams' %}">Đề bài</a><span>→</span><span>Nhập đề từ CSV / XLSX</span></div>
+<header class="page-heading">
+  <div>
+    
+    <h1>Nhập đề CSV / XLSX</h1>
+    <p>CSV UTF-8 hoặc XLSX có sheet <code>questions</code> · Tối đa 2 MiB, 100 câu · Không dùng công thức.</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <a class="button secondary" href="{% static 'templates/de-mau-full-dang-bai.csv' %}" download>Tải CSV full dạng bài</a>
+    <a class="button secondary" href="{% static 'templates/de-mau-full-dang-bai.xlsx' %}" download>Tải Excel (.xlsx) full dạng bài</a>
+    <a class="button secondary" href="{% static 'templates/mau-nhap-de.csv' %}" download>Tải mẫu CSV cơ bản</a>
+  </div>
+</header>
+
+<section class="panel" aria-labelledby="import-guide-title" style="margin-bottom:20px">
+  <h2 id="import-guide-title">Cách điền tệp mẫu</h2>
+  <p>Giữ nguyên tên và thứ tự cột; thay các dòng ví dụ bằng câu hỏi của bạn. Mỗi dòng là một câu, đánh số <code>position</code> liên tiếp từ 1.</p>
+  <ul>
+    <li><code>type</code>: <code>SINGLE_CHOICE</code> (một đáp án), <code>MULTIPLE_CHOICE</code> (nhiều đáp án), <code>STRESS_CHOICE</code> (chọn trọng âm), <code>WORD_ORDER</code> (sắp xếp từ thành câu), <code>SENTENCE_TRANSFORM</code> (viết lại/đổi câu), <code>TEXT</code> (viết tự luận) hoặc <code>AUDIO</code> (nói).</li>
+    <li><code>skill</code>: <code>READING</code> cho đọc, <code>WRITING</code> cho viết, <code>SPEAKING</code> cho nói; câu nghe dùng <code>LISTENING</code> và cần tài liệu âm thanh đã tải lên.</li>
+    <li><code>difficulty</code>: <code>FOUNDATION</code>, <code>STANDARD</code> hoặc <code>CHALLENGE</code>. Điền nội dung câu vào <code>prompt</code>, điểm tối đa vào <code>max_points</code> và chủ đề vào <code>topic_tags</code>.</li>
+    <li>Với <code>SINGLE_CHOICE</code> / <code>MULTIPLE_CHOICE</code>, điền từ 2–6 lựa chọn liên tiếp từ <code>option_a</code> và đáp án ở <code>correct_options</code> (VD: <code>A</code> hoặc <code>A|C</code>).</li>
+    <li>Với <code>STRESS_CHOICE</code>, điền từng âm tiết từ <code>option_a</code> (hoặc <code>de-ci-sion</code> ở <code>option_a</code>) và vị trí đúng ở <code>correct_options</code> (VD: <code>B</code> hoặc <code>2</code>). Với <code>WORD_ORDER</code>, điền các từ cách nhau bằng <code>|</code> ở <code>option_a</code>. Với <code>SENTENCE_TRANSFORM</code>, điền câu chuẩn ở <code>option_a</code>.</li>
+    <li>Các cột tài liệu và giải thích có thể để trống khi không dùng. Lưu CSV dưới dạng UTF-8; với XLSX, đặt tên sheet duy nhất là <code>questions</code>.</li>
+  </ul>
+</section>
+
+<section class="panel" id="question-import-app">
+  <form id="import-preview-form" data-kind="QUESTIONS" class="card-stack">
+    {% csrf_token %}
+    <div class="owner-grid-2">
+      <div class="field-group">
+        <label for="imp-title">Tiêu đề đề mới (nếu không gắn vào đề sẵn có)</label>
+        <input id="imp-title" name="title" maxlength="200" placeholder="Ví dụ: Đề kiểm tra Unit 6">
+      </div>
+      <div class="field-group">
+        <label for="imp-exam">Hoặc tạo phiên bản mới cho đề có sẵn</label>
+        <select id="imp-exam" name="target_exam_id">
+          <option value="">— Tạo đề mới —</option>
+          {% for e in existing_exams %}<option value="{{ e.id }}">{{ e.title }}</option>{% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="field-group">
+      <label for="imp-file">Chọn tệp CSV / XLSX</label>
+      <input id="imp-file" type="file" name="file" accept=".csv,.xlsx" required>
+    </div>
+    <div><button type="submit" class="button secondary">Xem trước &amp; kiểm tra lỗi</button></div>
+  </form>
+
+  <div id="import-result" hidden>
+    <hr class="divider">
+    <div id="import-summary" role="status"></div>
+    <div class="table-wrap"><table class="data-table" id="import-table"></table></div>
+    <div class="wizard-actions">
+      <button type="button" id="import-commit-btn" class="button primary" disabled>Tạo bản nháp</button>
+    </div>
+  </div>
+</section>
+{% endblock %}

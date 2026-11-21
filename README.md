@@ -1,10 +1,10 @@
-# EDUWEB: b?n ph�t tri?n
+# EDUWEB: bản phát triển
 
-?ng d?ng dang du?c x�y theo c�c t�i li?u trong `docs/`. Ch? d�ng d? li?u gi? tr�n m�y local; kh�ng dua l�n Internet hay d�ng d? li?u h?c sinh th?t. Ghi �m, giao di?n qu?n ly l?p v� b�i, MFA gi�o vi�n, x?p h?ng v� c�c ti�u ch� v?n h�nh c�n chua ho�n t?t.
+Ứng dụng đang được xây theo các tài liệu trong `docs/`. Chỉ dùng dữ liệu giả trên máy local; không đưa lên Internet hay dùng dữ liệu học sinh thật. Ghi âm, giao diện quản lý lớp và bài, MFA giáo viên, xếp hạng và các tiêu chí vận hành còn chưa hoàn tất.
 
-## Ch?y th?
+## Chạy thử
 
-Y�u c?u Python 3.13, uv, Docker Desktop v� PostgreSQL 17. Trong PowerShell t?i thu m?c d? �n:
+Yêu cầu Python 3.13, uv, Docker Desktop và PostgreSQL 17. Trong PowerShell tại thư mục dự án:
 
 ```powershell
 python -m uv venv --python 3.13 .venv
@@ -15,11 +15,11 @@ docker compose up -d db
 .\.venv\Scripts\python.exe manage.py runserver 127.0.0.1:8000
 ```
 
-M? http://127.0.0.1:8000/ v� nh?p ma h?c sinh gi? du?c in b?i `seed_demo`. Ch?y l?nh d� l?n n?a s? d?i ma v� thu h?i phi�n cu. D? li?u trong Docker volume l� d? li?u ph�t tri?n, kh�ng ph?i b?n sao luu production.
+Mở http://127.0.0.1:8000/ và nhập mã học sinh giả được in bởi `seed_demo`. Chạy lệnh đó lần nữa sẽ đổi mã và thu hồi phiên cũ. Dữ liệu trong Docker volume là dữ liệu phát triển, không phải bản sao lưu production.
 
-D? th�m kh�a h?c v� b�i t?p m?u, ch?y `python manage.py seed_courses` sau khi c� t�i kho?n gi�o vi�n. L?nh kh�ng t? g�n l?p ho?c h?c sinh. Xem [c�ch qu?n ly kh�a h?c](docs/khoa-hoc.md).
+Để thêm khóa học và bài tập mẫu, chạy `python manage.py seed_courses` sau khi có tài khoản giáo viên. Lệnh không tự gán lớp hoặc học sinh. Xem [cách quản lý khóa học](docs/khoa-hoc.md).
 
-Ki?m tra tr�n PostgreSQL:
+Kiểm tra trên PostgreSQL:
 
 ```powershell
 .\.venv\Scripts\python.exe manage.py check
@@ -27,5 +27,4 @@ Ki?m tra tr�n PostgreSQL:
 .\.venv\Scripts\python.exe manage.py test apps.accounts apps.classes apps.content apps.assignments apps.grading apps.reporting
 ```
 
-Kh�ng d�ng kh�a m?c d?nh ho?c c?u h�nh DEBUG trong production. Y�u c?u v� c�c ca nghi?m thu c�n l?i ? `docs/05-trien-khai-va-nghiem-thu.md`.
-
+Không dùng khóa mặc định hoặc cấu hình DEBUG trong production. Yêu cầu và các ca nghiệm thu còn lại ở `docs/05-trien-khai-va-nghiem-thu.md`.

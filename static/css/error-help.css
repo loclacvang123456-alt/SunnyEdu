@@ -1,0 +1,5 @@
+.error-help-trigger { display:inline-grid; place-items:center; width:22px; height:22px; padding:0; margin-left:6px; border:1px solid #a7b8c9; border-radius:50%; color:#315675; background:#f4f8fc; font:700 13px/1 system-ui,sans-serif; vertical-align:middle; cursor:pointer; }
+.error-help-trigger:hover,.error-help-trigger:focus-visible { color:#153d61; border-color:#46799e; background:#e3f0fa; }
+.error-help-trigger:focus-visible { outline:3px solid #e3b754; outline-offset:2px; }
+.error-help-bubble { position:fixed; z-index:10000; box-sizing:border-box; padding:12px 14px; border-radius:12px; background:#243b4c; color:white; box-shadow:0 8px 24px #172b3b38; font:400 13px/1.55 system-ui,sans-serif; overflow-wrap:anywhere; max-height:calc(100vh - 24px); overflow:auto; }
+.error-help-bubble[hidden] { display:none; }

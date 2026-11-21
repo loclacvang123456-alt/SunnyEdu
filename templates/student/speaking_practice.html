@@ -1,0 +1,31 @@
+{% extends "student/base.html" %}{% load static %}
+{% block title %}Luyện nói | Sunny Edu{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/speaking.css' %}?v=1">{% endblock %}
+{% block content %}
+<section class="speaking-page" id="pronunciation-practice" data-available="{% if available %}yes{% else %}no{% endif %}" data-endpoint="/api/v1/speaking/practice/check/">
+  <header class="speaking-intro"><span class="speaking-badge">🎤 THỬ THÁCH NÓI</span><h1>Nghe và nói cùng Sunny</h1><p>Chọn một thử thách, nghe mẫu rồi đọc theo nhé!</p></header>
+  <form id="pronunciation-form">{% csrf_token %}
+    <div class="speaking-card">
+      <div class="speaking-card-heading"><div><span class="speaking-step">1</span><strong>Chọn câu để luyện</strong></div><button class="button secondary" id="speaking-next" type="button">Câu khác</button></div>
+      <label for="pronunciation-reference">Từ hoặc câu tiếng Anh</label>
+      <input id="pronunciation-reference" type="text" maxlength="200" autocomplete="off" required value="Hello, how are you?">
+      <div class="speaking-listen"><button class="button secondary" id="speaking-listen" type="button">Nghe mẫu</button><span>Em cũng có thể tự nhập câu tiếng Anh.</span></div>
+    </div>
+    <div class="speaking-card"><div class="speaking-card-heading"><div><span class="speaking-step">2</span><strong>Đến lượt em đọc!</strong></div></div>
+      {% if not available %}<p role="status" class="speaking-unavailable">Luyện phát âm chưa được giáo viên cấu hình. Em vẫn có thể chọn câu và nghe đọc mẫu.</p>{% endif %}
+      <label class="check-row"><input id="pronunciation-consent" type="checkbox" {% if not available %}disabled{% endif %}>
+        <span>Em đồng ý gửi bản ghi âm và câu mẫu này tới Microsoft Azure để nhận nhận xét. Bản ghi không được lưu vào bài tập.</span>
+      </label>
+      <div class="speaking-actions"><button class="button primary" id="pronunciation-record" type="button" {% if not available %}disabled{% endif %}>Bắt đầu ghi âm</button>
+      <button class="button secondary" id="pronunciation-stop" type="button" disabled>Dừng ghi âm</button>
+      <button class="button secondary" id="pronunciation-send" type="submit" disabled>Xem kết quả</button></div>
+      <p id="pronunciation-status" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+  <section id="pronunciation-result" class="speaking-result" aria-live="polite"></section>
+  <p class="speaking-note">Âm hoặc từ dưới {{ threshold }} điểm được đánh dấu cần luyện thêm. Đây là gợi ý tự động, giáo viên sẽ đánh giá.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/speaking_practice.js' %}?v=2" defer></script>{% endblock %}
+
+{% block seasonal %}{% endblock %}

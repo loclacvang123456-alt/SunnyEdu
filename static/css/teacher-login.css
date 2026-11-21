@@ -1,0 +1,27 @@
+.teacher-login-layout { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 420px); justify-content: center; gap: clamp(32px, 8vw, 120px); padding: 40px 24px; }
+.teacher-ocean { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #0f4e72 75%, #0b3a57); }
+.teacher-islands { position: absolute; inset: 0; filter: url(#handDrawnNoise); background-image:
+  radial-gradient(ellipse 8vmin 10vmin at 20% 25%, #79ab4f 0 70%, transparent 71%),
+  radial-gradient(ellipse 16vmin 12vmin at 20% 25%, #93c66b 0 70%, transparent 71%),
+  radial-gradient(ellipse 18vmin 14vmin at 20% 25%, #ecd899 0 70%, transparent 71%),
+  radial-gradient(ellipse 20vmin 16vmin at 20% 25%, #f6e7b4 0 70%, transparent 71%),
+  radial-gradient(ellipse 22vmin 18vmin at 20% 25%, #ffffffa3 0 70%, transparent 71%),
+  radial-gradient(ellipse 24vmin 20vmin at 20% 25%, #3ec8cfb1 0 70%, transparent 71%),
+  radial-gradient(ellipse 6vmin 11vmin at 75% 30%, #79ab4f 0 70%, transparent 71%),
+  radial-gradient(ellipse 17vmin 13vmin at 75% 30%, #93c66b 0 70%, transparent 71%),
+  radial-gradient(ellipse 19vmin 15vmin at 75% 30%, #ecd899 0 70%, transparent 71%),
+  radial-gradient(ellipse 21vmin 17vmin at 75% 30%, #f6e7b4 0 70%, transparent 71%),
+  radial-gradient(ellipse 23vmin 19vmin at 75% 30%, #ffffffa3 0 70%, transparent 71%),
+  radial-gradient(ellipse 25vmin 21vmin at 75% 30%, #3ec8cfb1 0 70%, transparent 71%),
+  radial-gradient(ellipse 6vmin 10vmin at 50% 75%, #79ab4f 0 70%, transparent 71%),
+  radial-gradient(ellipse 15vmin 12vmin at 50% 75%, #93c66b 0 70%, transparent 71%),
+  radial-gradient(ellipse 17vmin 14vmin at 50% 75%, #ecd899 0 70%, transparent 71%),
+  radial-gradient(ellipse 19vmin 16vmin at 50% 75%, #f6e7b4 0 70%, transparent 71%),
+  radial-gradient(ellipse 21vmin 18vmin at 50% 75%, #ffffffa3 0 70%, transparent 71%),
+  radial-gradient(ellipse 23vmin 20vmin at 50% 75%, #3ec8cfb1 0 70%, transparent 71%),
+  linear-gradient(180deg, #216a94 0%, #194f71 80%); }
+.teacher-filter { position: absolute; }
+.teacher-login-layout .owner-auth-card { position: relative; z-index: 1; }
+.teacher-login-art { position: relative; display: grid; place-items: center; width: 100%; }
+.teacher-login-art img { width: min(100%, 420px); height: auto; filter: drop-shadow(0 12px 26px rgba(0, 25, 45, .28)); }
+@media (max-width: 700px) { .teacher-login-layout { grid-template-columns: minmax(0, 460px); gap: 24px; } .teacher-login-art { grid-row: 1; } .teacher-login-art img { width: min(40vw, 180px); } }

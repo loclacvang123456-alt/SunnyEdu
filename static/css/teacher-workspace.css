@@ -1,0 +1,64 @@
+/* Shared teacher workspace: content first, consistent actions and readable tables. */
+.owner-page { background: #f3f6fb; color: #24324b; }
+.owner-content { min-width: 0; }
+.owner-page .owner-layout { grid-template-columns: 230px minmax(0, 1fr); }
+.owner-page .sidebar { background: #172b4b; color: #e7efff; border: 0; }
+.owner-page .sidebar .brand, .owner-page .sidebar .text-button { color: #fff; }
+.owner-page .sidebar nav a { color: #d3def0; border-radius: 9px; padding: 10px 13px; }
+.owner-page .sidebar nav a:hover { background: #223d63; text-decoration: none; }
+.owner-page .sidebar nav a[aria-current=page] { background: #e7efff; color: #173e80; }
+.nav-group { display: block; margin: 19px 12px 6px; color: #a1b8d7; font-size: 10px; font-weight: 800; letter-spacing: .09em; }
+.owner-page .sidebar-foot { margin-top: 30px; border-color: #38506f; }
+.owner-page .owner-main { max-width: 1500px; padding: 32px clamp(20px, 3vw, 48px); }
+.owner-page .owner-top { height: 62px; border-bottom: 1px solid #dee6f2; color: #596b87; }
+.owner-page .page-heading { align-items: center; margin-bottom: 26px; }
+.owner-page .page-heading h1 { font-size: clamp(26px, 3vw, 34px); color: #19365b; }
+.owner-page .page-heading p { max-width: 700px; color: #63718a; }
+.owner-page .panel { border: 1px solid #dce5f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 18px rgb(28 54 89 / 3%); min-width: 0; }
+.owner-page .panel h2 { font-size: 20px; color: #253f63; margin-bottom: 18px; }
+.owner-page .data-table { font-size: 14px; }
+.owner-page .data-table th { background: #edf3fa; color: #4c607b; padding: 14px 16px; }
+.owner-page .data-table td { padding: 18px 16px; vertical-align: middle; }
+.owner-page .data-table tbody tr:hover { background: #f8fbff; }
+.owner-page .data-table small { color: #65748a; line-height: 1.7; }
+.owner-page .data-table .button { min-height: 40px; padding: 8px 12px; white-space: nowrap; }
+.owner-page .table-wrap { border-color: #e2e9f3; border-radius: 12px; }
+.owner-page .button.primary { background: #2864cf; color: #fff; box-shadow: 0 3px 8px rgb(40 100 207 / 15%); }
+.owner-page .button.secondary { background: #edf3fc; color: #285491; border-color: #d5e2f6; }
+.owner-page .tabs { background: #e9eff7; border: 0; padding: 5px; border-radius: 12px; gap: 4px; }
+.owner-page .tabs a { border: 0; border-radius: 8px; }
+.owner-page .tabs a[aria-current=page] { background: #fff; box-shadow: 0 2px 8px #d7e1ef; }
+.owner-page .summary-card { border-radius: 16px; border-top: 4px solid #6d8ed7; }
+.owner-page .summary-card:nth-child(2) { border-top-color: #e6a347; }
+.owner-page .summary-card:nth-child(3) { border-top-color: #54aa91; }
+.course-library-layout { display: flex; flex-direction: column; gap: 20px; }
+.create-course { order: -1; }
+.owner-page summary { cursor: pointer; font-weight: 750; color: #294f83; min-height: 44px; padding: 10px 12px; border-radius: 9px; background: #edf3fc; }
+.owner-page details[open] > summary { margin-bottom: 20px; }
+.create-course form { max-width: 720px; margin-top: 20px; }
+.workspace-shortcuts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.workspace-shortcuts a { background: #fff; border: 1px solid #ccdbef; padding: 10px 16px; border-radius: 10px; font-weight: 700; }
+.course-settings { margin: 24px 0; }
+.owner-page .toolbar { align-items: end; gap: 12px; }
+.owner-page .toolbar > div { flex: 1; min-width: 180px; }
+.owner-page .toolbar > button { min-width: auto; }
+.owner-page .checkbox-list { border-color: #dce5f0; padding: 12px; }
+.owner-page .checkbox-list label { padding: 8px; border-radius: 6px; }
+.owner-page .checkbox-list label:hover { background: #edf3fc; }
+#course-exercises, #course-add, #course-settings { scroll-margin-top: 24px; }
+@media(max-width:1023px) { .owner-page .owner-layout { display: block; } .owner-page .sidebar-foot { margin-top: 16px; } }
+@media(max-width:600px) { .owner-page .owner-main { padding: 24px 14px; } .owner-page .panel { padding: 16px; } .owner-page .page-heading { align-items: stretch; } .owner-page .page-heading > .button { width: 100%; } .workspace-shortcuts a { flex: 1 1 140px; text-align: center; } }
+
+.schedule-modal { width: min(760px, 96vw); max-width: 760px; }
+.schedule-layout { display: grid; grid-template-columns: minmax(190px, 0.9fr) minmax(280px, 1.3fr); gap: 20px; }
+.schedule-targets { min-width: 0; border: 1px solid #dce5f0; border-radius: 12px; background: #f8faff; padding: 10px; }
+.schedule-target-tabs { display: flex; gap: 4px; margin-bottom: 10px; }
+.schedule-target-tabs button { flex: 1; border: 0; border-radius: 7px; background: transparent; padding: 8px 5px; color: #536985; cursor: pointer; }
+.schedule-target-tabs button[aria-selected="true"] { background: #e3edfc; color: #2459a5; font-weight: 700; }
+.schedule-target-list { display: grid; align-content: start; gap: 7px; max-height: 240px; overflow-y: auto; }
+.schedule-target-card { padding: 9px 11px; background: white; border: 1px solid #dce5f0; border-radius: 8px; overflow-wrap: anywhere; }
+.schedule-target-empty { margin: 8px 4px; color: #64748b; font-size: 14px; }
+.schedule-fields { min-width: 0; }
+.schedule-tries-label { white-space: nowrap; }
+@media (max-width: 600px) { .schedule-layout { grid-template-columns: minmax(0, 1fr); } .schedule-target-list { max-height: 140px; } }
+.schedule-fields .owner-grid-2 { grid-template-columns: minmax(0, 1fr); gap: 14px; }

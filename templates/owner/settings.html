@@ -1,0 +1,182 @@
+{% extends "owner/base.html" %}
+{% block title %}Cài đặt &amp; Bảo mật | Sunny Edu{% endblock %}
+{% block content %}
+<header class="page-heading">
+  <div>
+    <h1>Cài đặt giáo viên</h1>
+    <p>Quản lý bảo mật, nhãn chủ đề và yêu cầu dữ liệu học sinh.</p>
+  </div>
+  <div class="inline-form">
+    <a class="button secondary" href="{% url 'two_factor:profile' %}">Quản lý xác thực hai bước</a>
+  </div>
+</header>
+
+<section class="panel" style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+  <div>
+    <h2 style="margin-bottom:4px">Xác thực hai bước (TOTP)</h2>
+    <p style="margin:0">
+      Trạng thái phiên MFA 10 phút gần nhất:
+      {% if recent_mfa %}<span class="pill pill-success">Đang hợp lệ</span>{% else %}<span class="pill pill-warning">Cần nhập lại TOTP cho thao tác nhạy cảm</span>{% endif %}
+    </p>
+  </div>
+  <button type="button" class="button primary" data-modal-open="modal-verify-mfa">Xác thực lại TOTP</button>
+</section>
+
+<section class="panel" style="margin-bottom:24px">
+  <h2>Chủ đề website</h2>
+  <p>Tự động bật từ 7 ngày trước đến hết ngày lễ. Chọn một chủ đề để dùng thủ công.</p>
+  <form method="post" class="inline-form">
+    {% csrf_token %}<input type="hidden" name="action" value="save_theme">
+    <label for="site-theme">Chủ đề</label>
+    <select id="site-theme" name="theme">{% for value, label in theme_choices %}<option value="{{ value }}" {% if theme_selection == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
+    <button class="button primary" type="submit">Lưu chủ đề</button>
+  </form>
+</section>
+
+<div class="card-stack">
+  <section class="panel">
+    <div class="section-heading">
+      <h2 data-error-help="">Nhãn chủ đề và lỗi ({{ tags|length }})</h2>
+      <button type="button" class="button primary" data-modal-open="modal-create-sys-tag">+ Thêm nhãn</button>
+    </div>
+    <div class="table-wrap" style="max-height:360px;overflow:auto">
+      <table class="data-table">
+        <thead><tr><th>Loại</th><th>Kỹ năng</th><th>Tên</th><th></th></tr></thead>
+        <tbody>
+          {% for t in tags %}
+          <tr>
+            <td>{{ t.kind }}</td><td>{{ t.skill }}</td><td><strong {% if t.kind == "ERROR" %}data-error-help="{{ t.name }}"{% endif %}>{{ t.name }}</strong></td>
+            <td>
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="archive_tag">
+                <input type="hidden" name="tag_id" value="{{ t.id }}">
+                <button type="submit" class="text-button" style="min-height:auto;padding:4px 8px">Lưu trữ</button>
+              </form>
+            </td>
+          </tr>
+          {% empty %}<tr><td colspan="4" class="empty">Chưa có tag nào.</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Yêu cầu xuất / xóa dữ liệu riêng tư học sinh</h2>
+      <button type="button" class="button secondary" data-modal-open="modal-create-privacy">+ Tạo yêu cầu dữ liệu</button>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Học sinh</th><th>Loại</th><th>Trạng thái</th><th>Lý do</th><th>Báo cáo / Thao tác</th></tr></thead>
+        <tbody>
+          {% for r in privacy_requests %}
+          <tr>
+            <td>{{ r.student.display_name }}</td>
+            <td>{{ r.kind }}</td>
+            <td><span class="pill">{{ r.status }}</span></td>
+            <td>{{ r.reason }}</td>
+            <td>
+              {% if r.status != 'COMPLETED' %}
+                <form method="post" class="inline-form" data-confirm="Xác nhận phê duyệt và thực thi yêu cầu dữ liệu?">
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="execute_privacy">
+                  <input type="hidden" name="request_id" value="{{ r.id }}">
+                  {% if not recent_mfa %}<input name="otp_token" placeholder="TOTP" required style="width:110px">{% endif %}
+                  <button type="submit" class="button {% if r.kind == 'ERASE' %}danger-btn{% else %}primary{% endif %}">Phê duyệt &amp; thực thi</button>
+                </form>
+              {% else %}
+                <code>{{ r.report }}</code>
+                {% if r.kind == 'EXPORT' %}
+                  <a class="button secondary" href="/api/v1/owner/privacy-requests/{{ r.id }}/export/">Tải JSON</a>
+                {% endif %}
+              {% endif %}
+            </td>
+          </tr>
+          {% empty %}<tr><td colspan="5" class="empty">Chưa có yêu cầu dữ liệu nào.</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- Pop-up Modal: Xác thực MFA -->
+<div id="modal-verify-mfa" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-mfa-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-mfa-title">Xác thực lại mã TOTP</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="verify_mfa">
+      <div class="modal-body">
+        <div class="field-group" style="margin-bottom:0">
+          <label for="mfa-token">Mã TOTP (6 chữ số)</label>
+          <input id="mfa-token" name="otp_token" inputmode="numeric" autocomplete="one-time-code" placeholder="Nhập 6 số TOTP" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Xác thực ngay</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Thêm nhãn -->
+<div id="modal-create-sys-tag" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-tag-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-tag-title">Thêm nhãn</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_tag">
+      <div class="modal-body">
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="tag-kind">Loại</label><select id="tag-kind" name="kind"><option value="TOPIC">Chủ đề</option><option value="ERROR">Lỗi</option></select></div>
+          <div class="field-group"><label for="tag-skill">Kỹ năng</label><select id="tag-skill" name="skill">{% for val, lbl in skills %}<option value="{{ val }}">{{ lbl }}</option>{% endfor %}</select></div>
+        </div>
+        <div class="field-group" style="margin-bottom:0"><label for="tag-name">Tên tag</label><input id="tag-name" name="name" required maxlength="100" placeholder="VD: Câu điều kiện"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Thêm nhãn</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Tạo yêu cầu dữ liệu -->
+<div id="modal-create-privacy" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-pr-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-pr-title">Tạo yêu cầu xuất / xóa dữ liệu</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_privacy">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="pr-student">Học sinh</label>
+          <select id="pr-student" name="student_id" required>
+            {% for s in students_list %}<option value="{{ s.id }}">{{ s.display_name }} ({{ s.student_profile.student_ref|default:s.username }})</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group"><label for="pr-kind">Loại yêu cầu</label><select id="pr-kind" name="kind"><option value="EXPORT">EXPORT (Xuất JSON)</option><option value="ERASE">ERASE (Xóa dữ liệu)</option></select></div>
+        <div class="field-group"><label for="pr-reason">Lý do</label><input id="pr-reason" name="reason" required placeholder="Nhập lý do yêu cầu"></div>
+        {% if not recent_mfa %}
+        <div class="field-group" style="margin-bottom:0"><label for="pr-otp">Mã TOTP</label><input id="pr-otp" name="otp_token" required placeholder="6 số TOTP"></div>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo yêu cầu</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

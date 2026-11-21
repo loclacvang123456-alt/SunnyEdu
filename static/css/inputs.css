@@ -1,0 +1,39 @@
+/* Input appearance adapted from Uiverse.io by Maximinodotpy. */
+body input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="color"]),
+body textarea {
+  border: 2px solid #c8c8c8;
+  border-radius: 20px;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+body input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="color"]):hover,
+body textarea:hover { border-color: #e5b82d; }
+body input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="color"]):focus,
+body textarea:focus { border-color: #d5a800; outline: 2px solid #f9d85e; outline-offset: 1px; }
+.field-group.input-group-float { position: relative; }
+.field-group.input-group-float > label { position: absolute; z-index: 1; top: 24px; left: 14px; max-width: calc(100% - 28px); margin: 0; padding: 0 5px; color: #646464; font-weight: 400; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transform: translateY(-50%); transform-origin: left center; pointer-events: none; transition: top .3s ease, transform .3s ease, color .3s ease; }
+.field-group.input-group-float > input::placeholder { color: transparent; }
+.field-group.input-group-float > input:focus::placeholder { color: #7a8794; }
+.field-group.input-group-float:has(> input:focus) > label,
+.field-group.input-group-float:has(> input:not(:placeholder-shown)) > label { top: 0; transform: translateY(-50%) scale(.9); background: #fff; color: #6f5700; }
+@media (prefers-reduced-motion: reduce) { .field-group.input-group-float > label { transition: none; } }
+.login-input-group > label { position:absolute; z-index:1; top:24px; left:14px; margin:0; padding:0 5px; color:#646464; font-weight:400; line-height:1.25; pointer-events:none; transform:translateY(-50%); transform-origin:left center; transition:top .3s, transform .3s, color .3s; }
+.login-input-group > input::placeholder { color:transparent; }
+.login-input-group > input:focus::placeholder { color:#7a8794; }
+.login-input-group:has(> input:focus) > label, .login-input-group:has(> input:not(:placeholder-shown)) > label { top:0; transform:translateY(-50%) scale(.9); background:#fff; color:#6f5700; }
+@media (prefers-reduced-motion:reduce) { .login-input-group > label { transition:none; } }
+
+/* Browsers may autofill credentials before a focus or input event is fired. */
+.field-group.input-group-float:has(> input:-webkit-autofill) > label,
+.login-input-group:has(> input:-webkit-autofill) > label {
+  top: 0;
+  transform: translateY(-50%) scale(.9);
+  background: #fff;
+  color: #6f5700;
+}
+.field-group.input-group-float:has(> input:autofill) > label,
+.login-input-group:has(> input:autofill) > label {
+  top: 0;
+  transform: translateY(-50%) scale(.9);
+  background: #fff;
+  color: #6f5700;
+}

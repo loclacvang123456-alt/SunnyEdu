@@ -1,0 +1,4 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation
+1,SINGLE_CHOICE,READING,FOUNDATION,Choose the correct sentence.,2.00,She goes to school.,She go to school.,,,,,A,,,,,Present simple,Subject verb agreement,Use goes with she.
+2,MULTIPLE_CHOICE,READING,FOUNDATION,Choose both plural nouns.,3.00,books,cat,dogs,,,,A|C,,,,,Plural nouns,Plural noun form,Books and dogs are plural.
+3,TEXT,WRITING,FOUNDATION,Write 4 sentences about your school day.,5.00,,,,,,,,,,,,Daily routine,Sentence structure,

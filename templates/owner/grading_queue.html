@@ -1,0 +1,62 @@
+{% extends "owner/base.html" %}
+{% load static %}
+{% block title %}Chấm bài — Sunny Edu{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Chấm bài</h1>
+    <p>Xem bài đã nộp và công bố kết quả.</p>
+  </div>
+</div>
+
+<div class="tabs" role="tablist">
+  <a href="?status=SUBMITTED" {% if status_filter == 'SUBMITTED' %}aria-current="page"{% endif %}>
+    Cần chấm {% if pending_count %}<span class="pill pill-warning" style="margin-left:4px;padding:1px 6px;font-size:11px">{{ pending_count }}</span>{% endif %}
+  </a>
+  <a href="?status=GRADED" {% if status_filter == 'GRADED' %}aria-current="page"{% endif %}>
+    Đã chấm {% if graded_count %}<span class="pill pill-success" style="margin-left:4px;padding:1px 6px;font-size:11px">{{ graded_count }}</span>{% endif %}
+  </a>
+  <a href="?status=ALL" {% if status_filter == 'ALL' %}aria-current="page"{% endif %}>Tất cả đã nộp</a>
+</div>
+
+<section class="panel">
+  {% if items %}
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Học sinh</th><th>Bài giao</th><th>Nộp lúc</th><th>Trạng thái</th><th>Công bố</th><th>Thao tác</th></tr></thead>
+        <tbody>
+          {% for item in items %}
+            <tr{% if item.needs_visibility_review %} style="background:#fff1f2"{% endif %}>
+              <td><strong>{{ item.attempt.recipient.student.display_name }}</strong>{% if item.needs_visibility_review %}<br><span class="pill pill-danger">Cần xem: rời trang trên 5 giây</span>{% endif %}</td>
+              <td>{{ item.attempt.recipient.assignment.title }}</td>
+              <td>{{ item.attempt.submitted_at|date:"d/m/Y H:i" }}{% if item.attempt.is_late %} <span class="pill pill-warning">Muộn</span>{% endif %}</td>
+              <td>
+                {% if item.attempt.status == 'SUBMITTED' %}
+                  <span class="pill pill-warning">Cần chấm{% if item.has_manual %} (Tự luận){% endif %}</span>
+                {% elif item.attempt.status == 'GRADED' %}
+                  <span class="pill pill-success">Đã chấm{% if not item.has_manual %} (Tự động){% endif %}</span>
+                {% elif item.attempt.status == 'VOID' %}
+                  <span class="pill pill-danger">Đã hủy</span>
+                {% else %}
+                  <span class="pill">{{ item.attempt.get_status_display }}</span>
+                {% endif %}
+              </td>
+              <td>{% if item.released %}<span class="pill pill-success">Đã công bố</span>{% else %}<span class="pill">Chưa</span>{% endif %}</td>
+              <td>
+                <a class="button {% if item.attempt.status == 'SUBMITTED' %}primary{% else %}secondary{% endif %}" href="{% url 'owner_grading_detail' item.attempt.id %}">
+                  {% if item.attempt.status == 'SUBMITTED' %}Chấm bài{% else %}Xem bài / Điểm{% endif %}
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state compact" style="border:0">
+      <img src="{% static 'img/sunny-edu/empty.png' %}" alt="" style="display:block;width:min(200px, 60%);height:auto;margin:0 auto 16px">
+      <h2>{% if status_filter == 'SUBMITTED' %}Chưa có bài cần chấm{% elif status_filter == 'GRADED' %}Chưa có bài đã chấm{% else %}Chưa có bài đã nộp{% endif %}</h2>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "owner/base.html" %}
+{% block title %}Khóa học | Sunny Edu{% endblock %}
+{% block content %}
+<header class="page-heading">
+  <div>
+    <h1>Khóa học</h1>
+    <p>Chọn khóa học để xem và soạn bài tập, mở khóa cho các lớp học.</p>
+  </div>
+  <button type="button" class="button primary" data-modal-open="modal-create-course">+ Tạo khóa học mới</button>
+</header>
+
+<section class="panel">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Khóa học</th><th>Bài tập</th><th>Lớp đang mở</th><th></th></tr></thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>
+            <a href="{% url 'owner_course_detail' course.id %}"><strong>{{ course.name }}</strong></a>
+            {% if course.is_sample %}<span class="pill">Mẫu</span>{% endif %}
+            <br><small>{{ course.get_category_display }} · {{ course.difficulty }}/5 ★ · {% if course.is_published %}Đang hiển thị{% else %}Bản nháp{% endif %}</small>
+          </td>
+          <td>{{ course.exercise_count }} bài</td>
+          <td>{{ course.class_count }} lớp</td>
+          <td><a class="button secondary" href="{% url 'owner_course_detail' course.id %}">Quản lý bài tập <span class="btn-mascot" aria-hidden="true"></span></a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="empty">Chưa có khóa học nào. Bấm "+ Tạo khóa học mới" để bắt đầu.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div id="modal-create-course" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-course-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-course-title">Tạo khóa học mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="modal-body">
+        <div class="field-group"><label for="course-name">Tên khóa học</label><input id="course-name" name="name" maxlength="200" required placeholder="VD: Tiếng Anh Lớp 11 - Học kỳ 1"></div>
+        <div class="field-group"><label for="course-desc">Giới thiệu ngắn</label><textarea id="course-desc" name="description" rows="2" maxlength="300"></textarea></div>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="course-category">Cấp học / Kỳ thi</label><select id="course-category" name="category" required>{% for value,label in categories %}<option value="{{ value }}">{{ label }}</option>{% endfor %}</select></div>
+          <div class="field-group"><label for="course-difficulty">Độ khó</label><select id="course-difficulty" name="difficulty">{% for level in difficulties %}<option value="{{ level }}">{{ level }}/5 sao</option>{% endfor %}</select></div>
+        </div>
+        <label class="check-row" style="margin-bottom:0"><input type="checkbox" name="is_published" checked><span>Hiển thị trong danh sách khóa học</span></label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button class="button primary" type="submit">Tạo khóa học</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

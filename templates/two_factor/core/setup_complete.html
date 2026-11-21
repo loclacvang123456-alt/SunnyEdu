@@ -1,0 +1,13 @@
+{% extends "two_factor/_base_focus.html" %}
+{% block title %}Hoàn tất 2FA | Sunny Edu{% endblock %}
+{% block content %}
+<div class="auth-head">
+  
+  <h1>Đã bật xác thực hai bước</h1>
+  <p>Hãy lưu mã dự phòng để dùng khi mất thiết bị.</p>
+</div>
+<div class="stack-actions">
+  <a href="/teacher/" class="button primary full">Vào trang giáo viên <span class="btn-mascot" aria-hidden="true"></span></a>
+  <a href="{% url 'two_factor:backup_tokens' %}" class="button secondary full">Tạo &amp; lưu mã dự phòng</a>
+</div>
+{% endblock %}

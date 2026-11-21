@@ -1,0 +1,20 @@
+body:has(.speaking-page) { background: #f3f7ff; }
+.speaking-page { max-width: 860px; margin: 0 auto; }
+.speaking-intro { padding: 28px 30px; border-radius: 22px; background: linear-gradient(120deg, #e8efff, #f7eaff); margin-bottom: 20px; }
+.speaking-intro h1 { margin: 10px 0 6px; color: #25285b; }
+.speaking-intro p { margin: 0; color: #505b7c; }
+.speaking-badge { color: #6544bb; font-weight: 800; font-size: 13px; letter-spacing: .07em; }
+.speaking-card, .speaking-result:not(:empty) { background: white; border: 1px solid #dce5f5; border-radius: 20px; padding: 24px; margin-bottom: 18px; box-shadow: 0 9px 28px rgb(55 75 120 / 7%); }
+.speaking-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; color: #29295f; font-size: 19px; }
+.speaking-card-heading > div { display: flex; align-items: center; gap: 10px; }
+.speaking-step { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: white; background: #7454ce; font-weight: 800; }
+#pronunciation-reference { min-height: 72px; border: 2px solid #d8d0fa; background: #f9f7ff; color: #29245f; font-size: clamp(20px, 3vw, 26px); font-weight: 700; }
+.speaking-listen, .speaking-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.speaking-listen span, .speaking-note { color: #596681; font-size: 14px; }
+.speaking-card .check-row { margin: 0; }
+.speaking-unavailable { padding: 12px; border-radius: 10px; background: #fff5dc; color: #805300; }
+#pronunciation-status:not(:empty) { margin: 16px 0 0; color: #354476; font-weight: 650; }
+.speaking-result h2 { color: #343078; }
+.speaking-result li { padding: 10px 0; font-size: 18px; }
+.speaking-result mark { border-radius: 5px; padding: 2px 3px; font-weight: 700; }
+@media (max-width: 600px) { .speaking-card, .speaking-intro { padding: 20px; } .speaking-actions .button { flex: 1 1 160px; } }

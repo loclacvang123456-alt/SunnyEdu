@@ -1,0 +1,35 @@
+{% extends "owner/base.html" %}
+{% block title %}Xếp hạng — Sunny Edu{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Kỳ xếp hạng</h1>
+    <p>Xếp hạng theo danh sách và bài đã chọn; công bố bằng biệt danh.</p>
+  </div>
+  <a class="button" href="{% url 'owner_ranking_new' %}">Tạo kỳ xếp hạng</a>
+</div>
+
+<section class="panel">
+  {% if periods %}
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Tên kỳ</th><th>Năm học</th><th>Phạm vi</th><th>Thời gian</th><th>Trạng thái</th><th></th></tr></thead>
+        <tbody>
+          {% for p in periods %}
+            <tr>
+              <td><a href="{% url 'owner_ranking_detail' p.id %}"><strong>{{ p.name }}</strong></a></td>
+              <td>{{ p.school_year }}</td>
+              <td>{{ p.scope }}</td>
+              <td>{{ p.start_at|date:"d/m/Y H:i" }} – {{ p.end_at|date:"d/m/Y H:i" }}</td>
+              <td><span class="pill {% if p.status == 'FINAL' %}pill-success{% elif p.status == 'STALE' %}pill-warning{% elif p.status == 'INVALID' %}pill-danger{% endif %}">{{ p.status }}</span></td>
+              <td><a class="button secondary" href="{% url 'owner_ranking_detail' p.id %}">Chi tiết</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="empty">Chưa có kỳ xếp hạng nào.</p>
+  {% endif %}
+</section>
+{% endblock %}

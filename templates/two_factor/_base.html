@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load static %}
+{% block body_class %}auth-owner-page{% endblock %}
+{% block shell %}
+<main id="main" class="owner-auth-wrap {% block auth_layout_class %}{% endblock %}">
+  {% block auth_background %}{% endblock %}
+  <div class="owner-auth-card panel">
+    <a class="brand" href="/"><img class="sunny-logo" src="{% static 'img/sunny-edu/logo-transparent.png' %}" alt="" width="48" height="48"><span>Sunny Edu</span></a>
+    {% if messages %}{% for message in messages %}<div class="notice" role="status" data-sunny-message="{{ message.tags }}">{{ message }}</div>{% endfor %}{% endif %}
+    {% block content %}{% endblock %}
+  </div>
+  {% block auth_art %}{% endblock %}
+</main>
+{% endblock %}
+{% block head %}{% block extra_media %}{% endblock %}{% endblock %}

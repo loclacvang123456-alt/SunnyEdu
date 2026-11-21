@@ -1,0 +1,13 @@
+.sunny-dialog { border: 0; padding: 0; width: min(420px, calc(100% - 32px)); max-width: none; border-radius: 24px; box-shadow: 0 22px 65px rgba(30, 38, 34, .24); color: #263b32; background: #fff; }
+.sunny-dialog::backdrop { background: rgba(40, 43, 41, .58); }
+.sunny-dialog-content { padding: 30px 30px 26px; text-align: center; }
+.sunny-dialog-icon { display: block; width: 180px; height: 180px; object-fit: contain; margin: 0 auto 14px; }
+.sunny-dialog h2 { margin: 0 0 10px; font-size: 1.4rem; line-height: 1.3; }
+.sunny-dialog p { margin: 0; color: #52635a; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.sunny-dialog-input { box-sizing: border-box; width: 100%; margin-top: 18px; border: 1px solid #cbd8d0; border-radius: 10px; padding: 11px 12px; font: inherit; }
+.sunny-dialog-actions { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
+.sunny-dialog-actions button { min-width: 110px; border: 0; border-radius: 10px; padding: 11px 20px; font: inherit; font-weight: 700; cursor: pointer; }
+.sunny-dialog-cancel { color: #43564b; background: #edf2ee; }
+.sunny-dialog-ok { color: white; background: #277a50; }
+.sunny-dialog button:focus-visible, .sunny-dialog-input:focus-visible { outline: 3px solid #e3b754; outline-offset: 3px; }
+.sunny-dialog [hidden] { display: none; }

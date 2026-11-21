@@ -1,0 +1,306 @@
+{% extends "owner/base.html" %}
+{% block title %}{{ assignment.title }} — Giao bài — Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_assignments' %}">Bài đã giao</a><span>→</span><span>{{ assignment.title }}</span></div>
+<div class="page-heading">
+  <div>
+    <h1>{{ assignment.title }}</h1>
+    <p>Mã: <span class="mono">{{ assignment.code }}</span> · Đề: {{ assignment.version.exam.title }} (v{{ assignment.version.number }})</p>
+  </div>
+  <div class="inline-form">
+    <span class="pill {% if assignment.status == 'PUBLISHED' %}pill-success{% elif assignment.status == 'CANCELLED' %}pill-danger{% endif %}">{{ assignment.status }}</span>
+    {% if assignment.status == 'PUBLISHED' and can_release_answers %}
+      <form method="post" class="inline-form" style="margin:0">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="release_answers">
+        <input type="hidden" name="expected_revision" value="{{ assignment.revision }}">
+        <button type="submit" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px">Công bố đáp án</button>
+      </form>
+    {% endif %}
+    {% if assignment.status == 'PUBLISHED' %}
+      <button type="button" class="button secondary danger-btn" style="min-height:38px;padding:6px 12px;font-size:13px" data-modal-open="modal-assign-cancel">Hủy bài</button>
+    {% endif %}
+  </div>
+</div>
+
+<section class="panel" style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+  <div>
+    <h2 style="margin-bottom:6px">Nội dung bài tập</h2>
+    <p style="margin:0">
+      Gồm <strong>{{ question_count }} câu hỏi</strong> ·
+      Khóa học: {% for item in course_exercises %}<a class="pill" href="{% url 'owner_course_detail' item.course.id %}">{{ item.course.name }}</a> {% empty %}Chưa gắn khóa học{% endfor %}
+    </p>
+  </div>
+  <div class="inline-form">
+    <a class="button primary" href="{% url 'owner_version_editor' assignment.version.exam_id assignment.version_id %}">Soạn câu hỏi</a>
+    <a class="button secondary" href="{% url 'owner_courses' %}">Quản lý khóa học</a>
+  </div>
+</section>
+
+{% if ranking_warnings %}
+  <div class="banner-warn">Bài giao này đang nằm trong kỳ xếp hạng đã kích hoạt/chốt: {% for rp in ranking_warnings %}{{ rp.name }} ({{ rp.status }}){% if not forloop.last %}, {% endif %}{% endfor %}.</div>
+{% endif %}
+
+{% if assignment.status != 'CANCELLED' %}
+<div class="context-tabs-container" data-tab-group="assign-detail">
+  <div class="context-pills context-pills-2" role="tablist">
+    <button type="button" class="context-pill is-selected" data-tab-target="pane-assign-classes" role="tab">Danh sách Lớp học ({{ class_rows|length }})</button>
+    <button type="button" class="context-pill" data-tab-target="pane-assign-students" role="tab">Cá nhân Học sinh ({{ student_rows|length }})</button>
+  </div>
+  <div class="context-tab-body" style="background:#fff">
+    <div id="pane-assign-classes" data-tab-pane>
+      <div class="table-toolbar">
+        <input type="search" data-table-search="assign-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp...">
+        <div class="inline-form">
+          <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="assign-classes-table">Chọn nhiều</button>
+          <button type="button" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="assign-classes-table" data-detail-bulk="class"><span>Giao bài <span class="sel-count">0</span> lớp</span></button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="assign-classes-table" class="data-table" data-sortable-table>
+          <thead>
+            <tr>
+              <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-classes-table" aria-label="Chọn tất cả lớp"></th>
+              <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Trạng thái &amp; Hạn nộp <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Số lần try <span class="sort-ind">↕</span></th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="assign-classes-tbody">
+            {% for row in class_rows %}
+            <tr>
+              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}"></td>
+              <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+              <td>{{ row.classroom.school_year }}</td>
+              <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
+              <td data-sort-val="{{ row.due_ts }}">
+                {% if row.is_assigned %}
+                  <span class="pill pill-success">Đã giao</span><br>
+                  <small>Hạn: {{ row.due_at|date:"d/m/Y H:i" }}</small>
+                {% else %}
+                  <span class="muted">Chưa giao</span>
+                {% endif %}
+              </td>
+              <td data-sort-val="{{ row.max_attempts|default:0 }}">{% if row.is_assigned %}{{ row.max_attempts }} lần{% else %}—{% endif %}</td>
+              <td>
+                <button type="button" class="button primary" style="min-height:36px;padding:6px 12px;font-size:13px"
+                  data-detail-single="class"
+                  data-target-id="{{ row.classroom.id }}"
+                  data-target-label="{{ row.classroom.name }}"
+                  data-due="{% if row.due_at %}{{ row.due_at|date:'Y-m-d\TH:i' }}{% endif %}"
+                  data-tries="{{ row.max_attempts|default:1 }}">
+                  {% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}
+                </button>
+              </td>
+            </tr>
+            {% empty %}
+            <tr class="empty-row"><td colspan="7" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="pane-assign-students" data-tab-pane hidden>
+      <div class="table-toolbar">
+        <input type="search" data-table-search="assign-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, lớp...">
+        <div class="inline-form">
+          <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="assign-students-table">Chọn nhiều</button>
+          <button type="button" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="assign-students-table" data-detail-bulk="student"><span>Giao bài <span class="sel-count">0</span> HS</span></button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="assign-students-table" class="data-table" data-sortable-table>
+          <thead>
+            <tr>
+              <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-students-table" aria-label="Chọn tất cả học sinh"></th>
+              <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Trạng thái &amp; Hạn nộp <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Số lần làm / Tối đa <span class="sort-ind">↕</span></th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="assign-students-tbody">
+            {% for row in student_rows %}
+            <tr>
+              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.student.id }}" data-label="{{ row.student.display_name }}"></td>
+              <td><strong>{{ row.student.display_name }}</strong><br><small class="mono">{{ row.student_ref }}</small></td>
+              <td>{{ row.class_names|default:"—" }}</td>
+              <td data-sort-val="{{ row.due_ts }}">
+                {% if row.is_assigned %}
+                  <span class="pill {% if row.recipient.state == 'EXEMPT' %}pill-warning{% else %}pill-success{% endif %}">
+                    {% if row.recipient.state == 'ASSIGNED' %}Đã giao{% elif row.recipient.state == 'EXEMPT' %}Miễn bài{% else %}{{ row.recipient.state }}{% endif %}
+                  </span>
+                  {% if row.recipient.current_attempt %}
+                    {% if row.recipient.current_attempt.status == 'SUBMITTED' %}
+                      <span class="pill pill-warning">Cần chấm</span>
+                    {% elif row.recipient.current_attempt.status == 'GRADED' %}
+                      <span class="pill pill-success">Đã chấm</span>
+                    {% elif row.recipient.current_attempt.status == 'IN_PROGRESS' %}
+                      <span class="pill">Đang làm</span>
+                    {% elif row.recipient.current_attempt.status == 'VOID' %}
+                      <span class="pill pill-danger">Đã hủy</span>
+                    {% else %}
+                      <span class="pill">{{ row.recipient.current_attempt.status }}</span>
+                    {% endif %}
+                  {% endif %}
+                  <br><small>Hạn: {{ row.due_at|date:"d/m/Y H:i" }}</small>
+                {% else %}
+                  <span class="muted">Chưa giao</span>
+                {% endif %}
+              </td>
+              <td data-sort-val="{{ row.max_attempts|default:0 }}">{% if row.is_assigned %}{{ row.attempts_used }} / {{ row.max_attempts }} lần{% else %}—{% endif %}</td>
+              <td>
+                <div class="inline-form">
+                  <button type="button" class="button primary" style="min-height:36px;padding:6px 12px;font-size:13px"
+                    data-detail-single="student"
+                    data-target-id="{{ row.student.id }}"
+                    data-target-label="{{ row.student.display_name }}"
+                    data-due="{% if row.due_at %}{{ row.due_at|date:'Y-m-d\TH:i' }}{% endif %}"
+                    data-tries="{{ row.max_attempts|default:1 }}">
+                    {% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}
+                  </button>
+                  {% if row.recipient and row.recipient.current_attempt and row.recipient.current_attempt.status in 'SUBMITTED,GRADED' %}
+                    <a class="button {% if row.recipient.current_attempt.status == 'SUBMITTED' %}primary{% else %}secondary{% endif %}" style="min-height:36px;padding:6px 12px;font-size:13px" href="{% url 'owner_grading_detail' row.recipient.current_attempt.id %}">
+                      {% if row.recipient.current_attempt.status == 'SUBMITTED' %}Chấm bài{% else %}Xem bài / Điểm{% endif %}
+                    </a>
+                  {% endif %}
+                  {% if assignment.status == 'PUBLISHED' and row.recipient and row.recipient.state == 'ASSIGNED' %}
+                    <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-exempt-{{ row.recipient.id }}">Miễn bài</button>
+                    {% if row.recipient.current_attempt and row.recipient.current_attempt.status in 'SUBMITTED,GRADED,VOID' %}
+                      <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-retake-{{ row.recipient.id }}">Cấp làm lại</button>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+            {% empty %}
+            <tr class="empty-row"><td colspan="6" class="empty">Chưa có học sinh đang hoạt động.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Nhập thời gian nộp & số lần được try -->
+<div id="modal-assign-schedule" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-assign-sched-title">
+  <div class="modal-panel schedule-modal">
+    <div class="modal-header">
+      <h2 id="modal-assign-sched-title">Thiết lập giao bài</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="assign_targets">
+      <div id="detail-schedule-hidden-inputs"></div>
+      <div class="modal-body schedule-layout">
+        <aside class="schedule-targets" aria-label="Đối tượng đã chọn">
+          <div class="schedule-target-tabs" role="tablist" aria-label="Loại đối tượng">
+            <button type="button" role="tab" data-target-tab="class" aria-selected="true">Lớp</button>
+            <button type="button" role="tab" data-target-tab="student" aria-selected="false">Học sinh</button>
+          </div>
+          <div class="schedule-target-list" data-target-list aria-live="polite"></div>
+        </aside>
+        <div class="schedule-fields card-stack" style="gap:14px">
+        <div class="field-group" style="margin:0">
+          <label for="detail-sched-due">Thời hạn nộp bài</label>
+          <input id="detail-sched-due" name="due_at" type="datetime-local" required data-default-due="{{ default_due|date:'Y-m-d\TH:i' }}" value="{{ default_due|date:'Y-m-d\TH:i' }}">
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group" style="margin:0">
+            <label class="schedule-tries-label" for="detail-sched-tries">Số lần được làm lại</label>
+            <input id="detail-sched-tries" name="max_attempts" type="number" min="1" max="5" value="1" required>
+          </div>
+          <div class="field-group" style="margin:0">
+            <label for="detail-sched-mode">Chế độ làm bài</label>
+            <select id="detail-sched-mode" name="mode">
+              <option value="PRACTICE" {% if assignment.mode == 'PRACTICE' %}selected{% endif %}>Luyện tập</option>
+              <option value="EXAM" {% if assignment.mode == 'EXAM' %}selected{% endif %}>Bài kiểm tra</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Xác nhận giao bài</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+{% if assignment.status == 'PUBLISHED' %}
+<div id="modal-assign-cancel" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-assign-cancel-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-assign-cancel-title">Hủy bài giao</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="cancel">
+      <input type="hidden" name="expected_revision" value="{{ assignment.revision }}">
+      <div class="modal-body">
+        <p class="hint" style="margin-top:0">Học sinh sẽ không thể tiếp tục nộp bài sau khi hủy.</p>
+        <div class="field-group" style="margin-bottom:0"><label for="cancel-reason">Lý do hủy (bắt buộc)</label><input id="cancel-reason" name="reason" required placeholder="Nhập lý do hủy"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Đóng</button>
+        <button type="submit" class="button danger-btn">Xác nhận hủy bài</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% for r in recipients %}{% if r.state == 'ASSIGNED' %}
+<div id="modal-exempt-{{ r.id }}" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-exempt-t-{{ r.id }}">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h3 id="modal-exempt-t-{{ r.id }}">Miễn bài cho {{ r.student.display_name }}</h3>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="exempt">
+      <input type="hidden" name="recipient_id" value="{{ r.id }}">
+      <div class="modal-body">
+        <div class="field-group" style="margin-bottom:0"><label for="exempt-r-{{ r.id }}">Lý do miễn bài</label><input id="exempt-r-{{ r.id }}" name="reason" required placeholder="VD: Học sinh nghỉ ốm"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Xác nhận miễn bài</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-retake-{{ r.id }}" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-retake-t-{{ r.id }}">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h3 id="modal-retake-t-{{ r.id }}">Cấp lượt làm lại: {{ r.student.display_name }}</h3>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="retake">
+      <input type="hidden" name="recipient_id" value="{{ r.id }}">
+      <div class="modal-body">
+        <div class="field-group" style="margin-bottom:0"><label for="retake-r-{{ r.id }}">Lý do cấp làm lại</label><input id="retake-r-{{ r.id }}" name="reason" required placeholder="VD: Mất kết nối khi đang làm"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Cấp lượt làm lại</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}{% endfor %}
+{% endif %}
+{% endblock %}

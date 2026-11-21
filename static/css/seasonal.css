@@ -1,0 +1,17 @@
+#seasonal-decor { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
+.seasonal-snowflake, .seasonal-flower { position: absolute; top: -45px; left: var(--x); font-size: var(--size); line-height: 1; color: rgba(255,255,255,.7); text-shadow: 0 0 5px rgba(102,164,210,.65), 0 0 12px rgba(255,255,255,.8); animation: seasonal-fall var(--duration) linear var(--delay) infinite; }
+.seasonal-flower { color: #e988a8; text-shadow: 0 0 6px rgba(255,255,255,.9); }
+.seasonal-flower:nth-child(even) { color: #e8aa58; }
+@keyframes seasonal-fall { 0% { transform: translate3d(0,-2vh,0) rotate(0); opacity: .25; } 20%, 80% { opacity: .7; } 100% { transform: translate3d(35px,105vh,0) rotate(240deg); opacity: .15; } }
+.seasonal-anchor { position: relative; }
+.seasonal-asset { position: absolute; pointer-events: none; object-fit: contain; z-index: 3; width: clamp(45px, 9vw, 120px); height: auto; }
+.seasonal-corner-left { bottom: 0; left: 0; }
+.seasonal-corner-right { bottom: 0; right: 0; }
+.seasonal-slider, .seasonal-login, .seasonal-panel { top: 0; right: 0; }
+@media (prefers-reduced-motion: reduce) { .seasonal-snowflake, .seasonal-flower { animation: none; display: none; } }
+
+.seasonal-corner-left, .seasonal-corner-right { width: clamp(70px, 10vw, 150px); opacity: .88; }
+.seasonal-slider { top: 0; bottom: auto; right: 0; width: clamp(80px, 10vw, 140px); }
+#seasonal-decor[data-theme="teachers-day"]::after { content: "20-11"; position: absolute; bottom: clamp(70px, 10vw, 150px); left: 0; width: clamp(70px, 10vw, 150px); color: #d74968; font-size: clamp(16px, 2vw, 24px); font-weight: 800; text-align: center; text-shadow: 0 1px 4px white; }
+.seasonal-login { width: clamp(65px, 7vw, 90px); opacity: .8; }
+@media (max-width: 600px) { .seasonal-corner-left, .seasonal-corner-right { width: 65px; opacity: .65; } .seasonal-slider { width: 70px; } #seasonal-decor[data-theme="teachers-day"]::after { bottom: 65px; width: 65px; font-size: 14px; } .seasonal-login { width: 55px; } }

@@ -1,0 +1,42 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block title %}{{ assignment.title }} | Sunny Edu{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/pirate-game.css' %}?v=9"><link rel="stylesheet" href="{% static 'css/exercise-focus.css' %}?v=4">{% endblock %}
+{% block body_class %}app-page{% if assignment.mode == 'PRACTICE' %} exercise-practice-page{% endif %}{% endblock %}
+{% block content %}
+{% if assignment.mode == 'PRACTICE' %}
+<header class="practice-heading"><a class="practice-exit" href="/student/"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Thoát</a><h1>{{ assignment.title }}</h1><span class="pill" id="save-status" role="status" aria-live="polite">Đang tải bài…</span></header>
+{% else %}
+<a class="button secondary assignment-exit" href="/student/"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Thoát</a>
+<header class="page-heading"><div><span class="eyebrow">BÀI TẬP TIẾNG ANH</span><h1>{{ assignment.title }}</h1><p>Hạn nộp: {{ assignment.due_at|date:"H:i d/m/Y" }}</p></div><span class="pill" id="save-status" role="status" aria-live="polite">Đang tải bài…</span></header>
+{% endif %}
+<div id="exercise" data-attempt-id="{{ attempt.id }}" data-attempt-status="{{ attempt.status }}" data-mode="{{ assignment.mode|default:'EXAM' }}" data-game-enabled="{{ assignment.game_feedback_enabled|yesno:'true,false' }}">
+  <div id="submission-receipt" class="receipt-card" role="status" aria-live="polite" {% if not attempt.submitted_at %}hidden{% endif %}>
+    <img class="receipt-illustration" src="{% static 'img/sunny-edu/submission-success.png' %}" width="512" height="512" alt="">
+    <div class="receipt-copy">
+      <h2>Đã nộp bài</h2>
+      <p id="submission-receipt-text">{% if attempt.submitted_at %}Đã nộp lúc {{ attempt.submitted_at|date:"H:i:s d/m/Y" }}.{% endif %}</p>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="button primary" href="{% url 'student_assignment_result' assignment.id %}">Xem kết quả chi tiết <span class="btn-mascot" aria-hidden="true"></span></a>
+        <a class="button secondary" href="{% url 'student_dashboard' %}">Về trang chính</a>
+      </div>
+    </div>
+  </div>
+  <form id="exercise-form" novalidate>{% csrf_token %}
+    <div id="exercise-message" class="notice" role="status" hidden></div>
+    <div id="questions" class="exercise-questions" aria-busy="true"></div>
+    <nav id="practice-navigation" aria-label="Chuyển câu hỏi" hidden>
+      <button type="button" class="button secondary" id="previous-question">Câu trước</button>
+      <span id="question-progress" aria-live="polite"></span>
+      <button type="button" class="button secondary" id="next-question">Câu tiếp</button>
+    </nav>
+    <p id="exercise-empty" hidden>Chưa có câu hỏi để hiển thị.</p>
+    <button type="button" class="button secondary" id="retry-save" hidden>Thử lưu lại</button>
+    <div class="submit-area"><button type="button" class="button primary" id="submit-attempt" hidden>Nộp bài</button></div>
+  </form>
+</div>
+<noscript>Cần bật JavaScript để tải câu hỏi và lưu bài.</noscript>
+{% endblock %}
+{% block scripts %}<script type="module" src="{% static 'js/attempt.js' %}?v=18"></script>{% endblock %}
+
+{% block seasonal %}{% endblock %}

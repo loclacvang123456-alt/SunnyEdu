@@ -1,0 +1,45 @@
+{% extends "owner/base.html" %}
+{% load static l10n %}
+{% block title %}Chấm bài: {{ student.display_name }} — Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_grading_queue' %}">Chấm bài</a><span>/</span><span>{{ assignment.title }}</span><span>/</span><span>{{ student.display_name }}</span></div>
+<div class="page-heading">
+  <div>
+    <h1>{{ student.display_name }} — {{ assignment.title }}</h1>
+    <p>Lượt #{{ attempt.attempt_no }} · Trạng thái: <strong id="gr-status" class="pill {% if attempt.status == 'GRADED' %}pill-success{% elif attempt.status == 'SUBMITTED' %}pill-warning{% elif attempt.status == 'VOID' %}pill-danger{% endif %}">{% if attempt.status == 'SUBMITTED' %}Cần chấm{% elif attempt.status == 'GRADED' %}Đã chấm{% elif attempt.status == 'VOID' %}Đã hủy{% else %}{{ attempt.status }}{% endif %}</strong> · Revision: <span id="gr-rev">{{ attempt.revision }}</span>{% if attempt.is_late %} · <span class="pill pill-warning">Nộp muộn</span>{% endif %}{% if not is_current %} · <span class="pill pill-danger">Không còn là lượt hiệu lực</span>{% endif %}</p>
+  </div>
+  <div class="wizard-actions" style="margin:0">
+    <button type="button" class="button" id="publish-result-btn">Công bố kết quả</button>
+    <button type="button" class="button secondary danger-btn" id="void-attempt-btn">Hủy bài (VOID)</button>
+  </div>
+</div>
+
+{% if visibility_events %}
+<section class="panel" style="margin-bottom:20px;{% if visibility_flagged %}border-color:#ef4444;background:#fff7f7{% endif %}">
+  <h2>Thời gian rời trang {% if visibility_flagged %}<span class="pill pill-danger">Cần xem xét</span>{% endif %}</h2>
+  <p>{{ visibility_events|length }} lần · Tổng {{ visibility_total_seconds }} giây. Đây là tín hiệu tham khảo, không tự động kết luận gian lận.</p>
+  <ul>{% for event in visibility_events %}<li>{{ event.recorded_at|date:"H:i:s d/m/Y" }} — {{ event.duration_seconds }} giây{% if event.duration_ms > 5000 %} (trên 5 giây){% endif %}</li>{% endfor %}</ul>
+  {% if visibility_flagged and attempt.status == 'GRADED' and is_current %}
+  <form method="post" style="margin:16px 0">
+    {% csrf_token %}<input type="hidden" name="action" value="visibility_deduction">
+    <label for="visibility-deduction">Điểm trừ</label>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <input id="visibility-deduction" name="deduction" type="number" min="0" max="{{ total_grade|unlocalize }}" step="0.01" value="{{ visibility_deduction|unlocalize }}" required style="width:130px">
+      <button class="button primary" type="submit">Lưu điểm trừ</button>
+    </div>
+    <small>Điểm bài làm: {{ total_grade }}. Điểm trừ tính theo thang điểm gốc của bài và không được vượt quá điểm bài làm. Nhập 0 để bỏ trừ.</small>
+  </form>
+  {% elif visibility_flagged and attempt.status == 'SUBMITTED' %}<p>Chấm xong tất cả câu hỏi trước khi nhập điểm trừ.</p>{% endif %}
+  {% if visibility_flagged %}{% if attempt.visibility_reviewed_at %}<span class="pill pill-success">Đã xem xét</span>{% else %}<form method="post">{% csrf_token %}<input type="hidden" name="action" value="review_visibility"><button class="button secondary" type="submit">Đánh dấu đã xem xét</button></form>{% endif %}{% endif %}
+</section>
+{% endif %}
+
+<div id="grading-root" data-attempt-id="{{ attempt.id }}" data-queue-url="{% url 'owner_grading_queue' %}?status=SUBMITTED">
+  {% csrf_token %}
+  <div id="grading-notice" class="notice" hidden role="status"></div>
+  <div id="grading-responses" class="card-stack">
+    <p class="empty">Đang tải dữ liệu bài làm...</p>
+  </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'js/owner_grading.js' %}?v=3"></script>{% endblock %}

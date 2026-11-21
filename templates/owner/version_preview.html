@@ -1,0 +1,38 @@
+{% extends "owner/base.html" %}
+{% block title %}Xem trước đề: {{ exam.title }} | Sunny Edu{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'owner_version_editor' exam.id version.id %}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Quay lại trình soạn đề</a>
+<div class="banner-warn">Xem như học sinh. Đáp án và giải thích được ẩn.</div>
+<header class="page-heading">
+  <div><h1>{{ exam.title }} (v{{ version.number }})</h1></div>
+</header>
+<div class="card-stack">
+  {% for q in questions %}
+  <section class="panel">
+    {% if q.passage %}
+      <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e8f0">
+        {% if q.passage.audio_asset_id %}
+          <audio controls preload="none" src="/api/v1/owner/assets/{{ q.passage.audio_asset_id }}/content"></audio>
+        {% endif %}
+        {% if q.passage.text_body %}<p>{{ q.passage.text_body }}</p>{% endif %}
+      </div>
+    {% endif %}
+    <span class="question-number">Câu {{ q.position }} · {{ q.skill }} · {{ q.max_points }} điểm</span>
+    <p><strong>{{ q.prompt }}</strong></p>
+    {% if q.type == 'SINGLE_CHOICE' or q.type == 'MULTIPLE_CHOICE' %}
+      {% for o in q.options.all %}
+        <div class="option"><input disabled type="{% if q.type == 'SINGLE_CHOICE' %}radio{% else %}checkbox{% endif %}"> <span>{{ o.key }}. {{ o.content }}</span></div>
+      {% endfor %}
+    {% elif q.type == 'TEXT' %}
+      <textarea disabled rows="4" placeholder="Bài viết của học sinh…"></textarea>
+    {% else %}
+      <p class="hint">[Phần ghi âm hoặc tải tệp của học sinh]</p>
+    {% endif %}
+  </section>
+  {% empty %}
+  <div class="panel">Đề chưa có câu hỏi nào.</div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block seasonal %}{% endblock %}

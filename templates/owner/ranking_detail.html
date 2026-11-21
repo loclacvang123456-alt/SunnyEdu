@@ -1,0 +1,135 @@
+{% extends "owner/base.html" %}
+{% block title %}{{ period.name }} — Xếp hạng — Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_rankings' %}">Xếp hạng</a><span>/</span><span>{{ period.name }}</span></div>
+<div class="page-heading">
+  <div>
+    <h1>{{ period.name }}</h1>
+    <p>Năm học {{ period.school_year }} · Phạm vi {{ period.scope }} · {{ period.start_at|date:"d/m/Y H:i" }} – {{ period.end_at|date:"d/m/Y H:i" }} · Revision: {{ period.revision }}</p>
+  </div>
+  <div>
+    <span class="pill {% if period.status == 'FINAL' %}pill-success{% elif period.status == 'STALE' %}pill-warning{% elif period.status == 'INVALID' %}pill-danger{% endif %}">{{ period.status }}</span>
+  </div>
+</div>
+
+{% if period.status == 'DRAFT' and eligibility %}
+  {% if eligibility.eligible %}
+    <div class="notice">Tất cả học sinh và bài giao đạt điều kiện kích hoạt kỳ xếp hạng.</div>
+  {% else %}
+    <div class="banner-danger">
+      <strong>Chưa đủ điều kiện kích hoạt:</strong>
+      <ul style="margin:8px 0 0 18px">
+        {% for err in eligibility.errors %}<li>{{ err }}</li>{% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if period.status == 'STALE' %}
+  <div class="banner-warning banner-warn">Bảng xếp hạng đang ở trạng thái <strong>STALE</strong> do điểm hoặc bài làm thay đổi sau khi chốt. Hãy nhấn Tính lại &amp; công bố lại.</div>
+{% endif %}
+{% if period.status == 'INVALID' and period.invalid_reason %}
+  <div class="banner-danger">Kỳ đã bị hủy hiệu lực: {{ period.invalid_reason }}</div>
+{% endif %}
+
+<section class="panel" style="margin-bottom:24px">
+  <div class="wizard-actions" style="margin-top:0">
+    {% if period.status == 'DRAFT' %}
+      <form method="post" class="inline-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="activate">
+        <input type="hidden" name="expected_revision" value="{{ period.revision }}">
+        <button type="submit" class="button" {% if eligibility and not eligibility.eligible %}disabled{% endif %}>Kích hoạt kỳ</button>
+      </form>
+    {% elif period.status == 'ACTIVE' %}
+      <form method="post" class="inline-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="finalize">
+        <input type="hidden" name="expected_revision" value="{{ period.revision }}">
+        <button type="submit" class="button">Chốt và công bố</button>
+      </form>
+    {% elif period.status == 'STALE' %}
+      <form method="post" class="inline-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="recompute">
+        <input type="hidden" name="expected_revision" value="{{ period.revision }}">
+        <button type="submit" class="button">Tính lại và công bố</button>
+      </form>
+    {% endif %}
+
+    {% if period.status in 'ACTIVE,FINAL,STALE' %}
+      <button type="button" class="button secondary danger-btn" data-modal-open="modal-invalidate-ranking">Hủy hiệu lực kỳ xếp hạng</button>
+    {% endif %}
+  </div>
+</section>
+
+{% if period.status in 'ACTIVE,FINAL,STALE' %}
+<div id="modal-invalidate-ranking" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-inv-rk-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-inv-rk-title">Hủy hiệu lực kỳ xếp hạng</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="invalidate">
+      <input type="hidden" name="expected_revision" value="{{ period.revision }}">
+      <div class="modal-body">
+        <div class="field-group" style="margin-bottom:0">
+          <label for="inv-rk-reason">Lý do hủy hiệu lực</label>
+          <input id="inv-rk-reason" name="reason" required placeholder="Nhập lý do hủy hiệu lực">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Đóng</button>
+        <button type="submit" class="button danger-btn">Xác nhận hủy hiệu lực</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+<div class="owner-grid-2">
+  <section class="panel">
+    <h2>Bảng xếp hạng</h2>
+    {% if entries %}
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Hạng</th><th>Học sinh / Biệt danh</th><th>Điểm</th><th>%</th><th>Ghi chú</th></tr></thead>
+          <tbody>
+            {% for row in entries %}
+              <tr>
+                <td><strong>#{{ row.entry.rank|default:"—" }}</strong></td>
+                <td>{{ row.entry.member.student.display_name }}<br><small class="muted">{{ row.entry.member.alias }}</small></td>
+                <td>{{ row.entry.total_points }} / {{ row.entry.max_points }}</td>
+                <td>{{ row.entry.percent }}%</td>
+                <td>{% if row.entry.excluded_reason %}<span class="pill pill-danger">{{ row.entry.excluded_reason }}</span>{% elif row.late_any %}<span class="pill pill-warning">Có bài muộn</span>{% else %}<span class="pill pill-success">Hợp lệ</span>{% endif %}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="empty">Chưa có bảng xếp hạng công bố.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel">
+    <h2>{{ members|length }} học sinh · {{ assignments|length }} bài tính điểm</h2>
+    <ul>
+      {% for a in assignments %}
+        <li><a href="{% url 'owner_assignment_detail' a.id %}">{{ a.title }}</a> ({{ a.opens_at|date:"d/m H:i" }} – {{ a.late_until|date:"d/m H:i" }})</li>
+      {% endfor %}
+    </ul>
+    <hr class="divider">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Học sinh</th><th>Biệt danh</th></tr></thead>
+        <tbody>
+          {% for m in members %}<tr><td>{{ m.student.display_name }}</td><td>{{ m.alias }}</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

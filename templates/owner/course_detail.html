@@ -1,0 +1,396 @@
+{% extends "owner/base.html" %}
+{% block title %}{{ course.name }} | Khóa học | Sunny Edu{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'owner_courses' %}"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Tất cả khóa học</a>
+
+<header class="page-heading">
+  <div>
+    <h1>{{ course.name }} {% if course.is_sample %}<span class="pill">Mẫu</span>{% endif %}</h1>
+    <p>{% if course.is_published %}Đang hiển thị{% else %}Bản nháp{% endif %} · {{ course.get_category_display }} · {{ course.difficulty }}/5 ★</p>
+  </div>
+  <div class="inline-form">
+    <button type="button" class="button primary" data-modal-open="modal-create-exercise">+ Tạo bài tập mới</button>
+    <button type="button" class="button secondary" data-modal-open="modal-attach-exercise">Gắn bài có sẵn</button>
+  </div>
+</header>
+
+<div class="owner-action-bar">
+  <a class="button secondary" href="{% url 'owner_students' %}?tab=english">Quản lý lớp</a>
+  <button type="button" class="button secondary" data-modal-open="modal-course-tags">Chủ đề và nhãn</button>
+  <button type="button" class="button secondary" data-modal-open="modal-course-settings">Cài đặt khóa học</button>
+</div>
+
+<section class="panel" id="course-exercises">
+  <div class="table-toolbar">
+    <div>
+      <h2 style="margin:0 0 4px">Bài tập ({{ exercises|length }})</h2>
+      <p class="hint" style="margin:0">Chọn bài để giao cho lớp hoặc học sinh.</p>
+    </div>
+    <div class="inline-form" style="flex-wrap:wrap">
+      <input type="search" data-table-search="course-ex-tbody" placeholder="🔍 Tìm tên bài tập..." style="min-width:200px">
+      {% if exercises %}
+      <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="course-ex-table">Chọn nhiều</button>
+      <button type="button" id="bulk-course-assign-btn" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="course-ex-table" data-course-assign-bulk><span>Giao bài đồng loạt <span class="sel-count">0</span> bài</span></button>
+      {% endif %}
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table id="course-ex-table" class="data-table" data-sortable-table>
+      <thead>
+        <tr>
+          <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="course-ex-table" aria-label="Chọn tất cả bài tập"></th>
+          <th data-sort-col>Bài tập <span class="sort-ind">↕</span></th>
+          <th data-sort-col data-sort-type="num">Số câu <span class="sort-ind">↕</span></th>
+          <th data-sort-col data-sort-type="num">Độ khó <span class="sort-ind">↕</span></th>
+          <th data-sort-col>Chủ đề <span class="sort-ind">↕</span></th>
+          <th data-sort-col data-sort-type="num">Đã giao <span class="sort-ind">↕</span></th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="course-ex-tbody">
+        {% for exercise in exercises %}
+        <tr>
+          <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ exercise.assignment.id }}" data-label="{{ exercise.assignment.title }}"></td>
+          <td>
+            <a href="{% url 'owner_version_editor' exercise.assignment.version.exam_id exercise.assignment.version_id %}?course_id={{ course.id }}">
+              <strong>{{ exercise.assignment.title }}</strong>
+            </a>
+            <br><small class="muted">{{ exercise.assignment.code }}</small>
+          </td>
+          <td data-sort-val="{{ exercise.question_count }}"><span class="pill">{{ exercise.question_count }} câu</span></td>
+          <td data-sort-val="{{ exercise.difficulty }}">{{ exercise.difficulty }}/5 ★</td>
+          <td>{% for tag in exercise.tags.all %}<span class="pill">{{ tag.name }}</span> {% empty %}—{% endfor %}</td>
+          <td data-sort-val="{{ exercise.recipient_count }}">
+            {% if exercise.recipient_count or exercise.assigned_class_count %}
+              <span class="pill pill-success">{{ exercise.assigned_class_count }} lớp · {{ exercise.recipient_count }} HS</span>
+            {% else %}
+              <span class="muted">Chưa giao</span>
+            {% endif %}
+          </td>
+          <td>
+            <div class="inline-form">
+              <button type="button" class="button primary" style="min-height:38px;padding:6px 12px;font-size:13px" data-course-assign-single="{{ exercise.assignment.id }}" data-label="{{ exercise.assignment.title }}">Giao bài</button>
+              <a class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_version_editor' exercise.assignment.version.exam_id exercise.assignment.version_id %}?course_id={{ course.id }}">Soạn câu hỏi</a>
+              <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-modal-open="modal-edit-ex-{{ exercise.id }}">Chỉnh bài</button>
+              <a class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_assignment_detail' exercise.assignment.id %}">Chi tiết giao bài</a>
+              <form method="post" style="margin:0" data-confirm="Gỡ bài tập này khỏi khóa học?">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove_exercise">
+                <input type="hidden" name="exercise_id" value="{{ exercise.id }}">
+                <button class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" type="submit">Gỡ khỏi khóa</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% empty %}
+        <tr class="empty-row"><td colspan="7" class="empty">Khóa học chưa có bài tập nào. Bấm "+ Tạo bài tập mới" để bắt đầu soạn câu hỏi.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Pop-up Modal: Chọn Lớp hoặc Cá nhân Học sinh để giao (2 Header Tabs + Sort + Chọn nhiều) -->
+<div id="modal-course-assign" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-course-assign-title">
+  <div class="modal-panel modal-lg">
+    <div class="modal-header">
+      <h2 id="modal-course-assign-title">Chọn lớp hoặc học sinh để giao bài</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="modal-body card-stack" style="gap:14px">
+      <div id="course-assign-summary" class="notice" style="margin:0"></div>
+      <div class="context-tabs-container" data-tab-group="course-assign-targets">
+        <div class="context-pills context-pills-2" role="tablist">
+          <button type="button" class="context-pill is-selected" data-tab-target="ca-pane-classes" role="tab">Lớp học ({{ class_rows|length }})</button>
+          <button type="button" class="context-pill" data-tab-target="ca-pane-students" role="tab">Học sinh ({{ student_rows|length }})</button>
+        </div>
+        <div class="context-tab-body" style="background:#fff">
+          <div id="ca-pane-classes" data-tab-pane>
+            <div class="table-toolbar">
+              <input type="search" data-table-search="ca-classes-tbody" placeholder="🔍 Tìm lớp học...">
+              <div class="inline-form">
+                <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-toggle-multiselect="ca-classes-table">Chọn nhiều</button>
+                <button type="button" class="button primary" style="min-height:36px;padding:6px 14px;font-size:13px" hidden data-bulk-for="ca-classes-table" data-ca-bulk><span>Giao bài <span class="sel-count">0</span> đối tượng <span class="btn-mascot" aria-hidden="true"></span></span></button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table id="ca-classes-table" class="data-table" data-sortable-table>
+                <thead>
+                  <tr>
+                    <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-classes-table" aria-label="Chọn tất cả lớp"></th>
+                    <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
+                    <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ca-classes-tbody">
+                  {% for row in class_rows %}
+                  <tr>
+                    <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}"></td>
+                    <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+                    <td>{{ row.classroom.school_year }}</td>
+                    <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
+                    <td><button type="button" class="button primary" style="min-height:34px;padding:4px 12px;font-size:13px" data-ca-single="class" data-target-id="{{ row.classroom.id }}" data-target-label="{{ row.classroom.name }}">Giao bài</button></td>
+                  </tr>
+                  {% empty %}
+                  <tr class="empty-row"><td colspan="5" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="ca-pane-students" data-tab-pane hidden>
+            <div class="table-toolbar">
+              <input type="search" data-table-search="ca-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, lớp...">
+              <div class="inline-form">
+                <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-toggle-multiselect="ca-students-table">Chọn nhiều</button>
+                <button type="button" class="button primary" style="min-height:36px;padding:6px 14px;font-size:13px" hidden data-bulk-for="ca-students-table" data-ca-bulk><span>Giao bài <span class="sel-count">0</span> đối tượng <span class="btn-mascot" aria-hidden="true"></span></span></button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table id="ca-students-table" class="data-table" data-sortable-table>
+                <thead>
+                  <tr>
+                    <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-students-table" aria-label="Chọn tất cả học sinh"></th>
+                    <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Mã HS <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ca-students-tbody">
+                  {% for row in student_rows %}
+                  <tr>
+                    <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.student.id }}" data-label="{{ row.student.display_name }}"></td>
+                    <td><strong>{{ row.student.display_name }}</strong></td>
+                    <td class="mono">{{ row.student_ref|default:"—" }}</td>
+                    <td>{{ row.class_names|default:"—" }}</td>
+                    <td><button type="button" class="button primary" style="min-height:34px;padding:4px 12px;font-size:13px" data-ca-single="student" data-target-id="{{ row.student.id }}" data-target-label="{{ row.student.display_name }}">Giao bài</button></td>
+                  </tr>
+                  {% empty %}
+                  <tr class="empty-row"><td colspan="5" class="empty">Chưa có học sinh đang hoạt động.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="button secondary" data-modal-close>Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Nhập Thời gian nộp & Số lần try sau khi chọn lớp / học sinh -->
+<div id="modal-course-assign-schedule" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-ca-sched-title">
+  <div class="modal-panel schedule-modal">
+    <div class="modal-header">
+      <h2 id="modal-ca-sched-title">Thời gian nộp &amp; Số lần làm bài</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="assign_exercises">
+      <div id="course-sched-hidden-inputs"></div>
+      <div class="modal-body schedule-layout">
+        <aside class="schedule-targets" aria-label="Đối tượng đã chọn">
+          <div class="schedule-target-tabs" role="tablist" aria-label="Loại đối tượng">
+            <button type="button" role="tab" data-target-tab="class" aria-selected="true">Lớp</button>
+            <button type="button" role="tab" data-target-tab="student" aria-selected="false">Học sinh</button>
+          </div>
+          <div class="schedule-target-list" data-target-list aria-live="polite"></div>
+        </aside>
+        <div class="schedule-fields card-stack" style="gap:14px">
+        <div class="field-group" style="margin:0">
+          <label for="course-sched-due">Thời hạn nộp bài</label>
+          <input id="course-sched-due" name="due_at" type="datetime-local" required value="{{ default_due|date:'Y-m-d\TH:i' }}">
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group" style="margin:0">
+            <label class="schedule-tries-label" for="course-sched-tries">Số lần được làm lại</label>
+            <input id="course-sched-tries" name="max_attempts" type="number" min="1" max="5" value="1" required>
+          </div>
+          <div class="field-group" style="margin:0">
+            <label for="course-sched-mode">Chế độ làm bài</label>
+            <select id="course-sched-mode" name="mode">
+              <option value="PRACTICE" selected>Luyện tập</option>
+              <option value="EXAM">Bài kiểm tra</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="course-sched-back" class="button secondary" style="margin-right:auto"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Chọn lại</button>
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Xác nhận giao bài</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% for exercise in exercises %}
+<div id="modal-edit-ex-{{ exercise.id }}" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-edit-ex-title-{{ exercise.id }}">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h3 id="modal-edit-ex-title-{{ exercise.id }}">Chỉnh bài: {{ exercise.assignment.title }}</h3>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="add_exercise">
+      <input type="hidden" name="assignment_id" value="{{ exercise.assignment.id }}">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="difficulty-{{ exercise.id }}">Độ khó trong khóa</label>
+          <select id="difficulty-{{ exercise.id }}" name="difficulty">
+            {% for level in difficulties %}<option value="{{ level }}" {% if level == exercise.difficulty %}selected{% endif %}>{{ level }}/5 sao</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Chủ đề gắn với bài tập</label>
+          <div class="checkbox-list">
+            {% for tag in tags %}<label><input type="checkbox" name="tag_ids" value="{{ tag.id }}" {% if tag in exercise.tags.all %}checked{% endif %}><span>{{ tag.name }} · {{ tag.get_kind_display }}</span></label>{% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button class="button primary" type="submit">Lưu thay đổi</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endfor %}
+
+<div id="modal-create-exercise" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-ex-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-ex-title">Tạo bài tập mới cho khóa</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_new_exercise">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="new-ex-title">Tên bài tập</label>
+          <input id="new-ex-title" name="title" maxlength="200" required placeholder="VD: Ôn tập cuối kỳ 1 - Ngữ pháp Unit 1-5">
+        </div>
+        <div class="field-group">
+          <label for="new-ex-diff">Độ khó</label>
+          <select id="new-ex-diff" name="difficulty">
+            {% for level in difficulties %}<option value="{{ level }}" {% if level == course.difficulty %}selected{% endif %}>{{ level }}/5 sao</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Chủ đề (tùy chọn)</label>
+          <div class="checkbox-list" style="max-height:160px">
+            {% for tag in tags %}<label><input type="checkbox" name="tag_ids" value="{{ tag.id }}"><span>{{ tag.name }}</span></label>{% empty %}<p class="hint">Chưa có chủ đề.</p>{% endfor %}
+          </div>
+        </div>
+        <p class="hint" style="margin:0">Sau khi tạo, hệ thống sẽ mở ngay trình thêm câu hỏi cho bài tập này.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button class="button primary" type="submit">Tạo và thêm câu hỏi</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-attach-exercise" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-attach-ex-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-attach-ex-title">Gắn bài tập đã có vào khóa</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="add_exercise">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="exercise-assignment">Chọn bài tập có sẵn</label>
+          <select id="exercise-assignment" name="assignment_id" required>
+            <option value="">Chọn bài tập...</option>
+            {% for assignment in assignments %}<option value="{{ assignment.id }}">{{ assignment.title }} · {{ assignment.code }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="exercise-difficulty">Độ khó trong khóa</label>
+          <select id="exercise-difficulty" name="difficulty">{% for level in difficulties %}<option value="{{ level }}">{{ level }}/5 sao</option>{% endfor %}</select>
+        </div>
+        <div class="field-group">
+          <label>Chủ đề</label>
+          <div class="checkbox-list" style="max-height:160px">{% for tag in tags %}<label><input type="checkbox" name="tag_ids" value="{{ tag.id }}"><span>{{ tag.name }} · {{ tag.get_kind_display }}</span></label>{% empty %}<p>Chưa có chủ đề.</p>{% endfor %}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button class="button primary" type="submit" {% if not assignments %}disabled{% endif %}>Gắn vào khóa</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-course-tags" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-tags-title">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2 id="modal-tags-title">Chủ đề của khóa &amp; Tạo nhãn mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="modal-body card-stack">
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="course_tags">
+        <label>Chọn chủ đề cho khóa học</label>
+        <div class="checkbox-list" style="max-height:180px;margin-bottom:12px">
+          {% for row in course_tags %}<label><input type="checkbox" name="tag_ids" value="{{ row.tag.id }}" {% if row.selected %}checked{% endif %}><span>{{ row.tag.name }} · {{ row.tag.get_kind_display }}</span></label>{% empty %}<p>Chưa có chủ đề.</p>{% endfor %}
+        </div>
+        <button class="button primary" type="submit">Lưu chủ đề khóa</button>
+      </form>
+      <hr class="divider" style="margin:8px 0">
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="create_tag">
+        <h3 style="margin-bottom:10px">Tạo nhãn chủ đề mới</h3>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="tag-name">Tên chủ đề</label><input id="tag-name" name="tag_name" maxlength="100" required placeholder="VD: Câu điều kiện"></div>
+          <div class="field-group"><label for="tag-kind">Nhóm</label><select id="tag-kind" name="tag_kind">{% for value,label in tag_kinds %}<option value="{{ value }}">{{ label }}</option>{% endfor %}</select></div>
+        </div>
+        <button class="button secondary" type="submit">+ Tạo chủ đề</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="modal-course-settings" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-settings-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-settings-title">Thông tin &amp; hiển thị khóa học</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="update">
+      <div class="modal-body">
+        <div class="field-group"><label for="course-name">Tên khóa học</label><input id="course-name" name="name" maxlength="200" value="{{ course.name }}" required></div>
+        <div class="field-group"><label for="course-desc">Giới thiệu ngắn</label><textarea id="course-desc" name="description" rows="2" maxlength="300">{{ course.description }}</textarea></div>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="course-category">Cấp học / Kỳ thi</label><select id="course-category" name="category">{% for value,label in categories %}<option value="{{ value }}" {% if value == course.category %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+          <div class="field-group"><label for="course-difficulty">Độ khó</label><select id="course-difficulty" name="difficulty">{% for level in difficulties %}<option value="{{ level }}" {% if level == course.difficulty %}selected{% endif %}>{{ level }}/5 sao</option>{% endfor %}</select></div>
+        </div>
+        <label class="check-row" style="margin-bottom:0"><input type="checkbox" name="is_published" {% if course.is_published %}checked{% endif %}><span>Hiển thị trong danh sách khóa học công khai</span></label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button class="button primary" type="submit">Lưu thay đổi</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

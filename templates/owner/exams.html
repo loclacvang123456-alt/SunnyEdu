@@ -1,0 +1,83 @@
+{% extends "owner/base.html" %}{% load static %}
+{% block title %}Kho đề bài | Sunny Edu{% endblock %}
+{% block content %}
+<header class="page-heading">
+  <div>
+    <h1>Kho đề bài</h1>
+    <p>Tạo, chỉnh sửa hoặc nhập đề bài.</p>
+  </div>
+  <div class="inline-form">
+    <button type="button" class="button primary" data-modal-open="modal-create-exam">+ Tạo đề mới</button>
+    <a class="button secondary" href="{% url 'owner_exam_import' %}">Nhập CSV/XLSX</a>
+    <a class="button secondary" href="{% static 'templates/mau-nhap-de.csv' %}" download>Tải mẫu CSV</a>
+  </div>
+</header>
+
+<form method="get" class="panel toolbar" style="margin-bottom:24px">
+  <div style="flex:1"><label for="exam-q">Tìm đề theo tiêu đề</label><input id="exam-q" type="search" name="q" value="{{ q }}" placeholder="Nhập tên đề..."></div>
+  <button type="submit" class="button secondary">Tìm kiếm</button>
+</form>
+
+<section class="panel">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Tên đề</th><th>Phiên bản</th><th>Trạng thái</th><th>Số câu</th><th>Thao tác</th></tr></thead>
+      <tbody>
+        {% for row in exam_rows %}
+          {% for v in row.versions %}
+          <tr>
+            <td><a href="{% url 'owner_version_editor' row.exam.id v.version.id %}"><strong>{{ row.exam.title }}</strong></a></td>
+            <td>v{{ v.version.number }}</td>
+            <td>
+              <span class="pill {% if v.version.status == 'PUBLISHED' %}pill-success{% elif v.version.status == 'DRAFT' %}pill-warning{% endif %}">{% if v.version.status == 'PUBLISHED' %}Đang mở{% elif v.version.status == 'DRAFT' %}Bản nháp{% else %}{{ v.version.status }}{% endif %}</span>
+            </td>
+            <td>{{ v.question_count }} câu</td>
+            <td>
+              <div class="inline-form">
+                <a class="button primary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_version_editor' row.exam.id v.version.id %}">Soạn câu hỏi</a>
+                {% if v.version.status == 'PUBLISHED' %}
+                  <form method="post" class="inline-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="clone_version">
+                    <input type="hidden" name="version_id" value="{{ v.version.id }}">
+                    <button type="submit" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px">Tạo bản mới (v{{ v.version.number|add:1 }})</button>
+                  </form>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td><strong>{{ row.exam.title }}</strong></td><td colspan="4">Chưa có phiên bản.</td></tr>
+          {% endfor %}
+        {% empty %}
+        <tr><td colspan="5" class="empty">Chưa có đề bài nào.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div id="modal-create-exam" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-exam-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-create-exam-title">Tạo đề mới</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_exam">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="new-exam-title">Tên đề / Bài tập</label>
+          <input id="new-exam-title" name="title" required maxlength="200" placeholder="Ví dụ: Ôn tập cuối kỳ 1 - Lớp 11">
+        </div>
+        <p class="hint" style="margin:0">Hệ thống sẽ chuyển ngay tới trình thêm câu hỏi cho đề này.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Tạo và soạn câu hỏi</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

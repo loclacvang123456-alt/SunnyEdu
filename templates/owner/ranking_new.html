@@ -1,0 +1,89 @@
+{% extends "owner/base.html" %}
+{% block title %}Tạo kỳ xếp hạng — Sunny Edu{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'owner_rankings' %}">Xếp hạng</a><span>/</span><span>Tạo mới</span></div>
+<div class="page-heading">
+  <div>
+    <h1>Tạo kỳ xếp hạng</h1>
+    <p>Chọn học sinh và bài giao. Kích hoạt kỳ trước giờ mở bài.</p>
+  </div>
+</div>
+
+<section class="panel">
+  <form method="post" id="ranking-new-form">
+    {% csrf_token %}
+    <div class="owner-grid-2">
+      <div>
+        <div class="field-group"><label for="rk-name">Tên kỳ xếp hạng</label><input id="rk-name" name="name" required maxlength="200" placeholder="VD: Bảng thi đua Tháng 11"></div>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="rk-year">Năm học (YYYY-YYYY)</label><input id="rk-year" name="school_year" required pattern="\d{4}-\d{4}" placeholder="2026-2027" value="2026-2027"></div>
+          <div class="field-group">
+            <label for="rk-scope">Phạm vi</label>
+            <select id="rk-scope" name="scope">
+              <option value="ENGLISH_CLASS">Lớp tiếng Anh</option>
+              <option value="SCHOOL_CLASS">Lớp ở trường</option>
+              <option value="SCHOOL_GRADE">Khối trong trường</option>
+              <option value="SCHOOL">Toàn trường</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group rk-target" data-scope="ENGLISH_CLASS">
+          <label for="rk-eng-class">Chọn lớp tiếng Anh</label>
+          <select id="rk-eng-class" name="english_class_id">
+            {% for c in english_classes %}<option value="{{ c.id }}">{{ c.name }} ({{ c.school_year }})</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group rk-target" data-scope="SCHOOL_CLASS" hidden>
+          <label for="rk-sch-class">Chọn lớp chính khóa</label>
+          <select id="rk-sch-class" name="school_class_id">
+            {% for c in school_classes %}<option value="{{ c.id }}">{{ c.school.name }} — {{ c.school_year }} — Khối {{ c.grade }} {{ c.name }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group rk-target" data-scope="SCHOOL SCHOOL_GRADE" hidden>
+          <label for="rk-school">Chọn trường</label>
+          <select id="rk-school" name="school_id">
+            {% for s in schools %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field-group rk-target" data-scope="SCHOOL_GRADE" hidden>
+          <label for="rk-grade">Chọn khối</label>
+          <select id="rk-grade" name="grade">
+            {% for g in grades %}<option value="{{ g }}">Khối {{ g }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="owner-grid-2">
+          <div class="field-group"><label for="rk-start">Bắt đầu kỳ</label><input id="rk-start" name="start_at" type="datetime-local" required value="{{ default_start|date:'Y-m-d\TH:i' }}"></div>
+          <div class="field-group"><label for="rk-end">Kết thúc kỳ</label><input id="rk-end" name="end_at" type="datetime-local" required value="{{ default_end|date:'Y-m-d\TH:i' }}"></div>
+        </div>
+        <label class="check"><input type="checkbox" name="show_peers" value="1"> Cho học sinh thấy bảng biệt danh bạn cùng kỳ sau khi chốt</label>
+      </div>
+
+      <div>
+        <div class="field-group">
+          <label>Học sinh tham gia</label>
+          <div class="checkbox-list">
+            {% for s in students %}
+              <label><input type="checkbox" name="student_ids" value="{{ s.id }}"> <span>{{ s.display_name }} ({{ s.student_profile.student_ref|default:'' }})</span></label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Bài giao tính điểm (đã phát hành)</label>
+          <div class="checkbox-list">
+            {% for a in assignments %}
+              <label><input type="checkbox" name="assignment_ids" value="{{ a.id }}"> <span>{{ a.title }} (Mở: {{ a.opens_at|date:"d/m H:i" }})</span></label>
+            {% empty %}
+              <p class="empty">Chưa có bài giao đã phát hành.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wizard-actions">
+      <button type="submit" class="button">Tạo kỳ nháp</button>
+      <a class="button secondary" href="{% url 'owner_rankings' %}">Hủy</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/teacher-workspace.css' %}?v=20261119v2">{% block owner_head %}{% endblock %}{% endblock %}
+{% block body_class %}owner-page{% endblock %}
+{% block shell %}
+<div class="owner-layout">
+  <aside class="sidebar" id="owner-sidebar">
+    <div class="sidebar-brand-row">
+      <a class="brand" href="{{ owner_home_url|default:'/teacher/' }}">
+        
+        <img class="sunny-logo" src="{% static 'img/sunny-edu/logo-transparent.png' %}" alt="" width="48" height="48"><span>Sunny Edu<small>GIÁO VIÊN</small></span>
+      </a>
+      <button type="button" class="button secondary mobile-nav-toggle" id="owner-nav-toggle" aria-expanded="false" aria-controls="owner-nav">Menu</button>
+    </div>
+    <nav id="owner-nav" aria-label="Điều hướng giáo viên"><span class="nav-group">LỚP HỌC</span>
+      <a href="{{ owner_home_url|default:'/teacher/' }}" {% if active == 'dashboard' %}aria-current="page"{% endif %}>Tổng quan</a>
+      <a href="{{ students_url|default:'/teacher/students/' }}" {% if active == 'students' %}aria-current="page"{% endif %}>Học sinh &amp; lớp</a>
+      <span class="nav-group">NỘI DUNG &amp; BÀI TẬP</span>
+      <a href="{% url 'owner_courses' %}" {% if active == 'courses' %}aria-current="page"{% endif %}>Khóa học</a>
+      <a href="{{ exams_url|default:'/teacher/exams/' }}" {% if active == 'exams' %}aria-current="page"{% endif %}>Kho đề bài</a>
+      <a href="{{ assignments_url|default:'/teacher/assignments/' }}" {% if active == 'assignments' %}aria-current="page"{% endif %}>Bài đã giao</a>
+      <a href="{{ grading_url|default:'/teacher/grading/' }}" {% if active == 'grading' %}aria-current="page"{% endif %}>Chấm bài</a>
+      <span class="nav-group">THEO DÕI &amp; THIẾT LẬP</span>
+      <a href="{{ reports_url|default:'/teacher/reports/' }}" {% if active == 'reports' %}aria-current="page"{% endif %}>Báo cáo</a>
+      <a href="{{ rankings_url|default:'/teacher/rankings/' }}" {% if active == 'rankings' %}aria-current="page"{% endif %}>Xếp hạng</a>
+      <a href="{{ settings_url|default:'/teacher/settings/' }}" {% if active == 'settings' %}aria-current="page"{% endif %}>Cài đặt</a>
+      <a href="/" style="display:flex;align-items:center;gap:8px;color:var(--primary-dark);font-weight:700;margin-top:10px;padding:8px 12px;background:#eff6ff;border-radius:8px;"><span aria-hidden="true">🏠</span> Về trang chủ</a>
+    </nav>
+    <div class="sidebar-foot" style="display:flex;flex-direction:column;gap:10px;align-items:stretch;">
+      <a href="/" style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--primary-dark);font-weight:700;text-decoration:none;">
+        <span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Về trang chủ
+      </a>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid #e2e8f0;">
+        <span style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px;">{{ request.user.display_name|default:request.user.username }}</span>
+        <form method="post" action="{{ logout_url|default:'/logout/' }}" style="margin:0;">{% csrf_token %}<button class="text-button" type="submit" style="color:var(--danger, #b91c1c);padding:4px 8px;min-height:auto;font-size:13px;">Đăng xuất</button></form>
+      </div>
+    </div>
+  </aside>
+  <div class="owner-content">
+    <header class="owner-top" style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span>Không gian giáo viên</span>
+        <a href="/" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--primary-dark);font-weight:600;text-decoration:none;">
+          <span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Về trang chủ
+        </a>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span style="font-weight:600;">{{ request.user.display_name|default:request.user.username }}</span>
+        <form method="post" action="{{ logout_url|default:'/logout/' }}" style="margin:0;">
+          {% csrf_token %}
+          <button class="button secondary" type="submit" style="min-height:36px;padding:6px 14px;font-size:13px;color:var(--danger, #b91c1c);">Đăng xuất</button>
+        </form>
+      </div>
+    </header>
+    <main id="main" class="owner-main">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="notice {% if message.tags == 'error' %}notice-error{% elif message.tags == 'warning' %}notice-warning{% endif %}" role="status" data-sunny-message="{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script type="module" src="{% static 'js/owner.js' %}?v=20261119v2"></script>{% block extra_scripts %}{% endblock %}{% endblock %}
+
+
+
+{% block seasonal %}{% endblock %}

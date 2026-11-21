@@ -1,0 +1,145 @@
+{% extends "owner/base.html" %}
+{% block title %}Báo cáo tiến bộ — Sunny Edu{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Báo cáo tiến bộ</h1>
+    <p>Theo dõi kỹ năng, tiến độ và lỗi thường gặp.</p>
+  </div>
+  <div>
+    {% if report %}
+      <a class="button secondary" href="{% url 'owner_api_progress_export' %}?from={{ filters.from|urlencode }}&to={{ filters.to|urlencode }}&school_id={{ filters.school_id|urlencode }}&grade={{ filters.grade|urlencode }}&school_class_id={{ filters.school_class_id|urlencode }}&english_class_id={{ filters.english_class_id|urlencode }}">Xuất CSV</a>
+    {% endif %}
+  </div>
+</div>
+
+{% if not recent_mfa %}
+  <div class="banner-warn">Xuất CSV cần xác thực OTP trong 10 phút gần nhất. Hãy xác thực lại ở Cài đặt nếu cần.</div>
+{% endif %}
+
+<section class="panel" style="margin-bottom:24px">
+  <form method="get" class="toolbar" id="report-filter-form">
+    <div>
+      <label for="rep-from">Từ ngày</label>
+      <input id="rep-from" type="date" name="from" value="{{ filters.from }}">
+    </div>
+    <div>
+      <label for="rep-to">Đến ngày</label>
+      <input id="rep-to" type="date" name="to" value="{{ filters.to }}">
+    </div>
+    <div>
+      <label for="rep-school">Trường</label>
+      <select id="rep-school" name="school_id">
+        <option value="">Tất cả trường</option>
+        {% for s in schools %}
+          <option value="{{ s.id }}" {% if filters.school_id == s.id|stringformat:'s' %}selected{% endif %}>{{ s.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="rep-grade">Khối lớp</label>
+      <select id="rep-grade" name="grade" {% if not filters.school_id %}disabled{% endif %}>
+        <option value="">Tất cả khối</option>
+        {% for g in grades %}
+          <option value="{{ g }}" {% if filters.grade == g|stringformat:'s' %}selected{% endif %}>Khối {{ g }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="rep-school-class">Lớp chính khóa</label>
+      <select id="rep-school-class" name="school_class_id">
+        <option value="">Tất cả lớp trường</option>
+        {% for c in school_classes %}
+          <option value="{{ c.id }}" {% if filters.school_class_id == c.id|stringformat:'s' %}selected{% endif %}>{{ c.school_year }} - Khối {{ c.grade }} - {{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="rep-english-class">Lớp tiếng Anh</label>
+      <select id="rep-english-class" name="english_class_id">
+        <option value="">Tất cả lớp tiếng Anh</option>
+        {% for c in english_classes %}
+          <option value="{{ c.id }}" {% if filters.english_class_id == c.id|stringformat:'s' %}selected{% endif %}>{{ c.name }} ({{ c.school_year }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <button type="submit" class="button">Lọc báo cáo</button>
+    </div>
+  </form>
+  {% if error_msg %}<p class="error">{{ error_msg }}</p>{% endif %}
+</section>
+
+{% if report %}
+  <div class="owner-grid-2">
+    <section class="panel">
+      <h2>4 kỹ năng ({{ report.from }} đến {{ report.to }})</h2>
+      <p class="muted">So sánh xu hướng: {{ report.trend_current_from }}–{{ report.trend_current_to }} với {{ report.trend_previous_from }}–{{ report.trend_previous_to }}</p>
+      {% for skill_name, item in report.skills.items %}
+        <div class="skill-bar-row">
+          <div class="skill-bar-head">
+            <strong>{{ skill_name }}</strong>
+            <span>
+              {% if item.percent != None %}{{ item.percent }}%{% else %}Chưa đủ dữ liệu{% endif %}
+              {% if item.label %}· {{ item.label }}{% endif %}
+              {% if item.trend %} · <span class="pill {% if item.trend == 'UP' %}pill-success{% elif item.trend == 'DOWN' %}pill-danger{% endif %}">{{ item.trend }}</span>{% endif %}
+            </span>
+          </div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="width:{{ item.percent|default:'0' }}%"></div></div>
+        </div>
+      {% endfor %}
+    </section>
+
+    <section class="panel">
+      <h2>Top lỗi sai giáo viên gắn nhãn</h2>
+      {% if report.top_errors %}
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Kỹ năng</th><th>Loại lỗi</th><th>Số lần</th></tr></thead>
+            <tbody>
+              {% for err in report.top_errors %}
+                <tr><td>{{ err.skill }}</td><td><span data-error-help="{{ err.tag_name }}">{{ err.tag_name }}</span></td><td><strong>{{ err.count }}</strong></td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="empty">Chưa có lỗi trong khoảng thời gian này.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:24px">
+    <h2>Bảng học sinh ({{ report.students|length }})</h2>
+    {% if report.students %}
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Học sinh</th><th>Đã nộp / Giao</th><th>Quá hạn 28d</th><th>Reading</th><th>Listening</th><th>Writing</th><th>Speaking</th></tr></thead>
+          <tbody>
+            {% for st in report.students %}
+              <tr>
+                <td>
+                  <a href="{% url 'owner_student_detail' st.student_id %}"><strong>{{ st.display_name }}</strong></a>
+                  {% if st.student_ref %}<div><small class="mono">{{ st.student_ref }}</small></div>{% endif %}
+                </td>
+                <td>{{ st.submitted }} / {{ st.assigned }}</td>
+                <td>
+                  {{ st.overdue_28d }}
+                  {% if st.needs_pacing_support %}<span class="pill pill-warning">Cần nhắc nhịp độ</span>{% endif %}
+                </td>
+                <td>{% if st.skills.READING %}{{ st.skills.READING }}%{% else %}—{% endif %}</td>
+                <td>{% if st.skills.LISTENING %}{{ st.skills.LISTENING }}%{% else %}—{% endif %}</td>
+                <td>{% if st.skills.WRITING %}{{ st.skills.WRITING }}%{% else %}—{% endif %}</td>
+                <td>{% if st.skills.SPEAKING %}{{ st.skills.SPEAKING }}%{% else %}—{% endif %}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="empty">Không tìm thấy học sinh.</p>
+    {% endif %}
+  </section>
+{% endif %}
+<script type="application/json" id="report-school-classes">{{ all_school_classes_json|safe }}</script>
+{% endblock %}

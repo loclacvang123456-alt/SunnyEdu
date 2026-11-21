@@ -1,0 +1,15 @@
+<div class="wizard-fields">
+  {{ wizard.management_form }}
+  {% for hidden in wizard.form.hidden_fields %}{{ hidden }}{% endfor %}
+  {% if wizard.form.non_field_errors %}
+    <div class="form-error" role="alert">{{ wizard.form.non_field_errors }}</div>
+  {% endif %}
+  {% for field in wizard.form.visible_fields %}
+    <div class="field-group">
+      <label for="{{ field.id_for_label }}">{% if field.name == 'otp_token' or field.name == 'token' %}Mã xác thực{% elif field.name == 'username' %}Tên đăng nhập{% elif field.name == 'password' %}Mật khẩu{% else %}{{ field.label }}{% endif %}</label>
+      {{ field }}
+      {% if field.help_text %}<p class="hint">{{ field.help_text }}</p>{% endif %}
+      {% if field.errors %}<div class="form-error" role="alert">{{ field.errors }}</div>{% endif %}
+    </div>
+  {% endfor %}
+</div>

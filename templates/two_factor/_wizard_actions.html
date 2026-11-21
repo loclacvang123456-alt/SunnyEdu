@@ -1,0 +1,7 @@
+<div class="wizard-actions">
+  {% if wizard.steps.prev %}
+    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}" class="button secondary" formnovalidate>Quay lại</button>
+  {% endif %}
+  <button type="submit" class="button primary">Tiếp tục</button>
+  {% if cancel_url %}<a href="{{ cancel_url }}" class="text-button">Hủy</a>{% endif %}
+</div>
