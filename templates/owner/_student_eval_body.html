@@ -1,0 +1,427 @@
+{% load l10n %}
+<div class="table-wrap" style="margin-bottom:20px">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Điểm trung bình</th>
+        <th>Bài đã làm / Được giao</th>
+        <th>Đúng hạn / Trễ / Thiếu</th>
+        <th>Tổng số lần bị đánh Cheat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="white-space:nowrap">
+          {% if st.avg_score != None %}<strong>{{ st.avg_score }}/10</strong>{% else %}—{% endif %}
+          {% if st.total_graded_questions %}<small class="muted"> ({{ st.total_correct_questions }}/{{ st.total_graded_questions }} câu đúng)</small>{% endif %}
+        </td>
+        <td style="white-space:nowrap">
+          <strong>{{ st.submitted }} / {{ st.assigned }}</strong>
+          {% if st.completion_percent != None %}<small class="muted"> ({{ st.completion_percent }}%)</small>{% endif %}
+        </td>
+        <td style="white-space:nowrap">
+          <span class="pill pill-success">{{ st.on_time_count }} đúng hạn</span>
+          {% if st.late_count %}<span class="pill pill-warning">{{ st.late_count }} trễ</span>{% else %}<span class="muted">· 0 trễ</span>{% endif %}
+          {% if st.missing_count %}<span class="pill pill-danger">{{ st.missing_count }} chưa làm{% if st.overdue_count %} ({{ st.overdue_count }} quá hạn){% endif %}</span>{% else %}<span class="muted">· 0 thiếu</span>{% endif %}
+        </td>
+        <td style="white-space:nowrap">
+          {% if st.cheat_count %}<span class="pill pill-danger">{{ st.cheat_count }} lần</span>{% else %}<strong>0</strong>{% endif %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="context-tabs-container" data-tab-group>
+  <div class="context-pills context-pills-wrap" role="tablist" aria-label="Chi tiết đánh giá học sinh">
+    <button type="button" class="context-pill is-selected" role="tab" data-tab-target="tab-patterns">Mẫu câu &amp; Từ khóa hay sai ({{ st.pattern_breakdown|length }})</button>
+    <button type="button" class="context-pill" role="tab" data-tab-target="tab-most-wrong">Bài sai nhiều nhất &amp; Tương tự ({{ st.most_wrong_assignments|length }})</button>
+    <button type="button" class="context-pill" role="tab" data-tab-target="tab-topics">Chủ đề: Mạnh &amp; Yếu ({{ st.topic_breakdown|length }})</button>
+    <button type="button" class="context-pill" role="tab" data-tab-target="tab-formats">Dạng câu hỏi ({{ st.question_type_breakdown|length }})</button>
+    <button type="button" class="context-pill" role="tab" data-tab-target="tab-assignments">Tất cả bài tập &amp; Cheat ({{ st.student_assignments|length }})</button>
+    <button type="button" class="context-pill" role="tab" data-tab-target="tab-ranks">Xếp hạng Lớp &amp; Khóa</button>
+  </div>
+
+  <div class="context-tab-body">
+    <div id="tab-patterns" data-tab-pane>
+      <div id="student-keyword-analyzer" style="margin-bottom:16px;padding:12px 14px;background:#fff;border:1px solid #cbd5e1;border-radius:10px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+          <div>
+            <strong>Tra cứu nhanh theo từ khóa câu hỏi</strong>
+            <div class="kw-presets">
+              <button type="button" class="kw-preset-btn" data-kw-preset="ed">Đuôi -ed</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="quá khứ">Quá khứ</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="bị động">Bị động</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="to be">To Be</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="yesterday">Yesterday</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="trọng âm">Trọng âm</button>
+              <button type="button" class="kw-preset-btn" data-kw-preset="sắp xếp">Sắp xếp câu</button>
+            </div>
+          </div>
+          <input id="student-keyword-input" type="search" placeholder="Gõ từ khóa: ed, bị động, yesterday..." style="max-width:300px;min-height:40px">
+        </div>
+        <p id="student-keyword-summary" class="muted" style="margin:10px 0 0;font-size:14px"></p>
+        <div id="student-keyword-results"></div>
+      </div>
+
+      {% if st.pattern_breakdown %}
+        <div class="table-toolbar">
+          <strong>Thống kê tự động các mẫu câu &amp; ngữ pháp đã làm</strong>
+          <input type="search" data-table-search="pattern-tbody" placeholder="Lọc nhanh bảng mẫu câu..." style="min-height:38px">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Mẫu câu / Kiến thức <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Đã làm <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Đúng <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Sai <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ sai (%) <span class="sort-ind">↕</span></th>
+                <th>Bài tương tự cần ôn</th>
+              </tr>
+            </thead>
+            <tbody id="pattern-tbody">
+              {% for p in st.pattern_breakdown %}
+                <tr>
+                  <td data-sort-val="{{ p.pattern }}">
+                    <button type="button" class="qlog-trigger qlog-trigger-heading" data-qlog-open="pattern" data-qlog-value="{{ p.pattern }}" data-qlog-title="Kiểu câu hỏi: {{ p.pattern }}">
+                      <strong>{{ p.pattern }}</strong>
+                    </button>
+                    <div><small class="muted">Từ khóa: {{ p.keywords_hint }}</small></div>
+                    {% if p.sample_wrong_prompts %}
+                      <div><small class="muted">Câu hay nhầm: “{{ p.sample_wrong_prompts.0 }}”</small></div>
+                    {% endif %}
+                  </td>
+                  <td data-sort-val="{{ p.total_count|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="pattern" data-qlog-value="{{ p.pattern }}" data-qlog-title="Kiểu câu hỏi: {{ p.pattern }}">{{ p.total_count }} câu</button>
+                  </td>
+                  <td data-sort-val="{{ p.correct_count|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="pattern" data-qlog-value="{{ p.pattern }}" data-qlog-tab="correct" data-qlog-title="Kiểu câu hỏi: {{ p.pattern }}">{{ p.correct_count }}</button>
+                  </td>
+                  <td data-sort-val="{{ p.wrong_count|unlocalize }}">
+                    {% if p.wrong_count %}
+                      <button type="button" class="qlog-trigger" data-qlog-open="pattern" data-qlog-value="{{ p.pattern }}" data-qlog-tab="wrong" data-qlog-title="Kiểu câu hỏi: {{ p.pattern }}"><span class="pill pill-danger">{{ p.wrong_count }}</span></button>
+                    {% else %}0{% endif %}
+                  </td>
+                  <td data-sort-val="{{ p.wrong_percent|unlocalize }}">
+                    <span class="pill {% if p.wrong_percent > 25 %}pill-danger{% elif p.wrong_percent > 0 %}pill-warning{% else %}pill-success{% endif %}">{{ p.wrong_percent }}%</span>
+                  </td>
+                  <td>
+                    {% if p.wrong_count and p.recommended_exercises %}
+                      {% for ex in p.recommended_exercises %}
+                        <a href="{% url 'owner_assignment_detail' ex.assignment_id %}" title="{{ ex.title }}">{{ ex.title|truncatewords:5 }}</a>{% if not forloop.last %}<br>{% endif %}
+                      {% endfor %}
+                    {% elif p.wrong_count %}
+                      <span class="muted">Chưa có bài phù hợp</span>
+                      {% else %}<span class="muted">Chưa có bài phù hợp</span>{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Chưa có dữ liệu câu hỏi chấm điểm của em trong khoảng thời gian này.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-most-wrong" data-tab-pane hidden>
+      {% if st.most_wrong_assignments %}
+        <div class="table-toolbar">
+          <strong>Các bài có câu sai (xếp theo mức độ sai nhiều nhất)</strong>
+          <input type="search" data-table-search="most-wrong-tbody" placeholder="Tìm bài..." style="min-height:38px">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Bài tập <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Điểm <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Số câu sai <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tổng câu <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ sai (%) <span class="sort-ind">↕</span></th>
+                <th>Bài tương tự để bù đắp</th>
+              </tr>
+            </thead>
+            <tbody id="most-wrong-tbody">
+              {% for item in st.most_wrong_assignments %}
+                <tr>
+                  <td data-sort-val="{{ item.title }}">
+                    <a href="{% url 'owner_assignment_detail' item.assignment_id %}"><strong>{{ item.title }}</strong></a>
+                    {% if item.is_late %}<span class="pill pill-warning" style="margin-left:4px">Nộp trễ</span>{% endif %}
+                    <div>
+                      <button type="button" class="qlog-trigger qlog-trigger-sub" data-qlog-open="assignment" data-qlog-value="{{ item.assignment_id }}" data-qlog-tab="wrong" data-qlog-title="Bài tập: {{ item.title }}">Xem câu Đúng / Sai</button>
+                    </div>
+                  </td>
+                  <td data-sort-val="{{ item.score_10|default:-1|unlocalize }}">{% if item.score_10 != None %}<strong>{{ item.score_10 }}/10</strong>{% else %}—{% endif %}</td>
+                  <td data-sort-val="{{ item.wrong_questions|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="assignment" data-qlog-value="{{ item.assignment_id }}" data-qlog-tab="wrong" data-qlog-title="Bài tập: {{ item.title }}"><span class="pill pill-danger">{{ item.wrong_questions }}</span></button>
+                  </td>
+                  <td data-sort-val="{{ item.total_questions|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="assignment" data-qlog-value="{{ item.assignment_id }}" data-qlog-title="Bài tập: {{ item.title }}">{{ item.total_questions }}</button>
+                  </td>
+                  <td data-sort-val="{{ item.wrong_percent|default:0|unlocalize }}">{{ item.wrong_percent }}%</td>
+                  <td>
+                    {% if item.similar_exercises %}
+                      {% for ex in item.similar_exercises %}
+                        <a href="{% url 'owner_assignment_detail' ex.assignment_id %}" title="{{ ex.title }}">{{ ex.title|truncatewords:5 }}</a>{% if not forloop.last %}<br>{% endif %}
+                      {% endfor %}
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Học sinh chưa có bài nào làm sai trong khoảng thời gian này.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-topics" data-tab-pane hidden>
+      {% if st.topic_breakdown %}
+        <div class="table-toolbar">
+          <strong>Điểm mạnh (≥ 75%) &amp; Điểm yếu (&lt; 75%) theo chủ đề kiến thức</strong>
+          <input type="search" data-table-search="topics-tbody" placeholder="Lọc chủ đề..." style="min-height:38px">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Chủ đề kiến thức <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Phân loại <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ đúng (%) <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ sai (%) <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Đúng / Tổng câu <span class="sort-ind">↕</span></th>
+                <th>Bài tương tự cần ôn</th>
+              </tr>
+            </thead>
+            <tbody id="topics-tbody">
+              {% for t in st.topic_breakdown %}
+                <tr>
+                  <td data-sort-val="{{ t.topic }}">
+                    <button type="button" class="qlog-trigger qlog-trigger-heading" data-qlog-open="topic" data-qlog-value="{{ t.topic }}" data-qlog-title="Dạng bài / Chủ đề: {{ t.topic }}"><strong>{{ t.topic }}</strong></button>
+                  </td>
+                  <td data-sort-val="{% if t.is_weak %}Điểm yếu{% else %}Điểm mạnh{% endif %}">
+                    {% if t.is_weak %}<span class="pill pill-warning">Điểm yếu</span>{% else %}<span class="pill pill-success">Điểm mạnh</span>{% endif %}
+                  </td>
+                  <td data-sort-val="{{ t.percent|unlocalize }}">{{ t.percent }}%</td>
+                  <td data-sort-val="{{ t.wrong_percent|unlocalize }}">{{ t.wrong_percent }}%</td>
+                  <td data-sort-val="{{ t.correct_count|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="topic" data-qlog-value="{{ t.topic }}" data-qlog-tab="{% if t.wrong_count %}wrong{% else %}correct{% endif %}" data-qlog-title="Dạng bài / Chủ đề: {{ t.topic }}">{{ t.correct_count }}/{{ t.total_count }} {% if t.wrong_count %}<small class="muted">(sai {{ t.wrong_count }})</small>{% endif %}</button>
+                  </td>
+                  <td>
+                    {% if t.is_weak and t.recommended_exercises %}
+                      {% for ex in t.recommended_exercises %}
+                        <a href="{% url 'owner_assignment_detail' ex.assignment_id %}" title="{{ ex.title }}">{{ ex.title|truncatewords:5 }}</a>{% if not forloop.last %}<br>{% endif %}
+                      {% endfor %}
+                    {% elif t.is_weak %}
+                      <span class="muted">Chưa có bài phù hợp</span>
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Chưa có dữ liệu chủ đề kiến thức trong khoảng thời gian này.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-formats" data-tab-pane hidden>
+      {% if st.question_type_breakdown %}
+        <div class="table-toolbar">
+          <strong>Dạng bài làm tốt &amp; Dạng bài hay sai</strong>
+          <input type="search" data-table-search="formats-tbody" placeholder="Lọc dạng bài..." style="min-height:38px">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Dạng câu hỏi <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Đánh giá <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ đúng (%) <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Tỉ lệ sai (%) <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Đúng / Tổng câu <span class="sort-ind">↕</span></th>
+                <th>Bài cùng dạng nên ôn</th>
+              </tr>
+            </thead>
+            <tbody id="formats-tbody">
+              {% for q in st.question_type_breakdown %}
+                <tr>
+                  <td data-sort-val="{{ q.label }}">
+                    <button type="button" class="qlog-trigger qlog-trigger-heading" data-qlog-open="qtype" data-qlog-value="{{ q.type }}" data-qlog-title="Dạng câu hỏi: {{ q.label }}"><strong>{{ q.label }}</strong></button>
+                  </td>
+                  <td data-sort-val="{% if q.is_weak %}Hay sai{% else %}Làm tốt{% endif %}">
+                    {% if q.is_weak %}<span class="pill pill-warning">Hay sai</span>{% else %}<span class="pill pill-success">Làm tốt</span>{% endif %}
+                  </td>
+                  <td data-sort-val="{{ q.percent|unlocalize }}">{{ q.percent }}%</td>
+                  <td data-sort-val="{{ q.wrong_percent|unlocalize }}">{{ q.wrong_percent }}%</td>
+                  <td data-sort-val="{{ q.correct_count|unlocalize }}">
+                    <button type="button" class="qlog-trigger" data-qlog-open="qtype" data-qlog-value="{{ q.type }}" data-qlog-tab="{% if q.wrong_count %}wrong{% else %}correct{% endif %}" data-qlog-title="Dạng câu hỏi: {{ q.label }}">{{ q.correct_count }}/{{ q.total_count }} {% if q.wrong_count %}<small class="muted">(sai {{ q.wrong_count }})</small>{% endif %}</button>
+                  </td>
+                  <td>
+                    {% if q.is_weak and q.recommended_exercises %}
+                      {% for ex in q.recommended_exercises %}
+                        <a href="{% url 'owner_assignment_detail' ex.assignment_id %}" title="{{ ex.title }}">{{ ex.title|truncatewords:5 }}</a>{% if not forloop.last %}<br>{% endif %}
+                      {% endfor %}
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Chưa có dữ liệu dạng câu hỏi trong khoảng thời gian này.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-assignments" data-tab-pane hidden>
+      {% if st.cheat_details %}
+        <div class="banner-danger" style="margin-bottom:12px">
+          <strong>Tổng {{ st.cheat_count }} lượt bị cảnh báo Cheat:</strong>
+          <ul style="margin:6px 0 0;padding-left:18px">
+            {% for ch in st.cheat_details %}
+              <li>
+                <a href="{% url 'owner_assignment_detail' ch.assignment_id %}"><strong>{{ ch.title }}</strong></a> (Lượt #{{ ch.attempt_no }}):
+                {{ ch.reasons|join:"; " }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if st.student_assignments %}
+        <div class="table-toolbar">
+          <strong>Toàn bộ bài tập được giao cho {{ st.display_name }}</strong>
+          <input type="search" data-table-search="assignments-tbody" placeholder="Tìm bài tập..." style="min-height:38px">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Bài tập <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Hạn nộp <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Trạng thái của em <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Điểm <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Câu sai <span class="sort-ind">↕</span></th>
+                <th>Cảnh báo Cheat</th>
+              </tr>
+            </thead>
+            <tbody id="assignments-tbody">
+              {% for item in st.student_assignments %}
+                <tr>
+                  <td data-sort-val="{{ item.title }}"><a href="{% url 'owner_assignment_detail' item.assignment_id %}"><strong>{{ item.title }}</strong></a></td>
+                  <td data-sort-val="{{ item.due_at|date:'Y-m-d H:i' }}">{{ item.due_at|date:"H:i d/m/Y" }}</td>
+                  <td data-sort-val="{{ item.status_label }}">
+                    <span class="pill {% if item.status_code == 'on_time' %}pill-success{% elif item.status_code == 'late' %}pill-warning{% elif item.status_code == 'missing_overdue' %}pill-danger{% endif %}">{{ item.status_label }}</span>
+                    {% if item.submitted_at %}<div><small class="muted">Nộp lúc {{ item.submitted_at|date:"H:i d/m/Y" }}</small></div>{% endif %}
+                  </td>
+                  <td data-sort-val="{{ item.score_10|default:'-1'|unlocalize }}">
+                    {% if item.score_10 != None %}<strong>{{ item.score_10 }}/10</strong>{% elif item.status_code == 'on_time' or item.status_code == 'late' %}<small class="muted">Chờ chấm</small>{% else %}—{% endif %}
+                  </td>
+                  <td data-sort-val="{{ item.wrong_questions|unlocalize }}">
+                    {% if item.total_questions %}
+                      <button type="button" class="qlog-trigger" data-qlog-open="assignment" data-qlog-value="{{ item.assignment_id }}" data-qlog-tab="{% if item.wrong_questions %}wrong{% else %}correct{% endif %}" data-qlog-title="Bài tập: {{ item.title }}">{{ item.wrong_questions }}/{{ item.total_questions }} ({{ item.wrong_percent }}%)</button>
+                    {% else %}—{% endif %}
+                  </td>
+                  <td>
+                    {% if item.cheat_reasons %}
+                      <div style="color:var(--danger);font-size:13px">
+                        {% for reason in item.cheat_reasons %}
+                          <div>{{ reason }}</div>
+                        {% endfor %}
+                      </div>
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Chưa có bài tập nào được giao cho em trong phạm vi lọc.</p>
+      {% endif %}
+    </div>
+
+    <div id="tab-ranks" data-tab-pane hidden>
+      {% if st.class_ranks or st.course_ranks %}
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5">
+            <thead>
+              <tr>
+                <th data-sort-col>Phạm vi <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Tên lớp / Khóa học <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Thứ hạng của em <span class="sort-ind">↕</span></th>
+                <th data-sort-col data-sort-type="num">Điểm TB của em <span class="sort-ind">↕</span></th>
+                <th>TB chung / Tiến độ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for cr in st.class_ranks %}
+                <tr>
+                  <td data-sort-val="{{ cr.kind }}">{{ cr.kind }}</td>
+                  <td data-sort-val="{{ cr.class_name }}"><strong>{{ cr.class_name }}</strong></td>
+                  <td data-sort-val="{{ cr.rank|default:'99999'|unlocalize }}">
+                    {% if cr.rank != None %}<strong>#{{ cr.rank }}</strong> / {{ cr.total_students }} HS{% else %}<small class="muted">Chưa xếp hạng / {{ cr.total_students }} HS</small>{% endif %}
+                  </td>
+                  <td data-sort-val="{{ cr.avg_score|default:'-1'|unlocalize }}">{% if cr.avg_score != None %}<strong>{{ cr.avg_score }}/10</strong>{% else %}—{% endif %}</td>
+                  <td>TB lớp: {% if cr.class_avg_score != None %}{{ cr.class_avg_score }}/10{% else %}—{% endif %}</td>
+                </tr>
+              {% endfor %}
+              {% for cr in st.course_ranks %}
+                <tr>
+                  <td data-sort-val="Khóa học">Khóa học</td>
+                  <td data-sort-val="{{ cr.course_name }}"><strong>{{ cr.course_name }}</strong></td>
+                  <td data-sort-val="{{ cr.rank|default:'99999'|unlocalize }}">
+                    {% if cr.rank != None %}<strong>#{{ cr.rank }}</strong> / {{ cr.total_students }} HS{% else %}<small class="muted">Chưa xếp hạng / {{ cr.total_students }} HS</small>{% endif %}
+                  </td>
+                  <td data-sort-val="{{ cr.course_avg_score|default:'-1'|unlocalize }}">{% if cr.course_avg_score != None %}<strong>{{ cr.course_avg_score }}/10</strong>{% else %}—{% endif %}</td>
+                  <td>TB khóa: {% if cr.group_avg_score != None %}{{ cr.group_avg_score }}/10{% else %}—{% endif %} · Đã làm {{ cr.submitted_in_course }}/{{ cr.total_in_course }} bài</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="muted" style="margin:0">Học sinh chưa thuộc lớp hoặc khóa học đang hoạt động.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div id="modal-student-qlog" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="qlog-modal-title">
+  <div class="modal-panel modal-lg">
+    <div class="modal-header">
+      <div>
+        <h2 id="qlog-modal-title">Chi tiết câu hỏi</h2>
+        <p id="qlog-modal-subtitle" class="muted" style="margin:4px 0 0;font-size:13px"></p>
+      </div>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">×</button>
+    </div>
+    <div class="modal-body" data-tab-group>
+      <div class="context-pills context-pills-2" role="tablist" aria-label="Phân loại câu đúng sai" style="margin-bottom:16px">
+        <button type="button" class="context-pill is-selected" role="tab" id="qlog-tab-btn-correct" data-tab-target="qlog-pane-correct">
+          Câu trả lời đúng (<span id="qlog-count-correct">0</span>)
+        </button>
+        <button type="button" class="context-pill" role="tab" id="qlog-tab-btn-wrong" data-tab-target="qlog-pane-wrong">
+          Câu trả lời sai (<span id="qlog-count-wrong">0</span>)
+        </button>
+      </div>
+      <div id="qlog-pane-correct" data-tab-pane>
+        <div id="qlog-list-correct" class="qlog-list"></div>
+      </div>
+      <div id="qlog-pane-wrong" data-tab-pane hidden>
+        <div id="qlog-list-wrong" class="qlog-list"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="button secondary" data-modal-close>Đóng</button>
+    </div>
+  </div>
+</div>
+
+{{ st.question_log|json_script:"student-question-log-data" }}

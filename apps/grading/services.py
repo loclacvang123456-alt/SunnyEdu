@@ -64,6 +64,28 @@ def owner_required(actor):
         raise PermissionDenied
 
 
+def ensure_suggested_error(response, points):
+    """Record an unconfirmed suggestion for an answered, less-than-full-score response."""
+    question = response.question
+    if points >= question.max_points or response.errors.exists():
+        return
+    if question.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'STRESS_CHOICE'):
+        answered = response.options.exists()
+    elif question.type == 'WORD_ORDER':
+        answered = bool(response.ordered_option_ids)
+    elif question.type == 'MATCH_IMAGE':
+        answered = bool(response.match_pairs)
+    elif question.type == 'AUDIO':
+        answered = bool(response.audio_asset_id)
+    else:
+        answered = bool((response.text_answer or '').strip())
+    if not answered:
+        return
+    link = question.question_tags.filter(tag__kind=Tag.Kind.ERROR, tag__skill=question.skill, tag__archived_at__isnull=True).order_by('created_at', 'id').first()
+    if link:
+        ErrorOccurrence.objects.get_or_create(response=response, tag_id=link.tag_id, defaults={'source': 'RULE', 'confidence': 'SIGNAL'})
+
+
 @transaction.atomic
 def grade_response(response_id, actor, expected_revision, grade_revision, criterion_levels, feedback='', criterion_notes=None, reason=''):
     owner_required(actor)
@@ -97,6 +119,7 @@ def grade_response(response_id, actor, expected_revision, grade_revision, criter
         raise ValidationError('Tổng điểm sau khi chấm không được thấp hơn điểm trừ đã lưu.')
     grade.source, grade.points, grade.feedback, grade.graded_by, grade.graded_at = 'TEACHER', points, feedback, actor, timezone.now()
     grade.save()
+    ensure_suggested_error(response, points)
     criterion_notes = criterion_notes or {}
     for criterion, level in zip(criteria, levels):
         CriterionScore.objects.update_or_create(grade=grade, criterion=criterion, defaults={'level': level, 'note': criterion_notes.get(str(criterion.id), '')})
@@ -134,6 +157,7 @@ def publish_result(attempt_id, actor, expected_revision, reason=''):
         q = response.question
         if grade.points > q.max_points:
             raise ValidationError('Grade exceeds question maximum.')
+        ensure_suggested_error(response, grade.points)
         criteria = [{'id': str(s.criterion_id), 'label': s.criterion.label, 'level': s.level, 'note': s.note, 'level_descriptions': s.criterion.level_descriptions} for s in grade.criterion_scores.select_related('criterion').order_by('criterion__position')]
         if q.type in ('TEXT', 'AUDIO') and len(criteria) != 4:
             raise ValidationError('Manual response needs four rubric levels.')
@@ -210,6 +234,37 @@ def upsert_teacher_error(response_id, actor, expected_revision, tag_id, note='',
     attempt.revision += 1
     attempt.save(update_fields=['revision'])
     return occ, attempt
+
+
+@transaction.atomic
+def set_single_error(response_id, actor, expected_revision, tag_id):
+    owner_required(actor)
+    target = Response.objects.select_related('attempt__recipient__assignment__version__exam').get(pk=response_id, attempt__recipient__assignment__version__exam__created_by=actor)
+    recipient = AssignmentRecipient.objects.select_for_update().get(pk=target.attempt.recipient_id)
+    attempt = Attempt.objects.select_for_update().get(pk=target.attempt_id)
+    if recipient.current_attempt_id != attempt.id or recipient.state != 'ASSIGNED' or attempt.status not in ('SUBMITTED', 'GRADED'):
+        raise ValidationError('Không thể sửa nhãn lỗi của bài làm này.')
+    if attempt.revision != expected_revision:
+        raise ValidationError('Attempt revision conflict.')
+    if tag_id:
+        tag = Tag.objects.get(pk=tag_id, kind=Tag.Kind.ERROR, skill=target.question.skill, archived_at__isnull=True)
+        existing = ErrorOccurrence.objects.filter(response=target, tag=tag).first()
+        _, attempt = upsert_teacher_error(
+            response_id, actor, expected_revision, tag.id, note=existing.note if existing else '',
+            start_char=existing.start_char if existing else None, end_char=existing.end_char if existing else None,
+            start_ms=existing.start_ms if existing else None, end_ms=existing.end_ms if existing else None,
+        )
+        other_errors = ErrorOccurrence.objects.filter(response=target, withdrawn_at__isnull=True).exclude(tag=tag)
+    else:
+        other_errors = ErrorOccurrence.objects.filter(response=target, withdrawn_at__isnull=True)
+        if not target.errors.exists():
+            suggested = target.question.question_tags.filter(tag__kind=Tag.Kind.ERROR, tag__skill=target.question.skill, tag__archived_at__isnull=True).order_by('created_at', 'id').first()
+            if suggested:
+                ErrorOccurrence.objects.create(response=target, tag_id=suggested.tag_id, source='TEACHER', confidence='CONFIRMED', withdrawn_at=timezone.now())
+        attempt.revision += 1
+        attempt.save(update_fields=['revision'])
+    other_errors.update(withdrawn_at=timezone.now())
+    return attempt
 
 
 @transaction.atomic

@@ -4,7 +4,7 @@ from uuid import uuid4
 from django.test import TestCase
 from django.utils import timezone
 from apps.accounts.models import User
-from apps.content.models import Exam, ExamVersion, Question, QuestionOption, AnswerKeyOption
+from apps.content.models import Exam, ExamVersion, Question, QuestionOption, AnswerKeyOption, QuestionTag, Tag
 from apps.grading.models import Grade
 from .models import Assignment, AssignmentRecipient
 from .services import ConflictError, start_attempt, save_response, submit_attempt
@@ -37,6 +37,17 @@ class AttemptFlowTests(TestCase):
         self.assertEqual(Grade.objects.get(response=response).points, 2)
         with self.assertRaises(ConflictError):
             submit_attempt(attempt.id, self.student, 99, key)
+
+    def test_wrong_automatic_answer_saves_suggestion_without_teacher(self):
+        tag = Tag.objects.create(kind='ERROR', skill='READING', name='Từ vựng: nghĩa của từ')
+        QuestionTag.objects.create(question=self.question, tag=tag)
+        wrong = self.question.options.exclude(pk=self.correct.pk).get()
+        attempt, _ = start_attempt(self.recipient.pk, self.student)
+        response, attempt = save_response(attempt.id, self.question.id, self.student, 0, option_ids=[str(wrong.id)])
+        submit_attempt(attempt.id, self.student, attempt.revision, uuid4())
+        occurrence = response.errors.get(tag=tag)
+        self.assertEqual((occurrence.source, occurrence.confidence), ('RULE', 'SIGNAL'))
+        self.assertIsNone(occurrence.withdrawn_at)
 
     def test_sentence_transform_answer_is_not_sent_to_student(self):
         from apps.accounts.services import rotate_code

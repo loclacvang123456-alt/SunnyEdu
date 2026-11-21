@@ -58,9 +58,9 @@ def parse_questions(data, filename):
     if filename.lower().endswith('.csv'):
         try:
             reader = csv.DictReader(io.StringIO(data.decode('utf-8-sig'), newline=''))
-            if reader.fieldnames != list(FIELDS):
+            if not reader.fieldnames or reader.fieldnames[:len(FIELDS)] != list(FIELDS):
                 raise ValidationError("Cột CSV không khớp mẫu.")
-            rows = list(reader)
+            rows = [r for r in reader if any((r.get(k) or '').strip() for k in FIELDS)]
         except UnicodeDecodeError as e:
             raise ValidationError("CSV phải dùng UTF-8.") from e
     elif filename.lower().endswith('.xlsx'):
@@ -76,13 +76,17 @@ def parse_questions(data, filename):
             sheet = workbook['questions']
             values = sheet.iter_rows()
             first = next(values, None)
-            if not first or [c.value for c in first] != list(FIELDS):
+            if not first or [c.value for c in first[:len(FIELDS)]] != list(FIELDS):
                 raise ValidationError("Cột XLSX không khớp mẫu.")
             rows = []
             for cells in values:
-                if any(c.data_type == 'f' for c in cells):
+                cell_list = list(cells)
+                if any(getattr(c, 'data_type', None) == 'f' for c in cell_list):
                     raise ValidationError("Không nhận công thức XLSX.")
-                rows.append({key: '' if c.value is None else str(c.value) for key, c in zip(FIELDS, cells)})
+                core_cells = (cell_list + [None] * max(0, len(FIELDS) - len(cell_list)))[:len(FIELDS)]
+                if all(c is None or c.value is None or str(c.value).strip() == '' for c in core_cells):
+                    continue
+                rows.append({key: '' if (c is None or c.value is None) else str(c.value) for key, c in zip(FIELDS, core_cells)})
             workbook.close()
         except (zipfile.BadZipFile, KeyError, ValueError) as e:
             raise ValidationError("XLSX không hợp lệ.") from e
@@ -90,14 +94,54 @@ def parse_questions(data, filename):
         raise ValidationError("Chỉ nhận CSV hoặc XLSX.")
     if not 1 <= len(rows) <= 100:
         raise ValidationError("Đề cần từ 1 đến 100 câu.")
-    if sum(len(str(v).encode('utf-8')) for r in rows for v in r.values() if v is not None) > 500 * 1024:
+    if sum(len(str(v).encode('utf-8')) for r in rows for k in FIELDS if (v := r.get(k)) is not None) > 500 * 1024:
         raise ValidationError("Nội dung vượt quá 500 KiB.")
     errors, passages = [], {}
     for i, row in enumerate(rows, start=1):
         try:
-            if None in row or set(row) != set(FIELDS):
+            if None in row or any(row.get(k) is None for k in FIELDS):
                 raise ValueError('Sai số cột')
-            row = {k: (v or '').strip() for k, v in row.items()}
+            row = {k: (row.get(k) or '').strip() for k in FIELDS}
+            if not row['position']:
+                row['position'] = str(i)
+            if not row['max_points']:
+                row['max_points'] = '1.00'
+            row['difficulty'] = (row['difficulty'] or 'STANDARD').upper()
+            options = [row['option_'+c.lower()] for c in 'ABCDEF']
+            filled_opts = [x for x in options if x]
+            q_type = row['type'].upper()
+            if not q_type:
+                prompt_low = row['prompt'].lower()
+                if options[0] and not any(options[1:]):
+                    if '|' in options[0] and not row['correct_options']:
+                        q_type = 'WORD_ORDER'
+                    elif '-' in options[0] and row['correct_options']:
+                        q_type = 'STRESS_CHOICE'
+                    else:
+                        q_type = 'SENTENCE_TRANSFORM'
+                elif len(filled_opts) >= 2:
+                    if '|' in row['correct_options']:
+                        q_type = 'MULTIPLE_CHOICE'
+                    elif 'trọng âm' in prompt_low or 'stress' in prompt_low:
+                        q_type = 'STRESS_CHOICE'
+                    else:
+                        q_type = 'SINGLE_CHOICE'
+                elif any(k in prompt_low for k in ('ghi âm', 'thu âm', 'nói', 'speaking', 'record')):
+                    q_type = 'AUDIO'
+                else:
+                    q_type = 'TEXT'
+            row['type'] = q_type
+            skill = row['skill'].upper()
+            if not skill:
+                if row['audio_asset_id']:
+                    skill = 'LISTENING'
+                elif q_type == 'AUDIO':
+                    skill = 'SPEAKING'
+                elif q_type in ('TEXT', 'WORD_ORDER', 'SENTENCE_TRANSFORM'):
+                    skill = 'WRITING'
+                else:
+                    skill = 'READING'
+            row['skill'] = skill
             rows[i-1] = row
             if int(row['position']) != i:
                 raise ValueError('Thứ tự phải liên tục từ 1')
@@ -117,7 +161,6 @@ def parse_questions(data, filename):
                 raise ValueError('Điểm không hợp lệ')
             if not 1 <= len(row['prompt']) <= 10000:
                 raise ValueError('Nội dung câu không hợp lệ')
-            options = [row['option_'+c.lower()] for c in 'ABCDEF']
             answer = row['correct_options'].split('|') if row['correct_options'] else []
             if row['type'] in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE'):
                 count = sum(bool(x) for x in options)
@@ -132,9 +175,13 @@ def parse_questions(data, filename):
             elif row['type'] == 'SENTENCE_TRANSFORM':
                 if not options[0] or len(options[0]) > 2000 or any(options[1:]) or (answer and answer != ['A']):
                     raise ValueError('Câu viết lại cần điền đáp án chuẩn ở option_a')
+                if not row['correct_options']:
+                    row['correct_options'] = 'A'
             elif any(options) or answer:
                 raise ValueError('Tự luận và ghi âm không có lựa chọn')
-            if not row['topic_tags'] or any(not x.strip() or len(x.strip())>100 for x in row['topic_tags'].split('|') + (row['error_tags'].split('|') if row['error_tags'] else [])):
+            raw_topics = [x.strip() for x in row['topic_tags'].split('|')] if row['topic_tags'] else []
+            raw_errors = [x.strip() for x in row['error_tags'].split('|')] if row['error_tags'] else []
+            if any(not x or len(x) > 100 for x in raw_topics + raw_errors):
                 raise ValueError('Chủ đề hoặc lỗi không hợp lệ')
             ref = row['passage_ref']
             if len(ref)>40 or len(row['passage_text'])>20000 or (not ref and any(row[k] for k in ('passage_text','audio_asset_id','transcript'))):
@@ -196,12 +243,14 @@ def create_imported_exam(owner, title, rows, exam=None):
                     option = QuestionOption.objects.create(question=question, key=key, position=idx, content=content)
                     if key in answer:
                         AnswerKeyOption.objects.create(question=question, option=option)
-        for kind, field in [('TOPIC','topic_tags'), ('ERROR','error_tags')]:
+        from .auto_tagging import apply_auto_tags_to_question
+        for kind, field in [('TOPIC', 'topic_tags'), ('ERROR', 'error_tags')]:
             for name in dict.fromkeys(x.strip() for x in row[field].split('|') if x.strip()):
                 tag, _ = Tag.objects.get_or_create(kind=kind, skill=row['skill'], name=name)
                 if tag.archived_at:
                     raise ValidationError('Tag đã lưu trữ, hãy chọn tag khác.')
-                QuestionTag.objects.create(question=question, tag=tag)
+                QuestionTag.objects.get_or_create(question=question, tag=tag)
+        apply_auto_tags_to_question(question, title_context=title)
         for idx, (key, label) in enumerate(RUBRICS.get(row['type'], []), 1):
             RubricCriterion.objects.create(question=question, key=key, position=idx, label=label, level_descriptions=LEVELS)
     return version
@@ -212,6 +261,8 @@ def publish_version(version_id, expected_revision):
     version = ExamVersion.objects.select_for_update().get(pk=version_id)
     if version.status != ExamVersion.Status.DRAFT or version.revision != expected_revision:
         raise ValidationError('Phiên bản đã thay đổi hoặc không còn là bản nháp.')
+    from .auto_tagging import sync_version_and_exercise_auto_tags
+    sync_version_and_exercise_auto_tags(version)
     questions = list(version.questions.all().prefetch_related('options', 'answer_keys', 'criteria', 'question_tags__tag', 'passage__audio_asset'))
     if not 1 <= len(questions) <= 100:
         raise ValidationError('Đề cần từ 1 đến 100 câu.')

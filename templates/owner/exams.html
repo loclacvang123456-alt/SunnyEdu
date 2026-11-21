@@ -7,20 +7,44 @@
     <p>Tạo, chỉnh sửa hoặc nhập đề bài.</p>
   </div>
   <div class="inline-form">
-    <button type="button" class="button primary" data-modal-open="modal-create-exam">+ Tạo đề mới</button>
-    <a class="button secondary" href="{% url 'owner_exam_import' %}">Nhập CSV/XLSX</a>
-    <a class="button secondary" href="{% static 'templates/mau-nhap-de.csv' %}" download>Tải mẫu CSV</a>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-exam" aria-label="Tạo đề mới" title="Tạo đề mới">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="18" x2="12" y2="12"/>
+        <line x1="9" y1="15" x2="15" y2="15"/>
+      </svg>
+    </button>
+    <a class="button primary st-action-btn" href="{% url 'owner_exam_import' %}" aria-label="Nhập CSV/XLSX" title="Nhập CSV/XLSX">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+    </a>
+    <a class="button primary st-action-btn" href="{% static 'templates/mau-nhap-de.csv' %}" download aria-label="Tải mẫu CSV" title="Tải mẫu CSV">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </a>
   </div>
 </header>
 
 <form method="get" class="panel toolbar" style="margin-bottom:24px">
   <div style="flex:1"><label for="exam-q">Tìm đề theo tiêu đề</label><input id="exam-q" type="search" name="q" value="{{ q }}" placeholder="Nhập tên đề..."></div>
-  <button type="submit" class="button secondary">Tìm kiếm</button>
+  <button type="submit" class="button primary st-action-btn" aria-label="Tìm kiếm" title="Tìm kiếm">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+  </button>
 </form>
 
 <section class="panel">
   <div class="table-wrap">
-    <table class="data-table">
+    <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
       <thead><tr><th>Tên đề</th><th>Phiên bản</th><th>Trạng thái</th><th>Số câu</th><th>Thao tác</th></tr></thead>
       <tbody>
         {% for row in exam_rows %}
@@ -32,15 +56,34 @@
               <span class="pill {% if v.version.status == 'PUBLISHED' %}pill-success{% elif v.version.status == 'DRAFT' %}pill-warning{% endif %}">{% if v.version.status == 'PUBLISHED' %}Đang mở{% elif v.version.status == 'DRAFT' %}Bản nháp{% else %}{{ v.version.status }}{% endif %}</span>
             </td>
             <td>{{ v.question_count }} câu</td>
-            <td>
+            <td style="white-space:nowrap">
               <div class="inline-form">
-                <a class="button primary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_version_editor' row.exam.id v.version.id %}">Soạn câu hỏi</a>
+                {% if v.version.status == 'PUBLISHED' %}
+                <button type="button" class="button primary st-action-btn" data-modal-open="modal-quick-assign" data-version-id="{{ v.version.id }}" data-exam-title="{{ row.exam.title }}" data-has-game="{% if v.has_game_questions %}true{% else %}false{% endif %}" aria-label="Giao bài tập" title="Giao bài tập">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+                </button>
+                {% else %}
+                <button type="button" class="button primary st-action-btn" disabled aria-label="Phát hành đề trước khi giao" title="Phát hành đề trước khi giao">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+                </button>
+                {% endif %}
+                <a class="button primary st-action-btn" href="{% url 'owner_version_editor' row.exam.id v.version.id %}" aria-label="Soạn câu hỏi" title="Soạn câu hỏi">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                  </svg>
+                </a>
                 {% if v.version.status == 'PUBLISHED' %}
                   <form method="post" class="inline-form">
                     {% csrf_token %}
                     <input type="hidden" name="action" value="clone_version">
                     <input type="hidden" name="version_id" value="{{ v.version.id }}">
-                    <button type="submit" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px">Tạo bản mới (v{{ v.version.number|add:1 }})</button>
+                    <button type="submit" class="button primary st-action-btn" aria-label="Tạo bản mới (v{{ v.version.number|add:1 }})" title="Tạo bản mới (v{{ v.version.number|add:1 }})">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                    </button>
                   </form>
                 {% endif %}
               </div>
@@ -50,12 +93,14 @@
           <tr><td><strong>{{ row.exam.title }}</strong></td><td colspan="4">Chưa có phiên bản.</td></tr>
           {% endfor %}
         {% empty %}
-        <tr><td colspan="5" class="empty">Chưa có đề bài nào.</td></tr>
+        <tr class="empty-row"><td colspan="5" class="empty">Chưa có đề bài nào.</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
 </section>
+
+{% include "owner/_quick_assign.html" %}
 
 <div id="modal-create-exam" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-create-exam-title">
   <div class="modal-panel modal-sm">

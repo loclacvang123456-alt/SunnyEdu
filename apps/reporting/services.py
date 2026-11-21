@@ -70,7 +70,7 @@ def activate(period_id, actor, expected_revision):
         raise ValidationError('Only a draft may be activated.')
     members, assignments, recipients = _locked_cohort(period)
     now = timezone.now()
-    if period.end_at <= period.start_at or any(a.opens_at < period.start_at or a.late_until > period.end_at or a.opens_at <= now for a in assignments):
+    if period.end_at <= period.start_at or any(a.opens_at < period.start_at or (a.late_until is None or a.late_until > period.end_at) or a.opens_at <= now for a in assignments):
         raise ValidationError('Ranking must be activated before all assignments open and cover their availability.')
     if Attempt.objects.filter(recipient_id__in=[r.id for r in recipients.values()], submitted_at__isnull=False).exists():
         raise ValidationError('A cohort member already submitted an attempt.')
@@ -86,7 +86,7 @@ def _publish(period, actor, required_status):
         raise ValidationError('Ranking is not in the required status.')
     members, assignments, recipients = _locked_cohort(period)
     now = timezone.now()
-    if now < period.end_at or any(now < a.late_until for a in assignments):
+    if now < period.end_at or any((a.late_until is None or now < a.late_until) for a in assignments):
         raise ValidationError('Ranking and assignments must be closed.')
     attempt_ids = [r.current_attempt_id for r in recipients.values() if r.current_attempt_id]
     attempts = {a.id: a for a in Attempt.objects.select_for_update().filter(id__in=attempt_ids).order_by('id')}

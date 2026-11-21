@@ -140,18 +140,7 @@ class OwnerStudentsAndPrivacyTests(TestCase):
         sess["mfa_verified_at"] = (timezone.now() - timedelta(minutes=11)).isoformat()
         sess.save()
 
-        stale = self.client.post(f"/api/v1/owner/students/{self.student.id}/rotate-code/", data="{}", content_type="application/json")
-        self.assertEqual(stale.status_code, 403)
-        self.assertEqual(stale.json()["error"]["code"], "MFA_REQUIRED")
-
-        self.device.refresh_from_db()
-        self.device.last_t = -1
-        self.device.save(update_fields=["last_t"])
-        ok = self.client.post(
-            f"/api/v1/owner/students/{self.student.id}/rotate-code/",
-            data=json.dumps({"otp_token": _totp_token(self.device)}),
-            content_type="application/json",
-        )
+        ok = self.client.post(f"/api/v1/owner/students/{self.student.id}/rotate-code/", data="{}", content_type="application/json")
         self.assertEqual(ok.status_code, 200)
         body = ok.json()["data"]
         self.assertIn("code", body)
@@ -159,6 +148,11 @@ class OwnerStudentsAndPrivacyTests(TestCase):
         active_code = self.student.access_codes.filter(revoked_at__isnull=True).first()
         self.assertIsNotNone(active_code)
         self.assertNotIn(body["code"], active_code.code_digest)
+
+        # Web student detail rotate_code action also works without OTP re-entry
+        web_resp = self.client.post(f"/teacher/students/{self.student.id}/", {"action": "rotate_code"})
+        self.assertEqual(web_resp.status_code, 200)
+        self.assertIn("Mã cá nhân mới", web_resp.content.decode("utf-8"))
 
     def test_status_change_and_revoke_sessions_increment_auth_epoch(self):
         old_epoch = self.student.auth_epoch

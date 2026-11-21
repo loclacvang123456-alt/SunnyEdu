@@ -14,11 +14,22 @@
         {% csrf_token %}
         <input type="hidden" name="action" value="release_answers">
         <input type="hidden" name="expected_revision" value="{{ assignment.revision }}">
-        <button type="submit" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px">Công bố đáp án</button>
+        <button type="submit" class="button primary st-action-btn" title="Công bố đáp án" aria-label="Công bố đáp án">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </button>
       </form>
     {% endif %}
     {% if assignment.status == 'PUBLISHED' %}
-      <button type="button" class="button secondary danger-btn" style="min-height:38px;padding:6px 12px;font-size:13px" data-modal-open="modal-assign-cancel">Hủy bài</button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-assign-cancel" title="Hủy bài" aria-label="Hủy bài">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="15" y1="9" x2="9" y2="15"/>
+          <line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+      </button>
     {% endif %}
   </div>
 </div>
@@ -32,8 +43,17 @@
     </p>
   </div>
   <div class="inline-form">
-    <a class="button primary" href="{% url 'owner_version_editor' assignment.version.exam_id assignment.version_id %}">Soạn câu hỏi</a>
-    <a class="button secondary" href="{% url 'owner_courses' %}">Quản lý khóa học</a>
+    <a class="button primary st-action-btn" href="{% url 'owner_version_editor' assignment.version.exam_id assignment.version_id %}" title="Soạn câu hỏi" aria-label="Soạn câu hỏi">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+      </svg>
+    </a>
+    <a class="button primary st-action-btn" href="{% url 'owner_courses' %}" title="Quản lý khóa học" aria-label="Quản lý khóa học">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      </svg>
+    </a>
   </div>
 </section>
 
@@ -52,12 +72,17 @@
       <div class="table-toolbar">
         <input type="search" data-table-search="assign-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp...">
         <div class="inline-form">
-          <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="assign-classes-table">Chọn nhiều</button>
-          <button type="button" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="assign-classes-table" data-detail-bulk="class"><span>Giao bài <span class="sel-count">0</span> lớp</span></button>
+          <button type="button" class="button primary st-action-btn" data-toggle-multiselect="assign-classes-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </button>
+          <button type="button" class="button primary st-action-btn" hidden data-bulk-for="assign-classes-table" data-detail-bulk="class" title="Giao bài đã chọn" aria-label="Giao bài đã chọn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span class="sel-count">0</span>
+          </button>
         </div>
       </div>
       <div class="table-wrap">
-        <table id="assign-classes-table" class="data-table" data-sortable-table>
+        <table id="assign-classes-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
           <thead>
             <tr>
               <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-classes-table" aria-label="Chọn tất cả lớp"></th>
@@ -86,13 +111,15 @@
               </td>
               <td data-sort-val="{{ row.max_attempts|default:0 }}">{% if row.is_assigned %}{{ row.max_attempts }} lần{% else %}—{% endif %}</td>
               <td>
-                <button type="button" class="button primary" style="min-height:36px;padding:6px 12px;font-size:13px"
+                <button type="button" class="button primary st-action-btn"
                   data-detail-single="class"
                   data-target-id="{{ row.classroom.id }}"
                   data-target-label="{{ row.classroom.name }}"
                   data-due="{% if row.due_at %}{{ row.due_at|date:'Y-m-d\TH:i' }}{% endif %}"
-                  data-tries="{{ row.max_attempts|default:1 }}">
-                  {% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}
+                  data-tries="{{ row.max_attempts|default:1 }}"
+                  title="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}"
+                  aria-label="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </button>
               </td>
             </tr>
@@ -108,12 +135,17 @@
       <div class="table-toolbar">
         <input type="search" data-table-search="assign-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, lớp...">
         <div class="inline-form">
-          <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="assign-students-table">Chọn nhiều</button>
-          <button type="button" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="assign-students-table" data-detail-bulk="student"><span>Giao bài <span class="sel-count">0</span> HS</span></button>
+          <button type="button" class="button primary st-action-btn" data-toggle-multiselect="assign-students-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </button>
+          <button type="button" class="button primary st-action-btn" hidden data-bulk-for="assign-students-table" data-detail-bulk="student" title="Giao bài đã chọn" aria-label="Giao bài đã chọn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span class="sel-count">0</span>
+          </button>
         </div>
       </div>
       <div class="table-wrap">
-        <table id="assign-students-table" class="data-table" data-sortable-table>
+        <table id="assign-students-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
           <thead>
             <tr>
               <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-students-table" aria-label="Chọn tất cả học sinh"></th>
@@ -154,25 +186,35 @@
                 {% endif %}
               </td>
               <td data-sort-val="{{ row.max_attempts|default:0 }}">{% if row.is_assigned %}{{ row.attempts_used }} / {{ row.max_attempts }} lần{% else %}—{% endif %}</td>
-              <td>
-                <div class="inline-form">
-                  <button type="button" class="button primary" style="min-height:36px;padding:6px 12px;font-size:13px"
+              <td style="white-space:nowrap">
+                <div class="inline-form" style="flex-wrap:nowrap">
+                  <button type="button" class="button primary st-action-btn"
                     data-detail-single="student"
                     data-target-id="{{ row.student.id }}"
                     data-target-label="{{ row.student.display_name }}"
                     data-due="{% if row.due_at %}{{ row.due_at|date:'Y-m-d\TH:i' }}{% endif %}"
-                    data-tries="{{ row.max_attempts|default:1 }}">
-                    {% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}
+                    data-tries="{{ row.max_attempts|default:1 }}"
+                    title="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}"
+                    aria-label="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                   </button>
                   {% if row.recipient and row.recipient.current_attempt and row.recipient.current_attempt.status in 'SUBMITTED,GRADED' %}
-                    <a class="button {% if row.recipient.current_attempt.status == 'SUBMITTED' %}primary{% else %}secondary{% endif %}" style="min-height:36px;padding:6px 12px;font-size:13px" href="{% url 'owner_grading_detail' row.recipient.current_attempt.id %}">
-                      {% if row.recipient.current_attempt.status == 'SUBMITTED' %}Chấm bài{% else %}Xem bài / Điểm{% endif %}
+                    <a class="button primary st-action-btn" href="{% url 'owner_grading_detail' row.recipient.current_attempt.id %}" title="{% if row.recipient.current_attempt.status == 'SUBMITTED' %}Chấm bài{% else %}Xem bài / Điểm{% endif %}" aria-label="{% if row.recipient.current_attempt.status == 'SUBMITTED' %}Chấm bài{% else %}Xem bài / Điểm{% endif %}">
+                      {% if row.recipient.current_attempt.status == 'SUBMITTED' %}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                      {% else %}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      {% endif %}
                     </a>
                   {% endif %}
                   {% if assignment.status == 'PUBLISHED' and row.recipient and row.recipient.state == 'ASSIGNED' %}
-                    <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-exempt-{{ row.recipient.id }}">Miễn bài</button>
+                    <button type="button" class="button primary st-action-btn" data-modal-open="modal-exempt-{{ row.recipient.id }}" title="Miễn bài" aria-label="Miễn bài">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                    </button>
                     {% if row.recipient.current_attempt and row.recipient.current_attempt.status in 'SUBMITTED,GRADED,VOID' %}
-                      <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-retake-{{ row.recipient.id }}">Cấp làm lại</button>
+                      <button type="button" class="button primary st-action-btn" data-modal-open="modal-retake-{{ row.recipient.id }}" title="Cấp làm lại" aria-label="Cấp làm lại">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                      </button>
                     {% endif %}
                   {% endif %}
                 </div>

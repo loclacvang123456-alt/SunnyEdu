@@ -59,7 +59,7 @@
 .catalog-grid .course-card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin: auto 20px 18px; padding: 10px 12px; border-radius: 10px; background: #eff8f2; color: #49675e; font-size: 13px; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) { .catalog-grid .course-card { transition: none; } }
 
-.catalog-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+.catalog-pagination { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
 .catalog-pagination .page-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 42px; height: 42px; padding: 0 14px; border: 1px solid #d8e2da; border-radius: 10px; background: #fff; color: #173447; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .15s, border-color .15s, color .15s; }
 .catalog-pagination .page-link:hover { border-color: #285b4a; background: #eff8f2; color: #285b4a; text-decoration: none; }
 .catalog-pagination .page-link.is-active { border-color: #285b4a; background: #285b4a; color: #fff; }

@@ -8,9 +8,39 @@
     <p>Mã nội bộ: <code>{{ profile.student_ref|default:"—" }}</code> · Trạng thái: <span class="pill {% if student.status == 'ACTIVE' %}pill-success{% else %}pill-warning{% endif %}">{{ student.status }}</span>{% if current_school %} · Trường: <strong>{{ current_school.name }}</strong>{% endif %}{% if profile.owner_note %} · Ghi chú: {{ profile.owner_note }}{% endif %}</p>
   </div>
   <div class="inline-form">
-    <button type="button" class="button primary" data-modal-open="modal-st-code">Cấp mã và QR mới</button>
-    <button type="button" class="button secondary" data-modal-open="modal-st-profile">Sửa thông tin</button>
-    <button type="button" class="button secondary" data-modal-open="modal-st-status">Đổi trạng thái</button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-st-zalo" aria-label="Liên hệ Zalo phụ huynh" title="Liên hệ Zalo phụ huynh">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        <path d="M9.5 9h5l-5 6h5"/>
+      </svg>
+    </button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-st-classes" title="Quản lý lớp học">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+        <path d="M8 7h8M8 11h6"/>
+      </svg>
+      <span>Lớp</span>
+    </button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-st-code" aria-label="Cấp mã và QR mới" title="Cấp mã và QR mới">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <path d="M14 14h3v3h-3zM17 17h4v4M21 14v.01M14 21v.01"/>
+      </svg>
+    </button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-st-profile" aria-label="Sửa thông tin" title="Sửa thông tin">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+        <path d="m15 5 4 4"/>
+      </svg>
+    </button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-st-status" aria-label="Đổi trạng thái" title="Đổi trạng thái">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.77 1.02 1.51 1H21a2 2 0 1 1 0 4h-.09c-.74-.02-1.25.4-1.51 1Z"/>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -24,44 +54,17 @@
 </section>
 {% endif %}
 
-<div class="owner-grid-2">
-  <section class="panel">
-    <div class="section-heading">
-      <h2>Lớp tiếng Anh</h2>
-      <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-st-join-english">+ Thêm vào lớp</button>
-    </div>
-    <ul style="margin:0;padding-left:18px">
-      {% for m in english_memberships %}
-        <li style="margin-bottom:8px">
-          <strong>{{ m.english_class.name }}</strong> ({{ m.start_at|date:"d/m/Y" }} → {% if m.end_at %}{{ m.end_at|date:"d/m/Y" }}{% else %}Đang học{% endif %})
-          {% if not m.end_at %}
-            <form method="post" class="inline-form" style="margin-left:8px">
-              {% csrf_token %}
-              <input type="hidden" name="action" value="leave_english">
-              <input type="hidden" name="english_class_id" value="{{ m.english_class_id }}">
-              <button type="submit" class="text-button" style="padding:2px 6px;min-height:auto;font-size:13px;color:var(--danger)">Rời lớp</button>
-            </form>
-          {% endif %}
-        </li>
-      {% empty %}<li>Chưa tham gia lớp tiếng Anh nào.</li>{% endfor %}
-    </ul>
-  </section>
-
-  <section class="panel">
-    <div class="section-heading">
-      <h2>Lớp chính khóa (trường)</h2>
-      <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-open="modal-st-transfer-school">Chuyển lớp trường</button>
-    </div>
-    <ul style="margin:0;padding-left:18px">
-      {% for m in school_memberships %}
-        <li style="margin-bottom:6px"><strong>{{ m.school_class.school.name }}{% if m.school_class.name != 'Chung' %} - {{ m.school_class.name }}{% endif %}</strong> ({{ m.start_at|date:"d/m/Y" }} → {% if m.end_at %}{{ m.end_at|date:"d/m/Y" }}{% else %}Hiện tại{% endif %})</li>
-      {% empty %}<li>Chưa có lịch sử lớp trường.</li>{% endfor %}
-    </ul>
-  </section>
-</div>
-
 <section class="panel" style="margin-top:24px">
-  <h2>Tiến độ 4 kỹ năng (28 ngày: {{ progress.from }} → {{ progress.to }})</h2>
+  {% with st=progress.student_summary %}
+    <h2 style="margin-bottom:14px">Chi Tiết Học Tập</h2>
+
+    {% include "owner/_student_eval_body.html" with st=st %}
+  {% endwith %}
+</section>
+
+{% if progress.is_ielts_student %}
+<section class="panel" style="margin-top:24px">
+  <h2>Tiến độ 4 kỹ năng IELTS (28 ngày: {{ progress.from }} → {{ progress.to }})</h2>
   <div class="owner-grid-2">
     {% for skill, s in progress.skills.items %}
     <div class="skill-bar-row">
@@ -71,15 +74,15 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
-<div class="owner-grid-2" style="margin-top:24px">
-  <section class="panel">
-    <h2>Bài tập gần đây</h2>
+<section class="panel" style="margin-top:24px">
+    <h2 id="bai-tap-gan-day">Bài tập gần đây</h2>
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr><th>Bài giao</th><th>Trạng thái</th><th></th></tr></thead>
         <tbody>
-          {% for r in recipient_rows %}
+          {% for r in recipient_page %}
           <tr>
             <td>{{ r.assignment.title }}</td>
             <td>
@@ -96,21 +99,136 @@
         </tbody>
       </table>
     </div>
-  </section>
+    {% if recipient_page.paginator.num_pages > 1 %}
+    <nav class="inline-form" aria-label="Phân trang bài tập" style="margin-top:12px;justify-content:flex-start">
+      {% if recipient_page.has_previous %}<a class="button secondary" href="{% querystring bai_tap=recipient_page.previous_page_number %}#bai-tap-gan-day">Trước</a>{% endif %}
+      <span>Trang {{ recipient_page.number }} / {{ recipient_page.paginator.num_pages }}</span>
+      {% if recipient_page.has_next %}<a class="button secondary" href="{% querystring bai_tap=recipient_page.next_page_number %}#bai-tap-gan-day">Sau</a>{% endif %}
+    </nav>
+    {% endif %}
+</section>
 
-  <section class="panel">
-    <h2>Nhật ký bảo mật &amp; đổi mã</h2>
-    <div class="table-wrap">
-      <table class="data-table">
-        <thead><tr><th>Thời gian</th><th>Hành động</th><th>Lý do</th></tr></thead>
-        <tbody>
-          {% for ev in audit_events %}
-          <tr><td>{{ ev.created_at|date:"H:i d/m/Y" }}</td><td><code>{{ ev.action }}</code></td><td>{{ ev.reason|default:"—" }}</td></tr>
-          {% empty %}<tr><td colspan="3">Chưa có sự kiện nào.</td></tr>{% endfor %}
-        </tbody>
-      </table>
+<!-- Pop-up Modal: Liên hệ Zalo phụ huynh -->
+<div id="modal-st-zalo" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-st-zalo-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-st-zalo-title">Liên hệ Zalo phụ huynh</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
     </div>
-  </section>
+    <div class="modal-body">
+      {% if profile.parent_phone %}
+        <p style="margin-top:0">Số điện thoại Zalo phụ huynh: <strong>{{ profile.parent_phone }}</strong></p>
+        <div class="inline-form">
+          <a class="button primary" href="https://zalo.me/{{ profile.parent_phone }}" target="_blank" rel="noopener noreferrer">Mở Zalo phụ huynh</a>
+          <button type="button" class="button secondary" data-modal-close data-modal-open="modal-st-profile">Đổi số điện thoại</button>
+        </div>
+      {% else %}
+        <p style="margin-top:0">Học sinh chưa có số điện thoại Zalo phụ huynh.</p>
+        <button type="button" class="button primary" data-modal-close data-modal-open="modal-st-profile">Thêm số điện thoại</button>
+      {% endif %}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="button secondary" data-modal-close>Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pop-up Modal: Lớp học (Tiếng Anh & Chính khóa) -->
+<div id="modal-st-classes" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-st-classes-title">
+  <div class="modal-panel modal-lg">
+    <div class="modal-header">
+      <h2 id="modal-st-classes-title">Lớp học của {{ student.display_name }}</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="modal-body" data-tab-group>
+      <div class="context-pills context-pills-2" role="tablist" aria-label="Phân loại lớp học" style="margin-bottom:16px">
+        <button type="button" class="context-pill is-selected" role="tab" data-tab-target="st-tab-english">
+          Lớp tiếng Anh ({{ english_memberships|length }})
+        </button>
+        <button type="button" class="context-pill" role="tab" data-tab-target="st-tab-school">
+          Lớp chính khóa ({{ school_memberships|length }})
+        </button>
+      </div>
+
+      <div id="st-tab-english" data-tab-pane>
+        <div class="table-toolbar">
+          <strong>Danh sách lớp tiếng Anh</strong>
+          <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-close data-modal-open="modal-st-join-english">+ Thêm vào lớp</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5" data-fixed-page-size="1">
+            <thead>
+              <tr>
+                <th data-sort-col>Tên lớp <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Bắt đầu <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Trạng thái <span class="sort-ind">↕</span></th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in english_memberships %}
+                <tr>
+                  <td data-sort-val="{{ m.english_class.name }}"><strong>{{ m.english_class.name }}</strong></td>
+                  <td data-sort-val="{{ m.start_at|date:'Y-m-d' }}">{{ m.start_at|date:"d/m/Y" }}</td>
+                  <td data-sort-val="{% if m.end_at %}{{ m.end_at|date:'Y-m-d' }}{% else %}9999-12-31{% endif %}">
+                    {% if m.end_at %}{{ m.end_at|date:"d/m/Y" }}{% else %}<span class="pill pill-success">Đang học</span>{% endif %}
+                  </td>
+                  <td>
+                    {% if not m.end_at %}
+                      <form method="post" class="inline-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="leave_english">
+                        <input type="hidden" name="english_class_id" value="{{ m.english_class_id }}">
+                        <button type="submit" class="text-button" style="padding:2px 6px;min-height:auto;font-size:13px;color:var(--danger)">Rời lớp</button>
+                      </form>
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr class="empty-row"><td colspan="4" class="muted">Chưa tham gia lớp tiếng Anh nào.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="st-tab-school" data-tab-pane hidden>
+        <div class="table-toolbar">
+          <strong>Lịch sử lớp chính khóa (trường)</strong>
+          <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-modal-close data-modal-open="modal-st-transfer-school">Chuyển lớp trường</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" data-sortable-table data-page-size="5" data-fixed-page-size="1">
+            <thead>
+              <tr>
+                <th data-sort-col>Trường / Lớp <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Từ ngày <span class="sort-ind">↕</span></th>
+                <th data-sort-col>Đến ngày / Trạng thái <span class="sort-ind">↕</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in school_memberships %}
+                <tr>
+                  <td data-sort-val="{{ m.school_class.school.name }} - {{ m.school_class.name }}">
+                    <strong>{{ m.school_class.school.name }}{% if m.school_class.name != 'Chung' %} - {{ m.school_class.name }}{% endif %}</strong>
+                  </td>
+                  <td data-sort-val="{{ m.start_at|date:'Y-m-d' }}">{{ m.start_at|date:"d/m/Y" }}</td>
+                  <td data-sort-val="{% if m.end_at %}{{ m.end_at|date:'Y-m-d' }}{% else %}9999-12-31{% endif %}">
+                    {% if m.end_at %}{{ m.end_at|date:"d/m/Y" }}{% else %}<span class="pill pill-success">Hiện tại</span>{% endif %}
+                  </td>
+                </tr>
+              {% empty %}
+                <tr class="empty-row"><td colspan="3" class="muted">Chưa có lịch sử lớp trường.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="button secondary" data-modal-close>Đóng</button>
+    </div>
+  </div>
 </div>
 
 <!-- Pop-up Modal: Sửa thông tin cơ bản -->
@@ -125,6 +243,7 @@
       <input type="hidden" name="action" value="update_profile">
       <div class="modal-body">
         <div class="field-group"><label for="st-name">Tên hiển thị</label><input id="st-name" name="display_name" value="{{ student.display_name }}" required maxlength="120"></div>
+        <div class="field-group"><label for="st-parent-phone">Số điện thoại Zalo phụ huynh</label><input id="st-parent-phone" type="tel" name="parent_phone" value="{{ profile.parent_phone|default:'' }}" maxlength="20" autocomplete="off" placeholder="Ví dụ: 0912345678"></div>
         <div class="field-group" style="margin-bottom:0"><label for="st-note">Ghi chú giáo viên</label><textarea id="st-note" name="owner_note" rows="3">{{ profile.owner_note|default:'' }}</textarea></div>
       </div>
       <div class="modal-footer">
@@ -146,14 +265,7 @@
       <form method="post" class="card-stack" style="gap:12px">
         {% csrf_token %}
         <input type="hidden" name="action" value="rotate_code">
-        {% if not recent_mfa %}
-        <div class="field-group" style="margin:0">
-          <label for="rotate-otp">Xác nhận lại mã TOTP (do phiên MFA quá 10 phút)</label>
-          <input id="rotate-otp" name="otp_token" inputmode="numeric" autocomplete="one-time-code" required placeholder="Nhập 6 số TOTP">
-        </div>
-        {% else %}
-        <p class="hint" style="margin:0">Phiên MFA đang hợp lệ. Cấp mã mới sẽ vô hiệu hóa mã đăng nhập cũ.</p>
-        {% endif %}
+        <p class="hint" style="margin:0">Cấp mã mới sẽ vô hiệu hóa mã đăng nhập cũ.</p>
         <button type="submit" class="button primary">Cấp mã mới &amp; QR (thu hồi mã cũ)</button>
       </form>
       <hr class="divider" style="margin:4px 0">

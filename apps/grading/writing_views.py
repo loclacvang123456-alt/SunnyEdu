@@ -33,7 +33,7 @@ def check(request, response_id):
             or recipient.state != 'ASSIGNED' or recipient.current_attempt_id != attempt.id
             or attempt.status != 'IN_PROGRESS' or response.question.type != 'TEXT'
             or response.question.version_id != assignment.version_id
-            or not assignment.opens_at <= now < assignment.late_until
+            or not (assignment.opens_at <= now and (assignment.late_until is None or now < assignment.late_until))
             or not course_access_allowed(assignment.id, user)):
         return error('NOT_AVAILABLE', 'Không thể kiểm tra câu trả lời này.', 403)
     if len(request.body) > 65536:

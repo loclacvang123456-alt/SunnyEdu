@@ -9,21 +9,30 @@
     <p>CSV UTF-8 hoặc XLSX có sheet <code>questions</code> · Tối đa 2 MiB, 100 câu · Không dùng công thức.</p>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
-    <a class="button secondary" href="{% static 'templates/de-mau-full-dang-bai.csv' %}" download>Tải CSV full dạng bài</a>
-    <a class="button secondary" href="{% static 'templates/de-mau-full-dang-bai.xlsx' %}" download>Tải Excel (.xlsx) full dạng bài</a>
-    <a class="button secondary" href="{% static 'templates/mau-nhap-de.csv' %}" download>Tải mẫu CSV cơ bản</a>
+    <a class="button primary st-action-btn" href="{% static 'templates/de-mau-full-dang-bai.csv' %}" download title="Tải CSV full dạng bài" aria-label="Tải CSV full dạng bài">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>CSV Full</span>
+    </a>
+    <a class="button primary st-action-btn" href="{% static 'templates/de-mau-full-dang-bai.xlsx' %}" download title="Tải Excel (.xlsx) full dạng bài" aria-label="Tải Excel (.xlsx) full dạng bài">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>XLSX Full</span>
+    </a>
+    <a class="button primary st-action-btn" href="{% static 'templates/mau-nhap-de.csv' %}" download title="Tải mẫu CSV cơ bản" aria-label="Tải mẫu CSV cơ bản">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>CSV Cơ bản</span>
+    </a>
   </div>
 </header>
 
 <section class="panel" aria-labelledby="import-guide-title" style="margin-bottom:20px">
   <h2 id="import-guide-title">Cách điền tệp mẫu</h2>
-  <p>Giữ nguyên tên và thứ tự cột; thay các dòng ví dụ bằng câu hỏi của bạn. Mỗi dòng là một câu, đánh số <code>position</code> liên tiếp từ 1.</p>
+  <p>Giữ nguyên tên và thứ tự cột; thay các dòng ví dụ bằng câu hỏi của bạn. Bạn <strong>chỉ cần điền đề bài (<code>prompt</code>) và lựa chọn/đáp án (<code>option_a..f</code>, <code>correct_options</code>)</strong> — các cột <code>position</code>, <code>type</code>, <code>skill</code>, <code>difficulty</code>, <code>max_points</code>, <code>topic_tags</code>, <code>error_tags</code> có thể để trống để hệ thống tự nhận diện (tệp <strong>Excel .xlsx</strong> cũng có sẵn danh sách chọn <em>dropdown</em> cho <code>type</code>, <code>skill</code>, <code>difficulty</code>).</p>
   <ul>
-    <li><code>type</code>: <code>SINGLE_CHOICE</code> (một đáp án), <code>MULTIPLE_CHOICE</code> (nhiều đáp án), <code>STRESS_CHOICE</code> (chọn trọng âm), <code>WORD_ORDER</code> (sắp xếp từ thành câu), <code>SENTENCE_TRANSFORM</code> (viết lại/đổi câu), <code>TEXT</code> (viết tự luận) hoặc <code>AUDIO</code> (nói).</li>
-    <li><code>skill</code>: <code>READING</code> cho đọc, <code>WRITING</code> cho viết, <code>SPEAKING</code> cho nói; câu nghe dùng <code>LISTENING</code> và cần tài liệu âm thanh đã tải lên.</li>
-    <li><code>difficulty</code>: <code>FOUNDATION</code>, <code>STANDARD</code> hoặc <code>CHALLENGE</code>. Điền nội dung câu vào <code>prompt</code>, điểm tối đa vào <code>max_points</code> và chủ đề vào <code>topic_tags</code>.</li>
+    <li><code>type</code> (tùy chọn): <code>SINGLE_CHOICE</code> (một đáp án), <code>MULTIPLE_CHOICE</code> (nhiều đáp án), <code>STRESS_CHOICE</code> (chọn trọng âm), <code>WORD_ORDER</code> (sắp xếp từ thành câu), <code>SENTENCE_TRANSFORM</code> (viết lại/đổi câu), <code>TEXT</code> (viết tự luận) hoặc <code>AUDIO</code> (nói).</li>
+    <li><code>skill</code> (tùy chọn): <code>READING</code>, <code>WRITING</code>, <code>SPEAKING</code> hoặc <code>LISTENING</code> (dùng <code>LISTENING</code> cần có <code>audio_asset_id</code> đã tải lên).</li>
+    <li><code>difficulty</code> (tùy chọn, mặc định <code>STANDARD</code>): <code>FOUNDATION</code>, <code>STANDARD</code> hoặc <code>CHALLENGE</code>. <code>max_points</code> mặc định <code>1.00</code>; <code>topic_tags</code> tự gắn khi để trống.</li>
     <li>Với <code>SINGLE_CHOICE</code> / <code>MULTIPLE_CHOICE</code>, điền từ 2–6 lựa chọn liên tiếp từ <code>option_a</code> và đáp án ở <code>correct_options</code> (VD: <code>A</code> hoặc <code>A|C</code>).</li>
-    <li>Với <code>STRESS_CHOICE</code>, điền từng âm tiết từ <code>option_a</code> (hoặc <code>de-ci-sion</code> ở <code>option_a</code>) và vị trí đúng ở <code>correct_options</code> (VD: <code>B</code> hoặc <code>2</code>). Với <code>WORD_ORDER</code>, điền các từ cách nhau bằng <code>|</code> ở <code>option_a</code>. Với <code>SENTENCE_TRANSFORM</code>, điền câu chuẩn ở <code>option_a</code>.</li>
+    <li>Với <code>STRESS_CHOICE</code>, điền từng âm tiết từ <code>option_a</code> (hoặc <code>de-ci-sion</code> ở <code>option_a</code>) và vị trí đúng ở <code>correct_options</code> (VD: <code>B</code> hoặc <code>2</code>). Với <code>WORD_ORDER</code>, điền các từ cách nhau bằng <code>|</code> ở <code>option_a</code> (để trống <code>correct_options</code>). Với <code>SENTENCE_TRANSFORM</code>, điền câu chuẩn ở <code>option_a</code>.</li>
     <li>Các cột tài liệu và giải thích có thể để trống khi không dùng. Lưu CSV dưới dạng UTF-8; với XLSX, đặt tên sheet duy nhất là <code>questions</code>.</li>
   </ul>
 </section>
@@ -48,15 +57,21 @@
       <label for="imp-file">Chọn tệp CSV / XLSX</label>
       <input id="imp-file" type="file" name="file" accept=".csv,.xlsx" required>
     </div>
-    <div><button type="submit" class="button secondary">Xem trước &amp; kiểm tra lỗi</button></div>
+    <div>
+      <button type="submit" class="button primary st-action-btn" title="Xem trước &amp; kiểm tra lỗi" aria-label="Xem trước &amp; kiểm tra lỗi">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
   </form>
 
   <div id="import-result" hidden>
     <hr class="divider">
     <div id="import-summary" role="status"></div>
-    <div class="table-wrap"><table class="data-table" id="import-table"></table></div>
+    <div class="table-wrap"><table class="data-table" id="import-table" data-page-size="10" data-fixed-page-size="1"></table></div>
     <div class="wizard-actions">
-      <button type="button" id="import-commit-btn" class="button primary" disabled>Tạo bản nháp</button>
+      <button type="button" id="import-commit-btn" class="button primary st-action-btn" disabled title="Tạo bản nháp" aria-label="Tạo bản nháp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </button>
     </div>
   </div>
 </section>

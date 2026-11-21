@@ -476,3 +476,231 @@ button:hover .btn-mascot-left {
     height: 60px;
   }
 }
+
+.assignment-start-panel {
+  text-align: center;
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 48px 32px;
+}
+.assignment-start-panel h1 {
+  font-size: clamp(32px, 4.5vw, 48px);
+  margin-bottom: 12px;
+}
+.assignment-start-due {
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+.assignment-start-btn {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.context-pills.context-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.context-pills.context-pills-wrap .context-pill {
+  flex: 1 1 150px;
+}
+.table-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.table-pagination-controls {
+  display: flex;
+  order: -1;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.table-pagination-controls .button {
+  min-height: 34px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+.table-pagination-size {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-weight: 600;
+}
+.table-pagination-size select {
+  width: auto !important;
+  min-height: 34px !important;
+  padding: 4px 10px !important;
+  font-size: 13px;
+}
+.kw-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.kw-preset-btn {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: var(--primary-dark);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 650;
+}
+.kw-preset-btn:hover {
+  border-color: var(--primary);
+  background: #eff6ff;
+}
+.report-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.report-filter-bar #rep-student {
+  width: auto;
+  flex: 1 1 240px;
+  min-width: 180px;
+}
+.report-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.owner-page .button.secondary.report-filter-toggle.is-active {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.report-filter-drawer {
+  margin-top: 14px;
+  margin-bottom: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.report-filter-drawer[hidden] {
+  display: none !important;
+}
+.qlog-trigger {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--primary-dark);
+  text-align: left;
+  cursor: pointer;
+}
+.qlog-trigger:hover {
+  text-decoration: underline;
+}
+.qlog-trigger-heading {
+  font-weight: 700;
+}
+.qlog-trigger-sub {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.qlog-list {
+  display: grid;
+  gap: 12px;
+}
+.qlog-card {
+  border: 1px solid #dbe5f2;
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fff;
+}
+.qlog-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.qlog-card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.qlog-prompt {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.qlog-options-hint {
+  margin-bottom: 8px;
+}
+.qlog-ans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+@media (max-width: 640px) {
+  .qlog-ans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.qlog-ans-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #f8fafc;
+}
+.qlog-ans-box.is-wrong {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.qlog-ans-box.is-student-ok,
+.qlog-ans-box.is-correct {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.qlog-ans-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.qlog-ans-value {
+  font-weight: 650;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.qlog-explanation {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.st-action-btn {
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 14px;
+  color: #fff;
+}
+.st-action-btn svg {
+  display: block;
+  flex-shrink: 0;
+  stroke: #fff;
+}
+.st-action-btn.danger-btn {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}

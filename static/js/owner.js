@@ -84,6 +84,7 @@ function initImportApp() {
       tableEl.append(thead, tbody);
       commitBtn.disabled = rows.length === 0 || errorCount > 0;
     }
+    if (tableEl.dataset.pageSize) applyTablePagination(tableEl, true);
   }
 
   form.addEventListener("submit", async (e) => {
@@ -100,6 +101,8 @@ function initImportApp() {
     if (!res.ok) {
       resultBox.hidden = false;
       tableEl.replaceChildren();
+      const pagination = tablePaginationState.get(tableEl);
+      if (pagination) pagination.bar.hidden = true;
       summaryEl.className = "notice notice-error";
       summaryEl.textContent = payload.error?.message || "Không thể đọc tệp nhập.";
       return;
@@ -182,6 +185,17 @@ function initAssignmentNew() {
 }
 
 function initReportFilters() {
+  const toggleBtn = document.getElementById("report-filter-toggle");
+  const drawer = document.getElementById("report-filter-drawer");
+  if (toggleBtn && drawer) {
+    toggleBtn.addEventListener("click", () => {
+      drawer.hidden = !drawer.hidden;
+      const expanded = !drawer.hidden;
+      toggleBtn.setAttribute("aria-expanded", String(expanded));
+      toggleBtn.classList.toggle("is-active", expanded || toggleBtn.dataset.hasFilters === "1");
+    });
+  }
+
   const schoolSel = document.getElementById("rep-school");
   const gradeSel = document.getElementById("rep-grade");
   const classSel = document.getElementById("rep-school-class");
@@ -244,6 +258,9 @@ function initModals() {
     const opener = e.target.closest("[data-modal-open]");
     if (opener) {
       e.preventDefault();
+      if (opener.hasAttribute("data-modal-close")) {
+        close(opener.closest(".modal-overlay"));
+      }
       open(opener.dataset.modalOpen);
       return;
     }
@@ -284,7 +301,93 @@ function initTabs() {
   });
 }
 
+const tablePaginationState = new WeakMap();
+
+function applyTablePagination(table, resetPage = false) {
+  const pageSizeAttr = Number(table?.dataset.pageSize || 0);
+  if (!pageSizeAttr) return;
+  const tbody = table.tBodies?.[0];
+  if (!tbody) return;
+
+  let state = tablePaginationState.get(table);
+  if (!state) {
+    const wrap = table.closest(".table-wrap") || table;
+    const bar = el("div", { className: "table-pagination" });
+    const info = el("span", { className: "table-pagination-info" });
+    const controls = el("div", { className: "table-pagination-controls" });
+    const sizeLabel = el("label", { className: "table-pagination-size" }, ["Số dòng/trang: "]);
+    const sizeSel = el("select", { "aria-label": "Số dòng mỗi trang" });
+    for (const optSize of [5, 10]) {
+      if (![5, 10].includes(pageSizeAttr) && optSize > pageSizeAttr) {
+        sizeSel.append(el("option", { value: String(pageSizeAttr), text: String(pageSizeAttr) }));
+      }
+      sizeSel.append(el("option", { value: String(optSize), text: String(optSize) }));
+    }
+    sizeSel.value = String(pageSizeAttr);
+    sizeLabel.append(sizeSel);
+
+    const prevBtn = el("button", { type: "button", className: "button secondary", text: "Trước" });
+    const nextBtn = el("button", { type: "button", className: "button secondary", text: "Sau" });
+    if (table.dataset.fixedPageSize === "1") {
+      controls.append(prevBtn, nextBtn);
+    } else {
+      controls.append(prevBtn, nextBtn, sizeLabel);
+    }
+    bar.append(info, controls);
+    wrap.insertAdjacentElement("afterend", bar);
+
+    state = { page: 1, pageSize: pageSizeAttr, bar, info, prevBtn, nextBtn, sizeSel };
+    tablePaginationState.set(table, state);
+
+    prevBtn.addEventListener("click", () => {
+      if (state.page > 1) {
+        state.page -= 1;
+        applyTablePagination(table);
+      }
+    });
+    nextBtn.addEventListener("click", () => {
+      state.page += 1;
+      applyTablePagination(table);
+    });
+    sizeSel.addEventListener("change", () => {
+      state.pageSize = Number(sizeSel.value) || pageSizeAttr;
+      state.page = 1;
+      applyTablePagination(table);
+    });
+  }
+
+  if (resetPage) state.page = 1;
+  const allRows = Array.from(tbody.rows).filter((r) => !r.classList.contains("empty-row"));
+  const matchingRows = allRows.filter((r) => r.dataset.searchHidden !== "1");
+  const total = matchingRows.length;
+  const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
+  state.page = Math.min(Math.max(1, state.page), totalPages);
+
+  const start = (state.page - 1) * state.pageSize;
+  const end = start + state.pageSize;
+  allRows.forEach((r) => {
+    if (r.dataset.searchHidden === "1") {
+      r.hidden = true;
+    }
+  });
+  matchingRows.forEach((r, idx) => {
+    r.hidden = idx < start || idx >= end;
+  });
+
+  state.bar.hidden = allRows.length === 0;
+  state.info.textContent = total
+    ? `Trang ${state.page} / ${totalPages} (Tổng ${total} dòng)`
+    : "Không có dòng phù hợp (0 dòng)";
+  state.prevBtn.disabled = state.page <= 1;
+  state.nextBtn.disabled = state.page >= totalPages;
+  if (table.id && table.querySelector('input[data-select-all]')) syncTableSelection(table.id);
+}
+
 function initSortableTables() {
+  document.querySelectorAll("table[data-sortable-table][data-page-size]").forEach((table) => {
+    applyTablePagination(table, true);
+  });
+
   document.addEventListener("click", (e) => {
     const th = e.target.closest("th[data-sort-col]");
     if (!th) return;
@@ -320,6 +423,7 @@ function initSortableTables() {
       return dir === "asc" ? cmp : -cmp;
     });
     rows.forEach((row) => tbody.append(row));
+    if (table.dataset.pageSize) applyTablePagination(table, true);
   });
 }
 
@@ -329,11 +433,254 @@ function initTableSearch() {
     if (!inp) return;
     const tbody = document.getElementById(inp.dataset.tableSearch);
     if (!tbody) return;
+    const table = tbody.closest("table");
     const q = normalizeSearch(inp.value.trim());
     Array.from(tbody.rows).forEach((row) => {
       if (row.classList.contains("empty-row")) return;
-      row.hidden = Boolean(q) && !normalizeSearch(row.textContent).includes(q);
+      const isHidden = Boolean(q) && !normalizeSearch(row.textContent).includes(q);
+      row.dataset.searchHidden = isHidden ? "1" : "0";
+      if (!table?.dataset.pageSize) row.hidden = isHidden;
     });
+    if (table?.dataset.pageSize) applyTablePagination(table, true);
+  });
+}
+
+function getStudentQuestionLog() {
+  const dataEl = document.getElementById("student-question-log-data");
+  if (!dataEl) return [];
+  try {
+    return JSON.parse(dataEl.textContent || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function keywordMatchDetails(item, rawQuery) {
+  const query = normalizeSearch(String(rawQuery || "").trim());
+  if (!query) return [];
+  const edSearch = query === "ed" || query === "-ed";
+  const fields = edSearch
+    ? [["Câu hỏi", item.prompt], ["Đáp án đúng", item.correct_answer]]
+    : [["Câu hỏi", item.prompt], ["Đáp án đúng", item.correct_answer], ["Các lựa chọn", item.options_text], ["Giải thích", item.explanation]];
+  return fields.flatMap(([label, value]) => {
+    const text = String(value || "");
+    if (edSearch) {
+      const words = text.match(/(?:-ed\b|\b[a-z]{3,}ed\b)/gi) || [];
+      const matches = words.filter((word) => !/^(?:need|seed|speed|feed|bleed|breed|greed|weed|indeed|hundred)$/i.test(word));
+      return matches.length ? [`${label}: ${[...new Set(matches)].join(", ")}`] : [];
+    }
+    const normalized = normalizeSearch(text);
+    if (/^[a-z0-9]+$/.test(query)) {
+      return normalized.split(/[^a-z0-9]+/).includes(query) ? [label] : [];
+    }
+    return normalized.includes(query) ? [label] : [];
+  });
+}
+
+function questionMatchesKeyword(item, rawQuery) {
+  return keywordMatchDetails(item, rawQuery).length > 0;
+}
+
+function initKeywordPatternAnalyzer() {
+  const root = document.getElementById("student-keyword-analyzer");
+  const input = document.getElementById("student-keyword-input");
+  const summaryEl = document.getElementById("student-keyword-summary");
+  const resultsEl = document.getElementById("student-keyword-results");
+  if (!root || !document.getElementById("student-question-log-data") || !input || !summaryEl || !resultsEl) return;
+
+  const questionLog = getStudentQuestionLog();
+
+  function render() {
+    const q = input.value.trim();
+    resultsEl.replaceChildren();
+    if (!q) {
+      summaryEl.textContent = "Nhập từ khóa để tìm trong câu hỏi, đáp án, lựa chọn và giải thích. Với -ed, chỉ tìm trong câu hỏi và đáp án đúng.";
+      return;
+    }
+    const matches = questionLog.filter((item) => questionMatchesKeyword(item, q));
+    if (!matches.length) {
+      summaryEl.textContent = `Không tìm thấy câu hỏi nào chứa "${q}" trong các bài học sinh đã làm.`;
+      return;
+    }
+    const wrong = matches.filter((m) => m.is_wrong).length;
+    const correct = matches.length - wrong;
+    const wrongPct = ((wrong / matches.length) * 100).toFixed(1);
+    summaryEl.replaceChildren(
+      el("span", { text: `Từ khóa "${q}": Đã làm ${matches.length} câu · Đúng ${correct} · Sai ${wrong} · Tỉ lệ sai ${wrongPct}% ` }),
+      el("button", {
+        type: "button",
+        className: "button secondary",
+        style: "min-height:32px;padding:4px 12px;font-size:13px;margin-left:6px",
+        "data-qlog-open": "keyword",
+        "data-qlog-value": q,
+        "data-qlog-tab": wrong ? "wrong" : "correct",
+        "data-qlog-title": `Từ khóa: "${q}"`,
+        text: "Xem popup Đúng / Sai",
+      }),
+    );
+    if (["ed", "-ed"].includes(normalizeSearch(q))) {
+      summaryEl.append(el("span", { text: " Tìm từ kết thúc bằng -ed, không tự xác định thì hoặc cách phát âm." }));
+    }
+
+    const table = el("table", { className: "data-table" });
+    table.append(
+      el("thead", {}, [
+        el("tr", {}, [
+          el("th", { text: "Bài tập" }),
+          el("th", { text: "Nội dung câu hỏi" }),
+          el("th", { text: "HS trả lời / Đáp án đúng" }),
+          el("th", { text: "Kết quả" }),
+        ]),
+      ]),
+    );
+    const tbody = el("tbody", {}, matches.slice(0, 20).map((m) => {
+      const link = el("a", { href: `/teacher/assignments/${m.assignment_id}/`, text: m.assignment_title });
+      const ansCell = el("td", {}, [
+        el("div", {}, [el("strong", { text: "HS: " }), m.student_answer || "—"]),
+        el("div", {}, [el("small", { className: "muted", text: `Đúng: ${m.correct_answer || "—"}` })]),
+      ]);
+      const badge = el("span", {
+        className: `pill ${m.is_wrong ? "pill-danger" : "pill-success"}`,
+        text: m.is_wrong ? `Sai (${m.points}/${m.max_points})` : `Đúng (${m.points}/${m.max_points})`,
+      });
+      return el("tr", {}, [
+        el("td", {}, [link]),
+        el("td", {}, [el("div", { text: m.prompt || "-" }), el("small", { className: "muted", text: `Khớp tại: ${keywordMatchDetails(m, q).join("; ")}` })]),
+        ansCell,
+        el("td", {}, [badge]),
+      ]);
+    }));
+    table.append(tbody);
+    const wrap = el("div", { className: "table-wrap", style: "margin-top:10px" }, [table]);
+    resultsEl.append(wrap);
+    if (matches.length > 20) resultsEl.append(el("p", { className: "muted", text: `Đang hiển thị 20/${matches.length} câu. Mở bảng Đúng / Sai để xem tất cả.` }));
+  }
+
+  input.addEventListener("input", render);
+  root.addEventListener("click", (e) => {
+    const preset = e.target.closest("[data-kw-preset]");
+    if (!preset) return;
+    input.value = preset.dataset.kwPreset || "";
+    render();
+    input.focus();
+  });
+  render();
+}
+
+function initQuestionLogModal() {
+  const modal = document.getElementById("modal-student-qlog");
+  if (!modal) return;
+  const questionLog = getStudentQuestionLog();
+  const titleEl = document.getElementById("qlog-modal-title");
+  const subtitleEl = document.getElementById("qlog-modal-subtitle");
+  const countCorrectEl = document.getElementById("qlog-count-correct");
+  const countWrongEl = document.getElementById("qlog-count-wrong");
+  const listCorrectEl = document.getElementById("qlog-list-correct");
+  const listWrongEl = document.getElementById("qlog-list-wrong");
+  const tabCorrectBtn = document.getElementById("qlog-tab-btn-correct");
+  const tabWrongBtn = document.getElementById("qlog-tab-btn-wrong");
+  const paneCorrect = document.getElementById("qlog-pane-correct");
+  const paneWrong = document.getElementById("qlog-pane-wrong");
+
+  function renderCard(m) {
+    const head = el("div", { className: "qlog-card-head" }, [
+      el("div", { className: "qlog-card-meta" }, [
+        el("a", { href: `/teacher/assignments/${m.assignment_id}/` }, [el("strong", { text: m.assignment_title })]),
+        m.question_type_label ? el("span", { className: "pill", text: m.question_type_label }) : null,
+      ]),
+      el("span", {
+        className: `pill ${m.is_wrong ? "pill-danger" : "pill-success"}`,
+        text: m.is_wrong ? `Sai (${m.points}/${m.max_points}đ)` : `Đúng (${m.points}/${m.max_points}đ)`,
+      }),
+    ]);
+
+    const bodyNodes = [
+      head,
+      el("div", { className: "qlog-prompt" }, [el("strong", { text: "Câu hỏi: " }), m.prompt || m.assignment_title]),
+    ];
+
+    if (Array.isArray(m.options_list) && m.options_list.length) {
+      const prefix = m.question_type === "WORD_ORDER" ? "Các từ: " : "Các lựa chọn: ";
+      bodyNodes.push(
+        el("div", { className: "qlog-options-hint" }, [
+          el("small", { className: "muted", text: prefix + m.options_list.join(" · ") }),
+        ]),
+      );
+    }
+
+    const ansGrid = el("div", { className: "qlog-ans-grid" }, [
+      el("div", { className: `qlog-ans-box ${m.is_wrong ? "is-wrong" : "is-student-ok"}` }, [
+        el("small", { className: "qlog-ans-label", text: "Đáp án học sinh trả lời" }),
+        el("div", { className: "qlog-ans-value", text: m.student_answer || "—" }),
+      ]),
+      el("div", { className: "qlog-ans-box is-correct" }, [
+        el("small", { className: "qlog-ans-label", text: "Đáp án đúng" }),
+        el("div", { className: "qlog-ans-value", text: m.correct_answer || "—" }),
+      ]),
+    ]);
+    bodyNodes.push(ansGrid);
+
+    if (m.explanation) {
+      bodyNodes.push(el("div", { className: "qlog-explanation", text: `Giải thích: ${m.explanation}` }));
+    }
+
+    return el("article", { className: "qlog-card" }, bodyNodes);
+  }
+
+  function selectTab(tab) {
+    const showWrong = tab === "wrong";
+    tabCorrectBtn?.classList.toggle("is-selected", !showWrong);
+    tabWrongBtn?.classList.toggle("is-selected", showWrong);
+    if (paneCorrect) paneCorrect.hidden = showWrong;
+    if (paneWrong) paneWrong.hidden = !showWrong;
+  }
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-qlog-open]");
+    if (!trigger) return;
+    e.preventDefault();
+    const kind = trigger.dataset.qlogOpen;
+    const value = trigger.dataset.qlogValue || "";
+    const title = trigger.dataset.qlogTitle || value || "Chi tiết câu hỏi";
+    const preferredTab = trigger.dataset.qlogTab || "";
+
+    const matches = questionLog.filter((item) => {
+      if (kind === "pattern") return Array.isArray(item.patterns) && item.patterns.includes(value);
+      if (kind === "topic") return Array.isArray(item.topics) && item.topics.includes(value);
+      if (kind === "qtype") return item.question_type === value;
+      if (kind === "assignment") return item.assignment_id === value;
+      if (kind === "keyword") return questionMatchesKeyword(item, value);
+      return false;
+    });
+
+    const correctItems = matches.filter((m) => !m.is_wrong);
+    const wrongItems = matches.filter((m) => m.is_wrong);
+
+    if (titleEl) titleEl.textContent = title;
+    if (subtitleEl) {
+      subtitleEl.textContent = `Tổng ${matches.length} câu · Đúng ${correctItems.length} · Sai ${wrongItems.length}`;
+    }
+    if (countCorrectEl) countCorrectEl.textContent = String(correctItems.length);
+    if (countWrongEl) countWrongEl.textContent = String(wrongItems.length);
+
+    if (listCorrectEl) {
+      listCorrectEl.replaceChildren(
+        ...(correctItems.length
+          ? correctItems.map(renderCard)
+          : [el("p", { className: "muted", text: "Chưa có câu trả lời đúng nào trong mục này." })]),
+      );
+    }
+    if (listWrongEl) {
+      listWrongEl.replaceChildren(
+        ...(wrongItems.length
+          ? wrongItems.map(renderCard)
+          : [el("p", { className: "muted", text: "Học sinh không có câu trả lời sai nào trong mục này." })]),
+      );
+    }
+
+    const defaultTab = preferredTab || (wrongItems.length > 0 && correctItems.length === 0 ? "wrong" : "correct");
+    selectTab(defaultTab);
+    window.ownerModal?.open("modal-student-qlog");
   });
 }
 
@@ -344,7 +691,10 @@ function syncTableSelection(tableId) {
   const allBoxes = Array.from(table.querySelectorAll("tbody input.row-check"));
   const selectAll = table.querySelector("thead input[data-select-all]");
   if (selectAll) {
-    selectAll.checked = allBoxes.length > 0 && checked.length === allBoxes.length;
+    const visible = allBoxes.filter(cb => !cb.closest("tr")?.hidden);
+    const selectedVisible = visible.filter(cb => cb.checked).length;
+    selectAll.checked = visible.length > 0 && selectedVisible === visible.length;
+    selectAll.indeterminate = selectedVisible > 0 && selectedVisible < visible.length;
   }
 
   if (tableId === "ca-classes-table" || tableId === "ca-students-table") {
@@ -367,14 +717,23 @@ function syncTableSelection(tableId) {
   }
 }
 
+const MULTISELECT_OFF_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>';
+const MULTISELECT_ON_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+function setMultiselectBtnState(btn, active) {
+  if (!btn) return;
+  const label = active ? "Bỏ chọn nhiều" : "Chọn nhiều";
+  btn.dataset.msActive = active ? "1" : "0";
+  btn.title = label;
+  btn.setAttribute("aria-label", label);
+  btn.innerHTML = active ? MULTISELECT_ON_SVG : MULTISELECT_OFF_SVG;
+}
+
 function resetMultiselect(tableId) {
   const table = document.getElementById(tableId);
   if (!table) return;
   const toggleBtn = document.querySelector(`[data-toggle-multiselect="${tableId}"]`);
-  if (toggleBtn) {
-    toggleBtn.dataset.msActive = "0";
-    toggleBtn.textContent = "☑️ Chọn nhiều";
-  }
+  setMultiselectBtnState(toggleBtn, false);
   table.querySelectorAll(".multi-col").forEach((cell) => { cell.hidden = true; });
   table.querySelectorAll("input[type='checkbox']").forEach((cb) => { cb.checked = false; });
   syncTableSelection(tableId);
@@ -388,8 +747,7 @@ function initMultiselectTables() {
     const table = document.getElementById(tableId);
     if (!table) return;
     const active = btn.dataset.msActive !== "1";
-    btn.dataset.msActive = active ? "1" : "0";
-    btn.textContent = active ? "✕ Bỏ chọn nhiều" : "☑️ Chọn nhiều";
+    setMultiselectBtnState(btn, active);
     table.querySelectorAll(".multi-col").forEach((cell) => { cell.hidden = !active; });
     if (!active) {
       table.querySelectorAll("input[type='checkbox']").forEach((cb) => { cb.checked = false; });
@@ -569,6 +927,8 @@ initImportApp();
 initAssignmentNew();
 initReportFilters();
 initRankingScope();
+initKeywordPatternAnalyzer();
+initQuestionLogModal();
 
 const recipientSearch = document.getElementById("recipient-search");
 recipientSearch?.addEventListener("input", () => {

@@ -96,7 +96,7 @@ def detail(request, course_id):
         recipients_by_assignment = {r.assignment_id: r for r in recipients}
         for item in course.exercises.filter(assignment_id__in=recipients_by_assignment).select_related('assignment').prefetch_related('tags').order_by('assignment__due_at', 'id'):
             item.recipient = recipients_by_assignment[item.assignment_id]
-            item.can_start = item.assignment.opens_at <= now < item.assignment.late_until
+            item.can_start = item.assignment.opens_at <= now and (item.assignment.late_until is None or now < item.assignment.late_until)
             _stars(item)
             exercises.append(item)
     return render(request, 'catalog/detail.html', {'course': course, 'unlocked': unlocked, 'exercises': exercises, 'student': student, 'active': 'courses'})

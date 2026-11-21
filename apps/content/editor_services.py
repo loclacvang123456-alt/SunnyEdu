@@ -69,6 +69,9 @@ def update_exam_title(owner, exam_id, title):
     exam = Exam.objects.select_for_update().get(pk=exam_id, created_by=owner)
     exam.title = clean
     exam.save(update_fields=["title", "updated_at"])
+    from .auto_tagging import sync_version_and_exercise_auto_tags
+    for ver in exam.versions.all():
+        sync_version_and_exercise_auto_tags(ver, title_context=clean)
     AuditEvent.objects.create(actor=owner, action="exam.rename", target_type="exam", target_id=exam.id)
     return exam
 
@@ -325,13 +328,38 @@ def _validate_question_payload(version, data):
 
     topic_names = [x.strip() for x in (data.get("topic_tags") or []) if isinstance(x, str) and x.strip()]
     error_names = [x.strip() for x in (data.get("error_tags") or []) if isinstance(x, str) and x.strip()]
-    if not topic_names:
-        if data.get("ui_direct_edit"):
-            topic_names = ["Ôn tập chung"]
-        else:
-            raise ValidationError("Cần ít nhất một TOPIC tag cùng kỹ năng.")
     if any(len(n) > 100 for n in topic_names + error_names):
         raise ValidationError("Tên tag tối đa 100 ký tự.")
+
+    from apps.assignments.models import Assignment
+    from .auto_tagging import GENERIC_TOPIC_PLACEHOLDERS, infer_question_error_names, infer_question_topic_names
+
+    if q_type in ("SINGLE_CHOICE", "MULTIPLE_CHOICE", "STRESS_CHOICE") and answers:
+        opts_text = " ".join(c for k, _, c in options if k in answers)
+    else:
+        opts_text = " ".join([*(c for _, _, c in options), *(w for _, w in match_pairs)])
+    asg_titles = " ".join(Assignment.objects.filter(version=version).values_list("title", flat=True))
+    title_ctx = " ".join(x for x in (version.exam.title, asg_titles) if x)
+    inferred_topics = infer_question_topic_names(
+        q_type,
+        skill,
+        prompt=prompt,
+        options_text=opts_text,
+        explanation=explanation,
+        title_context=title_ctx,
+        manual_topics=topic_names,
+    )
+    manual_non_generic = [n for n in topic_names if n.casefold() not in GENERIC_TOPIC_PLACEHOLDERS]
+    manual_set = {n.casefold() for n in manual_non_generic}
+    auto_extra_topics = [n for n in inferred_topics if n.casefold() not in manual_set]
+    auto_errors = [] if error_names else infer_question_error_names(
+        q_type,
+        skill,
+        prompt=prompt,
+        options_text=opts_text,
+        explanation=explanation,
+        has_passage=bool(passage),
+    )
 
     return {
         "type": q_type,
@@ -346,8 +374,10 @@ def _validate_question_payload(version, data):
         "match_pairs": match_pairs,
         "answers": set(answers),
         "criteria": criteria,
-        "topic_names": list(dict.fromkeys(topic_names)),
+        "topic_names": list(dict.fromkeys(manual_non_generic)),
+        "auto_topic_names": auto_extra_topics,
         "error_names": list(dict.fromkeys(error_names)),
+        "auto_error_names": auto_errors,
     }
 
 
@@ -395,12 +425,28 @@ def upsert_question(owner, version_id, expected_revision, data, question_id=None
         MatchKey.objects.create(image=image, word=word)
     for key, pos, label, descs in parsed["criteria"]:
         RubricCriterion.objects.create(question=question, key=key, position=pos, label=label, level_descriptions=descs)
+    from .auto_tagging import get_or_create_error_tag, get_or_create_topic_tag, sync_course_exercise_auto_tags
     for kind, names in (("TOPIC", parsed["topic_names"]), ("ERROR", parsed["error_names"])):
         for name in names:
-            tag, _ = Tag.objects.get_or_create(kind=kind, skill=parsed["skill"], name=name)
+            if kind == "TOPIC":
+                tag, _ = get_or_create_topic_tag(parsed["skill"], name)
+            else:
+                tag, _ = Tag.objects.get_or_create(kind=kind, skill=parsed["skill"], name=name)
             if tag.archived_at:
                 raise ValidationError(f"Tag '{name}' đã lưu trữ, hãy chọn tag khác.")
-            QuestionTag.objects.create(question=question, tag=tag)
+            QuestionTag.objects.get_or_create(question=question, tag=tag)
+    for name in parsed["auto_topic_names"]:
+        tag, _ = get_or_create_topic_tag(parsed["skill"], name)
+        if not tag.archived_at:
+            QuestionTag.objects.get_or_create(question=question, tag=tag)
+    for ename in parsed["auto_error_names"]:
+        etag, _ = get_or_create_error_tag(parsed["skill"], ename)
+        if not etag.archived_at:
+            QuestionTag.objects.get_or_create(question=question, tag=etag)
+
+    from .models import CourseExercise
+    for ce in CourseExercise.objects.filter(assignment__version=version).select_related("assignment__version__exam"):
+        sync_course_exercise_auto_tags(ce)
 
     if allow_published and version.status == ExamVersion.Status.DRAFT:
         version.status = ExamVersion.Status.PUBLISHED

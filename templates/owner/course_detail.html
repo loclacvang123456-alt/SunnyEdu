@@ -9,15 +9,42 @@
     <p>{% if course.is_published %}Đang hiển thị{% else %}Bản nháp{% endif %} · {{ course.get_category_display }} · {{ course.difficulty }}/5 ★</p>
   </div>
   <div class="inline-form">
-    <button type="button" class="button primary" data-modal-open="modal-create-exercise">+ Tạo bài tập mới</button>
-    <button type="button" class="button secondary" data-modal-open="modal-attach-exercise">Gắn bài có sẵn</button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-exercise" title="Tạo bài tập mới" aria-label="Tạo bài tập mới">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </button>
+    <button type="button" class="button primary st-action-btn" data-modal-open="modal-attach-exercise" title="Gắn bài có sẵn" aria-label="Gắn bài có sẵn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    </button>
   </div>
 </header>
 
 <div class="owner-action-bar">
-  <a class="button secondary" href="{% url 'owner_students' %}?tab=english">Quản lý lớp</a>
-  <button type="button" class="button secondary" data-modal-open="modal-course-tags">Chủ đề và nhãn</button>
-  <button type="button" class="button secondary" data-modal-open="modal-course-settings">Cài đặt khóa học</button>
+  <a class="button primary st-action-btn" href="{% url 'owner_students' %}?tab=english" title="Quản lý lớp" aria-label="Quản lý lớp">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  </a>
+  <button type="button" class="button primary st-action-btn" data-modal-open="modal-course-tags" title="Chủ đề và nhãn" aria-label="Chủ đề và nhãn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+      <line x1="7" y1="7" x2="7.01" y2="7"/>
+    </svg>
+  </button>
+  <button type="button" class="button primary st-action-btn" data-modal-open="modal-course-settings" title="Cài đặt khóa học" aria-label="Cài đặt khóa học">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
 </div>
 
 <section class="panel" id="course-exercises">
@@ -29,13 +56,21 @@
     <div class="inline-form" style="flex-wrap:wrap">
       <input type="search" data-table-search="course-ex-tbody" placeholder="🔍 Tìm tên bài tập..." style="min-width:200px">
       {% if exercises %}
-      <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-toggle-multiselect="course-ex-table">Chọn nhiều</button>
-      <button type="button" id="bulk-course-assign-btn" class="button primary" style="min-height:38px;padding:6px 14px;font-size:13px" hidden data-bulk-for="course-ex-table" data-course-assign-bulk><span>Giao bài đồng loạt <span class="sel-count">0</span> bài</span></button>
+      <button type="button" class="button primary st-action-btn" data-toggle-multiselect="course-ex-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </button>
+      <button type="button" id="bulk-course-assign-btn" class="button primary st-action-btn" hidden data-bulk-for="course-ex-table" data-course-assign-bulk title="Giao bài đồng loạt" aria-label="Giao bài đồng loạt">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <span class="sel-count">0</span>
+      </button>
       {% endif %}
     </div>
   </div>
   <div class="table-wrap">
-    <table id="course-ex-table" class="data-table" data-sortable-table>
+    <table id="course-ex-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
       <thead>
         <tr>
           <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="course-ex-table" aria-label="Chọn tất cả bài tập"></th>
@@ -67,17 +102,27 @@
               <span class="muted">Chưa giao</span>
             {% endif %}
           </td>
-          <td>
-            <div class="inline-form">
-              <button type="button" class="button primary" style="min-height:38px;padding:6px 12px;font-size:13px" data-course-assign-single="{{ exercise.assignment.id }}" data-label="{{ exercise.assignment.title }}">Giao bài</button>
-              <a class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_version_editor' exercise.assignment.version.exam_id exercise.assignment.version_id %}?course_id={{ course.id }}">Soạn câu hỏi</a>
-              <button type="button" class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" data-modal-open="modal-edit-ex-{{ exercise.id }}">Chỉnh bài</button>
-              <a class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" href="{% url 'owner_assignment_detail' exercise.assignment.id %}">Chi tiết giao bài</a>
+          <td style="white-space:nowrap">
+            <div class="inline-form" style="flex-wrap:nowrap">
+              <button type="button" class="button primary st-action-btn" data-course-assign-single="{{ exercise.assignment.id }}" data-label="{{ exercise.assignment.title }}" title="Giao bài" aria-label="Giao bài">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+              <a class="button primary st-action-btn" href="{% url 'owner_version_editor' exercise.assignment.version.exam_id exercise.assignment.version_id %}?course_id={{ course.id }}" title="Soạn câu hỏi" aria-label="Soạn câu hỏi">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+              </a>
+              <button type="button" class="button primary st-action-btn" data-modal-open="modal-edit-ex-{{ exercise.id }}" title="Chỉnh bài" aria-label="Chỉnh bài">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              </button>
+              <a class="button primary st-action-btn" href="{% url 'owner_assignment_detail' exercise.assignment.id %}" title="Chi tiết giao bài" aria-label="Chi tiết giao bài">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </a>
               <form method="post" style="margin:0" data-confirm="Gỡ bài tập này khỏi khóa học?">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="remove_exercise">
                 <input type="hidden" name="exercise_id" value="{{ exercise.id }}">
-                <button class="button secondary" style="min-height:38px;padding:6px 12px;font-size:13px" type="submit">Gỡ khỏi khóa</button>
+                <button class="button primary st-action-btn" type="submit" title="Gỡ khỏi khóa" aria-label="Gỡ khỏi khóa">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
               </form>
             </div>
           </td>
@@ -109,12 +154,17 @@
             <div class="table-toolbar">
               <input type="search" data-table-search="ca-classes-tbody" placeholder="🔍 Tìm lớp học...">
               <div class="inline-form">
-                <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-toggle-multiselect="ca-classes-table">Chọn nhiều</button>
-                <button type="button" class="button primary" style="min-height:36px;padding:6px 14px;font-size:13px" hidden data-bulk-for="ca-classes-table" data-ca-bulk><span>Giao bài <span class="sel-count">0</span> đối tượng <span class="btn-mascot" aria-hidden="true"></span></span></button>
+                <button type="button" class="button primary st-action-btn" data-toggle-multiselect="ca-classes-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </button>
+                <button type="button" class="button primary st-action-btn" hidden data-bulk-for="ca-classes-table" data-ca-bulk title="Giao bài đã chọn" aria-label="Giao bài đã chọn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <span class="sel-count">0</span>
+                </button>
               </div>
             </div>
             <div class="table-wrap">
-              <table id="ca-classes-table" class="data-table" data-sortable-table>
+              <table id="ca-classes-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
                 <thead>
                   <tr>
                     <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-classes-table" aria-label="Chọn tất cả lớp"></th>
@@ -131,7 +181,7 @@
                     <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
                     <td>{{ row.classroom.school_year }}</td>
                     <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
-                    <td><button type="button" class="button primary" style="min-height:34px;padding:4px 12px;font-size:13px" data-ca-single="class" data-target-id="{{ row.classroom.id }}" data-target-label="{{ row.classroom.name }}">Giao bài</button></td>
+                    <td><button type="button" class="button primary st-action-btn" data-ca-single="class" data-target-id="{{ row.classroom.id }}" data-target-label="{{ row.classroom.name }}" title="Giao bài" aria-label="Giao bài"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></td>
                   </tr>
                   {% empty %}
                   <tr class="empty-row"><td colspan="5" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
@@ -145,12 +195,17 @@
             <div class="table-toolbar">
               <input type="search" data-table-search="ca-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, lớp...">
               <div class="inline-form">
-                <button type="button" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" data-toggle-multiselect="ca-students-table">Chọn nhiều</button>
-                <button type="button" class="button primary" style="min-height:36px;padding:6px 14px;font-size:13px" hidden data-bulk-for="ca-students-table" data-ca-bulk><span>Giao bài <span class="sel-count">0</span> đối tượng <span class="btn-mascot" aria-hidden="true"></span></span></button>
+                <button type="button" class="button primary st-action-btn" data-toggle-multiselect="ca-students-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </button>
+                <button type="button" class="button primary st-action-btn" hidden data-bulk-for="ca-students-table" data-ca-bulk title="Giao bài đã chọn" aria-label="Giao bài đã chọn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <span class="sel-count">0</span>
+                </button>
               </div>
             </div>
             <div class="table-wrap">
-              <table id="ca-students-table" class="data-table" data-sortable-table>
+              <table id="ca-students-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
                 <thead>
                   <tr>
                     <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-students-table" aria-label="Chọn tất cả học sinh"></th>
@@ -167,7 +222,7 @@
                     <td><strong>{{ row.student.display_name }}</strong></td>
                     <td class="mono">{{ row.student_ref|default:"—" }}</td>
                     <td>{{ row.class_names|default:"—" }}</td>
-                    <td><button type="button" class="button primary" style="min-height:34px;padding:4px 12px;font-size:13px" data-ca-single="student" data-target-id="{{ row.student.id }}" data-target-label="{{ row.student.display_name }}">Giao bài</button></td>
+                    <td><button type="button" class="button primary st-action-btn" data-ca-single="student" data-target-id="{{ row.student.id }}" data-target-label="{{ row.student.display_name }}" title="Giao bài" aria-label="Giao bài"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></td>
                   </tr>
                   {% empty %}
                   <tr class="empty-row"><td colspan="5" class="empty">Chưa có học sinh đang hoạt động.</td></tr>

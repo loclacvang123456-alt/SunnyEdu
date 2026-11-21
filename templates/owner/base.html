@@ -6,7 +6,7 @@
 <div class="owner-layout">
   <aside class="sidebar" id="owner-sidebar">
     <div class="sidebar-brand-row">
-      <a class="brand" href="{{ owner_home_url|default:'/teacher/' }}">
+      <a class="brand" href="/" aria-label="Sunny Edu - về trang chủ">
         
         <img class="sunny-logo" src="{% static 'img/sunny-edu/logo-transparent.png' %}" alt="" width="48" height="48"><span>Sunny Edu<small>GIÁO VIÊN</small></span>
       </a>
@@ -24,12 +24,8 @@
       <a href="{{ reports_url|default:'/teacher/reports/' }}" {% if active == 'reports' %}aria-current="page"{% endif %}>Báo cáo</a>
       <a href="{{ rankings_url|default:'/teacher/rankings/' }}" {% if active == 'rankings' %}aria-current="page"{% endif %}>Xếp hạng</a>
       <a href="{{ settings_url|default:'/teacher/settings/' }}" {% if active == 'settings' %}aria-current="page"{% endif %}>Cài đặt</a>
-      <a href="/" style="display:flex;align-items:center;gap:8px;color:var(--primary-dark);font-weight:700;margin-top:10px;padding:8px 12px;background:#eff6ff;border-radius:8px;"><span aria-hidden="true">🏠</span> Về trang chủ</a>
     </nav>
     <div class="sidebar-foot" style="display:flex;flex-direction:column;gap:10px;align-items:stretch;">
-      <a href="/" style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--primary-dark);font-weight:700;text-decoration:none;">
-        <span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Về trang chủ
-      </a>
       <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid #e2e8f0;">
         <span style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px;">{{ request.user.display_name|default:request.user.username }}</span>
         <form method="post" action="{{ logout_url|default:'/logout/' }}" style="margin:0;">{% csrf_token %}<button class="text-button" type="submit" style="color:var(--danger, #b91c1c);padding:4px 8px;min-height:auto;font-size:13px;">Đăng xuất</button></form>
@@ -37,13 +33,7 @@
     </div>
   </aside>
   <div class="owner-content">
-    <header class="owner-top" style="display:flex;justify-content:space-between;align-items:center;">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <span>Không gian giáo viên</span>
-        <a href="/" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--primary-dark);font-weight:600;text-decoration:none;">
-          <span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Về trang chủ
-        </a>
-      </div>
+    <header class="owner-top" style="display:flex;justify-content:flex-end;align-items:center;">
       <div style="display:flex;align-items:center;gap:16px;">
         <span style="font-weight:600;">{{ request.user.display_name|default:request.user.username }}</span>
         <form method="post" action="{{ logout_url|default:'/logout/' }}" style="margin:0;">
@@ -63,7 +53,7 @@
   </div>
 </div>
 {% endblock %}
-{% block scripts %}<script type="module" src="{% static 'js/owner.js' %}?v=20261119v2"></script>{% block extra_scripts %}{% endblock %}{% endblock %}
+{% block scripts %}<script type="module" src="{% static 'js/owner.js' %}?v=20261121v10"></script>{% block extra_scripts %}{% endblock %}{% endblock %}
 
 
 

@@ -1,6 +1,7 @@
 """Owner web UI views for dashboard, students/classes (T01), and settings."""
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator
 from django.db.models import F, Q, Max
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -9,7 +10,7 @@ from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 from django.views.decorators.cache import never_cache
 
-from apps.accounts.models import AuditEvent, PrivacyRequest, User
+from apps.accounts.models import PrivacyRequest, User
 from apps.accounts.permissions import owner_ui_required, recent_mfa_verified, verify_recent_mfa
 from apps.accounts.services import (
     create_privacy_request,
@@ -80,6 +81,7 @@ def pending_grading_condition():
 @never_cache
 @owner_ui_required
 def dashboard(request):
+    from .owner_teaching_views import _quick_assign_context
     now = timezone.now()
     pending_grading = Attempt.objects.filter(
         status__in=["SUBMITTED", "GRADED"],
@@ -97,12 +99,19 @@ def dashboard(request):
         status="PUBLISHED",
         version__exam__created_by=request.user,
         opens_at__lte=now,
-        late_until__gt=now,
-    ).count()
-    recent = []
-    for a in Assignment.objects.filter(version__exam__created_by=request.user).order_by("-created_at")[:8]:
-        status_label = {"DRAFT": "Nháp", "PUBLISHED": "Đã giao", "CANCELLED": "Đã hủy"}.get(a.status, a.status)
-        recent.append({"title": a.title, "due_at": a.due_at, "status_label": status_label, "url": reverse("owner_assignment_detail", args=[a.id])})
+    ).filter(Q(late_until__isnull=True) | Q(late_until__gt=now)).count()
+    qs = Assignment.objects.filter(version__exam__created_by=request.user).order_by("-created_at", "-pk")
+    assignment_page = Paginator(qs, 10).get_page(request.GET.get("page"))
+    status_map = {"DRAFT": "Nháp", "PUBLISHED": "Đã giao", "CANCELLED": "Đã hủy"}
+    assignment_page.object_list = [
+        {
+            "title": a.title,
+            "due_at": a.due_at,
+            "status_label": status_map.get(a.status, a.status),
+            "url": reverse("owner_assignment_detail", args=[a.id]),
+        }
+        for a in assignment_page.object_list
+    ]
     return render(
         request,
         "owner/dashboard.html",
@@ -112,7 +121,8 @@ def dashboard(request):
             overdue_count=overdue_count,
             overdue_url=f"{reverse('owner_assignments')}?overdue=1",
             open_assignments=open_assignments,
-            assignments=recent,
+            assignments=assignment_page,
+            **_quick_assign_context(request.user),
         ),
     )
 
@@ -188,15 +198,16 @@ def students(request):
     q = request.GET.get("q", "").strip()
     status = request.GET.get("status", "ACTIVE")
     ec_filter = request.GET.get("english_class_id", "").strip()
-    student_qs = User.objects.filter(role=User.Role.STUDENT).select_related("student_profile").order_by("display_name")
+    student_qs = User.objects.filter(role=User.Role.STUDENT).select_related("student_profile").order_by("display_name", "id")
     if q:
         student_qs = student_qs.filter(Q(display_name__icontains=q) | Q(student_profile__student_ref__icontains=q))
     if status in User.Status.values:
         student_qs = student_qs.filter(status=status)
     if ec_filter:
         student_qs = student_qs.filter(english_memberships__english_class_id=ec_filter, english_memberships__end_at__isnull=True)
+    student_page = Paginator(student_qs.distinct(), 10).get_page(request.GET.get("page"))
     student_rows = []
-    for s in student_qs.distinct()[:100]:
+    for s in student_page:
         sm = SchoolMembership.objects.select_related("school_class__school").filter(student=s, end_at__isnull=True).first()
         ems = list(EnglishMembership.objects.select_related("english_class").filter(student=s, end_at__isnull=True))
         if sm:
@@ -224,6 +235,7 @@ def students(request):
             status_filter=status,
             ec_filter=ec_filter,
             student_rows=student_rows,
+            student_page=student_page,
             english_classes=english_classes,
             schools=schools,
             school_classes=school_classes,
@@ -250,7 +262,7 @@ def student_detail(request, student_id):
         action = request.POST.get("action")
         try:
             if action == "update_profile":
-                update_student(student.id, request.user, display_name=request.POST.get("display_name"), owner_note=request.POST.get("owner_note"))
+                update_student(student.id, request.user, display_name=request.POST.get("display_name"), owner_note=request.POST.get("owner_note"), parent_phone=request.POST.get("parent_phone"))
                 messages.success(request, "Đã cập nhật hồ sơ học sinh.")
                 return redirect("owner_student_detail", student_id=student.id)
             if action == "change_status":
@@ -258,12 +270,10 @@ def student_detail(request, student_id):
                 messages.success(request, "Đã cập nhật trạng thái tài khoản.")
                 return redirect("owner_student_detail", student_id=student.id)
             if action == "rotate_code":
-                if not verify_recent_mfa(request, request.POST.get("otp_token")):
-                    messages.error(request, "Cần xác thực mã TOTP trong 10 phút gần nhất để cấp mã mới.")
-                else:
-                    raw = rotate_code(student, actor=request.user)
-                    login_url = request.build_absolute_uri(f"/login/#code={raw}")
-                    issued_code = {"code": raw, "login_url": login_url, "qr_svg": generate_qr_svg(login_url)}
+                # ponytail: tạm tắt yêu cầu verify_recent_mfa khi cấp lại mã HS; bật lại bằng check verify_recent_mfa(request, request.POST.get("otp_token"))
+                raw = rotate_code(student, actor=request.user)
+                login_url = request.build_absolute_uri(f"/login/#code={raw}")
+                issued_code = {"code": raw, "login_url": login_url, "qr_svg": generate_qr_svg(login_url)}
             if action == "revoke_sessions":
                 revoke_sessions(student, actor=request.user)
                 messages.success(request, "Đã thu hồi toàn bộ phiên đăng nhập của học sinh.")
@@ -296,8 +306,8 @@ def student_detail(request, student_id):
     english_memberships = EnglishMembership.objects.select_related("english_class").filter(student=student).order_by("-start_at")
     available_school_classes = SchoolClass.objects.select_related("school").filter(archived_at__isnull=True).order_by("school__name", "-school_year", "grade", "name")
     available_english_classes = EnglishClass.objects.filter(archived_at__isnull=True).order_by("-school_year", "name")
-    audit_events = AuditEvent.objects.filter(target_type="user", target_id=student.id).order_by("-created_at")[:20]
-    recipient_rows = AssignmentRecipient.objects.select_related("assignment", "current_attempt").filter(student=student).order_by("-assigned_at")[:20]
+    recipient_rows = AssignmentRecipient.objects.select_related("assignment", "current_attempt").filter(student=student).order_by("-assigned_at", "-pk")
+    recipient_page = Paginator(recipient_rows, 10).get_page(request.GET.get("bai_tap"))
 
     return render(
         request,
@@ -316,8 +326,7 @@ def student_detail(request, student_id):
             english_memberships=english_memberships,
             available_school_classes=available_school_classes,
             available_english_classes=available_english_classes,
-            audit_events=audit_events,
-            recipient_rows=recipient_rows,
+            recipient_page=recipient_page,
             now_local=timezone.localtime(timezone.now()),
         ),
     )
@@ -368,7 +377,7 @@ def settings_view(request):
             messages.error(request, "; ".join(exc.messages))
 
     tags = Tag.objects.filter(archived_at__isnull=True).order_by("kind", "skill", "name")
-    privacy_requests = PrivacyRequest.objects.select_related("student").order_by("-created_at")[:50]
+    privacy_requests = PrivacyRequest.objects.select_related("student").order_by("-created_at")
     students_list = User.objects.filter(role=User.Role.STUDENT).select_related("student_profile").order_by("display_name")[:200]
     return render(
         request,

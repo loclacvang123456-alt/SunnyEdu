@@ -81,7 +81,7 @@ def student_image(request, attempt_id, image_id):
     if (recipient.state != 'ASSIGNED' or recipient.current_attempt_id != attempt.id
             or assignment.status != 'PUBLISHED' or now < assignment.opens_at
             or attempt.status not in ('IN_PROGRESS', 'SUBMITTED', 'GRADED')
-            or (attempt.status == 'IN_PROGRESS' and now >= assignment.late_until)
+            or (attempt.status == 'IN_PROGRESS' and assignment.late_until is not None and now >= assignment.late_until)
             or not course_access_allowed(assignment.id, user)):
         return api_error('NOT_FOUND', 'Không tìm thấy ảnh.', 404)
     model = match_image_model()

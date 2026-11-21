@@ -152,6 +152,9 @@ def create_and_attach_course_exercise(actor, course_id, title, difficulty, tag_i
     from apps.assignments.models import AssignmentClass
     AssignmentClass.objects.bulk_create([AssignmentClass(assignment=assignment, english_class=c) for c in classes])
     exercise = add_course_exercise(actor, course_id, assignment.id, difficulty, tag_ids or ())
+    if not tag_ids:
+        from .auto_tagging import sync_course_exercise_auto_tags
+        sync_course_exercise_auto_tags(exercise, extra_text=clean_title)
     return exercise, exam, version
 
 
@@ -194,8 +197,11 @@ def add_course_exercise(actor, course_id, assignment_id, difficulty, tag_ids):
     tags = list(CourseTag.objects.filter(pk__in=ids))
     if len(tags) != len(ids):
         raise ValidationError('Có nhãn không tồn tại.')
-    exercise, _ = CourseExercise.objects.update_or_create(course=course, assignment=assignment, defaults={'difficulty': int(difficulty)})
+    exercise, created = CourseExercise.objects.update_or_create(course=course, assignment=assignment, defaults={'difficulty': int(difficulty)})
     exercise.tags.set(tags)
+    if created and not ids:
+        from .auto_tagging import sync_course_exercise_auto_tags
+        sync_course_exercise_auto_tags(exercise)
     AuditEvent.objects.create(actor=actor, action='course.exercise.save', target_type='course', target_id=course.id, metadata={'assignment_id': str(assignment.id)})
     return exercise
 

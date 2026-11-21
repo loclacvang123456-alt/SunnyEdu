@@ -11,6 +11,26 @@ function el(tag, props = {}, children = []) {
   return node;
 }
 
+function renderChoiceAnswers(response) {
+  const options = response.options || [];
+  const selected = new Set((response.selected_options || []).map(String));
+  const correct = new Set((response.correct_options || []).map(String));
+  const container = el("div", { className: "grading-choice-answers" });
+  const list = el("ul", { className: "grading-choice-list" });
+  for (const option of options) {
+    const picked = selected.has(String(option.id));
+    const wrong = correct.size > 0 && picked && !correct.has(String(option.id));
+    const right = picked && correct.has(String(option.id));
+    list.append(el("li", {
+      className: `grading-choice-option${wrong ? " is-wrong" : right ? " is-correct" : ""}`,
+      text: `${option.key}. ${option.content}`,
+      ...(wrong || right ? {"aria-label": `${option.key}. ${option.content} — ${wrong ? "đáp án sai" : "đáp án đúng"}`} : {}),
+    }));
+  }
+  container.append(list);
+  return container;
+}
+
 function initGradingDetail() {
   const root = document.getElementById("grading-root");
   if (!root) return;
@@ -29,71 +49,6 @@ function initGradingDetail() {
     noticeEl.hidden = false;
     noticeEl.className = isError ? "notice notice-error" : "notice";
     noticeEl.textContent = msg;
-  }
-
-  function renderErrorList(container, r) {
-    container.replaceChildren();
-    const activeErrors = r.errors || [];
-    if (!activeErrors.length) {
-      container.append(el("p", { className: "muted", text: "Chưa gắn nhãn lỗi nào." }));
-      return;
-    }
-    for (const err of activeErrors) {
-      const card = el("div", { style: "padding:8px 10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px" }, [
-        el("div", { style: "display:flex;justify-content:space-between;gap:8px;align-items:center" }, [
-          el("strong", { text: `${err.tag_name} (${err.source})`, "data-error-help": err.tag_name }),
-          err.withdrawn_at ? el("span", { className: "pill pill-danger", text: "Đã rút lại" }) : el("span", { className: "pill", text: "Hiệu lực" }),
-        ]),
-        err.note ? el("div", { className: "muted", text: err.note }) : null,
-      ]);
-
-      if (!err.withdrawn_at && currentData.status !== "VOID") {
-        const actions = el("div", { className: "inline-form", style: "margin-top:6px" });
-        if (err.source === "AI") {
-          const accBtn = el("button", { type: "button", className: "button secondary", text: "Xác nhận lỗi AI" });
-          const rejBtn = el("button", { type: "button", className: "button secondary danger-btn", text: "Bác bỏ lỗi AI" });
-          accBtn.addEventListener("click", () => reviewAiError(err.id, true));
-          rejBtn.addEventListener("click", () => reviewAiError(err.id, false));
-          actions.append(accBtn, rejBtn);
-        } else {
-          const wBtn = el("button", { type: "button", className: "button secondary", text: "Rút lại lỗi" });
-          wBtn.addEventListener("click", () => toggleTeacherError(r.response_id, { tag_id: err.tag_id, withdraw: true }));
-          actions.append(wBtn);
-        }
-        card.append(actions);
-      }
-      container.append(card);
-    }
-  }
-
-  async function reviewAiError(occurrenceId, accept) {
-    const res = await fetch(`/api/v1/owner/errors/${occurrenceId}/teacher-review/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
-      body: JSON.stringify({ reviewed: accept, teacher_note: "" }),
-    });
-    const payload = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      showNotice(payload.error?.message || "Không thể duyệt nhãn AI.", true);
-      return;
-    }
-    showNotice(accept ? "Đã xác nhận nhãn lỗi AI." : "Đã bác bỏ nhãn lỗi AI.");
-    await load();
-  }
-
-  async function toggleTeacherError(responseId, body) {
-    const res = await fetch(`/api/v1/owner/responses/${responseId}/errors/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
-      body: JSON.stringify({ expected_revision: currentData.revision, ...body }),
-    });
-    const payload = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      showNotice(payload.error?.message || "Thao tác nhãn lỗi thất bại.", true);
-      return;
-    }
-    showNotice(body.withdraw ? "Đã rút lại nhãn lỗi." : "Đã lưu nhãn lỗi giáo viên.");
-    await load();
   }
 
   function render() {
@@ -115,12 +70,7 @@ function initGradingDetail() {
       leftCol.append(el("p", { text: r.prompt }));
 
       if (r.type === "SINGLE_CHOICE" || r.type === "MULTIPLE_CHOICE" || r.type === "STRESS_CHOICE") {
-        const ul = el("ul");
-        for (const opt of r.options || []) {
-          const picked = (r.selected_options || []).includes(opt.id);
-          ul.append(el("li", { text: `${opt.key}. ${opt.content}${picked ? "  [Học sinh chọn]" : ""}` }));
-        }
-        leftCol.append(ul);
+        leftCol.append(renderChoiceAnswers(r));
       } else if (r.type === "MATCH_IMAGE") {
         const wordMap = new Map((r.match_words || []).map((word) => [word.id, word.text]));
         const chosen = new Map((r.match_pairs || []).map((pair) => [pair.image_id, pair.word_id]));
@@ -161,7 +111,9 @@ function initGradingDetail() {
       const rightCol = el("div", { className: "card-stack" });
 
       if (r.type === "SINGLE_CHOICE" || r.type === "MULTIPLE_CHOICE" || r.type === "WORD_ORDER" || r.type === "STRESS_CHOICE" || r.type === "MATCH_IMAGE" || r.type === "SENTENCE_TRANSFORM") {
-        rightCol.append(el("div", { className: "pill pill-success", text: `Đã chấm tự động: ${r.grade ? r.grade.points : "0.00"} / ${r.max_points} điểm` }));
+        const scoreClass = !r.grade ? "pill-warning" : Number(r.grade.points) < Number(r.max_points) ? "pill-danger" : "pill-success";
+        const scoreText = r.grade ? `Đã chấm tự động: ${r.grade.points} / ${r.max_points} điểm` : "Chưa có điểm";
+        rightCol.append(el("div", { className: `pill ${scoreClass}`, text: scoreText }));
       } else {
         const isGraded = r.grade && r.grade.source === "TEACHER";
         if (isGraded || currentData.status === "GRADED") {
@@ -230,7 +182,8 @@ function initGradingDetail() {
         reasonInp.placeholder = currentData.latest_release ? "Lý do sửa điểm sau khi đã công bố (bắt buộc)" : "Lý do chấm lại (nếu có)";
         reasonInp.disabled = isVoid;
 
-        const saveBtn = el("button", { type: "submit", className: "button", text: "Lưu điểm nháp" });
+        const saveBtn = el("button", { type: "submit", className: "button primary st-action-btn", title: "Lưu điểm nháp", "aria-label": "Lưu điểm nháp" });
+        saveBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
         saveBtn.disabled = isVoid;
 
         gradeForm.append(
@@ -278,31 +231,60 @@ function initGradingDetail() {
       }
 
       const errorSection = el("div", { style: "border-top:1px solid #e2e8f0;padding-top:12px" });
-      errorSection.append(el("h3", { text: "Nhãn lỗi", "data-error-help": "" }));
-      const errListBox = el("div");
-      renderErrorList(errListBox, r);
-      errorSection.append(errListBox);
-
-      if (!isVoid && (currentData.error_tags || []).length) {
+      errorSection.append(el("div", {className: "grading-error-heading"}, [el("h3", { text: "Nhãn lỗi", "data-error-help": "" })]));
+      const matchingTags = (currentData.error_tags || []).filter(t => t.skill === r.skill);
+      const activeErrors = (r.errors || []).filter(error => !error.withdrawn_at);
+      const hasWithdrawn = (r.errors || []).some(error => Boolean(error.withdrawn_at));
+      const currentError = activeErrors.find(error => error.source === "TEACHER") || activeErrors[0];
+      const suggestion = !currentError && !hasWithdrawn ? r.default_error_tag_name || "" : "";
+      const suggestedId = suggestion ? r.default_error_tag_id : "";
+      if (matchingTags.length || currentError) {
         const tagSelect = document.createElement("select");
-        const matchingTags = currentData.error_tags.filter((t) => t.skill === r.skill);
-        const tagsToShow = matchingTags.length ? matchingTags : currentData.error_tags;
-        for (const t of tagsToShow) {
-          tagSelect.append(el("option", { value: t.id, text: `${t.name} (${t.skill})` }));
+        tagSelect.setAttribute("aria-label", "Chọn nhãn lỗi");
+        tagSelect.className = "grading-error-select";
+        tagSelect.append(el("option", { value: "", text: "Không chọn nhãn lỗi" }));
+        for (const t of matchingTags) {
+          tagSelect.append(el("option", { value: t.id, text: t.name }));
         }
-        const selectedHelp = el("span", { "data-error-help-select": "" });
-        selectedHelp.dataset.errorHelp = tagsToShow[0]?.name || "";
-        tagSelect.addEventListener("change", () => {
-          selectedHelp.dataset.errorHelp = tagsToShow.find(t => String(t.id) === tagSelect.value)?.name || "";
+        if (currentError && !matchingTags.some(t => t.id === currentError.tag_id)) {
+          tagSelect.append(el("option", { value: currentError.tag_id, text: `${currentError.tag_name} (đã lưu trữ)` }));
+        }
+        tagSelect.value = currentError?.tag_id || suggestedId || "";
+        tagSelect.disabled = isVoid || !currentData.is_current;
+        const selectedHelp = el("span", { "data-error-help": currentError?.tag_name || suggestion });
+        const warning = el("span", {className: "grading-error-suggestion", title: "Nhãn gợi ý tự động. Giáo viên có thể đổi nếu chưa phù hợp.", "aria-label": "Nhãn gợi ý tự động, cần kiểm tra", text: "!"});
+        warning.hidden = !(suggestedId || (currentError && currentError.source !== "TEACHER"));
+        let savedValue = tagSelect.value;
+        tagSelect.addEventListener("change", async () => {
+          const chosen = tagSelect.value;
+          const label = matchingTags.find(t => t.id === chosen)?.name || "";
+          selectedHelp.dataset.errorHelp = label;
+          const selects = [...listEl.querySelectorAll(".grading-error-select:not(:disabled)")];
+          selects.forEach(select => { select.disabled = true; });
+          try {
+            const res = await fetch(`/api/v1/owner/responses/${r.response_id}/errors/`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-CSRFToken": csrf },
+              body: JSON.stringify({ expected_revision: currentData.revision, tag_id: chosen, replace_selection: true }),
+            });
+            const payload = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(payload.error?.message || "Không lưu được nhãn lỗi.");
+            currentData.revision = payload.data.attempt_revision;
+            revEl.textContent = String(currentData.revision);
+            savedValue = chosen;
+            warning.hidden = true;
+            showNotice("Đã lưu nhãn lỗi.");
+          } catch (error) {
+            tagSelect.value = savedValue;
+            selectedHelp.dataset.errorHelp = savedValue ? (matchingTags.find(t => t.id === savedValue)?.name || currentError?.tag_name || "") : "";
+            showNotice(error.message || "Không lưu được nhãn lỗi.", true);
+          } finally {
+            selects.forEach(select => { select.disabled = false; });
+          }
         });
-        const errNote = el("input", { placeholder: "Ghi chú lỗi hoặc đoạn trích cần sửa" });
-        const errBtn = el("button", { type: "button", className: "button secondary", text: "Gắn nhãn lỗi" });
-        errBtn.addEventListener("click", () => toggleTeacherError(r.response_id, {
-          tag_id: tagSelect.value,
-          note: errNote.value.trim(),
-          withdraw: false,
-        }));
-        errorSection.append(el("div", { className: "inline-form", style: "margin-top:8px" }, [tagSelect, selectedHelp, errNote, errBtn]));
+        errorSection.append(el("div", { className: "grading-error-row" }, [selectedHelp, tagSelect, warning]));
+      } else {
+        errorSection.append(el("p", {className: "muted", text: "Chưa có nhãn lỗi cho kỹ năng này."}));
       }
 
       rightCol.append(errorSection);

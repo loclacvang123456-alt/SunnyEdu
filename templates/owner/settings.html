@@ -7,7 +7,11 @@
     <p>Quản lý bảo mật, nhãn chủ đề và yêu cầu dữ liệu học sinh.</p>
   </div>
   <div class="inline-form">
-    <a class="button secondary" href="{% url 'two_factor:profile' %}">Quản lý xác thực hai bước</a>
+    <a class="button primary st-action-btn" href="{% url 'two_factor:profile' %}" title="Quản lý xác thực hai bước" aria-label="Quản lý xác thực hai bước">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </a>
   </div>
 </header>
 
@@ -19,7 +23,11 @@
       {% if recent_mfa %}<span class="pill pill-success">Đang hợp lệ</span>{% else %}<span class="pill pill-warning">Cần nhập lại TOTP cho thao tác nhạy cảm</span>{% endif %}
     </p>
   </div>
-  <button type="button" class="button primary" data-modal-open="modal-verify-mfa">Xác thực lại TOTP</button>
+  <button type="button" class="button primary st-action-btn" data-modal-open="modal-verify-mfa" title="Xác thực lại TOTP" aria-label="Xác thực lại TOTP">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+    </svg>
+  </button>
 </section>
 
 <section class="panel" style="margin-bottom:24px">
@@ -29,18 +37,27 @@
     {% csrf_token %}<input type="hidden" name="action" value="save_theme">
     <label for="site-theme">Chủ đề</label>
     <select id="site-theme" name="theme">{% for value, label in theme_choices %}<option value="{{ value }}" {% if theme_selection == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
-    <button class="button primary" type="submit">Lưu chủ đề</button>
+    <button class="button primary st-action-btn" type="submit" title="Lưu chủ đề" aria-label="Lưu chủ đề">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </button>
   </form>
 </section>
 
 <div class="card-stack">
   <section class="panel">
     <div class="section-heading">
-      <h2 data-error-help="">Nhãn chủ đề và lỗi ({{ tags|length }})</h2>
-      <button type="button" class="button primary" data-modal-open="modal-create-sys-tag">+ Thêm nhãn</button>
+  <h2 data-error-help="" data-error-help-text="Nhãn chủ đề cho biết câu hỏi kiểm tra kiến thức gì, ví dụ ‘Quá khứ đơn’. Nhãn lỗi giúp ghi nhận học sinh sai ở đâu, ví dụ ‘Chia động từ’. Các nhãn này giúp giáo viên xem và theo dõi trong báo cáo.">Nhãn chủ đề và lỗi ({{ tags|length }})</h2>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-sys-tag" title="Thêm nhãn" aria-label="Thêm nhãn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      </button>
     </div>
     <div class="table-wrap" style="max-height:360px;overflow:auto">
-      <table class="data-table">
+      <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
         <thead><tr><th>Loại</th><th>Kỹ năng</th><th>Tên</th><th></th></tr></thead>
         <tbody>
           {% for t in tags %}
@@ -51,11 +68,17 @@
                 {% csrf_token %}
                 <input type="hidden" name="action" value="archive_tag">
                 <input type="hidden" name="tag_id" value="{{ t.id }}">
-                <button type="submit" class="text-button" style="min-height:auto;padding:4px 8px">Lưu trữ</button>
+                <button type="submit" class="button primary st-action-btn" title="Lưu trữ" aria-label="Lưu trữ">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="21 8 21 21 3 21 3 8"/>
+                    <rect x="1" y="3" width="22" height="5"/>
+                    <line x1="10" y1="12" x2="14" y2="12"/>
+                  </svg>
+                </button>
               </form>
             </td>
           </tr>
-          {% empty %}<tr><td colspan="4" class="empty">Chưa có tag nào.</td></tr>{% endfor %}
+          {% empty %}<tr class="empty-row"><td colspan="4" class="empty">Chưa có tag nào.</td></tr>{% endfor %}
         </tbody>
       </table>
     </div>
@@ -64,10 +87,15 @@
   <section class="panel">
     <div class="section-heading">
       <h2>Yêu cầu xuất / xóa dữ liệu riêng tư học sinh</h2>
-      <button type="button" class="button secondary" data-modal-open="modal-create-privacy">+ Tạo yêu cầu dữ liệu</button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-privacy" title="Tạo yêu cầu dữ liệu" aria-label="Tạo yêu cầu dữ liệu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      </button>
     </div>
     <div class="table-wrap">
-      <table class="data-table">
+      <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
         <thead><tr><th>Học sinh</th><th>Loại</th><th>Trạng thái</th><th>Lý do</th><th>Báo cáo / Thao tác</th></tr></thead>
         <tbody>
           {% for r in privacy_requests %}
@@ -83,17 +111,27 @@
                   <input type="hidden" name="action" value="execute_privacy">
                   <input type="hidden" name="request_id" value="{{ r.id }}">
                   {% if not recent_mfa %}<input name="otp_token" placeholder="TOTP" required style="width:110px">{% endif %}
-                  <button type="submit" class="button {% if r.kind == 'ERASE' %}danger-btn{% else %}primary{% endif %}">Phê duyệt &amp; thực thi</button>
+                  <button type="submit" class="button primary st-action-btn" title="Phê duyệt &amp; thực thi" aria-label="Phê duyệt &amp; thực thi">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </button>
                 </form>
               {% else %}
                 <code>{{ r.report }}</code>
                 {% if r.kind == 'EXPORT' %}
-                  <a class="button secondary" href="/api/v1/owner/privacy-requests/{{ r.id }}/export/">Tải JSON</a>
+                  <a class="button primary st-action-btn" href="/api/v1/owner/privacy-requests/{{ r.id }}/export/" title="Tải JSON" aria-label="Tải JSON">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                  </a>
                 {% endif %}
               {% endif %}
             </td>
           </tr>
-          {% empty %}<tr><td colspan="5" class="empty">Chưa có yêu cầu dữ liệu nào.</td></tr>{% endfor %}
+          {% empty %}<tr class="empty-row"><td colspan="5" class="empty">Chưa có yêu cầu dữ liệu nào.</td></tr>{% endfor %}
         </tbody>
       </table>
     </div>

@@ -28,8 +28,8 @@ def check_window(recipient):
     a = recipient.assignment
     now = timezone.now()
     eff_due = recipient.due_at_override or a.due_at
-    eff_late = max(a.late_until, eff_due)
-    if (recipient.state != 'ASSIGNED' or a.status != 'PUBLISHED' or not a.opens_at <= now < eff_late
+    eff_late = max(a.late_until, eff_due) if a.late_until is not None else None
+    if (recipient.state != 'ASSIGNED' or a.status != 'PUBLISHED' or not (a.opens_at <= now and (eff_late is None or now < eff_late))
             or not course_access_allowed(a.id, recipient.student)):
         raise PermissionDenied('Bài này hiện không nhận câu trả lời.')
 
@@ -186,7 +186,8 @@ def submit_attempt(attempt_id, student, expected_revision, key):
     import hashlib
     from decimal import Decimal
     from .models import SubmissionRequest
-    from apps.grading.models import Grade, CriterionScore, ErrorOccurrence
+    from apps.grading.models import Grade, CriterionScore
+    from apps.grading.services import ensure_suggested_error
     digest = hashlib.sha256(str(expected_revision).encode()).hexdigest()
     attempt = Attempt.objects.select_for_update().select_related('recipient__assignment').get(pk=attempt_id, recipient__student=student)
     if not course_access_allowed(attempt.recipient.assignment_id, student):
@@ -212,15 +213,12 @@ def submit_attempt(attempt_id, student, expected_revision, key):
     pending = False
     for response in responses:
         q = response.question
+        grade = None
         if q.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'STRESS_CHOICE'):
             selected = {o.id for o in response.options.all()}
             correct = {x.option_id for x in q.answer_keys.all()}
             points = q.max_points if selected == correct and bool(correct) else Decimal('0')
-            Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
-            if points == 0 and selected:
-                for item in q.question_tags.all():
-                    if item.tag.kind == 'ERROR':
-                        ErrorOccurrence.objects.create(response=response, tag=item.tag, source='RULE', confidence='SIGNAL')
+            grade = Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
         elif q.type == 'MATCH_IMAGE':
             images = list(q.match_images.select_related('answer_key', 'image_asset'))
             if any(image.image_asset.status != 'READY' for image in images):
@@ -228,11 +226,7 @@ def submit_attempt(attempt_id, student, expected_revision, key):
             correct = {str(image.id): str(image.answer_key.word_id) for image in images}
             selected = {pair['image_id']: pair['word_id'] for pair in response.match_pairs}
             points = q.max_points if selected == correct and len(correct) >= 2 else Decimal('0')
-            Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
-            if points == 0 and selected:
-                for item in q.question_tags.all():
-                    if item.tag.kind == 'ERROR':
-                        ErrorOccurrence.objects.create(response=response, tag=item.tag, source='RULE', confidence='SIGNAL')
+            grade = Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
         elif q.type == 'WORD_ORDER':
             options = list(q.options.all())
             selected = response.ordered_option_ids
@@ -240,11 +234,7 @@ def submit_attempt(attempt_id, student, expected_revision, key):
             correct = [option.content for option in options]
             selected_words = [by_id.get(option_id) for option_id in selected]
             points = q.max_points if len(selected_words) == len(correct) and selected_words == correct else Decimal('0')
-            Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
-            if points == 0 and selected:
-                for item in q.question_tags.all():
-                    if item.tag.kind == 'ERROR':
-                        ErrorOccurrence.objects.create(response=response, tag=item.tag, source='RULE', confidence='SIGNAL')
+            grade = Grade.objects.create(response=response, source='AUTO', points=points, graded_at=now)
         elif q.type == 'SENTENCE_TRANSFORM':
             import json
             from .sentence_transform_service import grade_sentence_transform
@@ -252,17 +242,13 @@ def submit_attempt(attempt_id, student, expected_revision, key):
             standard_answer = options[0].content if options else (q.explanation or '')
             student_answer = response.text_answer or ''
             res = grade_sentence_transform(student_answer, standard_answer, q.max_points)
-            Grade.objects.create(
+            grade = Grade.objects.create(
                 response=response,
                 source='AUTO',
                 points=res['points'],
                 feedback=json.dumps(res, default=str),
                 graded_at=now,
             )
-            if res['points'] == 0 and student_answer:
-                for item in q.question_tags.all():
-                    if item.tag.kind == 'ERROR':
-                        ErrorOccurrence.objects.create(response=response, tag=item.tag, source='RULE', confidence='SIGNAL')
         elif (q.type == 'TEXT' and not response.text_answer.strip()) or (q.type == 'AUDIO' and not response.audio_asset_id):
             grade = Grade.objects.create(response=response, source='AUTO', points=Decimal('0'), feedback='Không có câu trả lời', graded_at=now)
             criteria = list(q.criteria.all())
@@ -271,6 +257,8 @@ def submit_attempt(attempt_id, student, expected_revision, key):
             CriterionScore.objects.bulk_create([CriterionScore(grade=grade, criterion=c, level=0) for c in criteria])
         else:
             pending = True
+        if grade is not None:
+            ensure_suggested_error(response, grade.points)
     attempt.submitted_at = now
     attempt.due_at_at_submit = attempt.recipient.due_at_override or attempt.recipient.assignment.due_at
     attempt.is_late = now > attempt.due_at_at_submit

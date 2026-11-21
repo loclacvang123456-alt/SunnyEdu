@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import io
+import re
 import secrets
 import uuid
 from datetime import timedelta
@@ -134,7 +135,7 @@ def create_student(display_name, student_ref=None, owner_note="", actor=None):
 
 
 @transaction.atomic
-def update_student(student_id, actor, display_name=None, status=None, owner_note=None, reason=""):
+def update_student(student_id, actor, display_name=None, status=None, owner_note=None, reason="", parent_phone=None):
     """Update student name/note or transition ACTIVE/SUSPENDED/ARCHIVED status with session revocation."""
     student = User.objects.select_for_update().get(pk=student_id, role=User.Role.STUDENT)
     fields = ["updated_at"]
@@ -144,9 +145,22 @@ def update_student(student_id, actor, display_name=None, status=None, owner_note
             raise ValidationError("Tên học sinh phải có từ 1 đến 120 ký tự.")
         student.display_name = name
         fields.append("display_name")
-    if owner_note is not None and hasattr(student, "student_profile"):
-        student.student_profile.owner_note = owner_note.strip()
-        student.student_profile.save(update_fields=["owner_note", "updated_at"])
+    if parent_phone is not None:
+        phone = re.sub(r"[\s.()-]", "", parent_phone)
+        if phone.startswith("+84"):
+            phone = "0" + phone[3:]
+        if phone and not re.fullmatch(r"0[0-9]{9}", phone):
+            raise ValidationError("Số điện thoại phụ huynh phải có 10 chữ số và bắt đầu bằng 0.")
+    if hasattr(student, "student_profile"):
+        profile_fields = []
+        if owner_note is not None:
+            student.student_profile.owner_note = owner_note.strip()
+            profile_fields.append("owner_note")
+        if parent_phone is not None:
+            student.student_profile.parent_phone = phone
+            profile_fields.append("parent_phone")
+        if profile_fields:
+            student.student_profile.save(update_fields=[*profile_fields, "updated_at"])
     if status is not None and status != student.status:
         if status not in User.Status.values:
             raise ValidationError("Trạng thái học sinh không hợp lệ.")
@@ -213,7 +227,7 @@ def export_student_data(student_id, actor):
     ]
     AuditEvent.objects.create(actor=actor, action="privacy.export", target_type="user", target_id=student.id)
     return {
-        "student": {"id": str(student.id), "student_ref": profile.student_ref if profile else "", "display_name": student.display_name, "status": student.status},
+        "student": {"id": str(student.id), "student_ref": profile.student_ref if profile else "", "display_name": student.display_name, "status": student.status, "parent_phone": profile.parent_phone if profile else ""},
         "school_memberships": school_memberships,
         "english_memberships": english_memberships,
         "assignments": recipients,
@@ -259,7 +273,7 @@ def execute_privacy_request(request_id, actor):
     student.archived_at = student.archived_at or now
     student.auth_epoch += 1
     student.save(update_fields=["display_name", "status", "archived_at", "auth_epoch", "updated_at"])
-    StudentProfile.objects.filter(user=student).update(student_ref=f"ERASED-{str(student.id)[:18]}", owner_note="")
+    StudentProfile.objects.filter(user=student).update(student_ref=f"ERASED-{str(student.id)[:18]}", owner_note="", parent_phone="")
 
     responses = Response.objects.select_for_update().filter(attempt__recipient__student=student)
     audio_ids = list(responses.exclude(audio_asset_id__isnull=True).values_list("audio_asset_id", flat=True))

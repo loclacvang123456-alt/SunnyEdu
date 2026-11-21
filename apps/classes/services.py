@@ -254,9 +254,9 @@ def parse_students(data, filename):
     if filename.lower().endswith(".csv"):
         try:
             reader = csv.DictReader(io.StringIO(data.decode("utf-8-sig"), newline=""))
-            if reader.fieldnames != list(STUDENT_FIELDS):
+            if not reader.fieldnames or reader.fieldnames[:len(STUDENT_FIELDS)] != list(STUDENT_FIELDS):
                 raise ValidationError("Cột CSV không khớp mẫu students.")
-            rows = [r for r in reader if any((v or "").strip() for v in r.values())]
+            rows = [r for r in reader if any((r.get(k) or "").strip() for k in STUDENT_FIELDS)]
         except UnicodeDecodeError as exc:
             raise ValidationError("CSV phải dùng UTF-8.") from exc
     elif filename.lower().endswith(".xlsx"):
@@ -271,15 +271,17 @@ def parse_students(data, filename):
                 raise ValidationError("XLSX phải có một sheet students.")
             values = wb["students"].iter_rows()
             first = next(values, None)
-            if not first or [c.value for c in first] != list(STUDENT_FIELDS):
+            if not first or [c.value for c in first[:len(STUDENT_FIELDS)]] != list(STUDENT_FIELDS):
                 raise ValidationError("Cột XLSX không khớp mẫu students.")
             rows = []
             for cells in values:
-                if any(c.data_type == "f" for c in cells):
+                cell_list = list(cells)
+                if any(getattr(c, "data_type", None) == "f" for c in cell_list):
                     raise ValidationError("Không nhận công thức XLSX.")
-                if all(c.value is None or str(c.value).strip() == "" for c in cells):
+                core_cells = (cell_list + [None] * max(0, len(STUDENT_FIELDS) - len(cell_list)))[:len(STUDENT_FIELDS)]
+                if all(c is None or c.value is None or str(c.value).strip() == "" for c in core_cells):
                     continue
-                rows.append({k: "" if c.value is None else str(c.value) for k, c in zip(STUDENT_FIELDS, cells)})
+                rows.append({k: "" if (c is None or c.value is None) else str(c.value) for k, c in zip(STUDENT_FIELDS, core_cells)})
             wb.close()
         except (zipfile.BadZipFile, KeyError, ValueError) as exc:
             raise ValidationError("XLSX không hợp lệ.") from exc

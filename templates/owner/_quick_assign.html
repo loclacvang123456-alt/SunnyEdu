@@ -1,0 +1,83 @@
+<div id="modal-quick-assign" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="quick-assign-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="quick-assign-title">Giao bài tập</h2>
+      <button type="button" class="modal-close" data-modal-close aria-label="Đóng">×</button>
+    </div>
+    <form method="post" action="{% url 'owner_assignments' %}" id="quick-assign-form">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="quick_assign">
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="quick-assign-exam-search">Chọn bài tập</label>
+          <input type="search" id="quick-assign-exam-search" placeholder="Tìm bài tập..." autocomplete="off">
+          <div class="checkbox-list" id="quick-assign-exam-list" style="max-height:180px;overflow-y:auto;margin-top:8px">
+            {% for version in quick_versions %}
+              <label><input type="checkbox" name="version_ids" value="{{ version.id }}" data-title="{{ version.exam.title }}" data-has-game="{% if version.has_game_questions %}true{% else %}false{% endif %}"> <span>{{ version.exam.title }} · v{{ version.number }}</span></label>
+            {% empty %}<p class="empty">Chưa có đề đã phát hành.</p>{% endfor %}
+          </div>
+          <p class="muted" id="quick-assign-exam-empty" hidden>Không tìm thấy bài tập.</p>
+        </div>
+        <div class="field-group">
+          <label for="quick-assign-due">Hạn nộp</label>
+          <input type="datetime-local" name="due_at" id="quick-assign-due" value="{{ default_due|date:'Y-m-d\TH:i' }}" required>
+        </div>
+        <div class="field-group">
+          <label for="quick-assign-late">Nộp sau hạn</label>
+          <select name="late_policy" id="quick-assign-late"><option value="BLOCK">Không cho phép</option><option value="ALLOW">Cho phép</option></select>
+        </div>
+        <div class="field-group" id="quick-assign-game" hidden>
+          <label class="check-row"><input type="checkbox" name="game_feedback_enabled" {% if missing_pirate_assets %}disabled{% endif %}> <span>Bắn thuyền</span></label>
+          <p class="hint">Chỉ áp dụng cho bài có câu trắc nghiệm một đáp án phù hợp.</p>
+          {% if missing_pirate_assets %}<p class="hint">Game chưa đủ hình ảnh để sử dụng.</p>{% endif %}
+        </div>
+        <div class="field-group">
+          <label>Chọn lớp nhận bài</label>
+          <input type="search" id="quick-assign-class-search" placeholder="Tìm lớp..." aria-label="Tìm lớp nhận bài" autocomplete="off">
+          <div class="checkbox-list" id="quick-assign-class-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
+            {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
+          </div>
+          <p class="muted" id="quick-assign-class-empty" hidden>Không tìm thấy lớp.</p>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Giao bài</button></div>
+    </form>
+  </div>
+</div>
+<script>
+const normalizeQuickSearch = value => value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+for (const kind of ['class', 'exam']) {
+  const search = document.getElementById(`quick-assign-${kind}-search`);
+  const labels = Array.from(document.querySelectorAll(`#quick-assign-${kind}-list label`));
+  search.addEventListener('input', function () {
+    const query = normalizeQuickSearch(this.value.trim());
+    let visible = 0;
+    labels.forEach(label => {
+      const matches = normalizeQuickSearch(label.textContent).includes(query);
+      label.style.display = matches ? '' : 'none';
+      if (matches) visible++;
+    });
+    document.getElementById(`quick-assign-${kind}-empty`).hidden = !query || visible > 0;
+  });
+}
+const quickExamChecks = Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
+function syncQuickAssignment() {
+  const selected = quickExamChecks.filter(input => input.checked);
+  document.getElementById('quick-assign-title').textContent = selected.length === 1 ? selected[0].dataset.title : 'Giao bài tập';
+  const game = document.getElementById('quick-assign-game');
+  game.hidden = !selected.some(input => input.dataset.hasGame === 'true');
+  if (game.hidden) game.querySelector('input').checked = false;
+}
+quickExamChecks.forEach(input => input.addEventListener('change', syncQuickAssignment));
+document.addEventListener('click', function (event) {
+  const button = event.target.closest('[data-modal-open="modal-quick-assign"]');
+  if (!button) return;
+  document.getElementById('quick-assign-form').reset();
+  for (const kind of ['class', 'exam']) {
+    document.getElementById(`quick-assign-${kind}-search`).dispatchEvent(new Event('input'));
+  }
+  quickExamChecks.forEach(input => { input.checked = input.value === button.dataset.versionId; });
+  syncQuickAssignment();
+});
+</script>
+

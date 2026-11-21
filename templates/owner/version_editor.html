@@ -7,7 +7,7 @@
 .choice-variant { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: #334155; font-weight: 650; }
 .choice-variant.is-selected { border-color: #2563eb; background: #eaf2ff; color: #1d4ed8; }
 .choice-variants .hint { width: 100%; margin: 0; }
-.field-help { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; margin-left: 5px; border: 1px solid #94a3b8; border-radius: 50%; color: #475569; font-size: 12px; font-weight: 700; line-height: 1; cursor: help; vertical-align: middle; }
+.field-help { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; margin-right: 5px; border: 1px solid #94a3b8; border-radius: 50%; color: #475569; font-size: 12px; font-weight: 700; line-height: 1; cursor: help; vertical-align: middle; }
 .field-help-text { position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); z-index: 20; width: max-content; max-width: min(260px, 70vw); padding: 9px 11px; border-radius: 9px; background: #173447; color: #fff; box-shadow: 0 4px 16px #0003; white-space: normal; font-size: 12px; line-height: 1.4; font-weight: 400; visibility: hidden; opacity: 0; pointer-events: none; }
 .field-help:hover .field-help-text, .field-help:focus .field-help-text { visibility: visible; opacity: 1; }
 </style>{% endblock %}
@@ -40,16 +40,36 @@
   </div>
   <div class="inline-form">
     {% if version.status != 'ARCHIVED' %}
-      <button type="button" id="add-question-btn" class="button primary">+ Thêm câu hỏi mới</button>
-      <button type="button" class="button secondary" data-modal-open="modal-passages">Tài liệu đọc / nghe</button>
+      <button type="button" id="add-question-btn" class="button primary st-action-btn" title="Thêm câu hỏi mới" aria-label="Thêm câu hỏi mới">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      </button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-passages" title="Tài liệu đọc / nghe" aria-label="Tài liệu đọc / nghe">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+      </button>
     {% endif %}
-    <a class="button secondary" href="{% url 'owner_version_preview' exam.id version.id %}">Xem thử</a>
+    <a class="button primary st-action-btn" href="{% url 'owner_version_preview' exam.id version.id %}" title="Xem thử" aria-label="Xem thử">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    </a>
     {% if version.status == 'DRAFT' and not publish_issues %}
       <form method="post" class="inline-form" style="margin:0">
         {% csrf_token %}
         <input type="hidden" name="action" value="publish_version">
         <input type="hidden" name="expected_revision" value="{{ version.revision }}">
-        <button type="submit" class="button secondary">Mở bài ngay</button>
+        <button type="submit" class="button primary st-action-btn" title="Mở bài ngay" aria-label="Mở bài ngay">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </button>
       </form>
     {% endif %}
   </div>
@@ -78,7 +98,7 @@
 
         <!-- Bước 1: Chọn loại câu hỏi -->
         <div>
-          <label style="margin-bottom:8px" data-help="Chọn cách học sinh trả lời câu hỏi.">1. Chọn loại câu hỏi</label>
+          <label style="margin-bottom:8px" data-help="Chọn cách học sinh làm câu này: chọn đáp án, sắp xếp từ, nối tranh hoặc viết câu trả lời.">1. Chọn loại câu hỏi</label>
           <input type="hidden" id="q-type" value="SINGLE_CHOICE">
           <div id="q-type-grid" class="type-selector-grid">
             <button type="button" class="type-chip is-selected" data-qgroup="choice">
@@ -121,7 +141,7 @@
         <!-- Bước 2: Ngữ cảnh bài đọc / File nghe (3 Header Tabs gắn liền nội dung) -->
         <input type="hidden" id="q-skill" value="READING">
         <div id="q-context-section">
-          <label style="margin-bottom:8px" data-help="Chọn tài liệu chung nếu câu hỏi cần đoạn đọc hoặc âm thanh.">2. Kèm bài đọc hoặc file nghe? <span class="muted" style="font-weight:400">(không bắt buộc)</span></label>
+          <label style="margin-bottom:8px" data-help="Chọn bài đọc hoặc bài nghe nếu học sinh cần xem hoặc nghe trước khi trả lời. Nếu câu hỏi độc lập, không cần chọn.">2. Kèm bài đọc hoặc file nghe? <span class="muted" style="font-weight:400">(không bắt buộc)</span></label>
           <div class="context-tabs-container">
             <div class="context-pills" id="q-context-pills" role="tablist">
               <button type="button" class="context-pill is-selected" data-ctx="NONE" role="tab">Câu hỏi độc lập</button>
@@ -171,7 +191,7 @@
         <!-- Khu vực đáp án động theo từng loại câu hỏi -->
         <div id="q-choice-box" class="card-stack" style="gap:10px">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <label style="margin:0" data-help="Nhập các lựa chọn và đánh dấu đáp án đúng.">Các lựa chọn &amp; tick vào đáp án đúng</label>
+              <label style="margin:0" data-help="Nhập từng lựa chọn, rồi đánh dấu đáp án đúng. Với câu nhiều đáp án, có thể chọn nhiều đáp án đúng.">Các lựa chọn &amp; tick vào đáp án đúng</label>
             <button type="button" id="q-add-opt-ef" class="text-button" style="padding:0;min-height:auto;font-size:13px">+ Thêm đáp án E, F</button>
           </div>
           <div id="q-options-rows" class="card-stack" style="gap:8px"></div>
@@ -200,7 +220,7 @@
 
         <div id="q-match-box" class="card-stack" style="gap:10px" hidden>
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <label style="margin:0" data-help="Thêm từ 2 đến 6 cặp, mỗi cặp gồm một ảnh và từ tiếng Anh tương ứng.">Các cặp tranh và từ tương ứng (2–6 cặp)</label>
+              <label style="margin:0" data-help="Thêm từ 2 đến 6 cặp ảnh và từ đúng với ảnh. Ví dụ: ảnh con mèo đi cùng từ “cat”. Học sinh sẽ nối các cặp này.">Các cặp tranh và từ tương ứng (2-6 cặp)</label>
             <button type="button" id="q-match-add" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">+ Thêm cặp</button>
           </div>
           <div id="q-match-rows" class="card-stack" style="gap:10px"></div>
@@ -238,7 +258,7 @@
           <summary style="cursor:pointer;font-size:13px;color:var(--muted)">Tùy chọn nâng cao (Nhãn chủ đề / Nhãn lỗi)</summary>
           <div class="owner-grid-2" style="margin-top:10px">
             <div class="field-group" style="margin:0"><label for="q-topics">Nhãn chủ đề (tự động nếu bỏ trống)</label><input id="q-topics" placeholder="Ôn tập chung"></div>
-            <div class="field-group" style="margin:0"><label for="q-errors" data-error-help="">Nhãn lỗi (tùy chọn)</label><input id="q-errors" placeholder="Chia động từ"></div>
+            <div class="field-group" style="margin:0"><label for="q-errors" data-error-help="" data-error-help-text="Ghi lỗi câu hỏi này kiểm tra, ví dụ ‘Chia động từ’. Khi học sinh trả lời sai, hệ thống có thể tự gắn nhãn này để theo dõi trong báo cáo; giáo viên nên kiểm tra lại lỗi thực tế. Nhiều nhãn cách nhau bằng dấu |. Có thể để trống.">Nhãn lỗi (tùy chọn)</label><input id="q-errors" placeholder="Chia động từ"></div>
           </div>
         </details>
       </div>
@@ -270,7 +290,13 @@
           <div class="field-group" style="margin:0">
             <label for="pas-audio-file">Tải tệp nghe mới (MP3/M4A)</label>
             <input id="pas-audio-file" type="file" accept="audio/*">
-            <button type="button" id="upload-audio-btn" class="button secondary" style="margin-top:6px;min-height:36px;font-size:13px">Tải tệp lên</button>
+            <button type="button" id="upload-audio-btn" class="button primary st-action-btn" style="margin-top:6px" title="Tải tệp lên" aria-label="Tải tệp lên">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </button>
           </div>
           <div class="field-group" style="margin:0">
             <label for="pas-audio-select">Hoặc chọn tệp đã tải</label>
@@ -290,4 +316,4 @@
 
 <script id="editor-bootstrap" type="application/json">{{ editor_json|safe }}</script>
 {% endblock %}
-{% block extra_scripts %}<script type="module" src="{% static 'js/owner_editor.js' %}?v=20261120v7"></script>{% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'js/owner_editor.js' %}?v=20261121v4"></script>{% endblock %}

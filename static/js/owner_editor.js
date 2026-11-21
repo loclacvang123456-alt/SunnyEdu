@@ -114,18 +114,17 @@ function initVersionEditor() {
   const deleteQBtn = document.getElementById("delete-question-btn");
 
   const fieldHelp = {
-    'q-prompt': 'Nội dung hoặc yêu cầu học sinh cần trả lời.',
-    'q-word-tokens': 'Nhập câu đúng; hệ thống xáo trộn các từ để học sinh sắp xếp.',
-    'q-transform-standard': 'Câu trả lời chuẩn dùng để so sánh khi chấm.',
-    'q-stress-syllables': 'Tách từ thành âm tiết rồi chọn âm tiết được nhấn.',
-    'q-points': 'Số điểm tối đa cho câu hỏi này.',
-    'q-diff': 'Mức độ khó của câu hỏi.',
-    'q-explanation': 'Lời giải thích học sinh có thể xem sau khi có kết quả.',
-    'q-topics': 'Chủ đề dùng để nhóm câu hỏi và theo dõi tiến độ; để trống sẽ tự dùng Ôn tập chung.',
-    'q-errors': 'Các lỗi thường gặp để giáo viên phân loại và theo dõi; có thể để trống.',
-    'qp-text': 'Đoạn văn dùng chung làm ngữ cảnh cho câu hỏi đọc hiểu.',
-    'qp-audio-file': 'Tệp âm thanh học sinh nghe trước khi trả lời.',
-    'q-passage': 'Chọn tài liệu đọc hoặc nghe đã có trong đề.',
+    'q-prompt': 'Viết câu hỏi hoặc yêu cầu mà học sinh sẽ nhìn thấy. Ví dụ: “Chọn đáp án đúng”.',
+    'q-word-tokens': 'Nhập câu đúng theo thứ tự, ví dụ “I like English”. Hệ thống sẽ xáo trộn các từ để học sinh sắp xếp lại.',
+    'q-transform-standard': 'Nhập câu trả lời đúng để hệ thống dùng khi chấm bài. Ví dụ: “She has lived here for five years.”',
+    'q-stress-syllables': 'Tách từ bằng dấu gạch ngang, ví dụ “teach-er”, rồi chọn âm tiết được nhấn.',
+    'q-points': 'Nhập số điểm tối đa học sinh nhận được nếu trả lời đúng câu này.',
+    'q-diff': 'Chọn mức dễ, trung bình hoặc nâng cao để phân loại câu hỏi.',
+    'q-explanation': 'Viết lời giải để học sinh hiểu đáp án. Có thể để trống nếu không cần.',
+    'q-topics': 'Ghi kiến thức câu hỏi kiểm tra, ví dụ “Quá khứ đơn”. Dùng để nhóm câu hỏi trong báo cáo. Muốn thêm nhiều nhãn, ngăn cách bằng dấu |. Có thể để trống để hệ thống tự phân loại.',
+    'qp-text': 'Nhập đoạn văn để học sinh đọc trước khi trả lời. Có thể dùng chung cho nhiều câu hỏi.',
+    'qp-audio-file': 'Chọn tệp âm thanh học sinh cần nghe trước khi trả lời câu hỏi.',
+    'q-passage': 'Chọn đoạn đọc hoặc tệp nghe đã thêm vào đề để gắn với câu hỏi này.',
   };
   function addFieldHelp(label, description) {
     if (!label) return;
@@ -139,7 +138,7 @@ function initVersionEditor() {
     bubble.setAttribute('role', 'tooltip');
     bubble.textContent = description;
     help.appendChild(bubble);
-    label.appendChild(help);
+    label.prepend(help);
   }
   Object.entries(fieldHelp).forEach(([id, description]) => addFieldHelp(qForm.querySelector(`label[for="${id}"]`), description));
   qForm.querySelectorAll('label[data-help]').forEach(label => addFieldHelp(label, label.dataset.help));
@@ -247,7 +246,8 @@ function initVersionEditor() {
         ]),
       ]);
       if (!readonly) {
-        const del = el("button", { type: "button", className: "button secondary", style: "min-height:34px;padding:4px 10px;font-size:12px", text: "Xóa" });
+        const del = el("button", { type: "button", className: "button primary st-action-btn", title: "Xóa tài liệu", "aria-label": "Xóa tài liệu" });
+        del.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
         del.addEventListener("click", async () => {
           const res = await fetch(`/api/v1/owner/passages/${p.id}`, {
             method: "DELETE",
@@ -638,9 +638,11 @@ function initVersionEditor() {
 
       const actions = el("div", { className: "inline-form" });
       if (!readonly) {
-        const editBtn = el("button", { type: "button", className: "button secondary", style: "min-height:36px;padding:6px 12px;font-size:13px", text: "✏️ Sửa" });
+        const editBtn = el("button", { type: "button", className: "button primary st-action-btn", title: "Sửa câu hỏi", "aria-label": "Sửa câu hỏi" });
+        editBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>';
         editBtn.addEventListener("click", () => openQuestionModal(q));
-        const delBtn = el("button", { type: "button", className: "button secondary", style: "min-height:36px;padding:6px 12px;font-size:13px;color:var(--danger)", text: "🗑️ Xóa" });
+        const delBtn = el("button", { type: "button", className: "button primary st-action-btn", title: "Xóa câu hỏi", "aria-label": "Xóa câu hỏi" });
+        delBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
         delBtn.addEventListener("click", () => deleteQuestionById(q));
         actions.append(editBtn, delBtn);
       }
@@ -695,6 +697,13 @@ function initVersionEditor() {
 
       if (q.explanation) {
         card.append(el("div", { className: "q-card-explanation", text: `💡 Giải thích: ${q.explanation}` }));
+      }
+      if (Array.isArray(q.topic_tags) && q.topic_tags.length) {
+        const tagRow = el("div", { style: "display:flex;flex-wrap:wrap;gap:6px;margin-top:8px" });
+        for (const tname of q.topic_tags) {
+          tagRow.append(el("span", { className: "pill", style: "background:#eff6ff;color:#1d4ed8;font-size:12px", text: `🏷️ ${tname}` }));
+        }
+        card.append(tagRow);
       }
 
       qListEl.append(card);

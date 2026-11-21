@@ -7,10 +7,10 @@ from django.utils.dateparse import parse_datetime
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
-from apps.accounts.permissions import api_error, owner_api_required, read_json_body, verify_recent_mfa
+from apps.accounts.permissions import api_error, owner_api_required, read_json_body
 
 from .models import RankingPeriod
-from .report_services import check_ranking_eligibility, create_ranking_period, export_progress_csv, owner_progress_report
+from .report_services import check_ranking_eligibility, create_ranking_period, export_progress_csv, export_scores_csv, owner_progress_report
 from .services import activate, finalize, invalidate, recompute_publish
 
 
@@ -88,6 +88,8 @@ def progress_report(request):
             grade=request.GET.get("grade") or None,
             school_class_id=request.GET.get("school_class_id") or None,
             english_class_id=request.GET.get("english_class_id") or None,
+            student_id=request.GET.get("student_id") or None,
+            q=request.GET.get("q") or None,
         )
         return JsonResponse({"data": data})
     except ValidationError as exc:
@@ -98,9 +100,13 @@ def progress_report(request):
 @require_GET
 @owner_api_required
 def progress_export_csv(request):
-    if not verify_recent_mfa(request, request.GET.get("otp_token")):
-        return api_error("MFA_REQUIRED", "Cần xác thực TOTP trong 10 phút gần nhất để xuất CSV.", 403)
     try:
+        if request.GET.get("scope"):
+            csv_text = export_scores_csv(request.user, request.GET.get("scope"), request.GET.get("assignment_id"), request.GET.get("class_id"), request.GET.get("course_id"))
+            response = HttpResponse(csv_text, content_type="text/csv; charset=utf-8")
+            response["Content-Disposition"] = 'attachment; filename="eduweb-scores.csv"'
+            response["Cache-Control"] = "no-store"
+            return response
         csv_text = export_progress_csv(
             request.user,
             from_str=request.GET.get("from"),
@@ -109,6 +115,8 @@ def progress_export_csv(request):
             grade=request.GET.get("grade") or None,
             school_class_id=request.GET.get("school_class_id") or None,
             english_class_id=request.GET.get("english_class_id") or None,
+            student_id=request.GET.get("student_id") or None,
+            q=request.GET.get("q") or None,
         )
     except ValidationError as exc:
         return _fail(exc)

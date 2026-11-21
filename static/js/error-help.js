@@ -1,35 +1,52 @@
 /* Explanations for common teacher-defined error labels. */
 (() => {
   const known = {
-    'pronunciation': 'Phát âm: dùng khi học sinh phát âm sai âm, từ hoặc cách nhấn trong bài nói.',
-    'phát âm': 'Phát âm: dùng khi học sinh phát âm sai âm, từ hoặc cách nhấn trong bài nói.',
-    'fluency': 'Độ trôi chảy: dùng khi học sinh nói ngập ngừng hoặc ngắt quãng nhiều.',
-    'độ trôi chảy': 'Độ trôi chảy: dùng khi học sinh nói ngập ngừng hoặc ngắt quãng nhiều.',
-    'grammar': 'Ngữ pháp: dùng khi câu dùng sai cấu trúc hoặc quy tắc ngữ pháp.',
-    'ngữ pháp': 'Ngữ pháp: dùng khi câu dùng sai cấu trúc hoặc quy tắc ngữ pháp.',
-    'chia động từ': 'Chia động từ: dùng khi động từ chưa phù hợp với chủ ngữ hoặc thì của câu.',
-    'verb tense': 'Thì động từ: dùng khi học sinh chọn thì không phù hợp với ngữ cảnh.',
-    'thì động từ': 'Thì động từ: dùng khi học sinh chọn thì không phù hợp với ngữ cảnh.',
-    'spelling': 'Chính tả: dùng khi học sinh viết sai chữ trong một từ.',
-    'chính tả': 'Chính tả: dùng khi học sinh viết sai chữ trong một từ.',
-    'vocabulary': 'Từ vựng: dùng khi học sinh chọn hoặc dùng từ chưa phù hợp với ý muốn diễn đạt.',
-    'từ vựng': 'Từ vựng: dùng khi học sinh chọn hoặc dùng từ chưa phù hợp với ý muốn diễn đạt.',
-    'word order': 'Trật tự từ: dùng khi các từ được sắp xếp sai thứ tự trong câu.',
-    'trật tự từ': 'Trật tự từ: dùng khi các từ được sắp xếp sai thứ tự trong câu.',
-    'word stress': 'Trọng âm: dùng khi học sinh xác định hoặc phát âm sai âm tiết được nhấn.',
-    'trọng âm': 'Trọng âm: dùng khi học sinh xác định hoặc phát âm sai âm tiết được nhấn.',
-    'punctuation': 'Dấu câu: dùng khi học sinh dùng dấu câu chưa phù hợp.',
-    'dấu câu': 'Dấu câu: dùng khi học sinh dùng dấu câu chưa phù hợp.',
-    'reading comprehension': 'Đọc hiểu: dùng khi câu trả lời cho thấy học sinh chưa hiểu nội dung đoạn đọc.',
-    'đọc hiểu': 'Đọc hiểu: dùng khi câu trả lời cho thấy học sinh chưa hiểu nội dung đoạn đọc.',
-    'listening comprehension': 'Nghe hiểu: dùng khi câu trả lời cho thấy học sinh chưa hiểu nội dung bài nghe.',
-    'nghe hiểu': 'Nghe hiểu: dùng khi câu trả lời cho thấy học sinh chưa hiểu nội dung bài nghe.'
+    'từ vựng: từ đồng nghĩa': 'Dùng cho câu hỏi tìm từ có nghĩa giống hoặc gần giống nhau. Ví dụ: “important” và “significant”.',
+    'từ vựng: từ trái nghĩa': 'Dùng cho câu hỏi tìm từ có nghĩa trái ngược nhau. Ví dụ: “hot” và “cold”.',
+    'từ vựng: nghĩa của từ': 'Dùng cho câu hỏi kiểm tra nghĩa của từ tiếng Anh.',
+    'từ vựng: nối tranh và từ': 'Dùng cho bài nối hình ảnh với từ tương ứng. Ví dụ: hình con mèo và từ “cat”.',
+    'đọc hiểu: thông tin trong bài': 'Dùng khi học sinh cần đọc nội dung bài và tìm thông tin để trả lời câu hỏi.',
+    'nghe hiểu: thông tin trong bài': 'Dùng khi học sinh cần nghe và tìm thông tin để trả lời câu hỏi.',
+    'ngữ pháp: danh từ số nhiều': 'Dùng cho câu hỏi về danh từ chỉ nhiều người hoặc vật. Ví dụ: “book” và “books”.',
+    'ngữ pháp: thì hiện tại đơn': 'Dùng cho câu hỏi về hành động thường xuyên hoặc sự thật ở hiện tại.',
+    'ngữ pháp: thì quá khứ đơn': 'Dùng cho câu hỏi về hành động đã xảy ra và kết thúc trong quá khứ.',
+    'ngữ pháp: câu bị động': 'Dùng cho câu hỏi về câu bị động, ví dụ “The book was written by Lan”.',
+    'ngữ pháp: câu tường thuật': 'Dùng cho câu hỏi chuyển lời nói trực tiếp thành lời kể gián tiếp.',
+    'sắp xếp câu: trật tự từ': 'Dùng cho câu hỏi yêu cầu sắp xếp các từ thành câu đúng.',
+    'viết lại câu': 'Dùng cho câu hỏi yêu cầu viết lại câu theo yêu cầu của đề.',
+    'phát âm: trọng âm của từ': 'Dùng cho câu hỏi chọn âm tiết được nhấn mạnh trong từ.',
+    'phát âm: phân biệt âm': 'Dùng cho câu hỏi phân biệt cách phát âm của các từ.',
+    'viết: diễn đạt nội dung': 'Đây là bài viết. Đọc câu trả lời trước khi chọn lỗi cụ thể; nhãn này chỉ mô tả dạng bài.',
+    'nói: diễn đạt và phát âm': 'Đây là bài nói. Nghe câu trả lời trước khi chọn lỗi cụ thể; nhãn này chỉ mô tả dạng bài.',
+    'pronunciation': 'Dùng khi học sinh đọc sai âm hoặc từ. Ví dụ: đọc “ship” thành “sheep”.',
+    'phát âm': 'Dùng khi học sinh đọc sai âm hoặc từ. Ví dụ: đọc “ship” thành “sheep”.',
+    'fluency': 'Dùng khi học sinh nói còn ngập ngừng hoặc dừng quá nhiều, khiến câu nói chưa liền mạch.',
+    'độ trôi chảy': 'Dùng khi học sinh nói còn ngập ngừng hoặc dừng quá nhiều, khiến câu nói chưa liền mạch.',
+    'grammar': 'Dùng khi học sinh viết hoặc nói sai cấu trúc câu. Ví dụ: “She go to school” thay vì “She goes to school”.',
+    'ngữ pháp': 'Dùng khi học sinh viết hoặc nói sai cấu trúc câu. Ví dụ: “She go to school” thay vì “She goes to school”.',
+    'chia động từ': 'Dùng khi học sinh dùng sai dạng động từ. Ví dụ: “She go” thay vì “She goes”.',
+    'verb tense': 'Dùng khi học sinh dùng sai thì. Ví dụ: “Yesterday I go” thay vì “Yesterday I went”.',
+    'thì động từ': 'Dùng khi học sinh dùng sai thì. Ví dụ: “Yesterday I go” thay vì “Yesterday I went”.',
+    'spelling': 'Dùng khi học sinh viết sai chữ trong từ. Ví dụ: “becaus” thay vì “because”.',
+    'chính tả': 'Dùng khi học sinh viết sai chữ trong từ. Ví dụ: “becaus” thay vì “because”.',
+    'vocabulary': 'Dùng khi học sinh chọn sai từ hoặc dùng từ không đúng nghĩa muốn nói.',
+    'từ vựng': 'Dùng khi học sinh chọn sai từ hoặc dùng từ không đúng nghĩa muốn nói.',
+    'word order': 'Dùng khi học sinh xếp từ sai thứ tự. Ví dụ: “I English like” thay vì “I like English”.',
+    'trật tự từ': 'Dùng khi học sinh xếp từ sai thứ tự. Ví dụ: “I English like” thay vì “I like English”.',
+    'word stress': 'Dùng khi học sinh chọn hoặc nhấn sai trọng âm của từ. Ví dụ: từ “teacher” nhấn âm đầu: TEA-cher.',
+    'trọng âm': 'Dùng khi học sinh chọn hoặc nhấn sai trọng âm của từ. Ví dụ: từ “teacher” nhấn âm đầu: TEA-cher.',
+    'punctuation': 'Dùng khi học sinh dùng sai hoặc thiếu dấu câu, ví dụ thiếu dấu hỏi ở cuối câu hỏi.',
+    'dấu câu': 'Dùng khi học sinh dùng sai hoặc thiếu dấu câu, ví dụ thiếu dấu hỏi ở cuối câu hỏi.',
+    'reading comprehension': 'Dùng khi học sinh trả lời sai vì chưa hiểu nội dung bài đọc.',
+    'đọc hiểu': 'Dùng khi học sinh trả lời sai vì chưa hiểu nội dung bài đọc.',
+    'listening comprehension': 'Dùng khi học sinh trả lời sai vì chưa hiểu nội dung bài nghe.',
+    'nghe hiểu': 'Dùng khi học sinh trả lời sai vì chưa hiểu nội dung bài nghe.'
   };
-  const general = 'Nhãn lỗi giúp phân loại khó khăn để theo dõi trong báo cáo. Khi tạo câu hỏi, gắn nhãn cho lỗi câu đó có thể kiểm tra; khi chấm, chọn nhãn phù hợp với lỗi thực tế của học sinh. Nhãn tự động chỉ là dấu hiệu cần giáo viên kiểm tra.';
+  const general = 'Nhãn lỗi giúp ghi lại học sinh thường sai ở đâu. Ví dụ: chọn “Chia động từ” khi học sinh viết “She go” thay vì “She goes”. Khi soạn câu hỏi, có thể thêm nhãn để phân loại nội dung; khi chấm bài, gắn nhãn nếu học sinh thực sự mắc lỗi đó. Xem báo cáo để theo dõi các lỗi thường gặp.';
   const explain = name => {
     const text = (name || '').trim();
     if (!text) return general;
-    return known[text.toLocaleLowerCase('vi')] || `“${text}” là nhãn do giáo viên đặt. Dùng khi lỗi thực tế của học sinh phù hợp với ý nghĩa mà giáo viên quy ước cho nhãn này; nhãn được tổng hợp trong báo cáo.`;
+    return known[text.toLocaleLowerCase('vi')] || `“${text}” là nhãn dùng để phân loại. Nếu đây là gợi ý theo câu hỏi, hãy xem bài làm trước khi gắn nhãn cho học sinh. Nội dung chi tiết của nhãn này chưa được mô tả.`;
   };
   let bubble, active;
   function hide() {
@@ -48,7 +65,7 @@
     if (active && active !== button) active.setAttribute('aria-expanded', 'false');
     active = button;
     button.setAttribute('aria-expanded', 'true');
-    bubble.textContent = explain(target.dataset.errorHelp);
+    bubble.textContent = target.dataset.errorHelpText || explain(target.dataset.errorHelp);
     bubble.hidden = false;
     const rect = button.getBoundingClientRect();
     const width = Math.min(320, window.innerWidth - 24);
@@ -71,7 +88,7 @@
       button.setAttribute('aria-label', 'Giải thích nhãn lỗi');
       button.setAttribute('aria-describedby', 'error-help-bubble');
       button.setAttribute('aria-expanded', 'false');
-      target.insertAdjacentElement('afterend', button);
+      target.insertAdjacentElement('beforebegin', button);
       button.addEventListener('mouseenter', () => show(button, target));
       button.addEventListener('mouseleave', () => { if (document.activeElement !== button) hide(); });
       button.addEventListener('focus', () => show(button, target));

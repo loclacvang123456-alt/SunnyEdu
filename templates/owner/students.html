@@ -8,12 +8,37 @@
   </div>
   <div class="inline-form">
     {% if tab == 'students' %}
-      <button type="button" class="button primary" data-modal-open="modal-create-student">+ Thêm học sinh</button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-student" title="Thêm học sinh" aria-label="Thêm học sinh">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="8.5" cy="7" r="4"/>
+          <line x1="20" y1="8" x2="20" y2="14"/>
+          <line x1="23" y1="11" x2="17" y2="11"/>
+        </svg>
+      </button>
     {% elif tab == 'english' %}
-      <button type="button" class="button primary" data-modal-open="modal-create-english-class">+ Tạo lớp tiếng Anh</button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-english-class" title="Tạo lớp tiếng Anh" aria-label="Tạo lớp tiếng Anh">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          <line x1="12" y1="11" x2="12" y2="17"/>
+          <line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
+      </button>
     {% elif tab == 'school' %}
-      <button type="button" class="button secondary" data-modal-open="modal-create-school">+ Thêm trường mới</button>
-      <button type="button" class="button primary" data-modal-open="modal-create-school-class">+ Thêm lớp trường mới</button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-school" title="Thêm trường mới" aria-label="Thêm trường mới">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <line x1="12" y1="11" x2="12" y2="17"/>
+          <line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
+      </button>
+      <button type="button" class="button primary st-action-btn" data-modal-open="modal-create-school-class" title="Thêm lớp trường mới" aria-label="Thêm lớp trường mới">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="12" y1="8" x2="12" y2="16"/>
+          <line x1="8" y1="12" x2="16" y2="12"/>
+        </svg>
+      </button>
     {% endif %}
   </div>
 </header>
@@ -50,11 +75,16 @@
         {% endfor %}
       </select>
     </div>
-    <button type="submit" class="button secondary">Lọc</button>
+    <button type="submit" class="button primary st-action-btn" title="Lọc" aria-label="Lọc">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </button>
   </form>
 
   <section class="panel">
-    <h2>Danh sách học sinh ({{ student_rows|length }})</h2>
+    <h2>Danh sách học sinh ({{ student_page.paginator.count }})</h2>
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr><th>Học sinh</th><th>Lớp trường</th><th>Lớp tiếng Anh</th><th>Mã truy cập</th><th></th></tr></thead>
@@ -65,7 +95,14 @@
             <td>{{ row.school_label }}</td>
             <td>{% for lbl in row.english_labels %}<span class="pill">{{ lbl }}</span> {% empty %}—{% endfor %}</td>
             <td>{% if row.has_code %}<span class="pill pill-success">Đã cấp</span>{% else %}<span class="pill pill-warning">Chưa cấp</span>{% endif %}</td>
-            <td><a class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" href="{% url 'owner_student_detail' row.user.id %}">Hồ sơ <span class="btn-mascot" aria-hidden="true"></span></a></td>
+            <td>
+              <a class="button primary st-action-btn" href="{% url 'owner_student_detail' row.user.id %}" title="Hồ sơ" aria-label="Hồ sơ">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </a>
+            </td>
           </tr>
           {% empty %}
           <tr><td colspan="5" class="empty">Chưa có học sinh phù hợp bộ lọc.</td></tr>
@@ -73,6 +110,15 @@
         </tbody>
       </table>
     </div>
+    {% if student_page.paginator.num_pages > 1 %}
+    <div class="table-pagination">
+      <span>Trang {{ student_page.number }} / {{ student_page.paginator.num_pages }} (Tổng {{ student_page.paginator.count }} dòng)</span>
+      <div class="table-pagination-controls">
+        {% if student_page.has_previous %}<a class="button secondary" href="?tab=students&amp;q={{ q|urlencode }}&amp;status={{ status_filter|urlencode }}&amp;english_class_id={{ ec_filter|urlencode }}&amp;page={{ student_page.previous_page_number }}">Trước</a>{% else %}<button type="button" class="button secondary" disabled>Trước</button>{% endif %}
+        {% if student_page.has_next %}<a class="button secondary" href="?tab=students&amp;q={{ q|urlencode }}&amp;status={{ status_filter|urlencode }}&amp;english_class_id={{ ec_filter|urlencode }}&amp;page={{ student_page.next_page_number }}">Sau</a>{% else %}<button type="button" class="button secondary" disabled>Sau</button>{% endif %}
+      </div>
+    </div>
+    {% endif %}
   </section>
 </div>
 
@@ -137,7 +183,7 @@
 <section class="panel">
   <h2>Danh sách lớp tiếng Anh ({{ english_classes|length }})</h2>
   <div class="table-wrap">
-    <table class="data-table">
+    <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
       <thead><tr><th>Tên lớp</th><th>Mã lớp</th><th>Năm học</th><th></th></tr></thead>
       <tbody>
         {% for ec in english_classes %}
@@ -150,12 +196,18 @@
               {% csrf_token %}
               <input type="hidden" name="action" value="archive_english_class">
               <input type="hidden" name="class_id" value="{{ ec.id }}">
-              <button class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px" type="submit">Lưu trữ</button>
+              <button class="button primary st-action-btn" type="submit" title="Lưu trữ" aria-label="Lưu trữ">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="21 8 21 21 3 21 3 8"/>
+                  <rect x="1" y="3" width="22" height="5"/>
+                  <line x1="10" y1="12" x2="14" y2="12"/>
+                </svg>
+              </button>
             </form>
           </td>
         </tr>
         {% empty %}
-        <tr><td colspan="4" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+        <tr class="empty-row"><td colspan="4" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
         {% endfor %}
       </tbody>
     </table>
@@ -195,7 +247,7 @@
   <section class="panel">
     <h2>Danh sách trường ({{ schools|length }})</h2>
     <div class="table-wrap">
-      <table class="data-table">
+      <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
         <thead><tr><th>Mã trường</th><th>Tên trường</th><th></th></tr></thead>
         <tbody>
           {% for s in schools %}
@@ -207,12 +259,18 @@
                 {% csrf_token %}
                 <input type="hidden" name="action" value="archive_school">
                 <input type="hidden" name="school_id" value="{{ s.id }}">
-                <button type="submit" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">Lưu trữ</button>
+                <button type="submit" class="button primary st-action-btn" title="Lưu trữ" aria-label="Lưu trữ">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="21 8 21 21 3 21 3 8"/>
+                    <rect x="1" y="3" width="22" height="5"/>
+                    <line x1="10" y1="12" x2="14" y2="12"/>
+                  </svg>
+                </button>
               </form>
             </td>
           </tr>
           {% empty %}
-          <tr><td colspan="3" class="empty">Chưa có trường học nào.</td></tr>
+          <tr class="empty-row"><td colspan="3" class="empty">Chưa có trường học nào.</td></tr>
           {% endfor %}
         </tbody>
       </table>
@@ -222,7 +280,7 @@
   <section class="panel">
     <h2>Danh sách lớp trường ({{ school_classes|length }})</h2>
     <div class="table-wrap">
-      <table class="data-table">
+      <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
         <thead><tr><th>Trường</th><th>Năm học</th><th>Khối</th><th>Lớp</th><th></th></tr></thead>
         <tbody>
           {% for sc in school_classes %}
@@ -236,12 +294,18 @@
                 {% csrf_token %}
                 <input type="hidden" name="action" value="archive_school_class">
                 <input type="hidden" name="class_id" value="{{ sc.id }}">
-                <button type="submit" class="button secondary" style="min-height:36px;padding:6px 12px;font-size:13px">Lưu trữ</button>
+                <button type="submit" class="button primary st-action-btn" title="Lưu trữ" aria-label="Lưu trữ">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="21 8 21 21 3 21 3 8"/>
+                    <rect x="1" y="3" width="22" height="5"/>
+                    <line x1="10" y1="12" x2="14" y2="12"/>
+                  </svg>
+                </button>
               </form>
             </td>
           </tr>
           {% empty %}
-          <tr><td colspan="5" class="empty">Chưa có lớp trường nào.</td></tr>
+          <tr class="empty-row"><td colspan="5" class="empty">Chưa có lớp trường nào.</td></tr>
           {% endfor %}
         </tbody>
       </table>
@@ -308,8 +372,14 @@
       <p class="hint" style="margin:0">Tải tệp mẫu để điền danh sách học sinh theo đúng cấu trúc trước khi tải lên.</p>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <a class="button secondary" href="{% url 'owner_student_template' %}?format=xlsx" download="mau_nhap_hoc_sinh.xlsx">Tải mẫu Excel</a>
-      <a class="button secondary" href="{% url 'owner_student_template' %}?format=csv" download="mau_nhap_hoc_sinh.csv">Tải mẫu CSV</a>
+      <a class="button primary st-action-btn" href="{% url 'owner_student_template' %}?format=xlsx" download="mau_nhap_hoc_sinh.xlsx" title="Tải mẫu Excel" aria-label="Tải mẫu Excel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>XLSX</span>
+      </a>
+      <a class="button primary st-action-btn" href="{% url 'owner_student_template' %}?format=csv" download="mau_nhap_hoc_sinh.csv" title="Tải mẫu CSV" aria-label="Tải mẫu CSV">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>CSV</span>
+      </a>
     </div>
   </div>
 
@@ -336,14 +406,20 @@
         {% for ec in english_classes %}<option value="{{ ec.id }}">{{ ec.name }} ({{ ec.code }})</option>{% endfor %}
       </select>
     </div>
-    <div><button type="submit" class="button secondary">Xem trước tệp</button></div>
+    <div>
+      <button type="submit" class="button primary st-action-btn" title="Xem trước tệp" aria-label="Xem trước tệp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
   </form>
   <div id="import-result" hidden>
     <hr class="divider">
     <div id="import-summary" role="status"></div>
-    <div class="table-wrap"><table class="data-table" id="import-table"></table></div>
+    <div class="table-wrap"><table class="data-table" id="import-table" data-page-size="10" data-fixed-page-size="1"></table></div>
     <div class="wizard-actions">
-      <button type="button" id="import-commit-btn" class="button primary" disabled>Xác nhận nhập học sinh</button>
+      <button type="button" id="import-commit-btn" class="button primary st-action-btn" disabled title="Xác nhận nhập học sinh" aria-label="Xác nhận nhập học sinh">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </button>
     </div>
   </div>
 </section>

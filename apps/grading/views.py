@@ -11,7 +11,7 @@ from apps.assignments.models import Attempt, Response
 from apps.content.models import Tag
 
 from .models import ErrorOccurrence
-from .services import grade_response, publish_result, teacher_review_error, upsert_teacher_error, void_attempt
+from .services import grade_response, publish_result, set_single_error, teacher_review_error, upsert_teacher_error, void_attempt
 
 
 def error(code, message, status):
@@ -81,9 +81,19 @@ def attempt_detail(request, attempt_id):
     ]
     latest_release = attempt.grade_releases.order_by('-number').first()
     rows = []
-    for response in attempt.responses.select_related('question__passage').prefetch_related('question__options', 'errors__tag').order_by('question__position'):
+    for response in (
+        attempt.responses.select_related('question__passage')
+        .prefetch_related('question__options', 'question__answer_keys', 'question__question_tags__tag', 'errors__tag')
+        .order_by('question__position')
+    ):
         q = response.question
         grade = getattr(response, 'grade', None)
+        q_err_tags = [
+            qt.tag
+            for qt in sorted(q.question_tags.all(), key=lambda item: (item.created_at, item.id))
+            if qt.tag.kind == Tag.Kind.ERROR and not qt.tag.archived_at and qt.tag.skill == q.skill
+        ]
+        occ_list = list(response.errors.all())
         rows.append({
             'response_id': str(response.id),
             'question_id': str(q.id),
@@ -96,12 +106,15 @@ def attempt_detail(request, attempt_id):
             'text_answer': response.text_answer,
             'audio_asset_id': str(response.audio_asset_id) if response.audio_asset_id else None,
             'selected_options': [str(i) for i in response.options.values_list('id', flat=True)],
+            'correct_options': [str(key.option_id) for key in q.answer_keys.all()] if q.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'STRESS_CHOICE') else [],
             'ordered_option_ids': response.ordered_option_ids if q.type == 'WORD_ORDER' else [],
             'match_pairs': response.match_pairs if q.type == 'MATCH_IMAGE' else [],
             'match_images': [{'id': str(i.id), 'url': f'/api/v1/owner/image-assets/{i.image_asset_id}/content/', 'correct_word_id': str(i.answer_key.word_id)} for i in q.match_images.select_related('answer_key').all()] if q.type == 'MATCH_IMAGE' else [],
             'match_words': [{'id': str(w.id), 'text': w.text} for w in q.match_words.all()] if q.type == 'MATCH_IMAGE' else [],
             'options': [{'id': str(o.id), 'key': o.key, 'content': o.content} for o in q.options.all()],
             'criteria': [{'id': str(c.id), 'label': c.label, 'level_descriptions': c.level_descriptions} for c in q.criteria.order_by('position')],
+            'default_error_tag_id': str(q_err_tags[0].id) if q_err_tags else '',
+            'default_error_tag_name': q_err_tags[0].name if q_err_tags else '',
             'grade': {
                 'revision': grade.revision,
                 'source': grade.source,
@@ -121,7 +134,7 @@ def attempt_detail(request, attempt_id):
                 'start_ms': e.start_ms,
                 'end_ms': e.end_ms,
                 'withdrawn_at': e.withdrawn_at.isoformat() if e.withdrawn_at else None,
-            } for e in response.errors.all()],
+            } for e in occ_list],
         })
     return JsonResponse({'data': {
         'attempt_id': str(attempt.id),
@@ -194,6 +207,11 @@ def errors(request, response_id):
         return error('FORBIDDEN', 'Cần tài khoản giáo viên đã xác thực hai bước.', 403)
     try:
         data = body(request)
+        if data.get('replace_selection') is True:
+            if type(data.get('expected_revision')) is not int or not isinstance(data.get('tag_id', ''), str):
+                raise ValueError('Invalid fields')
+            attempt = set_single_error(response_id, request.user, data['expected_revision'], data.get('tag_id', ''))
+            return JsonResponse({'data': {'attempt_revision': attempt.revision}})
         if type(data.get('expected_revision')) is not int or not data.get('tag_id'):
             raise ValueError('Invalid fields')
         anchor = data.get('anchor') or {}

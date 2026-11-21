@@ -54,10 +54,10 @@ def _validate_schedule(opens_at, due_at, late_policy, late_until=None):
     if late_policy == "BLOCK":
         effective_late = due_at
     else:
-        effective_late = late_until or (due_at + timedelta(days=7))
+        effective_late = late_until
     if not (opens_at < due_at):
         raise ValidationError("Thời điểm mở bài phải trước hạn nộp.")
-    if effective_late < due_at or (late_policy == "ALLOW" and effective_late <= due_at):
+    if effective_late is not None and (effective_late < due_at or (late_policy == "ALLOW" and effective_late <= due_at)):
         raise ValidationError("Hạn đóng bài không hợp lệ so với hạn nộp.")
     return effective_late
 
@@ -92,6 +92,8 @@ def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_a
         game_feedback_enabled=game_feedback_enabled,
     )
     AssignmentClass.objects.bulk_create([AssignmentClass(assignment=assignment, english_class=c) for c in classes])
+    from apps.content.auto_tagging import sync_version_and_exercise_auto_tags
+    sync_version_and_exercise_auto_tags(version, title_context=clean_title)
     AuditEvent.objects.create(actor=owner, action="assignment.create", target_type="assignment", target_id=assignment.id)
     return assignment
 
@@ -132,6 +134,8 @@ def update_draft_assignment(owner, assignment_id, expected_revision, title=None,
         AssignmentClass.objects.bulk_create([AssignmentClass(assignment=assignment, english_class=c) for c in classes])
     assignment.revision += 1
     assignment.save()
+    from apps.content.auto_tagging import sync_version_and_exercise_auto_tags
+    sync_version_and_exercise_auto_tags(assignment.version, title_context=assignment.title)
     return assignment
 
 
@@ -212,7 +216,7 @@ def extend_assignment(owner, assignment_id, expected_revision, due_at, late_unti
         raise ValidationError("Assignment revision conflict.")
     if not clean_reason:
         raise ValidationError("Cần lý do khi gia hạn bài.")
-    if due_at < assignment.due_at or late_until < assignment.late_until:
+    if due_at < assignment.due_at or (assignment.late_until is not None and late_until < assignment.late_until):
         raise ValidationError("Không được rút ngắn hạn nộp hoặc hạn đóng.")
     if late_until < due_at or (assignment.late_policy == "ALLOW" and late_until <= due_at):
         raise ValidationError("Hạn đóng phải sau hoặc bằng hạn nộp phù hợp chính sách.")
@@ -314,7 +318,7 @@ def grant_retake(owner, recipient_id, reason):
     clean_reason = (reason or "").strip()
     now = timezone.now()
 
-    if assignment.status != "PUBLISHED" or assignment.answers_released_at or now >= assignment.late_until:
+    if assignment.status != "PUBLISHED" or assignment.answers_released_at or (assignment.late_until is not None and now >= assignment.late_until):
         raise ValidationError("Không thể cấp làm lại khi bài đã đóng hoặc đã công bố đáp án.")
     if recipient.state != "ASSIGNED" or not clean_reason:
         raise ValidationError("Người nhận không hợp lệ hoặc thiếu lý do cấp làm lại.")
@@ -350,7 +354,7 @@ def release_answers(owner, assignment_id, expected_revision):
         raise ValidationError("Bài chưa phát hành.")
     if assignment.revision != expected_revision:
         raise ValidationError("Assignment revision conflict.")
-    if timezone.now() < assignment.late_until:
+    if assignment.late_until is None or timezone.now() < assignment.late_until:
         raise ValidationError("Chỉ công bố đáp án sau khi hết hạn đóng bài (late_until).")
     if AssignmentRecipient.objects.filter(assignment=assignment, state="ASSIGNED", current_attempt__status="SUBMITTED").exists():
         raise ValidationError("Vẫn còn bài đã nộp đang chờ chấm.")
@@ -446,7 +450,10 @@ def assign_targets_with_schedule(owner, assignment_ids, class_ids, student_ids, 
         if assignment.opens_at >= due_at:
             assignment.opens_at = due_at - timedelta(minutes=1)
         assignment.due_at = due_at
-        assignment.late_until = max(assignment.late_until, due_at + timedelta(days=7))
+        if assignment.late_policy == "BLOCK":
+            assignment.late_until = due_at
+        elif assignment.late_until is not None:
+            assignment.late_until = max(assignment.late_until, due_at + timedelta(days=7))
         if mode in ("PRACTICE", "EXAM"):
             assignment.mode = mode
             if mode == "EXAM" and assignment.game_feedback_enabled:

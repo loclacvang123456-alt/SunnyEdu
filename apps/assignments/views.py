@@ -25,7 +25,7 @@ def assignments(request):
     if not student_required(request):
         return error('UNAUTHENTICATED', 'Vui lòng đăng nhập.', 401)
     rows = AssignmentRecipient.objects.filter(student=request.user, state='ASSIGNED', assignment__status='PUBLISHED').select_related('assignment').order_by('assignment__due_at')
-    return JsonResponse({'data': [{'id': str(r.assignment_id), 'title': r.assignment.title, 'due_at': r.assignment.due_at.isoformat(), 'late_until': r.assignment.late_until.isoformat(), 'current_attempt_id': str(r.current_attempt_id) if r.current_attempt_id else None} for r in rows if course_access_allowed(r.assignment_id, request.user)]})
+    return JsonResponse({'data': [{'id': str(r.assignment_id), 'title': r.assignment.title, 'due_at': r.assignment.due_at.isoformat(), 'late_until': r.assignment.late_until.isoformat() if r.assignment.late_until else None, 'current_attempt_id': str(r.current_attempt_id) if r.current_attempt_id else None} for r in rows if course_access_allowed(r.assignment_id, request.user)]})
 
 
 @never_cache

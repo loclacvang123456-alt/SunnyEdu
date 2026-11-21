@@ -151,3 +151,70 @@ class OwnerContentAndImportTests(TestCase):
         self.assertEqual(commit_ok.json()["data"]["created"], 2)
         self.assertEqual(commit_ok.json()["data"]["joined"], 2)
         self.assertEqual(EnglishMembership.objects.filter(english_class=ec, end_at__isnull=True).count(), 2)
+
+    def test_auto_tagging_for_question_and_course_exercise(self):
+        from apps.content.course_services import create_and_attach_course_exercise, create_course
+        from apps.content.models import CourseTag
+        # Create course exercise from title -> auto-attaches CourseTag 'Các thì' and 'Quá khứ đơn'
+        course = create_course(self.owner, "Ngữ pháp trọng tâm", "", "SECONDARY", 2, True)
+        ex, exam, version = create_and_attach_course_exercise(
+            self.owner,
+            course.id,
+            "Bài chia thì quá khứ đơn",
+            2,
+        )
+        ex_tag_names = set(ex.tags.values_list("name", flat=True))
+        self.assertIn("Các thì", ex_tag_names)
+        self.assertIn("Quá khứ đơn", ex_tag_names)
+
+        # Add conjugation question without manual topic_tags -> auto-creates & attaches QuestionTag 'Bài chia thì' & 'Quá khứ đơn'
+        q_resp = self.client.post(
+            f"/api/v1/owner/versions/{version.id}/questions",
+            data=json.dumps({
+                "expected_revision": version.revision,
+                "ui_direct_edit": True,
+                "type": "SINGLE_CHOICE",
+                "skill": "READING",
+                "difficulty": "STANDARD",
+                "max_points": "1.00",
+                "prompt": "Dạng chia thì: She ___ (visit) Hanoi yesterday.",
+                "options": [{"content": "visited"}, {"content": "visits"}],
+                "correct_options": ["A"],
+                "topic_tags": [],
+            }),
+            content_type="application/json",
+        )
+        self.assertEqual(q_resp.status_code, 201)
+        q1 = Question.objects.get(pk=q_resp.json()["data"]["id"])
+        q1_tags = set(q1.question_tags.values_list("tag__name", flat=True))
+        self.assertIn("Bài chia thì", q1_tags)
+        self.assertIn("Quá khứ đơn", q1_tags)
+        self.assertNotIn("Ôn tập chung", q1_tags)
+
+        # Custom tag already existing in DB should be matched & attached automatically by content
+        Tag.objects.create(kind=Tag.Kind.TOPIC, skill="READING", name="Trạng từ chỉ thời gian")
+        version.refresh_from_db()
+        q2_resp = self.client.post(
+            f"/api/v1/owner/versions/{version.id}/questions",
+            data=json.dumps({
+                "expected_revision": version.revision,
+                "ui_direct_edit": True,
+                "type": "SINGLE_CHOICE",
+                "skill": "READING",
+                "difficulty": "STANDARD",
+                "max_points": "1.00",
+                "prompt": "Câu bị động với trạng từ chỉ thời gian",
+                "options": [{"content": "was built"}, {"content": "built"}],
+                "correct_options": ["A"],
+                "topic_tags": [],
+            }),
+            content_type="application/json",
+        )
+        self.assertEqual(q2_resp.status_code, 201)
+        q2 = Question.objects.get(pk=q2_resp.json()["data"]["id"])
+        q2_tags = set(q2.question_tags.values_list("tag__name", flat=True))
+        self.assertIn("Câu bị động", q2_tags)
+        self.assertIn("Trạng từ chỉ thời gian", q2_tags)
+        # Adding passive question also syncs CourseTag 'Câu bị động' onto linked CourseExercise
+        self.assertTrue(ex.tags.filter(name="Câu bị động").exists())
+        self.assertTrue(CourseTag.objects.filter(code="PAST_SIMPLE").exists())

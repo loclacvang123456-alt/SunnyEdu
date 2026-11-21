@@ -1,9 +1,11 @@
 """Owner web UI views for progress reports and ranking periods (T04)."""
 import json
+import uuid
 from datetime import timedelta
 
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.db.models import F
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
@@ -12,6 +14,7 @@ from apps.accounts.models import User
 from apps.accounts.permissions import owner_ui_required, recent_mfa_verified
 from apps.assignments.models import Assignment
 from apps.classes.models import EnglishClass, School, SchoolClass
+from apps.content.models import Course
 from apps.reporting.models import RankingPeriod
 from apps.reporting.report_services import check_ranking_eligibility, create_ranking_period, owner_progress_report
 from apps.reporting.services import activate, finalize, invalidate, recompute_publish
@@ -22,10 +25,19 @@ from .owner_views import owner_context, parse_local_dt
 @never_cache
 @owner_ui_required
 def reports(request):
+    view_mode = "ielts" if request.GET.get("view") == "ielts" else "general"
     school_id = request.GET.get("school_id") or None
     grade = request.GET.get("grade") or None
     school_class_id = request.GET.get("school_class_id") or None
     english_class_id = request.GET.get("english_class_id") or None
+    student_id = request.GET.get("student_id") or None
+    if student_id:
+        try:
+            parsed_sid = uuid.UUID(str(student_id))
+            return redirect("owner_student_detail", student_id=parsed_sid)
+        except ValueError:
+            pass
+    q = (request.GET.get("q") or "").strip() or None
     from_str = request.GET.get("from") or None
     to_str = request.GET.get("to") or None
 
@@ -47,6 +59,8 @@ def reports(request):
             grade=grade,
             school_class_id=school_class_id,
             english_class_id=english_class_id,
+            student_id=student_id,
+            q=q,
         )
     except ValidationError as exc:
         error_msg = "; ".join(exc.messages)
@@ -54,10 +68,21 @@ def reports(request):
     schools = list(School.objects.filter(archived_at__isnull=True).order_by("name"))
     school_classes = list(SchoolClass.objects.select_related("school").filter(archived_at__isnull=True).order_by("-school_year", "grade", "name"))
     english_classes = list(EnglishClass.objects.filter(archived_at__isnull=True).order_by("-school_year", "name"))
+    export_assignments = list(Assignment.objects.filter(version__exam__created_by=request.user, status="PUBLISHED").prefetch_related("classes", "course_exercises").order_by(F("published_at").desc(nulls_last=True), "-created_at"))
+    export_courses = list(Course.objects.filter(created_by=request.user).prefetch_related("english_classes").order_by("name"))
+    export_data = {
+        "assignments": [{"id": str(a.id), "title": a.title, "classes": [str(c.id) for c in a.classes.all()], "courses": [str(e.course_id) for e in a.course_exercises.all()]} for a in export_assignments],
+        "classes": [{"id": str(c.id), "name": c.name} for c in english_classes],
+        "courses": [{"id": str(c.id), "name": c.name, "classes": [str(cl.id) for cl in c.english_classes.all()]} for c in export_courses],
+    }
     if school_id:
         school_classes_filtered = [c for c in school_classes if str(c.school_id) == str(school_id)]
     else:
         school_classes_filtered = school_classes
+
+    selected_student = None
+    if student_id and report_data and report_data.get("students"):
+        selected_student = next((s for s in report_data["students"] if s["student_id"] == str(student_id)), None)
 
     return render(
         request,
@@ -65,12 +90,15 @@ def reports(request):
         owner_context(
             "reports",
             report=report_data,
+            selected_student=selected_student,
+            view_mode=view_mode,
             error_msg=error_msg,
             schools=schools,
             school_classes=school_classes_filtered,
             all_school_classes_json=json.dumps([{"id": str(c.id), "school_id": str(c.school_id), "grade": c.grade, "label": f"{c.school_year} - Khối {c.grade} - {c.name}"} for c in school_classes]),
             english_classes=english_classes,
-            filters={"school_id": school_id or "", "grade": grade or "", "school_class_id": school_class_id or "", "english_class_id": english_class_id or "", "from": report_data["from"] if report_data else (from_str or ""), "to": report_data["to"] if report_data else (to_str or "")},
+            export_data=export_data,
+            filters={"view": view_mode, "school_id": school_id or "", "grade": grade or "", "school_class_id": school_class_id or "", "english_class_id": english_class_id or "", "student_id": student_id or "", "q": q or "", "from": report_data["from"] if report_data else (from_str or ""), "to": report_data["to"] if report_data else (to_str or "")},
             recent_mfa=recent_mfa_verified(request),
             grades=list(range(1, 13)),
         ),
@@ -80,7 +108,7 @@ def reports(request):
 @never_cache
 @owner_ui_required
 def rankings(request):
-    periods = RankingPeriod.objects.order_by("-created_at")[:100]
+    periods = RankingPeriod.objects.order_by("-created_at")
     return render(request, "owner/rankings.html", owner_context("rankings", periods=periods))
 
 

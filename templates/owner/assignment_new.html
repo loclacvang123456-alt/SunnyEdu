@@ -54,13 +54,9 @@
           <div class="field-group">
             <label for="a-late-policy">Chính sách nộp muộn</label>
             <select id="a-late-policy" name="late_policy">
-              <option value="ALLOW">Cho phép nộp muộn đến hạn cuối</option>
+              <option value="ALLOW">Cho phép nộp sau hạn</option>
               <option value="BLOCK">Chặn nộp sau hạn</option>
             </select>
-          </div>
-          <div class="field-group" id="a-late-until-wrap">
-            <label for="a-late-until">Hạn nộp muộn cuối</label>
-            <input id="a-late-until" name="late_until" type="datetime-local" value="{{ default_late|date:'Y-m-d\TH:i' }}">
           </div>
         </div>
       </div>

@@ -277,4 +277,41 @@ class LandingFlowTests(TestCase):
         self.assertNotIn('Bắt đầu làm bài <span aria-hidden="true">→</span>', html)
         self.assertNotIn('Làm tiếp <span aria-hidden="true">→</span>', html)
 
+    def test_student_assignment_start_page_layout_and_single_click_start(self):
+        teacher = User.objects.create_user(username='start_owner', role='OWNER', display_name='GV Start')
+        student = User.objects.create_user(username='start_stu', role='STUDENT', display_name='HS Start')
+        code = rotate_code(student, actor=teacher)
+        self.client.post('/api/v1/auth/student-login/', data=json.dumps({'code': code}), content_type='application/json')
+
+        exam = Exam.objects.create(title='Đề Start', created_by=teacher)
+        version = ExamVersion.objects.create(exam=exam, number=1, status='PUBLISHED')
+        now = timezone.now()
+        assignment = Assignment.objects.create(
+            title='Bài kiểm tra bắt đầu',
+            version=version,
+            code='HW-STRT01',
+            status='PUBLISHED',
+            opens_at=now - timezone.timedelta(hours=1),
+            due_at=now + timezone.timedelta(hours=5),
+            late_until=now + timezone.timedelta(hours=10),
+        )
+        recipient = AssignmentRecipient.objects.create(assignment=assignment, student=student, state='ASSIGNED')
+
+        start_page = self.client.get(f'/student/assignments/{assignment.id}/')
+        self.assertEqual(start_page.status_code, 200)
+        self.assertTemplateUsed(start_page, 'student/assignment_start.html')
+        self.assertContains(start_page, 'assignment-start-panel')
+        self.assertContains(start_page, 'assignment-start-btn')
+        self.assertContains(start_page, '<h1>Bài kiểm tra bắt đầu</h1>')
+        self.assertContains(start_page, 'Hạn nộp:')
+        self.assertContains(start_page, '>Bắt đầu</button>')
+        self.assertNotContains(start_page, 'Hạn đóng:')
+
+        started = self.client.post(f'/student/assignments/{assignment.id}/', follow=True)
+        self.assertEqual(started.status_code, 200)
+        self.assertTemplateUsed(started, 'student/assignment.html')
+        recipient.refresh_from_db()
+        self.assertIsNotNone(recipient.current_attempt)
+        self.assertEqual(recipient.current_attempt.status, 'IN_PROGRESS')
+
 

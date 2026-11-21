@@ -4,7 +4,8 @@ from datetime import timedelta
 
 from django.contrib import messages
 from django.core.exceptions import ValidationError
-from django.db.models import F, Q, Count, Sum, Max
+from django.db import transaction
+from django.db.models import F, Q, Count, Sum, Max, Exists, OuterRef
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -33,6 +34,40 @@ from apps.content.services import LEVELS, RUBRICS, publish_version
 from apps.reporting.models import RankingAssignment, RankingPeriod
 
 from .owner_views import owner_context, parse_local_dt, pending_grading_condition
+
+
+def _quick_assign_context(user):
+    game_questions = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
+    versions = ExamVersion.objects.filter(exam__created_by=user, exam__archived_at__isnull=True, status=ExamVersion.Status.PUBLISHED).select_related("exam").annotate(has_game_questions=Exists(game_questions)).order_by("exam__title", "-number")
+    now = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
+    return {"quick_versions": versions, "classes": EnglishClass.objects.filter(archived_at__isnull=True).order_by("name"), "default_due": now + timedelta(days=7), "missing_pirate_assets": missing_game_assets()}
+
+
+def _quick_assign(request):
+    import uuid
+
+    try:
+        ids = {uuid.UUID(value) for value in request.POST.getlist("version_ids")}
+    except (ValueError, TypeError):
+        raise ValidationError("Danh sách bài tập không hợp lệ.")
+    if not ids:
+        raise ValidationError("Hãy chọn ít nhất một bài tập.")
+    versions = list(_quick_assign_context(request.user)["quick_versions"].filter(pk__in=ids))
+    if len(versions) != len(ids):
+        raise ValidationError("Một bài tập không tồn tại hoặc chưa được phát hành.")
+    due_at = parse_local_dt(request.POST.get("due_at"))
+    now = timezone.now()
+    if not due_at or due_at <= now:
+        raise ValidationError("Hạn nộp phải sau thời điểm hiện tại.")
+    game = request.POST.get("game_feedback_enabled") == "on"
+    if game and not any(version.has_game_questions for version in versions):
+        raise ValidationError("Các bài đã chọn không có câu hỏi phù hợp với bắn thuyền.")
+    with transaction.atomic():
+        for version in versions:
+            assignment = create_draft_assignment(request.user, version.id, version.exam.title, request.POST.getlist("class_ids"), now, due_at, request.POST.get("late_policy", "BLOCK"), game_feedback_enabled=game and version.has_game_questions)
+            publish_assignment(request.user, assignment.id, assignment.revision)
+    messages.success(request, f"Đã giao {len(versions)} bài tập.")
+    return redirect("owner_assignments")
 
 
 def _version_publish_issues(version):
@@ -73,6 +108,8 @@ def exams(request):
     if request.method == "POST":
         action = request.POST.get("action")
         try:
+            if action == "quick_assign":
+                return _quick_assign(request)
             if action == "create_exam":
                 title = (request.POST.get("title") or "").strip()
                 if not 1 <= len(title) <= 200:
@@ -100,14 +137,14 @@ def exams(request):
     if q:
         exam_qs = exam_qs.filter(title__icontains=q)
     rows = []
-    for exam in exam_qs[:100]:
+    for exam in exam_qs:
         versions = []
         for v in exam.versions.order_by("-number"):
             qs = list(v.questions.all())
             skills = sorted({item.skill for item in qs})
-            versions.append({"version": v, "question_count": len(qs), "skills": skills})
+            versions.append({"version": v, "question_count": len(qs), "skills": skills, "has_game_questions": any(item.type == "SINGLE_CHOICE" and item.pirate_game is not False for item in qs)})
         rows.append({"exam": exam, "versions": versions})
-    return render(request, "owner/exams.html", owner_context("exams", q=q, exam_rows=rows))
+    return render(request, "owner/exams.html", owner_context("exams", q=q, exam_rows=rows, **_quick_assign_context(request.user)))
 
 
 @never_cache
@@ -230,6 +267,11 @@ def version_preview(request, exam_id, version_id):
 @never_cache
 @owner_ui_required
 def assignments(request):
+    if request.method == "POST" and request.POST.get("action") == "quick_assign":
+        try:
+            return _quick_assign(request)
+        except ValidationError as exc:
+            messages.error(request, "; ".join(exc.messages))
     status_filter = request.GET.get("status", "")
     overdue = request.GET.get("overdue") == "1"
     now = timezone.now()
@@ -242,13 +284,13 @@ def assignments(request):
         ).filter(Q(current_attempt__isnull=True) | Q(current_attempt__status="IN_PROGRESS")).values("assignment_id")
         qs = qs.filter(pk__in=overdue_ids)
     rows = []
-    for a in qs[:100]:
+    for a in qs:
         rows.append({
             "assignment": a,
             "recipient_count": a.recipients.count(),
             "submitted_count": a.recipients.filter(current_attempt__status__in=("SUBMITTED", "GRADED")).count(),
         })
-    return render(request, "owner/assignments.html", owner_context("assignments", rows=rows, status_filter=status_filter, overdue=overdue))
+    return render(request, "owner/assignments.html", owner_context("assignments", rows=rows, status_filter=status_filter, overdue=overdue, **_quick_assign_context(request.user)))
 
 
 @never_cache
@@ -337,7 +379,7 @@ def build_assign_target_rows(assignment=None, course=None):
             "max_attempts": ac.max_attempts if ac else None,
         })
 
-    students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").select_related("student_profile").order_by("display_name")[:500])
+    students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").select_related("student_profile").order_by("display_name"))
     rec_by_student = (
         {r.student_id: r for r in assignment.recipients.select_related("current_attempt").all()}
         if assignment else {}
@@ -434,7 +476,7 @@ def assignment_detail(request, assignment_id):
     can_release_answers = (
         assignment.status == "PUBLISHED"
         and not assignment.answers_released_at
-        and now >= assignment.late_until
+        and assignment.late_until is not None and now >= assignment.late_until
         and not any(r.state == "ASSIGNED" and r.current_attempt and r.current_attempt.status == "SUBMITTED" for r in recipients)
     )
     target_data = build_assign_target_rows(assignment=assignment)
@@ -488,7 +530,7 @@ def grading_queue(request):
         rows = base.filter(status="GRADED")
     else:
         rows = base
-    rows = rows.select_related("recipient__student", "recipient__assignment__version").prefetch_related("grade_releases").order_by("submitted_at")[:100]
+    rows = rows.select_related("recipient__student", "recipient__assignment__version").prefetch_related("grade_releases").order_by("submitted_at")
     items = []
     for attempt in rows:
         has_manual = attempt.recipient.assignment.version.questions.filter(type__in=['TEXT', 'AUDIO']).exists()

@@ -35,6 +35,7 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True, related_name="student_profile")
     student_ref = models.CharField(max_length=32, unique=True)
     owner_note = models.TextField(blank=True, default="")
+    parent_phone = models.CharField(max_length=15, blank=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

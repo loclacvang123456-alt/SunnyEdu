@@ -1,6 +1,20 @@
 {% extends "owner/base.html" %}
 {% load static l10n %}
 {% block title %}Chấm bài: {{ student.display_name }} — Sunny Edu{% endblock %}
+{% block owner_head %}
+<style>
+  .grading-choice-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+  .grading-choice-option { padding: 8px 10px; border: 1px solid #e2e8f0; border-radius: 8px; overflow-wrap: anywhere; }
+  .grading-choice-option.is-wrong { border-color: #ef8585; background: #fff1f1; color: #b42323; font-weight: 700; }
+  .grading-choice-option.is-correct { border-color: #5da481; background: #eff9f3; color: #185e3d; font-weight: 700; }
+  .grading-error-heading, .grading-error-row { display: flex; align-items: center; gap: 4px; }
+  .grading-error-heading h3 { margin: 0; }
+  .grading-error-row { margin-top: 8px; }
+  .grading-error-row .grading-error-select { flex: 1; min-width: 0; }
+  .grading-error-suggestion { display: inline-grid; place-items: center; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #fff4dc; color: #9a5700; border: 1px solid #e4b04d; font-size: 13px; font-weight: 700; cursor: help; }
+  .grading-error-suggestion[hidden] { display: none; }
+</style>
+{% endblock %}
 {% block content %}
 <div class="breadcrumb"><a href="{% url 'owner_grading_queue' %}">Chấm bài</a><span>/</span><span>{{ assignment.title }}</span><span>/</span><span>{{ student.display_name }}</span></div>
 <div class="page-heading">
@@ -8,10 +22,7 @@
     <h1>{{ student.display_name }} — {{ assignment.title }}</h1>
     <p>Lượt #{{ attempt.attempt_no }} · Trạng thái: <strong id="gr-status" class="pill {% if attempt.status == 'GRADED' %}pill-success{% elif attempt.status == 'SUBMITTED' %}pill-warning{% elif attempt.status == 'VOID' %}pill-danger{% endif %}">{% if attempt.status == 'SUBMITTED' %}Cần chấm{% elif attempt.status == 'GRADED' %}Đã chấm{% elif attempt.status == 'VOID' %}Đã hủy{% else %}{{ attempt.status }}{% endif %}</strong> · Revision: <span id="gr-rev">{{ attempt.revision }}</span>{% if attempt.is_late %} · <span class="pill pill-warning">Nộp muộn</span>{% endif %}{% if not is_current %} · <span class="pill pill-danger">Không còn là lượt hiệu lực</span>{% endif %}</p>
   </div>
-  <div class="wizard-actions" style="margin:0">
-    <button type="button" class="button" id="publish-result-btn">Công bố kết quả</button>
-    <button type="button" class="button secondary danger-btn" id="void-attempt-btn">Hủy bài (VOID)</button>
-  </div>
+
 </div>
 
 {% if visibility_events %}
@@ -25,12 +36,12 @@
     <label for="visibility-deduction">Điểm trừ</label>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
       <input id="visibility-deduction" name="deduction" type="number" min="0" max="{{ total_grade|unlocalize }}" step="0.01" value="{{ visibility_deduction|unlocalize }}" required style="width:130px">
-      <button class="button primary" type="submit">Lưu điểm trừ</button>
+      <button class="button primary st-action-btn" type="submit" title="Lưu điểm trừ" aria-label="Lưu điểm trừ"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></button>
     </div>
     <small>Điểm bài làm: {{ total_grade }}. Điểm trừ tính theo thang điểm gốc của bài và không được vượt quá điểm bài làm. Nhập 0 để bỏ trừ.</small>
   </form>
   {% elif visibility_flagged and attempt.status == 'SUBMITTED' %}<p>Chấm xong tất cả câu hỏi trước khi nhập điểm trừ.</p>{% endif %}
-  {% if visibility_flagged %}{% if attempt.visibility_reviewed_at %}<span class="pill pill-success">Đã xem xét</span>{% else %}<form method="post">{% csrf_token %}<input type="hidden" name="action" value="review_visibility"><button class="button secondary" type="submit">Đánh dấu đã xem xét</button></form>{% endif %}{% endif %}
+  {% if visibility_flagged %}{% if attempt.visibility_reviewed_at %}<span class="pill pill-success">Đã xem xét</span>{% else %}<form method="post">{% csrf_token %}<input type="hidden" name="action" value="review_visibility"><button class="button primary st-action-btn" type="submit" title="Đánh dấu đã xem xét" aria-label="Đánh dấu đã xem xét"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></button></form>{% endif %}{% endif %}
 </section>
 {% endif %}
 
@@ -40,6 +51,14 @@
   <div id="grading-responses" class="card-stack">
     <p class="empty">Đang tải dữ liệu bài làm...</p>
   </div>
+  <div class="wizard-actions" style="margin:24px 0 0">
+    <button type="button" class="button primary st-action-btn" id="publish-result-btn" title="Công bố kết quả" aria-label="Công bố kết quả">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </button>
+    <button type="button" class="button primary st-action-btn" id="void-attempt-btn" title="Hủy bài (VOID)" aria-label="Hủy bài (VOID)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+    </button>
+  </div>
 </div>
 {% endblock %}
-{% block extra_scripts %}<script type="module" src="{% static 'js/owner_grading.js' %}?v=3"></script>{% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'js/owner_grading.js' %}?v=20261121v8"></script>{% endblock %}

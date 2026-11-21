@@ -1,0 +1,77 @@
+<div id="modal-export-scores" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="export-scores-title">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header"><h2 id="export-scores-title">Xuất điểm CSV</h2><button type="button" class="modal-close" data-modal-close aria-label="Đóng">×</button></div>
+    <div class="modal-body" data-tab-group>
+      <div class="context-pills context-pills-wrap" role="tablist" aria-label="Chọn phạm vi xuất điểm">
+        <button type="button" class="context-pill is-selected" role="tab" data-tab-target="export-by-assignment">Bài tập</button>
+        <button type="button" class="context-pill" role="tab" data-tab-target="export-by-class">Lớp</button>
+        <button type="button" class="context-pill" role="tab" data-tab-target="export-by-course">Khóa học</button>
+      </div>
+      <div id="export-by-assignment" data-tab-pane>
+        <form method="get" action="{% url 'owner_api_progress_export' %}" data-export-scope="assignment">
+          <input type="hidden" name="scope" value="assignment">
+          <div class="field-group"><label>Bài tập</label><select name="assignment_id" required aria-label="Chọn bài tập"></select></div>
+          <div class="field-group"><label>Khóa học</label><select name="course_id" aria-label="Chọn khóa học"></select></div>
+          <div class="field-group"><label>Lớp</label><select name="class_id" aria-label="Chọn lớp"></select></div>
+          <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Xuất CSV</button></div>
+        </form>
+      </div>
+      <div id="export-by-class" data-tab-pane hidden>
+        <form method="get" action="{% url 'owner_api_progress_export' %}" data-export-scope="class">
+          <input type="hidden" name="scope" value="class">
+          <div class="field-group"><label>Lớp</label><select name="class_id" required aria-label="Chọn lớp"></select></div>
+          <div class="field-group"><label>Bài tập</label><select name="assignment_id" aria-label="Chọn bài tập"></select></div>
+          <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Xuất CSV</button></div>
+        </form>
+      </div>
+      <div id="export-by-course" data-tab-pane hidden>
+        <form method="get" action="{% url 'owner_api_progress_export' %}" data-export-scope="course">
+          <input type="hidden" name="scope" value="course">
+          <div class="field-group"><label>Khóa học</label><select name="course_id" required aria-label="Chọn khóa học"></select></div>
+          <div class="field-group"><label>Lớp</label><select name="class_id" aria-label="Chọn lớp"></select></div>
+          <div class="field-group"><label>Bài tập</label><select name="assignment_id" aria-label="Chọn bài tập"></select></div>
+          <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Xuất CSV</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ export_data|json_script:"export-scores-data" }}
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById('export-scores-data').textContent);
+  function fill(select, entries, placeholder) {
+    const previous = select.value;
+    select.replaceChildren(new Option(placeholder, ''));
+    entries.forEach(item => select.add(new Option(item.title || item.name, item.id)));
+    if (entries.some(item => item.id === previous)) select.value = previous;
+  }
+  document.querySelectorAll('[data-export-scope]').forEach(form => {
+    const scope = form.dataset.exportScope;
+    const assignment = form.elements.assignment_id;
+    const course = form.elements.course_id;
+    const classroom = form.elements.class_id;
+    function update(changed) {
+      if (scope === 'assignment') {
+        if (changed !== 'course' && changed !== 'class') fill(assignment, data.assignments, 'Chọn bài tập');
+        const selected = data.assignments.find(item => item.id === assignment.value);
+        fill(course, selected ? data.courses.filter(item => selected.courses.includes(item.id)) : [], 'Tất cả khóa học');
+        const selectedCourse = data.courses.find(item => item.id === course.value);
+        fill(classroom, selected ? data.classes.filter(item => selected.classes.includes(item.id) && (!selectedCourse || selectedCourse.classes.includes(item.id))) : [], 'Tất cả lớp');
+      } else if (scope === 'class') {
+        if (changed !== 'class') fill(classroom, data.classes, 'Chọn lớp');
+        fill(assignment, classroom.value ? data.assignments.filter(item => item.classes.includes(classroom.value)) : [], 'Tất cả bài tập');
+      } else {
+        if (changed !== 'course' && changed !== 'class') fill(course, data.courses, 'Chọn khóa học');
+        const selected = data.courses.find(item => item.id === course.value);
+        fill(classroom, selected ? data.classes.filter(item => selected.classes.includes(item.id)) : [], 'Toàn khóa');
+        fill(assignment, selected ? data.assignments.filter(item => item.courses.includes(selected.id) && (!classroom.value || item.classes.includes(classroom.value))) : [], 'Tất cả bài tập');
+      }
+    }
+    if (assignment && scope === 'assignment') assignment.addEventListener('change', () => update('assignment'));
+    if (course) course.addEventListener('change', () => update('course'));
+    if (classroom && scope !== 'assignment') classroom.addEventListener('change', () => update('class'));
+    update();
+  });
+})();
+</script>

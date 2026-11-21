@@ -1,12 +1,24 @@
 {% extends "owner/base.html" %}
 {% block title %}Bài giao — Sunny Edu{% endblock %}
+{% block owner_head %}
+<style>
+  .assignment-status-cell { text-align: center; }
+  .data-table th.assignment-status-cell { text-align: center; }
+  .assignment-status { display: inline-flex; align-items: center; justify-content: center; min-width: 100px; padding: 6px 12px; border: 1px solid currentColor; border-radius: 8px; font-size: 12px; font-weight: 700; line-height: 1.2; }
+</style>
+{% endblock %}
 {% block content %}
 <div class="page-heading">
   <div>
     <h1>Bài đã giao</h1>
     <p>Theo dõi hạn nộp và tiến độ làm bài.</p>
   </div>
-  <a class="button primary" href="{% url 'owner_assignment_new' %}">Giao bài mới</a>
+  <button type="button" class="button primary st-action-btn" data-modal-open="modal-quick-assign" title="Giao bài mới" aria-label="Giao bài mới">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+  </button>
 </div>
 
 <div class="tabs" aria-label="Lọc bài giao">
@@ -20,9 +32,9 @@
 <section class="panel">
   {% if rows %}
     <div class="table-wrap">
-      <table class="data-table">
+      <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
         <thead>
-          <tr><th>Mã / Tên bài</th><th>Đề bài</th><th>Trạng thái</th><th>Hạn nộp</th><th>Đã nộp / Được giao</th><th></th></tr>
+          <tr><th>Mã / Tên bài</th><th>Đề bài</th><th class="assignment-status-cell">Trạng thái</th><th>Hạn nộp</th><th>Đã nộp / Được giao</th><th></th></tr>
         </thead>
         <tbody>
           {% for row in rows %}
@@ -32,10 +44,10 @@
                 <div><small class="mono">{{ row.assignment.code }}</small></div>
               </td>
               <td>{{ row.assignment.version.exam.title }} (v{{ row.assignment.version.number }})</td>
-              <td><span class="pill {% if row.assignment.status == 'PUBLISHED' %}pill-success{% elif row.assignment.status == 'CANCELLED' %}pill-danger{% endif %}">{% if row.assignment.status == 'PUBLISHED' %}Đã phát hành{% elif row.assignment.status == 'DRAFT' %}Bản nháp{% elif row.assignment.status == 'CANCELLED' %}Đã hủy{% else %}{{ row.assignment.status }}{% endif %}</span></td>
-              <td>{{ row.assignment.due_at|date:"d/m/Y H:i" }}<br><small>Muộn đến: {{ row.assignment.late_until|date:"d/m/Y H:i" }}</small></td>
+              <td class="assignment-status-cell"><span class="pill assignment-status {% if row.assignment.status == 'PUBLISHED' %}pill-success{% elif row.assignment.status == 'DRAFT' %}pill-warning{% elif row.assignment.status == 'CANCELLED' %}pill-danger{% endif %}">{% if row.assignment.status == 'PUBLISHED' %}Publish{% elif row.assignment.status == 'DRAFT' %}Draft{% elif row.assignment.status == 'CANCELLED' %}Cancelled{% else %}{{ row.assignment.status }}{% endif %}</span></td>
+              <td>{{ row.assignment.due_at|date:"d/m/Y H:i" }}<br><small>{% if row.assignment.late_policy == 'ALLOW' %}Cho nộp sau hạn{% else %}Không cho nộp sau hạn{% endif %}</small></td>
               <td>{{ row.submitted_count }} / {{ row.recipient_count }}</td>
-              <td><a class="button secondary" href="{% url 'owner_assignment_detail' row.assignment.id %}">Quản lý</a></td>
+              <td><a class="button primary st-action-btn" href="{% url 'owner_assignment_detail' row.assignment.id %}" title="Quản lý" aria-label="Quản lý"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
             </tr>
           {% endfor %}
         </tbody>
@@ -45,4 +57,5 @@
     <p class="empty">Không tìm thấy bài giao.</p>
   {% endif %}
 </section>
+{% include "owner/_quick_assign.html" %}
 {% endblock %}

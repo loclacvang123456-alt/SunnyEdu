@@ -65,7 +65,7 @@ def _serialize_assignment(a, detail=False):
         "version_number": a.version.number,
         "opens_at": a.opens_at.isoformat(),
         "due_at": a.due_at.isoformat(),
-        "late_until": a.late_until.isoformat(),
+        "late_until": a.late_until.isoformat() if a.late_until else None,
         "late_policy": a.late_policy,
         "mode": a.mode,
         "game_feedback_enabled": a.game_feedback_enabled,

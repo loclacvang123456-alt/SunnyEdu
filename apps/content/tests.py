@@ -72,6 +72,35 @@ class ImportIntegrationTests(TestCase):
             published = publish_version(version.pk, version.revision)
             self.assertEqual(published.status, ExamVersion.Status.PUBLISHED)
 
+    def test_minimal_prompt_and_answer_only_csv_import_and_publish(self):
+        from openpyxl import load_workbook
+
+        owner = get_user_model().objects.create_user(username='owner-minimal', role='OWNER', display_name='Owner Minimal', password='test-pass-123')
+        root = Path(__file__).resolve().parents[2]
+        data = (root / 'bai-tap-du-dang-bai-mau.csv').read_bytes()
+        batch = preview_question_import(owner, data, 'bai-tap-du-dang-bai-mau.csv')
+        version = commit_question_import(owner, batch.id, batch.source_digest, 'Minimal Full Types')
+        expected_types = [
+            'SINGLE_CHOICE',
+            'SINGLE_CHOICE',
+            'SINGLE_CHOICE',
+            'MULTIPLE_CHOICE',
+            'STRESS_CHOICE',
+            'WORD_ORDER',
+            'SENTENCE_TRANSFORM',
+            'TEXT',
+            'AUDIO',
+        ]
+        self.assertEqual(list(version.questions.order_by('position').values_list('type', flat=True)), expected_types)
+        published = publish_version(version.pk, version.revision)
+        self.assertEqual(published.status, ExamVersion.Status.PUBLISHED)
+        for q in published.questions.all():
+            self.assertTrue(q.question_tags.filter(tag__kind='TOPIC', tag__skill=q.skill).exists())
+
+        wb = load_workbook(root / 'de-mau-full-dang-bai.xlsx')
+        dvs = wb['questions'].data_validations.dataValidation
+        self.assertEqual(len(dvs), 3)
+
 
 class QuestionGameModeTests(TestCase):
     def test_question_game_choice_is_validated_preserved_and_cloned(self):

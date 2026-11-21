@@ -14,7 +14,7 @@ class Assignment(models.Model):
     status = models.CharField(max_length=12, default='DRAFT')
     opens_at = models.DateTimeField()
     due_at = models.DateTimeField()
-    late_until = models.DateTimeField()
+    late_until = models.DateTimeField(null=True, blank=True)
     late_policy = models.CharField(max_length=5, default='ALLOW')
     revision = models.PositiveIntegerField(default=0)
     published_at = models.DateTimeField(null=True, blank=True)
@@ -25,7 +25,7 @@ class Assignment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        constraints = [models.CheckConstraint(condition=Q(opens_at__lt=models.F('due_at')) & Q(due_at__lte=models.F('late_until')), name='assignment_valid_dates'), models.CheckConstraint(condition=Q(mode__in=['PRACTICE', 'EXAM']), name='assignment_mode_valid'), models.CheckConstraint(condition=Q(game_feedback_enabled=False) | Q(mode='PRACTICE'), name='game_feedback_practice_only')]
+        constraints = [models.CheckConstraint(condition=Q(opens_at__lt=models.F('due_at')) & (Q(late_until__isnull=True) | Q(due_at__lte=models.F('late_until'))), name='assignment_valid_dates'), models.CheckConstraint(condition=Q(mode__in=['PRACTICE', 'EXAM']), name='assignment_mode_valid'), models.CheckConstraint(condition=Q(game_feedback_enabled=False) | Q(mode='PRACTICE'), name='game_feedback_practice_only')]
 
 
 class AssignmentClass(models.Model):
