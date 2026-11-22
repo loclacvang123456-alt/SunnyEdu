@@ -83,6 +83,7 @@ def students(request):
         display_name = data.get("display_name")
         student_ref = data.get("student_ref")
         owner_note = data.get("owner_note", "")
+        parent_phone = data.get("parent_phone", "")
         school_id = data.get("school_id")
         new_school_name = (data.get("new_school_name") or "").strip()
         english_class_id = data.get("english_class_id")
@@ -94,7 +95,7 @@ def students(request):
         elif school_id and school_id != "__other__":
             school = School.objects.filter(pk=school_id, archived_at__isnull=True).first()
 
-        student = create_student(display_name, student_ref, owner_note, actor=request.user)
+        student = create_student(display_name, student_ref, owner_note, actor=request.user, parent_phone=parent_phone)
 
         if school:
             now = timezone.now()

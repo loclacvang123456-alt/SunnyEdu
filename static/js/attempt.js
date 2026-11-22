@@ -240,6 +240,242 @@ function changed(state) {
   updateStatus();
 }
 
+/* --- SFX & VFX Synthesizer for Instant Feedback --- */
+let audioCtx = null;
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) audioCtx = new AudioContext();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume().catch(() => {});
+  }
+  return audioCtx;
+}
+
+function playCorrectSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const notes = [523.25, 659.25, 783.99, 1046.50];
+    notes.forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+      gain.gain.setValueAtTime(0.18, now + idx * 0.07);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.32);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + idx * 0.07);
+      osc.stop(now + idx * 0.07 + 0.32);
+    });
+  } catch (e) {}
+}
+
+function playWrongSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(220, now);
+    osc.frequency.exponentialRampToValueAtTime(130, now + 0.28);
+    gain.gain.setValueAtTime(0.15, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.3);
+  } catch (e) {}
+}
+
+function spawnConfetti(originEl) {
+  const rect = originEl.getBoundingClientRect();
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+  const colors = ['#22c55e', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#10b981'];
+
+  for (let i = 0; i < 26; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-particle';
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 50 + Math.random() * 110;
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance - 20;
+    const rot = (Math.random() - 0.5) * 720;
+    const size = 6 + Math.random() * 8;
+
+    p.style.left = `${startX}px`;
+    p.style.top = `${startY}px`;
+    p.style.width = `${size}px`;
+    p.style.height = `${size * (Math.random() > 0.5 ? 1 : 1.6)}px`;
+    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    p.style.setProperty('--dx', `${dx}px`);
+    p.style.setProperty('--dy', `${dy}px`);
+    p.style.setProperty('--rot', `${rot}deg`);
+
+    document.body.append(p);
+    setTimeout(() => p.remove(), 1200);
+  }
+}
+
+function triggerShake(element) {
+  element.classList.remove('option--instant-wrong');
+  void element.offsetWidth;
+  element.classList.add('option--instant-wrong');
+}
+
+/* --- Fullscreen Enforcement & 5s Auto Submit --- */
+let fsTimer = null;
+let fsRemaining = 5;
+let fsWarningModal = null;
+let fsGateModal = null;
+let fsGatePassed = false;
+
+function isFullscreen() {
+  return Boolean(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function requestFullscreen() {
+  const docEl = document.documentElement;
+  const fn = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+  if (fn) {
+    return fn.call(docEl).catch(() => {});
+  }
+  return Promise.resolve();
+}
+
+function cleanupFullscreen() {
+  if (fsTimer) {
+    clearInterval(fsTimer);
+    fsTimer = null;
+  }
+  if (fsWarningModal) {
+    fsWarningModal.remove();
+    fsWarningModal = null;
+  }
+  if (fsGateModal) {
+    fsGateModal.remove();
+    fsGateModal = null;
+  }
+  document.removeEventListener('fullscreenchange', handleFullscreenState);
+  document.removeEventListener('webkitfullscreenchange', handleFullscreenState);
+  document.removeEventListener('mozfullscreenchange', handleFullscreenState);
+  document.removeEventListener('MSFullscreenChange', handleFullscreenState);
+  document.removeEventListener('visibilitychange', handleFullscreenState);
+}
+
+function handleFullscreenState() {
+  if (!practiceEditable || submitting) return;
+  if (!fsGatePassed) return;
+
+  const valid = isFullscreen() && !document.hidden;
+
+  if (valid) {
+    if (fsTimer) {
+      clearInterval(fsTimer);
+      fsTimer = null;
+    }
+    fsRemaining = 5;
+    if (fsWarningModal) {
+      fsWarningModal.remove();
+      fsWarningModal = null;
+    }
+  } else {
+    if (!fsTimer) {
+      fsRemaining = 5;
+      showFullscreenWarning();
+      fsTimer = setInterval(() => {
+        fsRemaining--;
+        updateFullscreenWarningText();
+        if (fsRemaining <= 0) {
+          clearInterval(fsTimer);
+          fsTimer = null;
+          if (fsWarningModal) {
+            const desc = fsWarningModal.querySelector('.fs-modal-desc');
+            if (desc) desc.textContent = 'Đã hết 5 giây ngoài toàn màn hình. Hệ thống đang tự động kết thúc và nộp bài làm...';
+          }
+          doSubmit(true);
+        }
+      }, 1000);
+    }
+  }
+}
+
+function showFullscreenWarning() {
+  if (fsWarningModal) return;
+  fsWarningModal = document.createElement('div');
+  fsWarningModal.className = 'fs-modal-overlay';
+  fsWarningModal.innerHTML = `
+    <div class="fs-modal-card is-warning" role="alertdialog" aria-modal="true">
+      <div class="fs-modal-icon">⚠️</div>
+      <h2 class="fs-modal-title">CẢNH BÁO RỜI TOÀN MÀN HÌNH!</h2>
+      <div class="fs-countdown-badge" id="fs-count">5</div>
+      <p class="fs-modal-desc">Em đã thoát toàn màn hình hoặc đổi tab! Bài làm sẽ <strong>tự động nộp và kết thúc</strong> nếu không quay lại trong <span id="fs-count-text">5</span> giây!</p>
+      <button type="button" class="button primary fs-btn-action" id="fs-resume-btn">Quay lại toàn màn hình ngay</button>
+    </div>
+  `;
+  document.body.append(fsWarningModal);
+  const btn = fsWarningModal.querySelector('#fs-resume-btn');
+  if (btn) {
+    btn.addEventListener('click', async () => {
+      await requestFullscreen();
+      handleFullscreenState();
+    });
+  }
+}
+
+function updateFullscreenWarningText() {
+  if (!fsWarningModal) return;
+  const countEl = fsWarningModal.querySelector('#fs-count');
+  const countText = fsWarningModal.querySelector('#fs-count-text');
+  if (countEl) countEl.textContent = String(Math.max(0, fsRemaining));
+  if (countText) countText.textContent = String(Math.max(0, fsRemaining));
+}
+
+function initFullscreenEnforcement() {
+  if (!practiceEditable) return;
+
+  document.addEventListener('fullscreenchange', handleFullscreenState);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenState);
+  document.addEventListener('mozfullscreenchange', handleFullscreenState);
+  document.addEventListener('MSFullscreenChange', handleFullscreenState);
+  document.addEventListener('visibilitychange', handleFullscreenState);
+
+  if (isFullscreen()) {
+    fsGatePassed = true;
+    return;
+  }
+
+  fsGateModal = document.createElement('div');
+  fsGateModal.className = 'fs-modal-overlay';
+  fsGateModal.innerHTML = `
+    <div class="fs-modal-card" role="dialog" aria-modal="true">
+      <div class="fs-modal-icon">🖥️</div>
+      <h2 class="fs-modal-title">Chế độ Toàn Màn Hình</h2>
+      <p class="fs-modal-desc">Bài làm yêu cầu hiển thị toàn màn hình để chống gian lận. <strong>Không được thoát toàn màn hình hoặc đổi tab quá 5 giây</strong>, nếu vi phạm bài thi sẽ lập tức kết thúc.</p>
+      <button type="button" class="button primary fs-btn-action" id="fs-start-btn">Bật toàn màn hình và bắt đầu làm bài</button>
+    </div>
+  `;
+  document.body.append(fsGateModal);
+
+  const startBtn = fsGateModal.querySelector('#fs-start-btn');
+  if (startBtn) {
+    startBtn.addEventListener('click', async () => {
+      await requestFullscreen();
+      fsGatePassed = true;
+      if (fsGateModal) {
+        fsGateModal.remove();
+        fsGateModal = null;
+      }
+    });
+  }
+}
+
 function renderQuestion(question, editable, gameEnabled, questionIndex = 0, totalQuestions = 1) {
   const panel = make('section', undefined, 'panel question');
   const gameQuestion = question.type === 'SINGLE_CHOICE' && gameEnabled && question.pirate_game !== false && !question.passage_text;
@@ -295,6 +531,8 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
       host.append(exit);
     });
   } else if (question.type === 'SINGLE_CHOICE' || question.type === 'MULTIPLE_CHOICE') {
+    const instantFeedbackEnabled = root.dataset.instantFeedback === 'true' || Boolean(question.correct_option_ids?.length);
+    const optionLabels = new Map();
     for (const option of question.options) {
       const label = make('label', undefined, 'option');
       const input = make('input');
@@ -303,8 +541,71 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
       input.value = option.id;
       label.append(input, make('span', option.content));
       field.append(label);
+      optionLabels.set(option.id, label);
     }
-    field.addEventListener('change', () => changed(state));
+
+    function applyInstantFeedback(selectedIds, animate = false) {
+      if (!instantFeedbackEnabled || !question.correct_option_ids) return false;
+      const correctSet = new Set(question.correct_option_ids);
+      const isCorrect = selectedIds.length > 0 && selectedIds.every(id => correctSet.has(id)) && (question.type === 'SINGLE_CHOICE' ? true : selectedIds.length === correctSet.size);
+
+      for (const [optId, optLabel] of optionLabels) {
+        optLabel.classList.remove('option--instant-correct', 'option--instant-wrong', 'option--instant-highlight-target');
+        optLabel.querySelectorAll('.instant-feedback-badge').forEach(b => b.remove());
+      }
+
+      if (selectedIds.length === 0) return false;
+
+      if (isCorrect) {
+        for (const optId of selectedIds) {
+          const optLabel = optionLabels.get(optId);
+          if (optLabel) {
+            optLabel.classList.add('option--instant-correct');
+            const badge = make('span', '✓ Đúng', 'instant-feedback-badge badge--correct');
+            optLabel.append(badge);
+            if (animate) spawnConfetti(optLabel);
+          }
+        }
+        if (animate) playCorrectSound();
+      } else {
+        for (const optId of selectedIds) {
+          const optLabel = optionLabels.get(optId);
+          if (optLabel) {
+            if (correctSet.has(optId)) {
+              optLabel.classList.add('option--instant-correct');
+            } else {
+              optLabel.classList.add('option--instant-wrong');
+              const badge = make('span', '✗ Sai', 'instant-feedback-badge badge--wrong');
+              optLabel.append(badge);
+              if (animate) triggerShake(optLabel);
+            }
+          }
+        }
+        for (const corrId of correctSet) {
+          const corrLabel = optionLabels.get(corrId);
+          if (corrLabel && !corrLabel.classList.contains('option--instant-correct')) {
+            corrLabel.classList.add('option--instant-highlight-target');
+            const badge = make('span', '★ Đáp án đúng', 'instant-feedback-badge badge--correct-target');
+            corrLabel.append(badge);
+          }
+        }
+        if (animate) playWrongSound();
+      }
+      return isCorrect;
+    }
+
+    field.addEventListener('change', () => {
+      changed(state);
+      if (instantFeedbackEnabled) {
+        const checkedInputs = [...field.querySelectorAll('input:checked')];
+        const selectedIds = checkedInputs.map(i => i.value);
+        applyInstantFeedback(selectedIds, true);
+      }
+    });
+
+    if (instantFeedbackEnabled && question.selected_options?.length) {
+      applyInstantFeedback(question.selected_options, false);
+    }
   } else if (question.type === 'MATCH_IMAGE') {
     const instruction = make('p', 'Kéo hoặc chạm vào tranh và từ để nối.');
     const board = make('div', undefined, 'match-board');
@@ -505,6 +806,8 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
     window.addEventListener('resize', state.drawMatchLines);
     field.append(instruction, board, matchStatus);
   } else if (question.type === 'STRESS_CHOICE') {
+    const instantFeedbackEnabled = root.dataset.instantFeedback === 'true' || Boolean(question.correct_option_ids?.length);
+    const syllableLabels = new Map();
     const block = make('div', undefined, 'stress-target-block');
     const wordLine = make('div', undefined, 'stress-word-line');
     const wordAnchor = make('div', undefined, 'stress-word-anchor');
@@ -517,6 +820,7 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
       input.value = option.id;
       label.append(input, make('span', option.content));
       syllables.append(label);
+      syllableLabels.set(option.id, label);
     }
     const guide = make('div', undefined, 'stress-hand-guide');
     const handIcon = make('span', '👆', 'stress-hand-icon');
@@ -526,7 +830,44 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
     wordLine.append(wordAnchor);
     block.append(wordLine);
     field.append(block);
-    field.addEventListener('change', () => changed(state));
+
+    function applyStressFeedback(selectedId, animate = false) {
+      if (!instantFeedbackEnabled || !question.correct_option_ids?.length || !selectedId) return;
+      const correctId = question.correct_option_ids[0];
+      for (const [sId, sLabel] of syllableLabels) {
+        sLabel.classList.remove('option--instant-correct', 'option--instant-wrong', 'option--instant-highlight-target');
+      }
+      const chosenLabel = syllableLabels.get(selectedId);
+      if (selectedId === correctId) {
+        if (chosenLabel) {
+          chosenLabel.classList.add('option--instant-correct');
+          if (animate) spawnConfetti(chosenLabel);
+        }
+        if (animate) playCorrectSound();
+      } else {
+        if (chosenLabel) {
+          chosenLabel.classList.add('option--instant-wrong');
+          if (animate) triggerShake(chosenLabel);
+        }
+        const correctLabel = syllableLabels.get(correctId);
+        if (correctLabel) {
+          correctLabel.classList.add('option--instant-highlight-target');
+        }
+        if (animate) playWrongSound();
+      }
+    }
+
+    field.addEventListener('change', () => {
+      changed(state);
+      if (instantFeedbackEnabled) {
+        const checked = field.querySelector('input:checked');
+        if (checked) applyStressFeedback(checked.value, true);
+      }
+    });
+
+    if (instantFeedbackEnabled && question.selected_options?.length) {
+      applyStressFeedback(question.selected_options[0], false);
+    }
   } else if (question.type === 'WORD_ORDER') {
     const instruction = make('p', 'Kéo hoặc chạm vào các từ để xếp câu.');
     const answer = make('div', undefined, 'word-answer');
@@ -674,6 +1015,9 @@ try {
   const attempt = await fetchAttempt();
   const editable = attempt.status === 'IN_PROGRESS';
   practiceEditable = editable;
+  if (editable) {
+    initFullscreenEnforcement();
+  }
   const isGame = root.dataset.mode === 'PRACTICE' && attempt.game_feedback_enabled === true;
   if (root.dataset.mode === 'PRACTICE') practiceNavigation.append(submitButton);
   for (const [qIndex, question] of attempt.questions.entries()) {
@@ -733,10 +1077,10 @@ async function flushSaves() {
   }
 }
 
-submitButton.addEventListener('click', async () => {
-  if (submitting || submitButton.disabled) return;
+async function doSubmit(force = false) {
+  if (submitting || (submitButton.disabled && !force)) return;
   if (gameBusy()) { notify('Hãy chờ game lưu lựa chọn hoặc kiểm tra hình ảnh.', true); return; }
-  if (!pendingSubmission) {
+  if (!force && !pendingSubmission) {
     const blank = [...states.values()].filter(isBlank).length;
     submitting = true;
     const confirmed = await window.sunnyDialog.confirm(blank
@@ -778,6 +1122,8 @@ submitButton.addEventListener('click', async () => {
     if (!payload.data?.submitted_at) throw new Error('Chưa xác nhận được bài đã nộp. Em hãy thử nộp lại.');
     pendingSubmission = null;
     visibilityActive = false;
+    practiceEditable = false;
+    cleanupFullscreen();
     try { sessionStorage.removeItem(visibilityKey); } catch {}
     status.textContent = 'Đã nộp';
     submitButton.hidden = true;
@@ -808,4 +1154,6 @@ submitButton.addEventListener('click', async () => {
     submitting = false;
     if (!submitButton.hidden) submitButton.disabled = requiresReload;
   }
-});
+}
+
+submitButton.addEventListener('click', () => doSubmit(false));

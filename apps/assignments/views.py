@@ -50,8 +50,9 @@ def attempt_detail(request, attempt_id):
     if (attempt.recipient.state != 'ASSIGNED' or attempt.recipient.assignment.status != 'PUBLISHED'
             or not course_access_allowed(attempt.recipient.assignment_id, request.user)):
         return error('NOT_AVAILABLE', 'Bài này không còn khả dụng.', 403)
+    assignment = attempt.recipient.assignment
     result = []
-    for response in attempt.responses.select_related('question__passage', 'practice_shot').prefetch_related('question__options', 'options'):
+    for response in attempt.responses.select_related('question__passage', 'practice_shot').prefetch_related('question__options', 'options', 'question__answer_keys'):
         question = response.question
         options = list(question.options.all())
         if question.type == 'WORD_ORDER':
@@ -62,7 +63,11 @@ def attempt_detail(request, attempt_id):
                     if options[index].content != options[0].content:
                         options[0], options[index] = options[index], options[0]
                         break
+        elif question.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE'):
+            options.sort(key=lambda option: hmac.new(settings.SECRET_KEY.encode(), f'{attempt.id}:option:{option.id}'.encode(), hashlib.sha256).digest())
         item = {'response_id': str(response.id), 'question_id': str(question.id), 'position': question.position, 'type': question.type, 'pirate_game': question.pirate_game, 'prompt': question.prompt, 'max_points': str(question.max_points), 'passage_text': question.passage.text_body if question.passage_id else '', 'options': [{'id': str(o.id), 'content': o.content} for o in options] if question.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'STRESS_CHOICE', 'WORD_ORDER') else [], 'response_revision': response.revision, 'text_answer': response.text_answer, 'selected_options': [str(o.id) for o in response.options.all()], 'ordered_option_ids': response.ordered_option_ids if question.type == 'WORD_ORDER' else []}
+        if assignment.instant_feedback:
+            item['correct_option_ids'] = [str(k.option_id) for k in question.answer_keys.all()]
         try:
             shot = response.practice_shot
         except PracticeShot.DoesNotExist:
@@ -77,8 +82,7 @@ def attempt_detail(request, attempt_id):
             item['match_words'] = [{'id': str(word.id), 'text': word.text} for word in words]
             item['match_pairs'] = response.match_pairs
         result.append(item)
-    assignment = attempt.recipient.assignment
-    return JsonResponse({'data': {'id': str(attempt.id), 'status': attempt.status, 'revision': attempt.revision, 'game_feedback_enabled': assignment.mode == 'PRACTICE' and assignment.game_feedback_enabled, 'questions': result}})
+    return JsonResponse({'data': {'id': str(attempt.id), 'status': attempt.status, 'revision': attempt.revision, 'game_feedback_enabled': assignment.mode == 'PRACTICE' and assignment.game_feedback_enabled, 'instant_feedback': bool(assignment.instant_feedback), 'questions': result}})
 
 
 def shot_receipt(shot):

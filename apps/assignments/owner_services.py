@@ -63,7 +63,7 @@ def _validate_schedule(opens_at, due_at, late_policy, late_until=None):
 
 
 @transaction.atomic
-def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_at, late_policy="ALLOW", late_until=None, mode="PRACTICE", game_feedback_enabled=False):
+def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_at, late_policy="ALLOW", late_until=None, mode="PRACTICE", game_feedback_enabled=False, allow_individuals=False, instant_feedback=False):
     clean_title = (title or "").strip()
     if not 1 <= len(clean_title) <= 200:
         raise ValidationError("Tên bài giao phải từ 1..200 ký tự.")
@@ -71,7 +71,7 @@ def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_a
     if not version:
         raise ValidationError("Phiên bản đề phải ở trạng thái PUBLISHED.")
     classes = list(EnglishClass.objects.filter(pk__in=class_ids or [], archived_at__isnull=True))
-    if not classes:
+    if not classes and not allow_individuals:
         raise ValidationError("Cần chọn ít nhất một lớp tiếng Anh đang hoạt động.")
     if mode not in ("PRACTICE", "EXAM"):
         raise ValidationError("Chế độ bài phải là luyện tập hoặc kiểm tra.")
@@ -90,6 +90,7 @@ def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_a
         late_policy=late_policy,
         mode=mode,
         game_feedback_enabled=game_feedback_enabled,
+        instant_feedback=bool(instant_feedback),
     )
     AssignmentClass.objects.bulk_create([AssignmentClass(assignment=assignment, english_class=c) for c in classes])
     from apps.content.auto_tagging import sync_version_and_exercise_auto_tags
@@ -99,7 +100,7 @@ def create_draft_assignment(owner, version_id, title, class_ids, opens_at, due_a
 
 
 @transaction.atomic
-def update_draft_assignment(owner, assignment_id, expected_revision, title=None, class_ids=None, opens_at=None, due_at=None, late_policy=None, late_until=None, mode=None, game_feedback_enabled=None):
+def update_draft_assignment(owner, assignment_id, expected_revision, title=None, class_ids=None, opens_at=None, due_at=None, late_policy=None, late_until=None, mode=None, game_feedback_enabled=None, instant_feedback=None):
     assignment = Assignment.objects.select_for_update().select_related("version__exam").get(pk=assignment_id, version__exam__created_by=owner)
     if assignment.status != "DRAFT":
         raise ValidationError("Chỉ sửa trực tiếp được bài giao DRAFT.")
@@ -113,6 +114,8 @@ def update_draft_assignment(owner, assignment_id, expected_revision, title=None,
         if type(game_feedback_enabled) is not bool:
             raise ValidationError("Cài đặt game không hợp lệ.")
         assignment.game_feedback_enabled = game_feedback_enabled
+    if instant_feedback is not None:
+        assignment.instant_feedback = bool(instant_feedback)
     if assignment.game_feedback_enabled and assignment.mode != "PRACTICE":
         raise ValidationError("Game phản hồi tức thời chỉ dùng được cho bài luyện tập.")
     _validate_game_assets(assignment.game_feedback_enabled)

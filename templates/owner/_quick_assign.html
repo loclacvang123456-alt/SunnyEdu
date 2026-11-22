@@ -32,12 +32,35 @@
           {% if missing_pirate_assets %}<p class="hint">Game chưa đủ hình ảnh để sử dụng.</p>{% endif %}
         </div>
         <div class="field-group">
-          <label>Chọn lớp nhận bài</label>
-          <input type="search" id="quick-assign-class-search" placeholder="Tìm lớp..." aria-label="Tìm lớp nhận bài" autocomplete="off">
-          <div class="checkbox-list" id="quick-assign-class-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-            {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
+          <label class="check-row"><input type="checkbox" name="instant_feedback"> <span>Hiện kết quả luôn sau mỗi câu (Học sinh biết ngay đúng/sai)</span></label>
+          <p class="hint">Học sinh làm đúng/sai hiện luôn, sai tô xanh đáp án đúng, có âm thanh và hiệu ứng.</p>
+        </div>
+        <div class="field-group">
+          <label>Chọn người nhận</label>
+          <div class="inline-form" role="tablist" aria-label="Chọn người nhận bài">
+            <button type="button" class="button primary" role="tab" aria-selected="true" aria-controls="quick-panel-class" data-quick-tab="class">Lớp</button>
+            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-course" data-quick-tab="course">Khóa học</button>
+            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-student" data-quick-tab="student">Cá nhân</button>
           </div>
-          <p class="muted" id="quick-assign-class-empty" hidden>Không tìm thấy lớp.</p>
+          <div id="quick-panel-class" role="tabpanel">
+            <input type="search" id="quick-assign-class-search" placeholder="Tìm lớp..." aria-label="Tìm lớp" autocomplete="off">
+            <div class="checkbox-list" id="quick-assign-class-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
+              {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
+            </div><p class="muted" id="quick-assign-class-empty" hidden>Không tìm thấy lớp.</p>
+          </div>
+          <div id="quick-panel-course" role="tabpanel" hidden>
+            <input type="search" id="quick-assign-course-search" placeholder="Tìm khóa học..." aria-label="Tìm khóa học" autocomplete="off">
+            <div class="checkbox-list" id="quick-assign-course-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
+              {% for course in quick_courses %}<label><input type="checkbox" name="course_ids" value="{{ course.id }}"> <span>{{ course.name }}</span></label>{% empty %}<p class="empty">Chưa có khóa học.</p>{% endfor %}
+            </div><p class="muted" id="quick-assign-course-empty" hidden>Không tìm thấy khóa học.</p>
+            <p class="hint">Giao cho học sinh trong các lớp thuộc khóa học.</p>
+          </div>
+          <div id="quick-panel-student" role="tabpanel" hidden>
+            <input type="search" id="quick-assign-student-search" placeholder="Tìm học sinh..." aria-label="Tìm học sinh" autocomplete="off">
+            <div class="checkbox-list" id="quick-assign-student-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
+              {% for student in quick_students %}<label><input type="checkbox" name="student_ids" value="{{ student.id }}"> <span>{{ student.display_name }} ({{ student.username }})</span></label>{% empty %}<p class="empty">Chưa có học sinh.</p>{% endfor %}
+            </div><p class="muted" id="quick-assign-student-empty" hidden>Không tìm thấy học sinh.</p>
+          </div>
         </div>
       </div>
       <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Giao bài</button></div>
@@ -46,7 +69,7 @@
 </div>
 <script>
 const normalizeQuickSearch = value => value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
-for (const kind of ['class', 'exam']) {
+for (const kind of ['class', 'course', 'student', 'exam']) {
   const search = document.getElementById(`quick-assign-${kind}-search`);
   const labels = Array.from(document.querySelectorAll(`#quick-assign-${kind}-list label`));
   search.addEventListener('input', function () {
@@ -60,6 +83,16 @@ for (const kind of ['class', 'exam']) {
     document.getElementById(`quick-assign-${kind}-empty`).hidden = !query || visible > 0;
   });
 }
+function selectQuickTab(kind) {
+  document.querySelectorAll('[data-quick-tab]').forEach(tab => {
+    const selected = tab.dataset.quickTab === kind;
+    tab.setAttribute('aria-selected', String(selected));
+    tab.classList.toggle('primary', selected);
+    tab.classList.toggle('secondary', !selected);
+    document.getElementById(`quick-panel-${tab.dataset.quickTab}`).hidden = !selected;
+  });
+}
+document.querySelectorAll('[data-quick-tab]').forEach(tab => tab.addEventListener('click', () => selectQuickTab(tab.dataset.quickTab)));
 const quickExamChecks = Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
 function syncQuickAssignment() {
   const selected = quickExamChecks.filter(input => input.checked);
@@ -73,7 +106,8 @@ document.addEventListener('click', function (event) {
   const button = event.target.closest('[data-modal-open="modal-quick-assign"]');
   if (!button) return;
   document.getElementById('quick-assign-form').reset();
-  for (const kind of ['class', 'exam']) {
+  selectQuickTab('class');
+  for (const kind of ['class', 'course', 'student', 'exam']) {
     document.getElementById(`quick-assign-${kind}-search`).dispatchEvent(new Event('input'));
   }
   quickExamChecks.forEach(input => { input.checked = input.value === button.dataset.versionId; });

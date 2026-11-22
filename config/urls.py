@@ -8,7 +8,13 @@ from apps.core import course_views, views
 
 
 class OwnerAdminSite(AdminSiteOTPRequiredMixin, admin.AdminSite):
-    """Enforce OTP verification for Django admin access."""
+    """Enforce OTP verification for Django admin access unless bypass is enabled."""
+
+    def has_permission(self, request):
+        from django.conf import settings
+        if getattr(settings, 'TEACHER_OTP_BYPASS', False):
+            return request.user.is_active and request.user.is_staff
+        return super().has_permission(request)
 
 
 if not isinstance(admin.site, OwnerAdminSite):

@@ -11,6 +11,7 @@ class Assignment(models.Model):
     code = models.CharField(max_length=9, unique=True)
     mode = models.CharField(max_length=8, choices=[('PRACTICE', 'Luyện tập'), ('EXAM', 'Bài kiểm tra')], default='PRACTICE')
     game_feedback_enabled = models.BooleanField(default=False)
+    instant_feedback = models.BooleanField(default=False)
     status = models.CharField(max_length=12, default='DRAFT')
     opens_at = models.DateTimeField()
     due_at = models.DateTimeField()

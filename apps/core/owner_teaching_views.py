@@ -40,7 +40,7 @@ def _quick_assign_context(user):
     game_questions = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
     versions = ExamVersion.objects.filter(exam__created_by=user, exam__archived_at__isnull=True, status=ExamVersion.Status.PUBLISHED).select_related("exam").annotate(has_game_questions=Exists(game_questions)).order_by("exam__title", "-number")
     now = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
-    return {"quick_versions": versions, "classes": EnglishClass.objects.filter(archived_at__isnull=True).order_by("name"), "default_due": now + timedelta(days=7), "missing_pirate_assets": missing_game_assets()}
+    return {"quick_versions": versions, "classes": EnglishClass.objects.filter(archived_at__isnull=True).order_by("name"), "quick_courses": Course.objects.filter(created_by=user).order_by("name"), "quick_students": User.objects.filter(role="STUDENT", status="ACTIVE").order_by("display_name", "username"), "default_due": now + timedelta(days=7), "missing_pirate_assets": missing_game_assets()}
 
 
 def _quick_assign(request):
@@ -60,12 +60,27 @@ def _quick_assign(request):
     if not due_at or due_at <= now:
         raise ValidationError("Hạn nộp phải sau thời điểm hiện tại.")
     game = request.POST.get("game_feedback_enabled") == "on"
+    instant_feedback = request.POST.get("instant_feedback") == "on"
     if game and not any(version.has_game_questions for version in versions):
         raise ValidationError("Các bài đã chọn không có câu hỏi phù hợp với bắn thuyền.")
+    try:
+        class_ids = {uuid.UUID(value) for value in request.POST.getlist("class_ids")}
+        course_ids = {uuid.UUID(value) for value in request.POST.getlist("course_ids")}
+        student_ids = {uuid.UUID(value) for value in request.POST.getlist("student_ids")}
+    except (ValueError, TypeError):
+        raise ValidationError("Danh sách người nhận không hợp lệ.")
+    courses = Course.objects.filter(created_by=request.user, pk__in=course_ids)
+    if courses.count() != len(course_ids):
+        raise ValidationError("Có khóa học không tồn tại.")
+    class_ids.update(EnglishClass.objects.filter(courses__in=courses, archived_at__isnull=True).values_list("id", flat=True))
+    if not class_ids and not student_ids:
+        raise ValidationError("Hãy chọn lớp, khóa học có lớp, hoặc học sinh.")
+    if not EnglishMembership.objects.filter(english_class_id__in=class_ids, end_at__isnull=True, student__role="STUDENT", student__status="ACTIVE").exists() and not student_ids:
+        raise ValidationError("Các lớp đã chọn chưa có học sinh đang hoạt động.")
     with transaction.atomic():
         for version in versions:
-            assignment = create_draft_assignment(request.user, version.id, version.exam.title, request.POST.getlist("class_ids"), now, due_at, request.POST.get("late_policy", "BLOCK"), game_feedback_enabled=game and version.has_game_questions)
-            publish_assignment(request.user, assignment.id, assignment.revision)
+            assignment = create_draft_assignment(request.user, version.id, version.exam.title, list(class_ids), now, due_at, request.POST.get("late_policy", "BLOCK"), game_feedback_enabled=game and version.has_game_questions, allow_individuals=bool(student_ids), instant_feedback=instant_feedback)
+            assign_targets_with_schedule(request.user, [assignment.id], list(class_ids), list(student_ids), due_at)
     messages.success(request, f"Đã giao {len(versions)} bài tập.")
     return redirect("owner_assignments")
 
@@ -302,18 +317,31 @@ def assignment_new(request):
             due_at = parse_local_dt(request.POST.get("due_at"))
             late_policy = request.POST.get("late_policy", "ALLOW")
             late_until = parse_local_dt(request.POST.get("late_until")) if late_policy == "ALLOW" else due_at
+            instant_feedback = request.POST.get("instant_feedback") == "on"
+            class_ids = set(request.POST.getlist("class_ids"))
+            course_ids = set(request.POST.getlist("course_ids"))
+            student_ids = set(request.POST.getlist("student_ids"))
+            if course_ids:
+                courses = Course.objects.filter(created_by=request.user, pk__in=course_ids)
+                class_ids.update(str(cid) for cid in EnglishClass.objects.filter(courses__in=courses, archived_at__isnull=True).values_list("id", flat=True))
+            if not class_ids and not student_ids:
+                raise ValidationError("Cần chọn ít nhất một lớp tiếng Anh, khóa học hoặc học sinh.")
             a = create_draft_assignment(
                 request.user,
                 request.POST.get("version_id"),
                 request.POST.get("title"),
-                request.POST.getlist("class_ids"),
+                list(class_ids),
                 opens_at,
                 due_at,
                 late_policy,
                 late_until,
                 mode=request.POST.get("mode", "PRACTICE"),
                 game_feedback_enabled=request.POST.get("game_feedback_enabled") == "on",
+                allow_individuals=bool(student_ids),
+                instant_feedback=instant_feedback,
             )
+            if student_ids or class_ids:
+                assign_targets_with_schedule(request.user, [a.id], list(class_ids), list(student_ids), due_at, mode=request.POST.get("mode", "PRACTICE"))
             messages.success(request, f"Đã tạo bài giao nháp {a.title} ({a.code}).")
             return redirect("owner_assignment_detail", assignment_id=a.id)
         except ValidationError as exc:
@@ -325,6 +353,8 @@ def assignment_new(request):
     class_members = {}
     for m in EnglishMembership.objects.filter(english_class__in=classes, end_at__isnull=True, student__status="ACTIVE"):
         class_members.setdefault(str(m.english_class_id), []).append({"id": str(m.student_id), "no_school": m.student_id not in school_member_ids})
+    courses = list(Course.objects.filter(created_by=request.user, is_published=True).order_by("name"))
+    students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").order_by("display_name"))
     now_local = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
     return render(
         request,
@@ -333,6 +363,8 @@ def assignment_new(request):
             "assignments",
             versions=versions,
             classes=classes,
+            courses=courses,
+            students=students,
             class_members_json=json.dumps(class_members),
             default_opens=now_local,
             default_due=now_local + timedelta(days=3),

@@ -112,8 +112,20 @@ def generate_student_ref():
     raise ValidationError("Không thể tự động tạo mã học sinh duy nhất.")
 
 
+def clean_parent_phone(raw_phone):
+    """Normalize and validate a Vietnamese mobile phone number (10 digits starting with 0)."""
+    if not raw_phone:
+        return ""
+    phone = re.sub(r"[\s.()-]", "", str(raw_phone).strip())
+    if phone.startswith("+84"):
+        phone = "0" + phone[3:]
+    if phone and not re.fullmatch(r"0[0-9]{9}", phone):
+        raise ValidationError("Số điện thoại phụ huynh phải có 10 chữ số và bắt đầu bằng 0.")
+    return phone
+
+
 @transaction.atomic
-def create_student(display_name, student_ref=None, owner_note="", actor=None):
+def create_student(display_name, student_ref=None, owner_note="", actor=None, parent_phone=""):
     """Create a STUDENT account and StudentProfile without public signup."""
     name = (display_name or "").strip()
     ref = (student_ref or "").strip()
@@ -123,11 +135,12 @@ def create_student(display_name, student_ref=None, owner_note="", actor=None):
         raise ValidationError("Tên học sinh phải có từ 1 đến 120 ký tự.")
     if not 1 <= len(ref) <= 32:
         raise ValidationError("Mã học sinh (student_ref) phải có từ 1 đến 32 ký tự.")
+    phone = clean_parent_phone(parent_phone)
     try:
         user = User(username=f"stu-{uuid.uuid4().hex[:16]}", role=User.Role.STUDENT, display_name=name, status=User.Status.ACTIVE)
         user.set_unusable_password()
         user.save()
-        StudentProfile.objects.create(user=user, student_ref=ref, owner_note=(owner_note or "").strip())
+        StudentProfile.objects.create(user=user, student_ref=ref, owner_note=(owner_note or "").strip(), parent_phone=phone)
     except IntegrityError as exc:
         raise ValidationError("Mã học sinh (student_ref) đã tồn tại.") from exc
     AuditEvent.objects.create(actor=actor, action="student.create", target_type="user", target_id=user.pk)
@@ -146,11 +159,7 @@ def update_student(student_id, actor, display_name=None, status=None, owner_note
         student.display_name = name
         fields.append("display_name")
     if parent_phone is not None:
-        phone = re.sub(r"[\s.()-]", "", parent_phone)
-        if phone.startswith("+84"):
-            phone = "0" + phone[3:]
-        if phone and not re.fullmatch(r"0[0-9]{9}", phone):
-            raise ValidationError("Số điện thoại phụ huynh phải có 10 chữ số và bắt đầu bằng 0.")
+        phone = clean_parent_phone(parent_phone)
     if hasattr(student, "student_profile"):
         profile_fields = []
         if owner_note is not None:

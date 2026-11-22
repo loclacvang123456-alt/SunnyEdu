@@ -32,6 +32,10 @@
           {% if missing_pirate_assets %}<p class="hint">Game thiếu {{ missing_pirate_assets|length }} ảnh.</p>{% endif %}
         </div>
         <div class="field-group">
+          <label class="check-row"><input type="checkbox" name="instant_feedback" id="a-instant-feedback"> <span>Hiện kết quả luôn sau mỗi câu (Học sinh biết ngay đúng/sai)</span></label>
+          <p class="hint">Học sinh chọn xong đáp án sẽ biết ngay đúng hay sai, nếu sai sẽ tô xanh đáp án đúng kèm âm thanh & hiệu ứng.</p>
+        </div>
+        <div class="field-group">
           <label for="a-version">Đề đã phát hành</label>
           <select id="a-version" name="version_id" required>
             <option value="">-- Chọn đề bài --</option>
@@ -62,16 +66,49 @@
       </div>
 
       <div>
-        <label>Lớp tiếng Anh nhận bài</label>
-        <div class="checkbox-list" id="a-class-checks">
-          {% for c in classes %}
-            <label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }} ({{ c.school_year }} — {{ c.code }})</span></label>
-          {% empty %}
-            <p class="empty">Chưa có lớp tiếng Anh. Hãy tạo lớp trước.</p>
-          {% endfor %}
+        <label>Chọn đối tượng nhận bài</label>
+        <div class="inline-form" role="tablist" style="margin-bottom:10px">
+          <button type="button" class="button primary" id="tab-btn-class" role="tab" aria-selected="true">Lớp tiếng Anh</button>
+          <button type="button" class="button secondary" id="tab-btn-course" role="tab" aria-selected="false">Khóa học</button>
+          <button type="button" class="button secondary" id="tab-btn-student" role="tab" aria-selected="false">Từng Học sinh</button>
         </div>
-        <p class="muted" id="a-recipient-preview">Chọn lớp để xem số học sinh.</p>
-        <p class="banner-warn" id="a-noschool-warn" hidden></p>
+
+        <div id="target-panel-class" role="tabpanel">
+          <input type="search" id="assign-class-search" placeholder="Tìm lớp..." style="margin-bottom:8px" autocomplete="off">
+          <div class="checkbox-list" id="a-class-checks" style="max-height:260px;overflow-y:auto">
+            {% for c in classes %}
+              <label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }} ({{ c.school_year }} — {{ c.code }})</span></label>
+            {% empty %}
+              <p class="empty">Chưa có lớp tiếng Anh. Hãy tạo lớp trước.</p>
+            {% endfor %}
+          </div>
+          <p class="muted" id="a-recipient-preview">Chọn lớp để xem số học sinh.</p>
+          <p class="banner-warn" id="a-noschool-warn" hidden></p>
+        </div>
+
+        <div id="target-panel-course" role="tabpanel" hidden>
+          <input type="search" id="assign-course-search" placeholder="Tìm khóa học..." style="margin-bottom:8px" autocomplete="off">
+          <div class="checkbox-list" id="a-course-checks" style="max-height:260px;overflow-y:auto">
+            {% for crs in courses %}
+              <label><input type="checkbox" name="course_ids" value="{{ crs.id }}"> <span>{{ crs.name }}</span></label>
+            {% empty %}
+              <p class="empty">Chưa có khóa học nào.</p>
+            {% endfor %}
+          </div>
+          <p class="hint" style="margin-top:6px">Tự động giao bài cho tất cả các lớp thuộc khóa học đã chọn.</p>
+        </div>
+
+        <div id="target-panel-student" role="tabpanel" hidden>
+          <input type="search" id="assign-student-search" placeholder="Tìm học sinh..." style="margin-bottom:8px" autocomplete="off">
+          <div class="checkbox-list" id="a-student-checks" style="max-height:260px;overflow-y:auto">
+            {% for s in students %}
+              <label><input type="checkbox" name="student_ids" value="{{ s.id }}"> <span>{{ s.display_name }} ({{ s.username }})</span></label>
+            {% empty %}
+              <p class="empty">Chưa có học sinh nào.</p>
+            {% endfor %}
+          </div>
+          <p class="hint" style="margin-top:6px">Giao trực tiếp cho từng học sinh cụ thể.</p>
+        </div>
       </div>
     </div>
 
@@ -82,4 +119,50 @@
   </form>
 </section>
 <script type="application/json" id="assignment-class-members">{{ class_members_json|safe }}</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tabClass = document.getElementById('tab-btn-class');
+  const tabCourse = document.getElementById('tab-btn-course');
+  const tabStudent = document.getElementById('tab-btn-student');
+  const panelClass = document.getElementById('target-panel-class');
+  const panelCourse = document.getElementById('target-panel-course');
+  const panelStudent = document.getElementById('target-panel-student');
+
+  function selectTab(btn, panel) {
+    [tabClass, tabCourse, tabStudent].forEach(b => {
+      b.classList.remove('primary');
+      b.classList.add('secondary');
+      b.setAttribute('aria-selected', 'false');
+    });
+    [panelClass, panelCourse, panelStudent].forEach(p => p.hidden = true);
+    btn.classList.add('primary');
+    btn.classList.remove('secondary');
+    btn.setAttribute('aria-selected', 'true');
+    panel.hidden = false;
+  }
+
+  if (tabClass && tabCourse && tabStudent) {
+    tabClass.addEventListener('click', () => selectTab(tabClass, panelClass));
+    tabCourse.addEventListener('click', () => selectTab(tabCourse, panelCourse));
+    tabStudent.addEventListener('click', () => selectTab(tabStudent, panelStudent));
+  }
+
+  function setupSearch(inputId, listId) {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+    if (!input || !list) return;
+    const labels = Array.from(list.querySelectorAll('label'));
+    input.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      labels.forEach(label => {
+        label.style.display = label.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  setupSearch('assign-class-search', 'a-class-checks');
+  setupSearch('assign-course-search', 'a-course-checks');
+  setupSearch('assign-student-search', 'a-student-checks');
+});
+</script>
 {% endblock %}

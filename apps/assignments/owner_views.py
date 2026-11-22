@@ -69,6 +69,7 @@ def _serialize_assignment(a, detail=False):
         "late_policy": a.late_policy,
         "mode": a.mode,
         "game_feedback_enabled": a.game_feedback_enabled,
+        "instant_feedback": a.instant_feedback,
         "published_at": a.published_at.isoformat() if a.published_at else None,
         "answers_released_at": a.answers_released_at.isoformat() if a.answers_released_at else None,
         "recipient_count": a.recipients.count(),
@@ -115,6 +116,7 @@ def assignments(request):
             _dt(data.get("late_until"), required=False),
             mode=data.get("mode", "PRACTICE"),
             game_feedback_enabled=data.get("game_feedback_enabled", False),
+            instant_feedback=data.get("instant_feedback", False),
         )
         return JsonResponse({"data": _serialize_assignment(a, detail=True)}, status=201)
     except ValidationError as exc:
@@ -150,6 +152,7 @@ def assignment_detail(request, assignment_id):
             late_until=_dt(data.get("late_until"), required=False),
             mode=data.get("mode"),
             game_feedback_enabled=data.get("game_feedback_enabled"),
+            instant_feedback=data.get("instant_feedback"),
         )
         return JsonResponse({"data": _serialize_assignment(updated, detail=True)})
     except ValidationError as exc:

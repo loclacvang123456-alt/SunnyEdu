@@ -138,6 +138,7 @@ def students(request):
                 display_name = request.POST.get("display_name", "").strip()
                 student_ref = request.POST.get("student_ref", "").strip() or None
                 owner_note = request.POST.get("owner_note", "").strip()
+                parent_phone = request.POST.get("parent_phone", "").strip()
 
                 school_id = request.POST.get("school_id", "").strip()
                 new_school_name = request.POST.get("new_school_name", "").strip()
@@ -148,7 +149,7 @@ def students(request):
                 elif school_id and school_id != "__other__":
                     school = School.objects.filter(pk=school_id, archived_at__isnull=True).first()
 
-                s = create_student(display_name, student_ref=student_ref, owner_note=owner_note, actor=request.user)
+                s = create_student(display_name, student_ref=student_ref, owner_note=owner_note, actor=request.user, parent_phone=parent_phone)
 
                 if school:
                     now = timezone.now()

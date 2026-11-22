@@ -10,7 +10,7 @@
 <a class="button secondary assignment-exit" href="/student/"><span class="btn-mascot btn-mascot-left" aria-hidden="true"></span> Thoát</a>
 <header class="page-heading"><div><span class="eyebrow">BÀI TẬP TIẾNG ANH</span><h1>{{ assignment.title }}</h1><p>Hạn nộp: {{ assignment.due_at|date:"H:i d/m/Y" }}</p></div><span class="pill" id="save-status" role="status" aria-live="polite">Đang tải bài…</span></header>
 {% endif %}
-<div id="exercise" data-attempt-id="{{ attempt.id }}" data-attempt-status="{{ attempt.status }}" data-mode="{{ assignment.mode|default:'EXAM' }}" data-game-enabled="{{ assignment.game_feedback_enabled|yesno:'true,false' }}">
+<div id="exercise" data-attempt-id="{{ attempt.id }}" data-attempt-status="{{ attempt.status }}" data-mode="{{ assignment.mode|default:'EXAM' }}" data-game-enabled="{{ assignment.game_feedback_enabled|yesno:'true,false' }}" data-instant-feedback="{{ assignment.instant_feedback|yesno:'true,false' }}">
   <div id="submission-receipt" class="receipt-card" role="status" aria-live="polite" {% if not attempt.submitted_at %}hidden{% endif %}>
     <img class="receipt-illustration" src="{% static 'img/sunny-edu/submission-success.png' %}" width="512" height="512" alt="">
     <div class="receipt-copy">

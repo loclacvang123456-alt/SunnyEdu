@@ -1,6 +1,9 @@
+import hashlib
+import hmac
 import json
 import re
 from decimal import Decimal
+from django.conf import settings
 from django.contrib.auth import logout
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
@@ -518,7 +521,10 @@ def student_assignment_result(request, assignment_id):
             selected_ids = {o.id for o in resp.options.all()} if resp else set()
             correct_ids = {k.option_id for k in q.answer_keys.all()}
             options_info = []
-            for opt in q.options.all():
+            q_options = list(q.options.all())
+            if q.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE'):
+                q_options.sort(key=lambda opt: hmac.new(settings.SECRET_KEY.encode(), f'{attempt.id}:option:{opt.id}'.encode(), hashlib.sha256).digest())
+            for opt in q_options:
                 options_info.append({
                     'content': opt.content,
                     'is_selected': opt.id in selected_ids,

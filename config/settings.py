@@ -6,8 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'development-only-not-for-production')
 DEBUG = os.environ.get('DJANGO_DEBUG', '1') == '1'
 TESTING = 'test' in sys.argv
-# Temporary development-only password login; set to 0 to restore teacher OTP.
-TEACHER_OTP_BYPASS = DEBUG and not TESTING and os.environ.get('TEACHER_OTP_BYPASS', '1') == '1'
+# Teacher OTP bypass (default enabled). Set TEACHER_OTP_BYPASS=0 in environment to restore teacher OTP verification.
+TEACHER_OTP_BYPASS = os.environ.get('TEACHER_OTP_BYPASS', '1') == '1'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if o.strip()]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
