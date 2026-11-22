@@ -40,21 +40,44 @@ def _quick_assign_context(user):
     game_questions = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
     versions = ExamVersion.objects.filter(exam__created_by=user, exam__archived_at__isnull=True, status=ExamVersion.Status.PUBLISHED).select_related("exam").annotate(has_game_questions=Exists(game_questions)).order_by("exam__title", "-number")
     now = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
-    classes = list(EnglishClass.objects.filter(archived_at__isnull=True).prefetch_related("courses").order_by("name"))
-    for c in classes:
-        c.course_names = ", ".join(sorted(crs.name for crs in c.courses.all()))
-    students = list(User.objects.filter(role="STUDENT", status="ACTIVE").order_by("display_name", "username"))
-    memberships = EnglishMembership.objects.filter(english_class__in=classes, end_at__isnull=True).select_related("english_class")
-    classes_by_student = {}
-    for m in memberships:
-        classes_by_student.setdefault(m.student_id, []).append(m.english_class.name)
-    for s in students:
-        s.class_names = ", ".join(sorted(classes_by_student.get(s.id, [])))
+
+    target_data = build_assign_target_rows(owner=user)
+    published_versions = list(versions)
+    assignments = (
+        Assignment.objects.filter(
+            version__in=published_versions,
+            version__exam__created_by=user,
+        )
+        .exclude(status="CANCELLED")
+        .prefetch_related("assignmentclass_set", "recipients")
+    )
+    assigned_by_version = {}
+    for a in assignments:
+        vid = str(a.version_id)
+        if vid not in assigned_by_version:
+            assigned_by_version[vid] = {"class_ids": set(), "student_ids": set()}
+        for ac in a.assignmentclass_set.all():
+            assigned_by_version[vid]["class_ids"].add(str(ac.english_class_id))
+        for r in a.recipients.all():
+            assigned_by_version[vid]["student_ids"].add(str(r.student_id))
+
+    assigned_by_version_json = json.dumps({
+        vid: {
+            "class_ids": list(data["class_ids"]),
+            "student_ids": list(data["student_ids"]),
+        }
+        for vid, data in assigned_by_version.items()
+    })
+
     return {
         "quick_versions": versions,
-        "classes": classes,
-        "quick_courses": Course.objects.filter(created_by=user).order_by("name"),
-        "quick_students": students,
+        "classes": target_data["class_rows"],
+        "quick_courses": target_data["course_rows"],
+        "quick_students": target_data["student_rows"],
+        "quick_class_rows": target_data["class_rows"],
+        "quick_course_rows": target_data["course_rows"],
+        "quick_student_rows": target_data["student_rows"],
+        "assigned_by_version_json": assigned_by_version_json,
         "default_due": now + timedelta(days=7),
         "missing_pirate_assets": missing_game_assets(),
     }

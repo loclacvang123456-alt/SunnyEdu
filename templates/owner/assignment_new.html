@@ -66,7 +66,7 @@
       </div>
 
       <div>
-        <label>Chọn đối tượng nhận bài</label>
+        <label style="font-weight:700;font-size:15px;margin-bottom:8px;display:block;">Đối tượng</label>
         <div class="inline-form" role="tablist" style="margin-bottom:10px">
           <button type="button" class="button primary" id="tab-btn-class" role="tab" aria-selected="true">Lớp tiếng Anh ({{ class_rows|length }})</button>
           <button type="button" class="button secondary" id="tab-btn-course" role="tab" aria-selected="false">Khóa học ({{ course_rows|length }})</button>
@@ -77,12 +77,13 @@
           <div class="table-toolbar" style="margin-bottom:8px">
             <input type="search" data-table-search="assign-new-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp, hoặc tên khóa học..." autocomplete="off">
           </div>
-          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+          <div class="table-wrap">
             <table id="assign-new-classes-table" class="data-table" data-sortable-table>
               <thead>
                 <tr>
                   <th style="width:40px"><input type="checkbox" data-select-all="assign-new-classes-table" aria-label="Chọn tất cả lớp"></th>
-                  <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Tên lớp <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Mã lớp <span class="sort-ind">↕</span></th>
                   <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
                   <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
                   <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
@@ -95,7 +96,8 @@
                   <td>
                     <input type="checkbox" name="class_ids" value="{{ row.classroom.id }}" class="row-check" data-label="{{ row.classroom.name }}" {% if row.is_assigned %}disabled{% endif %}>
                   </td>
-                  <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+                  <td><strong>{{ row.classroom.name }}</strong></td>
+                  <td class="mono">{{ row.classroom.code }}</td>
                   <td>{{ row.course_names|default:"—" }}</td>
                   <td>{{ row.classroom.school_year }}</td>
                   <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
@@ -108,7 +110,7 @@
                   </td>
                 </tr>
                 {% empty %}
-                <tr class="empty-row"><td colspan="6" class="empty">Chưa có lớp tiếng Anh.</td></tr>
+                <tr class="empty-row"><td colspan="7" class="empty">Chưa có lớp tiếng Anh.</td></tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -121,7 +123,7 @@
           <div class="table-toolbar" style="margin-bottom:8px">
             <input type="search" data-table-search="assign-new-courses-tbody" placeholder="🔍 Tìm tên khóa học, danh mục..." autocomplete="off">
           </div>
-          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+          <div class="table-wrap">
             <table id="assign-new-courses-table" class="data-table" data-sortable-table>
               <thead>
                 <tr>
@@ -162,12 +164,13 @@
           <div class="table-toolbar" style="margin-bottom:8px">
             <input type="search" data-table-search="assign-new-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, hoặc tên lớp..." autocomplete="off">
           </div>
-          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+          <div class="table-wrap">
             <table id="assign-new-students-table" class="data-table" data-sortable-table>
               <thead>
                 <tr>
                   <th style="width:40px"><input type="checkbox" data-select-all="assign-new-students-table" aria-label="Chọn tất cả học sinh"></th>
-                  <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Tên học sinh <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Mã học sinh <span class="sort-ind">↕</span></th>
                   <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
                   <th>Trạng thái</th>
                 </tr>
@@ -178,7 +181,8 @@
                   <td>
                     <input type="checkbox" name="student_ids" value="{{ row.student.id }}" class="row-check" data-label="{{ row.student.display_name }}" {% if row.is_assigned %}disabled{% endif %}>
                   </td>
-                  <td><strong>{{ row.student.display_name }}</strong><br><small class="mono">{{ row.student_ref|default:row.student.username }}</small></td>
+                  <td><strong>{{ row.student.display_name }}</strong></td>
+                  <td class="mono">{{ row.student_ref|default:row.student.username }}</td>
                   <td>{{ row.class_names|default:"—" }}</td>
                   <td class="status-cell">
                     {% if row.is_assigned %}
@@ -189,7 +193,7 @@
                   </td>
                 </tr>
                 {% empty %}
-                <tr class="empty-row"><td colspan="4" class="empty">Chưa có học sinh nào.</td></tr>
+                <tr class="empty-row"><td colspan="5" class="empty">Chưa có học sinh nào.</td></tr>
                 {% endfor %}
               </tbody>
             </table>

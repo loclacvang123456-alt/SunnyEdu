@@ -1,117 +1,321 @@
 <div id="modal-quick-assign" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="quick-assign-title">
-  <div class="modal-panel modal-sm">
+  <div class="modal-panel modal-assign-wide" style="max-width:1120px;width:min(96vw, 1120px);max-height:92vh;display:flex;flex-direction:column;">
     <div class="modal-header">
       <h2 id="quick-assign-title">Giao bài tập</h2>
       <button type="button" class="modal-close" data-modal-close aria-label="Đóng">×</button>
     </div>
-    <form method="post" action="{% url 'owner_assignments' %}" id="quick-assign-form">
+    <form method="post" action="{% url 'owner_assignments' %}" id="quick-assign-form" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
       {% csrf_token %}
       <input type="hidden" name="action" value="quick_assign">
-      <div class="modal-body">
+      <div class="modal-body" style="overflow-y:auto;flex:1;padding:20px 24px;">
         <div class="field-group">
-          <label for="quick-assign-exam-search">Chọn bài tập</label>
-          <input type="search" id="quick-assign-exam-search" placeholder="Tìm bài tập..." autocomplete="off">
-          <div class="checkbox-list" id="quick-assign-exam-list" style="max-height:180px;overflow-y:auto;margin-top:8px">
+          <label for="quick-assign-exam-search" style="font-weight:600;">Chọn bài tập cần giao</label>
+          <input type="search" id="quick-assign-exam-search" placeholder="🔍 Tìm bài tập theo tên..." autocomplete="off">
+          <div class="checkbox-list" id="quick-assign-exam-list" style="max-height:140px;overflow-y:auto;margin-top:8px;background:var(--bg-subtle,#f8fafc);padding:8px 12px;border-radius:6px;border:1px solid var(--border,#e2e8f0);">
             {% for version in quick_versions %}
               <label><input type="checkbox" name="version_ids" value="{{ version.id }}" data-title="{{ version.exam.title }}" data-has-game="{% if version.has_game_questions %}true{% else %}false{% endif %}"> <span>{{ version.exam.title }} · v{{ version.number }}</span></label>
             {% empty %}<p class="empty">Chưa có đề đã phát hành.</p>{% endfor %}
           </div>
           <p class="muted" id="quick-assign-exam-empty" hidden>Không tìm thấy bài tập.</p>
         </div>
-        <div class="field-group">
-          <label for="quick-assign-due">Hạn nộp</label>
-          <input type="datetime-local" name="due_at" id="quick-assign-due" value="{{ default_due|date:'Y-m-d\TH:i' }}" required>
-        </div>
-        <div class="field-group">
-          <label for="quick-assign-late">Nộp sau hạn</label>
-          <select name="late_policy" id="quick-assign-late"><option value="BLOCK">Không cho phép</option><option value="ALLOW">Cho phép</option></select>
-        </div>
-        <div class="field-group" id="quick-assign-game" hidden>
-          <label class="check-row"><input type="checkbox" name="game_feedback_enabled" {% if missing_pirate_assets %}disabled{% endif %}> <span>Bắn thuyền</span></label>
-          <p class="hint">Chỉ áp dụng cho bài có câu trắc nghiệm một đáp án phù hợp.</p>
-          {% if missing_pirate_assets %}<p class="hint">Game chưa đủ hình ảnh để sử dụng.</p>{% endif %}
-        </div>
-        <div class="field-group">
-          <label class="check-row"><input type="checkbox" name="instant_feedback"> <span>Hiện kết quả luôn sau mỗi câu (Học sinh biết ngay đúng/sai)</span></label>
-          <p class="hint">Học sinh làm đúng/sai hiện luôn, sai tô xanh đáp án đúng, có âm thanh và hiệu ứng.</p>
-        </div>
-        <div class="field-group">
-          <label>Chọn người nhận</label>
-          <div class="inline-form" role="tablist" aria-label="Chọn người nhận bài">
-            <button type="button" class="button primary" role="tab" aria-selected="true" aria-controls="quick-panel-class" data-quick-tab="class">Lớp</button>
-            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-course" data-quick-tab="course">Khóa học</button>
-            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-student" data-quick-tab="student">Cá nhân</button>
+
+        <div class="owner-grid-2" style="margin-bottom:12px;">
+          <div class="field-group" style="margin:0;">
+            <label for="quick-assign-due" style="font-weight:600;">Hạn nộp</label>
+            <input type="datetime-local" name="due_at" id="quick-assign-due" value="{{ default_due|date:'Y-m-d\TH:i' }}" required>
           </div>
+          <div class="field-group" style="margin:0;">
+            <label for="quick-assign-late" style="font-weight:600;">Nộp sau hạn</label>
+            <select name="late_policy" id="quick-assign-late">
+              <option value="BLOCK">Không cho phép (Chặn nộp)</option>
+              <option value="ALLOW">Cho phép nộp sau hạn</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="owner-grid-2" style="margin-bottom:16px;">
+          <div class="field-group" id="quick-assign-game" hidden style="margin:0;">
+            <label class="check-row"><input type="checkbox" name="game_feedback_enabled" {% if missing_pirate_assets %}disabled{% endif %}> <span>Bắn thuyền (hiện đúng/sai ngay)</span></label>
+            <p class="hint">Chỉ áp dụng cho bài có câu trắc nghiệm một đáp án phù hợp.</p>
+          </div>
+          <div class="field-group" style="margin:0;">
+            <label class="check-row"><input type="checkbox" name="instant_feedback"> <span>Hiện kết quả luôn sau mỗi câu (Học sinh biết ngay đúng/sai)</span></label>
+            <p class="hint">Học sinh làm đúng/sai hiện luôn, sai tô xanh đáp án đúng, có âm thanh và hiệu ứng.</p>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin:12px 0 16px;">
+
+        <div class="field-group" style="margin-bottom:0;">
+          <label style="font-weight:700;font-size:16px;margin-bottom:10px;display:block;color:var(--text,#1e293b);">Đối tượng</label>
+          <div class="inline-form" role="tablist" aria-label="Đối tượng giao bài" style="margin-bottom:12px;">
+            <button type="button" class="button primary" role="tab" aria-selected="true" aria-controls="quick-panel-class" data-quick-tab="class">Lớp ({{ quick_class_rows|length }})</button>
+            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-course" data-quick-tab="course">Khóa học ({{ quick_course_rows|length }})</button>
+            <button type="button" class="button secondary" role="tab" aria-selected="false" aria-controls="quick-panel-student" data-quick-tab="student">Cá nhân ({{ quick_student_rows|length }})</button>
+          </div>
+
+          <!-- Tab Lớp -->
           <div id="quick-panel-class" role="tabpanel">
-            <input type="search" id="quick-assign-class-search" placeholder="Tìm lớp..." aria-label="Tìm lớp" autocomplete="off">
-            <div class="checkbox-list" id="quick-assign-class-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-              {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}{% if c.course_names %} <small class="muted">(Khóa: {{ c.course_names }})</small>{% endif %}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
-            </div><p class="muted" id="quick-assign-class-empty" hidden>Không tìm thấy lớp.</p>
+            <div class="table-toolbar" style="margin-bottom:8px;">
+              <input type="search" data-table-search="quick-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp, hoặc tên khóa học..." autocomplete="off">
+            </div>
+            <div class="table-wrap" style="max-height:360px;overflow-y:auto;overflow-x:auto;border:1px solid var(--border,#e2e8f0);border-radius:8px;">
+              <table id="quick-classes-table" class="data-table" data-sortable-table>
+                <thead style="position:sticky;top:0;background:#f8fafc;z-index:2;">
+                  <tr>
+                    <th style="width:40px"><input type="checkbox" data-select-all="quick-classes-table" aria-label="Chọn tất cả lớp"></th>
+                    <th data-sort-col>Tên lớp <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Mã lớp <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
+                    <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="quick-classes-tbody">
+                  {% for row in quick_class_rows %}
+                  <tr data-class-id="{{ row.classroom.id }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                    <td>
+                      <input type="checkbox" name="class_ids" value="{{ row.classroom.id }}" class="row-check" data-label="{{ row.classroom.name }}" {% if row.is_assigned %}disabled{% endif %}>
+                    </td>
+                    <td><strong>{{ row.classroom.name }}</strong></td>
+                    <td class="mono">{{ row.classroom.code }}</td>
+                    <td>{{ row.course_names|default:"—" }}</td>
+                    <td>{{ row.classroom.school_year }}</td>
+                    <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
+                    <td class="status-cell">
+                      {% if row.is_assigned %}
+                        <span class="pill pill-success">Đã giao</span>
+                      {% else %}
+                        <span class="muted">Chưa giao</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr class="empty-row"><td colspan="7" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
           </div>
+
+          <!-- Tab Khóa học -->
           <div id="quick-panel-course" role="tabpanel" hidden>
-            <input type="search" id="quick-assign-course-search" placeholder="Tìm khóa học..." aria-label="Tìm khóa học" autocomplete="off">
-            <div class="checkbox-list" id="quick-assign-course-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-              {% for course in quick_courses %}<label><input type="checkbox" name="course_ids" value="{{ course.id }}"> <span>{{ course.name }}</span></label>{% empty %}<p class="empty">Chưa có khóa học.</p>{% endfor %}
-            </div><p class="muted" id="quick-assign-course-empty" hidden>Không tìm thấy khóa học.</p>
-            <p class="hint">Giao cho học sinh trong các lớp thuộc khóa học.</p>
+            <div class="table-toolbar" style="margin-bottom:8px;">
+              <input type="search" data-table-search="quick-courses-tbody" placeholder="🔍 Tìm tên khóa học, danh mục..." autocomplete="off">
+            </div>
+            <div class="table-wrap" style="max-height:360px;overflow-y:auto;overflow-x:auto;border:1px solid var(--border,#e2e8f0);border-radius:8px;">
+              <table id="quick-courses-table" class="data-table" data-sortable-table>
+                <thead style="position:sticky;top:0;background:#f8fafc;z-index:2;">
+                  <tr>
+                    <th style="width:40px"><input type="checkbox" data-select-all="quick-courses-table" aria-label="Chọn tất cả khóa học"></th>
+                    <th data-sort-col>Tên khóa học <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Danh mục <span class="sort-ind">↕</span></th>
+                    <th data-sort-col data-sort-type="num">Số lớp áp dụng <span class="sort-ind">↕</span></th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="quick-courses-tbody">
+                  {% for row in quick_course_rows %}
+                  <tr data-course-id="{{ row.course.id }}" data-classes="{{ row.class_names }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                    <td>
+                      <input type="checkbox" name="course_ids" value="{{ row.course.id }}" class="row-check" data-label="{{ row.course.name }}" {% if row.is_assigned %}disabled{% endif %}>
+                    </td>
+                    <td><strong>{{ row.course.name }}</strong></td>
+                    <td>{{ row.course.get_category_display }}</td>
+                    <td data-sort-val="{{ row.class_count }}">{{ row.class_count }} lớp <small class="muted">({{ row.class_names|default:"Chưa có lớp" }})</small></td>
+                    <td class="status-cell">
+                      {% if row.is_assigned %}
+                        <span class="pill pill-success">Đã giao</span>
+                      {% else %}
+                        <span class="muted">Chưa giao</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr class="empty-row"><td colspan="5" class="empty">Chưa có khóa học nào.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <p class="hint" style="margin-top:6px">Tự động giao bài cho tất cả các lớp thuộc khóa học đã chọn.</p>
           </div>
+
+          <!-- Tab Cá nhân (Học sinh) -->
           <div id="quick-panel-student" role="tabpanel" hidden>
-            <input type="search" id="quick-assign-student-search" placeholder="Tìm học sinh..." aria-label="Tìm học sinh" autocomplete="off">
-            <div class="checkbox-list" id="quick-assign-student-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-              {% for student in quick_students %}<label><input type="checkbox" name="student_ids" value="{{ student.id }}"> <span>{{ student.display_name }} ({{ student.username }}){% if student.class_names %} <small class="muted">[Lớp: {{ student.class_names }}]</small>{% endif %}</span></label>{% empty %}<p class="empty">Chưa có học sinh.</p>{% endfor %}
-            </div><p class="muted" id="quick-assign-student-empty" hidden>Không tìm thấy học sinh.</p>
+            <div class="table-toolbar" style="margin-bottom:8px;">
+              <input type="search" data-table-search="quick-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, hoặc tên lớp..." autocomplete="off">
+            </div>
+            <div class="table-wrap" style="max-height:360px;overflow-y:auto;overflow-x:auto;border:1px solid var(--border,#e2e8f0);border-radius:8px;">
+              <table id="quick-students-table" class="data-table" data-sortable-table>
+                <thead style="position:sticky;top:0;background:#f8fafc;z-index:2;">
+                  <tr>
+                    <th style="width:40px"><input type="checkbox" data-select-all="quick-students-table" aria-label="Chọn tất cả học sinh"></th>
+                    <th data-sort-col>Tên học sinh <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Mã học sinh <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="quick-students-tbody">
+                  {% for row in quick_student_rows %}
+                  <tr data-student-id="{{ row.student.id }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                    <td>
+                      <input type="checkbox" name="student_ids" value="{{ row.student.id }}" class="row-check" data-label="{{ row.student.display_name }}" {% if row.is_assigned %}disabled{% endif %}>
+                    </td>
+                    <td><strong>{{ row.student.display_name }}</strong></td>
+                    <td class="mono">{{ row.student_ref|default:row.student.username }}</td>
+                    <td>{{ row.class_names|default:"—" }}</td>
+                    <td class="status-cell">
+                      {% if row.is_assigned %}
+                        <span class="pill pill-success">Đã giao</span>
+                      {% else %}
+                        <span class="muted">Chưa giao</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr class="empty-row"><td colspan="5" class="empty">Chưa có học sinh nào.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <p class="hint" style="margin-top:6px">Giao trực tiếp cho từng học sinh cụ thể.</p>
           </div>
         </div>
       </div>
-      <div class="modal-footer"><button type="button" class="button secondary" data-modal-close>Hủy</button><button type="submit" class="button primary">Giao bài</button></div>
+      <div class="modal-footer" style="padding:16px 24px;border-top:1px solid var(--border,#e2e8f0);display:flex;justify-content:flex-end;gap:10px;">
+        <button type="button" class="button secondary" data-modal-close>Hủy</button>
+        <button type="submit" class="button primary">Xác nhận giao bài</button>
+      </div>
     </form>
   </div>
 </div>
+
+<script type="application/json" id="quick-assigned-by-version">{{ assigned_by_version_json|safe }}</script>
 <script>
-const normalizeQuickSearch = value => value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
-for (const kind of ['class', 'course', 'student', 'exam']) {
-  const search = document.getElementById(`quick-assign-${kind}-search`);
-  const labels = Array.from(document.querySelectorAll(`#quick-assign-${kind}-list label`));
-  search.addEventListener('input', function () {
-    const query = normalizeQuickSearch(this.value.trim());
-    let visible = 0;
-    labels.forEach(label => {
-      const matches = normalizeQuickSearch(label.textContent).includes(query);
-      label.style.display = matches ? '' : 'none';
-      if (matches) visible++;
+document.addEventListener('DOMContentLoaded', function () {
+  const normalizeQuickSearch = value => String(value || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+
+  // Search in exam list
+  const examSearch = document.getElementById('quick-assign-exam-search');
+  const examLabels = Array.from(document.querySelectorAll('#quick-assign-exam-list label'));
+  if (examSearch) {
+    examSearch.addEventListener('input', function () {
+      const query = normalizeQuickSearch(this.value.trim());
+      let visible = 0;
+      examLabels.forEach(label => {
+        const matches = normalizeQuickSearch(label.textContent).includes(query);
+        label.style.display = matches ? '' : 'none';
+        if (matches) visible++;
+      });
+      const emptyEl = document.getElementById('quick-assign-exam-empty');
+      if (emptyEl) emptyEl.hidden = !query || visible > 0;
     });
-    document.getElementById(`quick-assign-${kind}-empty`).hidden = !query || visible > 0;
-  });
-}
-function selectQuickTab(kind) {
-  document.querySelectorAll('[data-quick-tab]').forEach(tab => {
-    const selected = tab.dataset.quickTab === kind;
-    tab.setAttribute('aria-selected', String(selected));
-    tab.classList.toggle('primary', selected);
-    tab.classList.toggle('secondary', !selected);
-    document.getElementById(`quick-panel-${tab.dataset.quickTab}`).hidden = !selected;
-  });
-}
-document.querySelectorAll('[data-quick-tab]').forEach(tab => tab.addEventListener('click', () => selectQuickTab(tab.dataset.quickTab)));
-const quickExamChecks = Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
-function syncQuickAssignment() {
-  const selected = quickExamChecks.filter(input => input.checked);
-  document.getElementById('quick-assign-title').textContent = selected.length === 1 ? selected[0].dataset.title : 'Giao bài tập';
-  const game = document.getElementById('quick-assign-game');
-  game.hidden = !selected.some(input => input.dataset.hasGame === 'true');
-  if (game.hidden) game.querySelector('input').checked = false;
-}
-quickExamChecks.forEach(input => input.addEventListener('change', syncQuickAssignment));
-document.addEventListener('click', function (event) {
-  const button = event.target.closest('[data-modal-open="modal-quick-assign"]');
-  if (!button) return;
-  document.getElementById('quick-assign-form').reset();
-  selectQuickTab('class');
-  for (const kind of ['class', 'course', 'student', 'exam']) {
-    document.getElementById(`quick-assign-${kind}-search`).dispatchEvent(new Event('input'));
   }
-  quickExamChecks.forEach(input => { input.checked = input.value === button.dataset.versionId; });
-  syncQuickAssignment();
+
+  // Quick tab switcher
+  function selectQuickTab(kind) {
+    document.querySelectorAll('[data-quick-tab]').forEach(tab => {
+      const selected = tab.dataset.quickTab === kind;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.classList.toggle('primary', selected);
+      tab.classList.toggle('secondary', !selected);
+      const panel = document.getElementById(`quick-panel-${tab.dataset.quickTab}`);
+      if (panel) panel.hidden = !selected;
+    });
+  }
+  document.querySelectorAll('[data-quick-tab]').forEach(tab => tab.addEventListener('click', () => selectQuickTab(tab.dataset.quickTab)));
+
+  // Assigned targets per version
+  const quickAssignedDataEl = document.getElementById('quick-assigned-by-version');
+  let quickAssignedByVersion = {};
+  try {
+    quickAssignedByVersion = JSON.parse(quickAssignedDataEl?.textContent || '{}');
+  } catch (e) {}
+
+  const quickExamChecks = Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
+
+  function syncQuickAssignment() {
+    const selected = quickExamChecks.filter(input => input.checked);
+    const titleEl = document.getElementById('quick-assign-title');
+    if (titleEl) {
+      titleEl.textContent = selected.length === 1 ? `Giao bài: ${selected[0].dataset.title}` : (selected.length > 1 ? `Giao ${selected.length} bài tập` : 'Giao bài tập');
+    }
+
+    const game = document.getElementById('quick-assign-game');
+    if (game) {
+      game.hidden = !selected.some(input => input.dataset.hasGame === 'true');
+      if (game.hidden) game.querySelector('input').checked = false;
+    }
+
+    // Aggregate assigned targets for all selected exams
+    const allAssignedClassIds = new Set();
+    const allAssignedStudentIds = new Set();
+    selected.forEach(input => {
+      const vid = input.value;
+      const vdata = quickAssignedByVersion[vid] || { class_ids: [], student_ids: [] };
+      (vdata.class_ids || []).forEach(cid => allAssignedClassIds.add(cid));
+      (vdata.student_ids || []).forEach(sid => allAssignedStudentIds.add(sid));
+    });
+
+    // Update classes table
+    document.querySelectorAll('#quick-classes-tbody tr[data-class-id]').forEach(tr => {
+      const cid = tr.dataset.classId;
+      const isAssigned = allAssignedClassIds.has(cid);
+      const cb = tr.querySelector('input[type="checkbox"]');
+      const statusCell = tr.querySelector('.status-cell');
+      if (isAssigned) {
+        tr.classList.add('is-assigned-row');
+        tr.style.opacity = '0.55';
+        tr.style.background = '#f8fafc';
+        if (cb) { cb.disabled = true; cb.checked = false; }
+        if (statusCell) statusCell.innerHTML = '<span class="pill pill-success">Đã giao</span>';
+      } else {
+        tr.classList.remove('is-assigned-row');
+        tr.style.opacity = '';
+        tr.style.background = '';
+        if (cb) cb.disabled = false;
+        if (statusCell) statusCell.innerHTML = '<span class="muted">Chưa giao</span>';
+      }
+    });
+
+    // Update students table
+    document.querySelectorAll('#quick-students-tbody tr[data-student-id]').forEach(tr => {
+      const sid = tr.dataset.studentId;
+      const isAssigned = allAssignedStudentIds.has(sid);
+      const cb = tr.querySelector('input[type="checkbox"]');
+      const statusCell = tr.querySelector('.status-cell');
+      if (isAssigned) {
+        tr.classList.add('is-assigned-row');
+        tr.style.opacity = '0.55';
+        tr.style.background = '#f8fafc';
+        if (cb) { cb.disabled = true; cb.checked = false; }
+        if (statusCell) statusCell.innerHTML = '<span class="pill pill-success">Đã giao</span>';
+      } else {
+        tr.classList.remove('is-assigned-row');
+        tr.style.opacity = '';
+        tr.style.background = '';
+        if (cb) cb.disabled = false;
+        if (statusCell) statusCell.innerHTML = '<span class="muted">Chưa giao</span>';
+      }
+    });
+  }
+
+  quickExamChecks.forEach(input => input.addEventListener('change', syncQuickAssignment));
+
+  document.addEventListener('click', function (event) {
+    const button = event.target.closest('[data-modal-open="modal-quick-assign"]');
+    if (!button) return;
+    const form = document.getElementById('quick-assign-form');
+    if (form) form.reset();
+    selectQuickTab('class');
+    if (examSearch) {
+      examSearch.value = '';
+      examSearch.dispatchEvent(new Event('input'));
+    }
+    quickExamChecks.forEach(input => { input.checked = input.value === button.dataset.versionId; });
+    syncQuickAssignment();
+  });
 });
 </script>
-

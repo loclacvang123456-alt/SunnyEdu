@@ -168,7 +168,8 @@
                 <thead>
                   <tr>
                     <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-classes-table" aria-label="Chọn tất cả lớp"></th>
-                    <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Tên lớp <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Mã lớp <span class="sort-ind">↕</span></th>
                     <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
                     <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
                     <th>Thao tác</th>
@@ -178,7 +179,8 @@
                   {% for row in class_rows %}
                   <tr>
                     <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}"></td>
-                    <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+                    <td><strong>{{ row.classroom.name }}</strong></td>
+                    <td class="mono">{{ row.classroom.code }}</td>
                     <td>{{ row.classroom.school_year }}</td>
                     <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
                     <td><button type="button" class="button primary st-action-btn" data-ca-single="class" data-target-id="{{ row.classroom.id }}" data-target-label="{{ row.classroom.name }}" title="Giao bài" aria-label="Giao bài"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></td>
@@ -209,8 +211,8 @@
                 <thead>
                   <tr>
                     <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="ca-students-table" aria-label="Chọn tất cả học sinh"></th>
-                    <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
-                    <th data-sort-col>Mã HS <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Tên học sinh <span class="sort-ind">↕</span></th>
+                    <th data-sort-col>Mã học sinh <span class="sort-ind">↕</span></th>
                     <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
                     <th>Thao tác</th>
                   </tr>

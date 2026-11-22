@@ -87,7 +87,8 @@
           <thead>
             <tr>
               <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-classes-table" aria-label="Chọn tất cả lớp"></th>
-              <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Tên lớp <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Mã lớp <span class="sort-ind">↕</span></th>
               <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
               <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
               <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
@@ -100,7 +101,8 @@
             {% for row in class_rows %}
             <tr class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
               <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}" {% if row.is_assigned %}disabled{% endif %}></td>
-              <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+              <td><strong>{{ row.classroom.name }}</strong></td>
+              <td class="mono">{{ row.classroom.code }}</td>
               <td>{{ row.course_names|default:"—" }}</td>
               <td>{{ row.classroom.school_year }}</td>
               <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
@@ -211,7 +213,8 @@
           <thead>
             <tr>
               <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-students-table" aria-label="Chọn tất cả học sinh"></th>
-              <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Tên học sinh <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Mã học sinh <span class="sort-ind">↕</span></th>
               <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
               <th data-sort-col data-sort-type="num">Trạng thái &amp; Hạn nộp <span class="sort-ind">↕</span></th>
               <th data-sort-col data-sort-type="num">Số lần làm / Tối đa <span class="sort-ind">↕</span></th>
@@ -222,7 +225,8 @@
             {% for row in student_rows %}
             <tr class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
               <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.student.id }}" data-label="{{ row.student.display_name }}" {% if row.is_assigned %}disabled{% endif %}></td>
-              <td><strong>{{ row.student.display_name }}</strong><br><small class="mono">{{ row.student_ref }}</small></td>
+              <td><strong>{{ row.student.display_name }}</strong></td>
+              <td class="mono">{{ row.student_ref }}</td>
               <td>{{ row.class_names|default:"—" }}</td>
               <td data-sort-val="{{ row.due_ts }}">
                 {% if row.is_assigned %}
