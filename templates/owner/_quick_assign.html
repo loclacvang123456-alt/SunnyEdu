@@ -45,7 +45,7 @@
           <div id="quick-panel-class" role="tabpanel">
             <input type="search" id="quick-assign-class-search" placeholder="Tìm lớp..." aria-label="Tìm lớp" autocomplete="off">
             <div class="checkbox-list" id="quick-assign-class-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-              {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
+              {% for c in classes %}<label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }}{% if c.course_names %} <small class="muted">(Khóa: {{ c.course_names }})</small>{% endif %}</span></label>{% empty %}<p class="empty">Chưa có lớp học.</p>{% endfor %}
             </div><p class="muted" id="quick-assign-class-empty" hidden>Không tìm thấy lớp.</p>
           </div>
           <div id="quick-panel-course" role="tabpanel" hidden>
@@ -58,7 +58,7 @@
           <div id="quick-panel-student" role="tabpanel" hidden>
             <input type="search" id="quick-assign-student-search" placeholder="Tìm học sinh..." aria-label="Tìm học sinh" autocomplete="off">
             <div class="checkbox-list" id="quick-assign-student-list" style="max-height:220px;overflow-y:auto;margin-top:8px">
-              {% for student in quick_students %}<label><input type="checkbox" name="student_ids" value="{{ student.id }}"> <span>{{ student.display_name }} ({{ student.username }})</span></label>{% empty %}<p class="empty">Chưa có học sinh.</p>{% endfor %}
+              {% for student in quick_students %}<label><input type="checkbox" name="student_ids" value="{{ student.id }}"> <span>{{ student.display_name }} ({{ student.username }}){% if student.class_names %} <small class="muted">[Lớp: {{ student.class_names }}]</small>{% endif %}</span></label>{% empty %}<p class="empty">Chưa có học sinh.</p>{% endfor %}
             </div><p class="muted" id="quick-assign-student-empty" hidden>Không tìm thấy học sinh.</p>
           </div>
         </div>

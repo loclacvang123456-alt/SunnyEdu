@@ -63,14 +63,15 @@
 
 {% if assignment.status != 'CANCELLED' %}
 <div class="context-tabs-container" data-tab-group="assign-detail">
-  <div class="context-pills context-pills-2" role="tablist">
+  <div class="context-pills" role="tablist">
     <button type="button" class="context-pill is-selected" data-tab-target="pane-assign-classes" role="tab">Danh sách Lớp học ({{ class_rows|length }})</button>
+    <button type="button" class="context-pill" data-tab-target="pane-assign-courses" role="tab">Khóa học ({{ course_rows|length }})</button>
     <button type="button" class="context-pill" data-tab-target="pane-assign-students" role="tab">Cá nhân Học sinh ({{ student_rows|length }})</button>
   </div>
   <div class="context-tab-body" style="background:#fff">
     <div id="pane-assign-classes" data-tab-pane>
       <div class="table-toolbar">
-        <input type="search" data-table-search="assign-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp...">
+        <input type="search" data-table-search="assign-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp, hoặc tên khóa học...">
         <div class="inline-form">
           <button type="button" class="button primary st-action-btn" data-toggle-multiselect="assign-classes-table" title="Chọn nhiều" aria-label="Chọn nhiều">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
@@ -87,6 +88,7 @@
             <tr>
               <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-classes-table" aria-label="Chọn tất cả lớp"></th>
               <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
               <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
               <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
               <th data-sort-col data-sort-type="num">Trạng thái &amp; Hạn nộp <span class="sort-ind">↕</span></th>
@@ -96,9 +98,10 @@
           </thead>
           <tbody id="assign-classes-tbody">
             {% for row in class_rows %}
-            <tr>
-              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}"></td>
+            <tr class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.classroom.id }}" data-label="{{ row.classroom.name }}" {% if row.is_assigned %}disabled{% endif %}></td>
               <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+              <td>{{ row.course_names|default:"—" }}</td>
               <td>{{ row.classroom.school_year }}</td>
               <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
               <td data-sort-val="{{ row.due_ts }}">
@@ -117,14 +120,73 @@
                   data-target-label="{{ row.classroom.name }}"
                   data-due="{% if row.due_at %}{{ row.due_at|date:'Y-m-d\TH:i' }}{% endif %}"
                   data-tries="{{ row.max_attempts|default:1 }}"
-                  title="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}"
-                  aria-label="{% if row.is_assigned %}Giao lại / Sửa hạn{% else %}Giao bài{% endif %}">
+                  title="{% if row.is_assigned %}Sửa hạn bài giao{% else %}Giao bài{% endif %}"
+                  aria-label="{% if row.is_assigned %}Sửa hạn bài giao{% else %}Giao bài{% endif %}">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </button>
               </td>
             </tr>
             {% empty %}
-            <tr class="empty-row"><td colspan="7" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+            <tr class="empty-row"><td colspan="8" class="empty">Chưa có lớp tiếng Anh nào.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="pane-assign-courses" data-tab-pane hidden>
+      <div class="table-toolbar">
+        <input type="search" data-table-search="assign-courses-tbody" placeholder="🔍 Tìm tên khóa học, danh mục...">
+        <div class="inline-form">
+          <button type="button" class="button primary st-action-btn" data-toggle-multiselect="assign-courses-table" title="Chọn nhiều" aria-label="Chọn nhiều">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </button>
+          <button type="button" class="button primary st-action-btn" hidden data-bulk-for="assign-courses-table" data-detail-bulk="course" title="Giao bài đã chọn" aria-label="Giao bài đã chọn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span class="sel-count">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="assign-courses-table" class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
+          <thead>
+            <tr>
+              <th class="multi-col" hidden style="width:40px"><input type="checkbox" data-select-all="assign-courses-table" aria-label="Chọn tất cả khóa học"></th>
+              <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
+              <th data-sort-col>Danh mục <span class="sort-ind">↕</span></th>
+              <th data-sort-col data-sort-type="num">Số lớp áp dụng <span class="sort-ind">↕</span></th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="assign-courses-tbody">
+            {% for row in course_rows %}
+            <tr class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.course.id }}" data-label="{{ row.course.name }}" {% if row.is_assigned %}disabled{% endif %}></td>
+              <td><strong>{{ row.course.name }}</strong></td>
+              <td>{{ row.course.get_category_display }}</td>
+              <td data-sort-val="{{ row.class_count }}">{{ row.class_count }} lớp <small class="muted">({{ row.class_names|default:"Chưa có lớp" }})</small></td>
+              <td>
+                {% if row.is_assigned %}
+                  <span class="pill pill-success">Đã giao</span>
+                {% else %}
+                  <span class="muted">Chưa giao</span>
+                {% endif %}
+              </td>
+              <td>
+                <button type="button" class="button primary st-action-btn"
+                  data-detail-single="course"
+                  data-target-id="{{ row.course.id }}"
+                  data-target-label="{{ row.course.name }}"
+                  data-tries="1"
+                  title="{% if row.is_assigned %}Giao lại cho các lớp{% else %}Giao bài cho khóa học{% endif %}"
+                  aria-label="{% if row.is_assigned %}Giao lại cho các lớp{% else %}Giao bài cho khóa học{% endif %}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </td>
+            </tr>
+            {% empty %}
+            <tr class="empty-row"><td colspan="6" class="empty">Chưa có khóa học nào.</td></tr>
             {% endfor %}
           </tbody>
         </table>
@@ -133,7 +195,7 @@
 
     <div id="pane-assign-students" data-tab-pane hidden>
       <div class="table-toolbar">
-        <input type="search" data-table-search="assign-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, lớp...">
+        <input type="search" data-table-search="assign-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, hoặc tên lớp...">
         <div class="inline-form">
           <button type="button" class="button primary st-action-btn" data-toggle-multiselect="assign-students-table" title="Chọn nhiều" aria-label="Chọn nhiều">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
@@ -158,8 +220,8 @@
           </thead>
           <tbody id="assign-students-tbody">
             {% for row in student_rows %}
-            <tr>
-              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.student.id }}" data-label="{{ row.student.display_name }}"></td>
+            <tr class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+              <td class="multi-col" hidden><input type="checkbox" class="row-check" value="{{ row.student.id }}" data-label="{{ row.student.display_name }}" {% if row.is_assigned %}disabled{% endif %}></td>
               <td><strong>{{ row.student.display_name }}</strong><br><small class="mono">{{ row.student_ref }}</small></td>
               <td>{{ row.class_names|default:"—" }}</td>
               <td data-sort-val="{{ row.due_ts }}">
@@ -245,6 +307,7 @@
         <aside class="schedule-targets" aria-label="Đối tượng đã chọn">
           <div class="schedule-target-tabs" role="tablist" aria-label="Loại đối tượng">
             <button type="button" role="tab" data-target-tab="class" aria-selected="true">Lớp</button>
+            <button type="button" role="tab" data-target-tab="course" aria-selected="false">Khóa học</button>
             <button type="button" role="tab" data-target-tab="student" aria-selected="false">Học sinh</button>
           </div>
           <div class="schedule-target-list" data-target-list aria-live="polite"></div>

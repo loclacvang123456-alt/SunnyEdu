@@ -687,8 +687,8 @@ function initQuestionLogModal() {
 function syncTableSelection(tableId) {
   const table = document.getElementById(tableId);
   if (!table) return;
-  const checked = Array.from(table.querySelectorAll("tbody input.row-check:checked"));
-  const allBoxes = Array.from(table.querySelectorAll("tbody input.row-check"));
+  const checked = Array.from(table.querySelectorAll("tbody input.row-check:checked:not(:disabled)"));
+  const allBoxes = Array.from(table.querySelectorAll("tbody input.row-check:not(:disabled)"));
   const selectAll = table.querySelector("thead input[data-select-all]");
   if (selectAll) {
     const visible = allBoxes.filter(cb => !cb.closest("tr")?.hidden);
@@ -698,8 +698,8 @@ function syncTableSelection(tableId) {
   }
 
   if (tableId === "ca-classes-table" || tableId === "ca-students-table") {
-    const caClasses = document.querySelectorAll("#ca-classes-table tbody input.row-check:checked").length;
-    const caStudents = document.querySelectorAll("#ca-students-table tbody input.row-check:checked").length;
+    const caClasses = document.querySelectorAll("#ca-classes-table tbody input.row-check:checked:not(:disabled)").length;
+    const caStudents = document.querySelectorAll("#ca-students-table tbody input.row-check:checked:not(:disabled)").length;
     const total = caClasses + caStudents;
     document.querySelectorAll("[data-ca-bulk]").forEach((btn) => {
       btn.hidden = total === 0;
@@ -762,7 +762,7 @@ function initMultiselectTables() {
       const table = document.getElementById(tableId);
       if (!table) return;
       table.querySelectorAll("tbody input.row-check").forEach((cb) => {
-        if (!cb.closest("tr")?.hidden) cb.checked = selectAll.checked;
+        if (!cb.closest("tr")?.hidden && !cb.disabled) cb.checked = selectAll.checked;
       });
       syncTableSelection(tableId);
       return;
@@ -780,33 +780,39 @@ function populateHiddenInputs(container, items) {
 }
 
 function collectChecked(tableId) {
-  return Array.from(document.querySelectorAll(`#${tableId} tbody input.row-check:checked`)).map((cb) => ({
+  return Array.from(document.querySelectorAll(`#${tableId} tbody input.row-check:checked:not(:disabled)`)).map((cb) => ({
     id: cb.value,
     label: cb.dataset.label || cb.value,
   }));
 }
 
-function renderScheduleTargets(modalId, classes, students) {
+function renderScheduleTargets(modalId, classes, courses, students) {
   const modal = document.getElementById(modalId);
   const list = modal?.querySelector("[data-target-list]");
   const tabs = modal?.querySelectorAll("[data-target-tab]");
   if (!list || !tabs) return;
-  const groups = { class: classes, student: students };
+  if (students === undefined && Array.isArray(courses)) {
+    students = courses;
+    courses = [];
+  }
+  const groups = { class: classes || [], course: courses || [], student: students || [] };
   function show(type) {
     tabs.forEach((tab) => {
       const selected = tab.dataset.targetTab === type;
       tab.setAttribute("aria-selected", String(selected));
-      const items = groups[tab.dataset.targetTab];
-      tab.textContent = `${tab.dataset.targetTab === "class" ? "Lớp" : "Học sinh"} (${items.length})`;
+      const items = groups[tab.dataset.targetTab] || [];
+      const label = tab.dataset.targetTab === "class" ? "Lớp" : tab.dataset.targetTab === "course" ? "Khóa học" : "Học sinh";
+      tab.textContent = `${label} (${items.length})`;
     });
     list.replaceChildren();
-    if (!groups[type].length) {
+    const curr = groups[type] || [];
+    if (!curr.length) {
       const empty = document.createElement("p");
       empty.className = "schedule-target-empty";
-      empty.textContent = type === "class" ? "Chưa chọn lớp nào." : "Chưa chọn học sinh nào.";
+      empty.textContent = type === "class" ? "Chưa chọn lớp nào." : type === "course" ? "Chưa chọn khóa học nào." : "Chưa chọn học sinh nào.";
       list.append(empty);
     }
-    groups[type].forEach((item) => {
+    curr.forEach((item) => {
       const card = document.createElement("div");
       card.className = "schedule-target-card";
       card.textContent = item.label;
@@ -814,7 +820,9 @@ function renderScheduleTargets(modalId, classes, students) {
     });
   }
   tabs.forEach((tab) => { tab.onclick = () => show(tab.dataset.targetTab); });
-  show(classes.length ? "class" : "student");
+  if ((classes || []).length) show("class");
+  else if ((courses || []).length) show("course");
+  else show("student");
 }
 
 function initAssignmentWorkflow() {
@@ -823,13 +831,18 @@ function initAssignmentWorkflow() {
   const detailDue = document.getElementById("detail-sched-due");
   const detailTries = document.getElementById("detail-sched-tries");
 
-  function openDetailSchedule(classes, students, due, tries) {
+  function openDetailSchedule(classes, courses, students, due, tries) {
     if (!detailHidden || !detailDue || !detailTries) return;
+    if (students === undefined && Array.isArray(courses)) {
+      students = courses;
+      courses = [];
+    }
     populateHiddenInputs(detailHidden, [
-      ...classes.map((c) => ({ name: "class_ids", value: c.id })),
-      ...students.map((s) => ({ name: "student_ids", value: s.id })),
+      ...(classes || []).map((c) => ({ name: "class_ids", value: c.id })),
+      ...(courses || []).map((crs) => ({ name: "course_ids", value: crs.id })),
+      ...(students || []).map((s) => ({ name: "student_ids", value: s.id })),
     ]);
-    renderScheduleTargets("modal-assign-schedule", classes, students);
+    renderScheduleTargets("modal-assign-schedule", classes, courses, students);
     detailDue.value = due || detailDue.dataset.defaultDue || detailDue.value;
     detailTries.value = String(tries || 1);
     window.ownerModal.open("modal-assign-schedule");
@@ -872,8 +885,14 @@ function initAssignmentWorkflow() {
     const detailSingle = e.target.closest("[data-detail-single]");
     if (detailSingle) {
       const item = { id: detailSingle.dataset.targetId, label: detailSingle.dataset.targetLabel };
-      const isClass = detailSingle.dataset.detailSingle === "class";
-      openDetailSchedule(isClass ? [item] : [], isClass ? [] : [item], detailSingle.dataset.due, detailSingle.dataset.tries);
+      const kind = detailSingle.dataset.detailSingle;
+      openDetailSchedule(
+        kind === "class" ? [item] : [],
+        kind === "course" ? [item] : [],
+        kind === "student" ? [item] : [],
+        detailSingle.dataset.due,
+        detailSingle.dataset.tries
+      );
       return;
     }
 
@@ -881,8 +900,14 @@ function initAssignmentWorkflow() {
     if (detailBulk) {
       const items = collectChecked(detailBulk.dataset.bulkFor);
       if (!items.length) return;
-      const isClass = detailBulk.dataset.detailBulk === "class";
-      openDetailSchedule(isClass ? items : [], isClass ? [] : items, "", "1");
+      const kind = detailBulk.dataset.detailBulk;
+      openDetailSchedule(
+        kind === "class" ? items : [],
+        kind === "course" ? items : [],
+        kind === "student" ? items : [],
+        "",
+        "1"
+      );
       return;
     }
 

@@ -68,44 +68,131 @@
       <div>
         <label>Chọn đối tượng nhận bài</label>
         <div class="inline-form" role="tablist" style="margin-bottom:10px">
-          <button type="button" class="button primary" id="tab-btn-class" role="tab" aria-selected="true">Lớp tiếng Anh</button>
-          <button type="button" class="button secondary" id="tab-btn-course" role="tab" aria-selected="false">Khóa học</button>
-          <button type="button" class="button secondary" id="tab-btn-student" role="tab" aria-selected="false">Từng Học sinh</button>
+          <button type="button" class="button primary" id="tab-btn-class" role="tab" aria-selected="true">Lớp tiếng Anh ({{ class_rows|length }})</button>
+          <button type="button" class="button secondary" id="tab-btn-course" role="tab" aria-selected="false">Khóa học ({{ course_rows|length }})</button>
+          <button type="button" class="button secondary" id="tab-btn-student" role="tab" aria-selected="false">Từng Học sinh ({{ student_rows|length }})</button>
         </div>
 
         <div id="target-panel-class" role="tabpanel">
-          <input type="search" id="assign-class-search" placeholder="Tìm lớp..." style="margin-bottom:8px" autocomplete="off">
-          <div class="checkbox-list" id="a-class-checks" style="max-height:260px;overflow-y:auto">
-            {% for c in classes %}
-              <label><input type="checkbox" name="class_ids" value="{{ c.id }}"> <span>{{ c.name }} ({{ c.school_year }} — {{ c.code }})</span></label>
-            {% empty %}
-              <p class="empty">Chưa có lớp tiếng Anh. Hãy tạo lớp trước.</p>
-            {% endfor %}
+          <div class="table-toolbar" style="margin-bottom:8px">
+            <input type="search" data-table-search="assign-new-classes-tbody" placeholder="🔍 Tìm tên lớp, mã lớp, hoặc tên khóa học..." autocomplete="off">
           </div>
-          <p class="muted" id="a-recipient-preview">Chọn lớp để xem số học sinh.</p>
+          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+            <table id="assign-new-classes-table" class="data-table" data-sortable-table>
+              <thead>
+                <tr>
+                  <th style="width:40px"><input type="checkbox" data-select-all="assign-new-classes-table" aria-label="Chọn tất cả lớp"></th>
+                  <th data-sort-col>Lớp học <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Niên khóa <span class="sort-ind">↕</span></th>
+                  <th data-sort-col data-sort-type="num">Sĩ số <span class="sort-ind">↕</span></th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="assign-new-classes-tbody">
+                {% for row in class_rows %}
+                <tr data-class-id="{{ row.classroom.id }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                  <td>
+                    <input type="checkbox" name="class_ids" value="{{ row.classroom.id }}" class="row-check" data-label="{{ row.classroom.name }}" {% if row.is_assigned %}disabled{% endif %}>
+                  </td>
+                  <td><strong>{{ row.classroom.name }}</strong><br><small class="mono">{{ row.classroom.code }}</small></td>
+                  <td>{{ row.course_names|default:"—" }}</td>
+                  <td>{{ row.classroom.school_year }}</td>
+                  <td data-sort-val="{{ row.member_count }}">{{ row.member_count }} học sinh</td>
+                  <td class="status-cell">
+                    {% if row.is_assigned %}
+                      <span class="pill pill-success">Đã giao</span>
+                    {% else %}
+                      <span class="muted">Chưa giao</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% empty %}
+                <tr class="empty-row"><td colspan="6" class="empty">Chưa có lớp tiếng Anh.</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" id="a-recipient-preview" style="margin-top:6px">Chọn lớp để xem số học sinh.</p>
           <p class="banner-warn" id="a-noschool-warn" hidden></p>
         </div>
 
         <div id="target-panel-course" role="tabpanel" hidden>
-          <input type="search" id="assign-course-search" placeholder="Tìm khóa học..." style="margin-bottom:8px" autocomplete="off">
-          <div class="checkbox-list" id="a-course-checks" style="max-height:260px;overflow-y:auto">
-            {% for crs in courses %}
-              <label><input type="checkbox" name="course_ids" value="{{ crs.id }}"> <span>{{ crs.name }}</span></label>
-            {% empty %}
-              <p class="empty">Chưa có khóa học nào.</p>
-            {% endfor %}
+          <div class="table-toolbar" style="margin-bottom:8px">
+            <input type="search" data-table-search="assign-new-courses-tbody" placeholder="🔍 Tìm tên khóa học, danh mục..." autocomplete="off">
+          </div>
+          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+            <table id="assign-new-courses-table" class="data-table" data-sortable-table>
+              <thead>
+                <tr>
+                  <th style="width:40px"><input type="checkbox" data-select-all="assign-new-courses-table" aria-label="Chọn tất cả khóa học"></th>
+                  <th data-sort-col>Khóa học <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Danh mục <span class="sort-ind">↕</span></th>
+                  <th data-sort-col data-sort-type="num">Số lớp áp dụng <span class="sort-ind">↕</span></th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="assign-new-courses-tbody">
+                {% for row in course_rows %}
+                <tr data-course-id="{{ row.course.id }}" data-classes="{{ row.class_names }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                  <td>
+                    <input type="checkbox" name="course_ids" value="{{ row.course.id }}" class="row-check" data-label="{{ row.course.name }}" {% if row.is_assigned %}disabled{% endif %}>
+                  </td>
+                  <td><strong>{{ row.course.name }}</strong></td>
+                  <td>{{ row.course.get_category_display }}</td>
+                  <td data-sort-val="{{ row.class_count }}">{{ row.class_count }} lớp <small class="muted">({{ row.class_names|default:"Chưa có lớp" }})</small></td>
+                  <td class="status-cell">
+                    {% if row.is_assigned %}
+                      <span class="pill pill-success">Đã giao</span>
+                    {% else %}
+                      <span class="muted">Chưa giao</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% empty %}
+                <tr class="empty-row"><td colspan="5" class="empty">Chưa có khóa học nào.</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
           <p class="hint" style="margin-top:6px">Tự động giao bài cho tất cả các lớp thuộc khóa học đã chọn.</p>
         </div>
 
         <div id="target-panel-student" role="tabpanel" hidden>
-          <input type="search" id="assign-student-search" placeholder="Tìm học sinh..." style="margin-bottom:8px" autocomplete="off">
-          <div class="checkbox-list" id="a-student-checks" style="max-height:260px;overflow-y:auto">
-            {% for s in students %}
-              <label><input type="checkbox" name="student_ids" value="{{ s.id }}"> <span>{{ s.display_name }} ({{ s.username }})</span></label>
-            {% empty %}
-              <p class="empty">Chưa có học sinh nào.</p>
-            {% endfor %}
+          <div class="table-toolbar" style="margin-bottom:8px">
+            <input type="search" data-table-search="assign-new-students-tbody" placeholder="🔍 Tìm tên học sinh, mã HS, hoặc tên lớp..." autocomplete="off">
+          </div>
+          <div class="table-wrap" style="max-height:340px;overflow-y:auto">
+            <table id="assign-new-students-table" class="data-table" data-sortable-table>
+              <thead>
+                <tr>
+                  <th style="width:40px"><input type="checkbox" data-select-all="assign-new-students-table" aria-label="Chọn tất cả học sinh"></th>
+                  <th data-sort-col>Học sinh <span class="sort-ind">↕</span></th>
+                  <th data-sort-col>Lớp đang học <span class="sort-ind">↕</span></th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="assign-new-students-tbody">
+                {% for row in student_rows %}
+                <tr data-student-id="{{ row.student.id }}" class="{% if row.is_assigned %}is-assigned-row{% endif %}" {% if row.is_assigned %}style="opacity:0.55;background:#f8fafc;"{% endif %}>
+                  <td>
+                    <input type="checkbox" name="student_ids" value="{{ row.student.id }}" class="row-check" data-label="{{ row.student.display_name }}" {% if row.is_assigned %}disabled{% endif %}>
+                  </td>
+                  <td><strong>{{ row.student.display_name }}</strong><br><small class="mono">{{ row.student_ref|default:row.student.username }}</small></td>
+                  <td>{{ row.class_names|default:"—" }}</td>
+                  <td class="status-cell">
+                    {% if row.is_assigned %}
+                      <span class="pill pill-success">Đã giao</span>
+                    {% else %}
+                      <span class="muted">Chưa giao</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% empty %}
+                <tr class="empty-row"><td colspan="4" class="empty">Chưa có học sinh nào.</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
           <p class="hint" style="margin-top:6px">Giao trực tiếp cho từng học sinh cụ thể.</p>
         </div>
@@ -118,6 +205,7 @@
     </div>
   </form>
 </section>
+<script type="application/json" id="assigned-by-version-data">{{ assigned_by_version_json|safe }}</script>
 <script type="application/json" id="assignment-class-members">{{ class_members_json|safe }}</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -147,22 +235,110 @@ document.addEventListener('DOMContentLoaded', function () {
     tabStudent.addEventListener('click', () => selectTab(tabStudent, panelStudent));
   }
 
-  function setupSearch(inputId, listId) {
-    const input = document.getElementById(inputId);
-    const list = document.getElementById(listId);
-    if (!input || !list) return;
-    const labels = Array.from(list.querySelectorAll('label'));
-    input.addEventListener('input', function () {
-      const q = this.value.trim().toLowerCase();
-      labels.forEach(label => {
-        label.style.display = label.textContent.toLowerCase().includes(q) ? '' : 'none';
-      });
+  const assignedDataEl = document.getElementById('assigned-by-version-data');
+  let assignedByVersion = {};
+  try {
+    assignedByVersion = JSON.parse(assignedDataEl?.textContent || '{}');
+  } catch (e) {}
+
+  const versionSelect = document.getElementById('a-version');
+
+  function updateAssignedStatus() {
+    const vid = versionSelect ? versionSelect.value : '';
+    const vdata = assignedByVersion[vid] || { class_ids: [], student_ids: [] };
+    const assignedClassIds = new Set(vdata.class_ids || []);
+    const assignedStudentIds = new Set(vdata.student_ids || []);
+
+    document.querySelectorAll('#assign-new-classes-tbody tr[data-class-id]').forEach(tr => {
+      const cid = tr.dataset.classId;
+      const isAssigned = assignedClassIds.has(cid);
+      const cb = tr.querySelector('input[type="checkbox"]');
+      const statusCell = tr.querySelector('.status-cell');
+      if (isAssigned) {
+        tr.classList.add('is-assigned-row');
+        tr.style.opacity = '0.55';
+        tr.style.background = '#f8fafc';
+        if (cb) {
+          cb.disabled = true;
+          cb.checked = false;
+        }
+        if (statusCell) statusCell.innerHTML = '<span class="pill pill-success">Đã giao</span>';
+      } else {
+        tr.classList.remove('is-assigned-row');
+        tr.style.opacity = '';
+        tr.style.background = '';
+        if (cb) cb.disabled = false;
+        if (statusCell) statusCell.innerHTML = '<span class="muted">Chưa giao</span>';
+      }
     });
+
+    document.querySelectorAll('#assign-new-students-tbody tr[data-student-id]').forEach(tr => {
+      const sid = tr.dataset.studentId;
+      const isAssigned = assignedStudentIds.has(sid);
+      const cb = tr.querySelector('input[type="checkbox"]');
+      const statusCell = tr.querySelector('.status-cell');
+      if (isAssigned) {
+        tr.classList.add('is-assigned-row');
+        tr.style.opacity = '0.55';
+        tr.style.background = '#f8fafc';
+        if (cb) {
+          cb.disabled = true;
+          cb.checked = false;
+        }
+        if (statusCell) statusCell.innerHTML = '<span class="pill pill-success">Đã giao</span>';
+      } else {
+        tr.classList.remove('is-assigned-row');
+        tr.style.opacity = '';
+        tr.style.background = '';
+        if (cb) cb.disabled = false;
+        if (statusCell) statusCell.innerHTML = '<span class="muted">Chưa giao</span>';
+      }
+    });
+
+    updateRecipientCount();
   }
 
-  setupSearch('assign-class-search', 'a-class-checks');
-  setupSearch('assign-course-search', 'a-course-checks');
-  setupSearch('assign-student-search', 'a-student-checks');
+  if (versionSelect) {
+    versionSelect.addEventListener('change', updateAssignedStatus);
+    updateAssignedStatus();
+  }
+
+  const classMembersEl = document.getElementById('assignment-class-members');
+  let classMembers = {};
+  try {
+    classMembers = JSON.parse(classMembersEl?.textContent || '{}');
+  } catch (e) {}
+
+  function updateRecipientCount() {
+    const checkedClassBoxes = Array.from(document.querySelectorAll('#assign-new-classes-tbody input[name="class_ids"]:checked:not(:disabled)'));
+    const checkedStudentBoxes = Array.from(document.querySelectorAll('#assign-new-students-tbody input[name="student_ids"]:checked:not(:disabled)'));
+    const checkedCourseBoxes = Array.from(document.querySelectorAll('#assign-new-courses-tbody input[name="course_ids"]:checked:not(:disabled)'));
+
+    const classIds = checkedClassBoxes.map(cb => cb.value);
+    const studentIds = new Set(checkedStudentBoxes.map(cb => cb.value));
+
+    let memberCount = 0;
+    classIds.forEach(cid => {
+      const members = classMembers[cid] || [];
+      members.forEach(m => studentIds.add(m.id));
+      memberCount += members.length;
+    });
+
+    const preview = document.getElementById('a-recipient-preview');
+    if (preview) {
+      if (checkedClassBoxes.length === 0 && checkedStudentBoxes.length === 0 && checkedCourseBoxes.length === 0) {
+        preview.textContent = 'Chọn lớp, khóa học hoặc học sinh để xem số người nhận.';
+      } else {
+        preview.textContent = `Đã chọn: ${checkedClassBoxes.length} lớp, ${checkedCourseBoxes.length} khóa học, ${checkedStudentBoxes.length} học sinh cá nhân (khoảng ${studentIds.size} học sinh sẽ nhận bài).`;
+      }
+    }
+  }
+
+  document.addEventListener('change', function (e) {
+    if (e.target.matches('input[name="class_ids"], input[name="student_ids"], input[name="course_ids"]')) {
+      updateRecipientCount();
+    }
+  });
 });
 </script>
 {% endblock %}

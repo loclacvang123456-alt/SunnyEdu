@@ -157,12 +157,15 @@
 
         <div class="field-group">
           <label for="new-class">Lớp mặc định</label>
-          <select id="new-class" name="english_class_id">
-            <option value="">-- Chọn 1 lớp mặc định (tùy chọn) --</option>
-            {% for ec in english_classes %}
-              <option value="{{ ec.id }}">{{ ec.name }} ({{ ec.code }})</option>
-            {% endfor %}
-          </select>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select id="new-class" name="english_class_id" style="flex:1;">
+              <option value="">-- Chọn 1 lớp mặc định (tùy chọn) --</option>
+              {% for ec in english_classes %}
+                <option value="{{ ec.id }}">{{ ec.name }} ({{ ec.code }})</option>
+              {% endfor %}
+            </select>
+            <button type="button" class="button secondary icon-btn" id="btn-quick-add-class" title="Tạo lớp mới nhanh" style="padding:0 12px;height:38px;font-size:18px;font-weight:bold;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;">+</button>
+          </div>
           <p class="hint" style="margin:4px 0 0">Học sinh sẽ được thêm vào lớp này ngay. Sau này có thể thêm vào các lớp khác.</p>
         </div>
 
@@ -180,6 +183,35 @@
       <div class="modal-footer">
         <button type="button" class="button secondary" data-modal-close>Hủy</button>
         <button type="submit" class="button primary">Tạo hồ sơ học sinh</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-quick-create-class" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-quick-ec-title" style="z-index:1050;">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header">
+      <h2 id="modal-quick-ec-title">Tạo lớp tiếng Anh mới</h2>
+      <button type="button" class="modal-close" id="btn-close-quick-class" aria-label="Đóng">✕</button>
+    </div>
+    <form id="form-quick-create-class">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create_english_class">
+      <div class="modal-body">
+        <p class="hint" style="margin-top:0">Mã lớp <code>ENG-XXXXXX</code> được tạo tự động.</p>
+        <div id="quick-class-error" class="banner-warn" hidden style="margin-bottom:10px"></div>
+        <div class="field-group">
+          <label for="quick-ec-name">Tên lớp <span style="color:var(--danger, #dc2626)">*</span></label>
+          <input id="quick-ec-name" name="name" required maxlength="120" placeholder="Ví dụ: Lớp 6A - Thứ 3/5">
+        </div>
+        <div class="field-group" style="margin-bottom:0">
+          <label for="quick-ec-year">Năm học (YYYY-YYYY+1) <span style="color:var(--danger, #dc2626)">*</span></label>
+          <input id="quick-ec-year" name="school_year" required pattern="\d{4}-\d{4}" value="2026-2027">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button secondary" id="btn-cancel-quick-class">Hủy</button>
+        <button type="submit" class="button primary" id="btn-submit-quick-class">Tạo lớp và chọn</button>
       </div>
     </form>
   </div>
@@ -451,6 +483,81 @@
       }
       schoolSelect.addEventListener('change', syncSchoolInput);
       syncSchoolInput();
+    }
+
+    const quickClassModal = document.getElementById('modal-quick-create-class');
+    const btnQuickAddClass = document.getElementById('btn-quick-add-class');
+    const formQuickClass = document.getElementById('form-quick-create-class');
+    const classSelect = document.getElementById('new-class');
+    const quickClassErr = document.getElementById('quick-class-error');
+
+    if (btnQuickAddClass && quickClassModal) {
+      btnQuickAddClass.addEventListener('click', function (e) {
+        e.preventDefault();
+        quickClassModal.hidden = false;
+        document.getElementById('quick-ec-name')?.focus();
+      });
+
+      function closeQuickClass() {
+        quickClassModal.hidden = true;
+        if (quickClassErr) {
+          quickClassErr.hidden = true;
+          quickClassErr.textContent = '';
+        }
+      }
+
+      document.getElementById('btn-close-quick-class')?.addEventListener('click', closeQuickClass);
+      document.getElementById('btn-cancel-quick-class')?.addEventListener('click', closeQuickClass);
+
+      formQuickClass?.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (quickClassErr) {
+          quickClassErr.hidden = true;
+          quickClassErr.textContent = '';
+        }
+        const submitBtn = document.getElementById('btn-submit-quick-class');
+        if (submitBtn) submitBtn.disabled = true;
+
+        try {
+          const formData = new FormData(formQuickClass);
+          formData.set('format', 'json');
+          const res = await fetch(window.location.pathname, {
+            method: 'POST',
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: formData,
+          });
+          const data = await res.json();
+          if (!res.ok || data.status !== 'ok') {
+            throw new Error(data.message || 'Không thể tạo lớp học.');
+          }
+
+          if (classSelect && data.class) {
+            const opt = document.createElement('option');
+            opt.value = data.class.id;
+            opt.textContent = `${data.class.name} (${data.class.code})`;
+            opt.selected = true;
+            classSelect.appendChild(opt);
+            classSelect.value = data.class.id;
+            classSelect.dispatchEvent(new Event('change'));
+          }
+
+          closeQuickClass();
+          formQuickClass.reset();
+          const yearInp = document.getElementById('quick-ec-year');
+          if (yearInp) yearInp.value = '2026-2027';
+        } catch (err) {
+          if (quickClassErr) {
+            quickClassErr.textContent = err.message;
+            quickClassErr.hidden = false;
+          } else {
+            alert(err.message);
+          }
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
     }
   });
 </script>

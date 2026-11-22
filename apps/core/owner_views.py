@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.db.models import F, Q, Max
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -171,6 +171,16 @@ def students(request):
                 return redirect("owner_student_detail", student_id=s.id)
             if action == "create_english_class":
                 ec = create_english_class(request.POST.get("name"), request.POST.get("school_year"), actor=request.user)
+                if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.POST.get("format") == "json":
+                    return JsonResponse({
+                        "status": "ok",
+                        "class": {
+                            "id": str(ec.id),
+                            "name": ec.name,
+                            "code": ec.code,
+                            "school_year": ec.school_year,
+                        }
+                    })
                 messages.success(request, f"Đã tạo lớp {ec.name} ({ec.code}).")
                 return redirect(f"{reverse('owner_students')}?tab=english")
             if action == "archive_english_class":
@@ -193,8 +203,11 @@ def students(request):
                 archive_school_class(request.POST.get("class_id"), actor=request.user)
                 messages.success(request, "Đã lưu trữ lớp trường.")
                 return redirect(f"{reverse('owner_students')}?tab=school")
-        except ValidationError as exc:
-            messages.error(request, "; ".join(exc.messages))
+        except (ValidationError, ValueError) as exc:
+            msg = "; ".join(exc.messages) if isinstance(exc, ValidationError) else str(exc)
+            if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.POST.get("format") == "json":
+                return JsonResponse({"status": "error", "message": msg}, status=400)
+            messages.error(request, msg)
 
     q = request.GET.get("q", "").strip()
     status = request.GET.get("status", "ACTIVE")
@@ -297,8 +310,11 @@ def student_detail(request, student_id):
                 leave_english_class(student, ec, dt, actor=request.user)
                 messages.success(request, f"Đã rời lớp {ec.name}.")
                 return redirect("owner_student_detail", student_id=student.id)
-        except ValidationError as exc:
-            messages.error(request, "; ".join(exc.messages))
+        except (ValidationError, ValueError) as exc:
+            msg = "; ".join(exc.messages) if isinstance(exc, ValidationError) else str(exc)
+            if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.POST.get("format") == "json":
+                return JsonResponse({"status": "error", "message": msg}, status=400)
+            messages.error(request, msg)
 
     progress = student_progress_summary(student, request.GET.get("from"), request.GET.get("to"))
     school_memberships = SchoolMembership.objects.select_related("school_class__school").filter(student=student).order_by("-start_at")
@@ -374,8 +390,11 @@ def settings_view(request):
                     execute_privacy_request(request.POST.get("request_id"), request.user)
                     messages.success(request, "Đã thực thi yêu cầu dữ liệu.")
                     return redirect("owner_settings")
-        except ValidationError as exc:
-            messages.error(request, "; ".join(exc.messages))
+        except (ValidationError, ValueError) as exc:
+            msg = "; ".join(exc.messages) if isinstance(exc, ValidationError) else str(exc)
+            if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.POST.get("format") == "json":
+                return JsonResponse({"status": "error", "message": msg}, status=400)
+            messages.error(request, msg)
 
     tags = Tag.objects.filter(archived_at__isnull=True).order_by("kind", "skill", "name")
     privacy_requests = PrivacyRequest.objects.select_related("student").order_by("-created_at")

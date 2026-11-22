@@ -704,3 +704,11 @@ button:hover .btn-mascot-left {
   color: #fff;
   border-color: var(--danger);
 }
+
+tr.is-assigned-row {
+  opacity: 0.55;
+  background: var(--bg-subtle, #f8fafc) !important;
+}
+tr.is-assigned-row td {
+  color: var(--muted, #64748b);
+}

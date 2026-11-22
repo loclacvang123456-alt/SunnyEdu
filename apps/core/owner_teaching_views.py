@@ -40,7 +40,24 @@ def _quick_assign_context(user):
     game_questions = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
     versions = ExamVersion.objects.filter(exam__created_by=user, exam__archived_at__isnull=True, status=ExamVersion.Status.PUBLISHED).select_related("exam").annotate(has_game_questions=Exists(game_questions)).order_by("exam__title", "-number")
     now = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
-    return {"quick_versions": versions, "classes": EnglishClass.objects.filter(archived_at__isnull=True).order_by("name"), "quick_courses": Course.objects.filter(created_by=user).order_by("name"), "quick_students": User.objects.filter(role="STUDENT", status="ACTIVE").order_by("display_name", "username"), "default_due": now + timedelta(days=7), "missing_pirate_assets": missing_game_assets()}
+    classes = list(EnglishClass.objects.filter(archived_at__isnull=True).prefetch_related("courses").order_by("name"))
+    for c in classes:
+        c.course_names = ", ".join(sorted(crs.name for crs in c.courses.all()))
+    students = list(User.objects.filter(role="STUDENT", status="ACTIVE").order_by("display_name", "username"))
+    memberships = EnglishMembership.objects.filter(english_class__in=classes, end_at__isnull=True).select_related("english_class")
+    classes_by_student = {}
+    for m in memberships:
+        classes_by_student.setdefault(m.student_id, []).append(m.english_class.name)
+    for s in students:
+        s.class_names = ", ".join(sorted(classes_by_student.get(s.id, [])))
+    return {
+        "quick_versions": versions,
+        "classes": classes,
+        "quick_courses": Course.objects.filter(created_by=user).order_by("name"),
+        "quick_students": students,
+        "default_due": now + timedelta(days=7),
+        "missing_pirate_assets": missing_game_assets(),
+    }
 
 
 def _quick_assign(request):
@@ -355,6 +372,34 @@ def assignment_new(request):
         class_members.setdefault(str(m.english_class_id), []).append({"id": str(m.student_id), "no_school": m.student_id not in school_member_ids})
     courses = list(Course.objects.filter(created_by=request.user, is_published=True).order_by("name"))
     students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").order_by("display_name"))
+    target_data = build_assign_target_rows(owner=request.user)
+    published_versions = list(versions)
+    assignments = (
+        Assignment.objects.filter(
+            version__in=published_versions,
+            version__exam__created_by=request.user,
+        )
+        .exclude(status="CANCELLED")
+        .prefetch_related("assignmentclass_set", "recipients")
+    )
+    assigned_by_version = {}
+    for a in assignments:
+        vid = str(a.version_id)
+        if vid not in assigned_by_version:
+            assigned_by_version[vid] = {"class_ids": set(), "student_ids": set()}
+        for ac in a.assignmentclass_set.all():
+            assigned_by_version[vid]["class_ids"].add(str(ac.english_class_id))
+        for r in a.recipients.all():
+            assigned_by_version[vid]["student_ids"].add(str(r.student_id))
+
+    assigned_by_version_json = json.dumps({
+        vid: {
+            "class_ids": list(data["class_ids"]),
+            "student_ids": list(data["student_ids"]),
+        }
+        for vid, data in assigned_by_version.items()
+    })
+
     now_local = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
     return render(
         request,
@@ -365,6 +410,10 @@ def assignment_new(request):
             classes=classes,
             courses=courses,
             students=students,
+            class_rows=target_data["class_rows"],
+            course_rows=target_data["course_rows"],
+            student_rows=target_data["student_rows"],
+            assigned_by_version_json=assigned_by_version_json,
             class_members_json=json.dumps(class_members),
             default_opens=now_local,
             default_due=now_local + timedelta(days=3),
@@ -374,9 +423,9 @@ def assignment_new(request):
     )
 
 
-def build_assign_target_rows(assignment=None, course=None):
-    """Build sortable class_rows and student_rows for assignment/course target modals."""
-    classes = list(EnglishClass.objects.filter(archived_at__isnull=True).order_by("-school_year", "name"))
+def build_assign_target_rows(assignment=None, course=None, owner=None):
+    """Build sortable class_rows, course_rows and student_rows for assignment/course target modals."""
+    classes = list(EnglishClass.objects.filter(archived_at__isnull=True).prefetch_related("courses").order_by("-school_year", "name"))
     active_memberships = list(
         EnglishMembership.objects.filter(
             english_class__in=classes,
@@ -401,6 +450,7 @@ def build_assign_target_rows(assignment=None, course=None):
     for c in classes:
         ac = ac_by_class.get(c.id)
         eff_due = (ac.due_at or assignment.due_at) if (ac and assignment) else None
+        course_names = ", ".join(sorted(crs.name for crs in c.courses.all()))
         class_rows.append({
             "classroom": c,
             "member_count": count_by_class.get(c.id, 0),
@@ -409,6 +459,22 @@ def build_assign_target_rows(assignment=None, course=None):
             "due_at": eff_due,
             "due_ts": int(eff_due.timestamp()) if eff_due else 0,
             "max_attempts": ac.max_attempts if ac else None,
+            "course_names": course_names,
+        })
+
+    course_owner = owner or (assignment.version.exam.created_by if assignment else None)
+    course_qs = Course.objects.filter(is_published=True).prefetch_related("english_classes")
+    if course_owner:
+        course_qs = course_qs.filter(created_by=course_owner)
+    course_rows = []
+    for crs in course_qs:
+        crs_classes = list(crs.english_classes.all())
+        is_assigned = bool(crs_classes) and all(ac_by_class.get(cl.id) is not None for cl in crs_classes)
+        course_rows.append({
+            "course": crs,
+            "class_count": len(crs_classes),
+            "class_names": ", ".join(sorted(cl.name for cl in crs_classes)),
+            "is_assigned": is_assigned,
         })
 
     students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").select_related("student_profile").order_by("display_name"))
@@ -440,6 +506,7 @@ def build_assign_target_rows(assignment=None, course=None):
     now_local = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
     return {
         "class_rows": class_rows,
+        "course_rows": course_rows,
         "student_rows": student_rows,
         "default_due": now_local + timedelta(days=7),
     }
@@ -456,11 +523,17 @@ def assignment_detail(request, assignment_id):
                 due_at = parse_local_dt(request.POST.get("due_at"))
                 max_attempts = request.POST.get("max_attempts", "1")
                 mode = request.POST.get("mode") or None
+                class_ids = set(request.POST.getlist("class_ids"))
+                course_ids = set(request.POST.getlist("course_ids"))
+                student_ids = set(request.POST.getlist("student_ids"))
+                if course_ids:
+                    courses = Course.objects.filter(created_by=request.user, pk__in=course_ids)
+                    class_ids.update(str(cid) for cid in EnglishClass.objects.filter(courses__in=courses, archived_at__isnull=True).values_list("id", flat=True))
                 assign_targets_with_schedule(
                     request.user,
                     [assignment.id],
-                    request.POST.getlist("class_ids"),
-                    request.POST.getlist("student_ids"),
+                    list(class_ids),
+                    list(student_ids),
                     due_at,
                     max_attempts=max_attempts,
                     mode=mode,
@@ -522,6 +595,7 @@ def assignment_detail(request, assignment_id):
             course_exercises=assignment.course_exercises.select_related('course').filter(course__created_by=request.user),
             recipients=recipients,
             class_rows=target_data["class_rows"],
+            course_rows=target_data["course_rows"],
             student_rows=target_data["student_rows"],
             default_due=target_data["default_due"],
             ranking_warnings=ranking_warnings,

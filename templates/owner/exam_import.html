@@ -13,20 +13,20 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span>CSV Full</span>
     </a>
-    <a class="button primary st-action-btn" href="{% static 'templates/de-mau-full-dang-bai.xlsx' %}" download title="Tải Excel (.xlsx) full dạng bài" aria-label="Tải Excel (.xlsx) full dạng bài">
+    <a class="button primary st-action-btn" href="{% static 'templates/de-mau-full-dang-bai.xlsx' %}" download title="Tải Excel (.xlsx) có sẵn dropdown chọn nhanh" aria-label="Tải Excel (.xlsx) có sẵn dropdown chọn nhanh">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span>XLSX Full</span>
+      <span>Tải mẫu Excel (có dropdown)</span>
     </a>
-    <a class="button primary st-action-btn" href="{% static 'templates/mau-nhap-de.csv' %}" download title="Tải mẫu CSV cơ bản" aria-label="Tải mẫu CSV cơ bản">
+    <a class="button secondary st-action-btn" href="{% static 'templates/mau-nhap-de.csv' %}" download title="Tải mẫu CSV cơ bản (văn bản thuần không hỗ trợ dropdown)" aria-label="Tải mẫu CSV cơ bản">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span>CSV Cơ bản</span>
+      <span>Tải mẫu CSV</span>
     </a>
   </div>
 </header>
 
 <section class="panel" aria-labelledby="import-guide-title" style="margin-bottom:20px">
   <h2 id="import-guide-title">Cách điền tệp mẫu</h2>
-  <p>Giữ nguyên tên và thứ tự cột; thay các dòng ví dụ bằng câu hỏi của bạn. Bạn <strong>chỉ cần điền đề bài (<code>prompt</code>) và lựa chọn/đáp án (<code>option_a..f</code>, <code>correct_options</code>)</strong> — các cột <code>position</code>, <code>type</code>, <code>skill</code>, <code>difficulty</code>, <code>max_points</code>, <code>topic_tags</code>, <code>error_tags</code> có thể để trống để hệ thống tự nhận diện (tệp <strong>Excel .xlsx</strong> cũng có sẵn danh sách chọn <em>dropdown</em> cho <code>type</code>, <code>skill</code>, <code>difficulty</code>).</p>
+  <p>Giữ nguyên tên và thứ tự cột; thay các dòng ví dụ bằng câu hỏi của bạn. Khuyến khích sử dụng tệp <strong>Excel (.xlsx)</strong> vì đã tích hợp sẵn danh sách chọn <em>dropdown</em> cho các cột: <code>type</code>, <code>skill</code>, <code>difficulty</code>, <code>max_points</code>, <code>correct_options</code>, <code>passage_ref</code>, <code>topic_tags</code>, <code>error_tags</code> và có cẩm nang prompt chi tiết cho AI ở 2 cột bên phải (tệp <code>.csv</code> là văn bản thuần nên không thể lưu dropdown).</p>
   <ul>
     <li><code>type</code> (tùy chọn): <code>SINGLE_CHOICE</code> (một đáp án), <code>MULTIPLE_CHOICE</code> (nhiều đáp án), <code>STRESS_CHOICE</code> (chọn trọng âm), <code>WORD_ORDER</code> (sắp xếp từ thành câu), <code>SENTENCE_TRANSFORM</code> (viết lại/đổi câu), <code>TEXT</code> (viết tự luận) hoặc <code>AUDIO</code> (nói).</li>
     <li><code>skill</code> (tùy chọn): <code>READING</code>, <code>WRITING</code>, <code>SPEAKING</code> hoặc <code>LISTENING</code> (dùng <code>LISTENING</code> cần có <code>audio_asset_id</code> đã tải lên).</li>
