@@ -56,7 +56,7 @@
     <div class="field-group">
       <label for="imp-file">Chọn tệp CSV / XLSX (hỗ trợ chọn 1 hoặc nhiều tệp cùng lúc)</label>
       <input id="imp-file" type="file" name="files" accept=".csv,.xlsx" multiple required>
-      <small class="muted" id="imp-file-hint" style="margin-top:4px;display:block;">Có thể giữ phím Ctrl hoặc Shift để chọn hàng loạt tệp CSV/XLSX cùng lúc.</small>
+      <small class="muted" id="imp-file-hint" style="margin-top:4px;display:block;">Có thể giữ phím Ctrl hoặc Shift để chọn hàng trăm, hàng nghìn tệp CSV/XLSX cùng lúc (hệ thống tự động phân tích và nhập theo lô).</small>
     </div>
     <div>
       <button type="submit" class="button primary st-action-btn" title="Xem trước &amp; kiểm tra lỗi" aria-label="Xem trước &amp; kiểm tra lỗi">
@@ -67,6 +67,9 @@
 
   <div id="import-result" hidden>
     <hr class="divider">
+    <div id="import-progress" style="margin-bottom:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;height:8px;" hidden>
+      <div id="import-progress-bar" style="background:var(--primary, #2563eb);height:100%;width:0%;transition:width 0.2s ease;"></div>
+    </div>
     <div id="import-summary" role="status"></div>
     <div class="table-wrap"><table class="data-table" id="import-table" data-page-size="10" data-fixed-page-size="1"></table></div>
     <div class="wizard-actions">

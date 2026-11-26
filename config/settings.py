@@ -69,3 +69,9 @@ if not DEBUG and ('ACCESS_CODE_HMAC_KEY' not in os.environ or 'RATE_LIMIT_HMAC_K
     raise RuntimeError('Access-code and rate-limit keys are required')
 MIDDLEWARE.insert(MIDDLEWARE.index('django.contrib.auth.middleware.AuthenticationMiddleware') + 1, 'apps.accounts.middleware.SessionValidityMiddleware')
 
+# Upload limits for large batch exam imports (up to 2,500 files / 100 MB total)
+DATA_UPLOAD_MAX_NUMBER_FILES = 2500
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+DATA_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
+FILE_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
+

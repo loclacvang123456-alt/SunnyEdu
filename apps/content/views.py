@@ -378,7 +378,8 @@ def _clean_default_title(filename):
     if not filename:
         return "Đề thi mới"
     name = Path(filename).stem
-    clean = re.sub(r'[_]+', ' ', name).strip('. ')
+    clean = re.sub(r'[-_]+', ' ', name).strip('. ')
+    clean = re.sub(r'\s+', ' ', clean).strip()
     if not clean or clean.lower() in ('csv', 'xlsx'):
         return "Đề thi mới"
     return clean[:200]

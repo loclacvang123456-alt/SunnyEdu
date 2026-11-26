@@ -73,6 +73,7 @@ function initImportApp() {
     resultBox.hidden = false;
     tableEl.replaceChildren();
     summaryEl.className = "notice";
+    summaryEl.style.whiteSpace = "normal";
     summaryEl.textContent = `Đã kiểm tra ${data.total_files} tệp (${data.total_questions} câu hỏi). Tất cả đều hợp lệ. Hãy kiểm tra tên từng đề rồi bấm nút Tạo bên dưới.`;
 
     const thead = el("thead", {}, [el("tr", {}, [
@@ -92,6 +93,9 @@ function initImportApp() {
       inputEl.style.width = "100%";
       inputEl.style.minWidth = "220px";
       inputEl.maxLength = 200;
+      inputEl.addEventListener("input", () => {
+        b.title = inputEl.value.trim();
+      });
 
       return el("tr", {}, [
         el("td", { text: String(i + 1) }),
@@ -105,6 +109,7 @@ function initImportApp() {
     tableEl.append(thead, tbody);
     commitBtn.disabled = data.total_files === 0;
     commitBtn.title = `Tạo toàn bộ ${data.total_files} đề thi`;
+    if (tableEl.dataset.pageSize) applyTablePagination(tableEl, true);
   }
 
   function renderPreview(batch) {
@@ -114,6 +119,7 @@ function initImportApp() {
     const rows = batch.rows || [];
     const hasErrors = rows.some((r) => Array.isArray(r.errors) && r.errors.length > 0);
     summaryEl.className = hasErrors ? "notice notice-error" : "notice";
+    summaryEl.style.whiteSpace = "normal";
 
     if (kind === "QUESTIONS") {
       summaryEl.textContent = `${rows.length} câu hợp lệ. Xác nhận để tạo bản nháp.`;
@@ -161,66 +167,139 @@ function initImportApp() {
     e.preventDefault();
     const files = Array.from(fileInput?.files || []);
     const isMulti = files.length > 1;
-    const endpoint = (isMulti && kind === "QUESTIONS") ? "/api/v1/owner/imports/batch-preview" : "/api/v1/owner/imports/preview";
 
+    commitBtn.disabled = true;
+    resultBox.hidden = false;
+    tableEl.replaceChildren();
+    const pagination = tablePaginationState.get(tableEl);
+    if (pagination) pagination.bar.hidden = true;
+
+    const progressEl = document.getElementById("import-progress");
+    const progressBar = document.getElementById("import-progress-bar");
+
+    // Multiple files (batch mode chunked in sets of 50)
+    if (isMulti && kind === "QUESTIONS") {
+      if (progressEl) progressEl.hidden = false;
+      if (progressBar) progressBar.style.width = "0%";
+
+      const CHUNK_SIZE = 50;
+      const combinedBatches = [];
+      let totalQuestions = 0;
+      const totalFiles = files.length;
+      let processedFiles = 0;
+
+      for (let i = 0; i < files.length; i += CHUNK_SIZE) {
+        const chunk = files.slice(i, i + CHUNK_SIZE);
+        const chunkFd = new FormData();
+        chunkFd.set("kind", kind);
+        chunk.forEach((f) => chunkFd.append("files", f));
+
+        const pct = Math.round((processedFiles / totalFiles) * 100);
+        summaryEl.className = "notice notice-warning";
+        summaryEl.style.whiteSpace = "pre-line";
+        summaryEl.textContent = `Đang phân tích tệp: ${processedFiles} / ${totalFiles} (${pct}%)... Vui lòng đợi trong giây lát.`;
+        if (progressBar) progressBar.style.width = `${pct}%`;
+
+        const res = await fetch("/api/v1/owner/imports/batch-preview", {
+          method: "POST",
+          headers: { "X-CSRFToken": csrfToken(form) },
+          body: chunkFd,
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (progressEl) progressEl.hidden = true;
+          summaryEl.className = "notice notice-error";
+          summaryEl.textContent = payload.error?.message || `Lỗi khi kiểm tra lô tệp từ ${i + 1} đến ${i + chunk.length}.`;
+          return;
+        }
+        if (payload.data?.batches) {
+          combinedBatches.push(...payload.data.batches);
+          totalQuestions += payload.data.total_questions || 0;
+        }
+        processedFiles += chunk.length;
+      }
+
+      if (progressBar) progressBar.style.width = "100%";
+      setTimeout(() => { if (progressEl) progressEl.hidden = true; }, 400);
+
+      renderBatchPreview({
+        total_files: combinedBatches.length,
+        total_questions: totalQuestions,
+        batches: combinedBatches,
+      });
+      return;
+    }
+
+    // Single file
     const fd = new FormData(form);
     fd.set("kind", kind);
-    commitBtn.disabled = true;
-
-    const res = await fetch(endpoint, {
+    const res = await fetch("/api/v1/owner/imports/preview", {
       method: "POST",
       headers: { "X-CSRFToken": csrfToken(form) },
       body: fd,
     });
     const payload = await res.json().catch(() => ({}));
     if (!res.ok) {
-      resultBox.hidden = false;
-      tableEl.replaceChildren();
-      const pagination = tablePaginationState.get(tableEl);
-      if (pagination) pagination.bar.hidden = true;
       summaryEl.className = "notice notice-error";
+      summaryEl.style.whiteSpace = "pre-line";
       summaryEl.textContent = payload.error?.message || "Không thể đọc tệp nhập.";
       return;
     }
-
-    if (isMulti && kind === "QUESTIONS") {
-      renderBatchPreview(payload.data);
-    } else {
-      renderPreview(payload.data);
-    }
+    renderPreview(payload.data);
   });
 
   commitBtn.addEventListener("click", async () => {
     if (!lastBatch) return;
     commitBtn.disabled = true;
 
-    // Batch commit for multiple files
+    // Batch commit for multiple files (chunked in sets of 50)
     if (lastBatch.isBatch) {
       const inputs = tableEl.querySelectorAll(".batch-title-input");
       const titleMap = {};
       inputs.forEach((inp) => { titleMap[inp.dataset.batchId] = inp.value.trim(); });
 
-      const items = lastBatch.batches.map((b) => ({
+      const allItems = lastBatch.batches.map((b) => ({
         batch_id: b.batch_id,
         expected_digest: b.expected_digest,
-        title: titleMap[b.batch_id] || b.default_title,
+        title: titleMap[b.batch_id] || b.title || b.default_title,
       }));
 
-      const res = await fetch("/api/v1/owner/imports/batch-commit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-CSRFToken": csrfToken(form) },
-        body: JSON.stringify({ items }),
-      });
-      const payload = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        summaryEl.className = "notice notice-error";
-        summaryEl.textContent = payload.error?.message || "Xác nhận hàng loạt thất bại.";
-        commitBtn.disabled = false;
-        return;
+      const progressEl = document.getElementById("import-progress");
+      const progressBar = document.getElementById("import-progress-bar");
+      if (progressEl) progressEl.hidden = false;
+      if (progressBar) progressBar.style.width = "0%";
+
+      const COMMIT_CHUNK = 50;
+      let committedCount = 0;
+
+      for (let i = 0; i < allItems.length; i += COMMIT_CHUNK) {
+        const chunk = allItems.slice(i, i + COMMIT_CHUNK);
+        const pct = Math.round((committedCount / allItems.length) * 100);
+        summaryEl.className = "notice notice-warning";
+        summaryEl.style.whiteSpace = "normal";
+        summaryEl.textContent = `Đang tạo đề thi: ${committedCount} / ${allItems.length} (${pct}%)... Vui lòng giữ trang mở.`;
+        if (progressBar) progressBar.style.width = `${pct}%`;
+
+        const res = await fetch("/api/v1/owner/imports/batch-commit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-CSRFToken": csrfToken(form) },
+          body: JSON.stringify({ items: chunk }),
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (progressEl) progressEl.hidden = true;
+          summaryEl.className = "notice notice-error";
+          summaryEl.textContent = payload.error?.message || `Xác nhận thất bại ở lô ${i + 1} - ${i + chunk.length}.`;
+          commitBtn.disabled = false;
+          return;
+        }
+        committedCount += payload.data?.created_count || chunk.length;
       }
+
+      if (progressBar) progressBar.style.width = "100%";
       summaryEl.className = "notice";
-      summaryEl.textContent = `Đã tạo thành công ${payload.data.created_count} đề thi mới! Đang chuyển hướng đến danh sách đề...`;
-      setTimeout(() => { window.location.assign("/teacher/exams/"); }, 800);
+      summaryEl.textContent = `Đã tạo thành công toàn bộ ${committedCount} đề thi mới! Đang chuyển hướng đến danh sách đề...`;
+      setTimeout(() => { window.location.assign("/teacher/exams/"); }, 1000);
       return;
     }
 
