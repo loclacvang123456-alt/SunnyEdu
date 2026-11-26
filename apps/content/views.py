@@ -433,13 +433,14 @@ def batch_import_preview(request):
         except ValidationError as exc:
             msg = "; ".join(exc.messages) if hasattr(exc, "messages") else str(exc)
             errors.append(f"Tệp {upload.name}: {msg}")
-    if errors:
+    if not results and errors:
         return api_error("IMPORT_VALIDATION_ERROR", "\n".join(errors), 422)
     return JsonResponse({
         "data": {
             "total_files": len(results),
             "total_questions": total_questions,
             "batches": results,
+            "skipped_errors": errors,
         }
     }, status=201)
 

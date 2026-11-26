@@ -74,7 +74,13 @@ function initImportApp() {
     tableEl.replaceChildren();
     summaryEl.className = "notice";
     summaryEl.style.whiteSpace = "normal";
-    summaryEl.textContent = `Đã kiểm tra ${data.total_files} tệp (${data.total_questions} câu hỏi). Tất cả đều hợp lệ. Hãy kiểm tra tên từng đề rồi bấm nút Tạo bên dưới.`;
+
+    let summaryText = `Đã kiểm tra ${data.total_files} tệp (${data.total_questions} câu hỏi). Tất cả đều hợp lệ.`;
+    if (data.skipped_errors && data.skipped_errors.length > 0) {
+      summaryText += ` Đã tự động bỏ qua ${data.skipped_errors.length} tệp không khớp mẫu đề thi (file báo cáo/thống kê).`;
+    }
+    summaryText += ` Hãy kiểm tra tên từng đề rồi bấm nút Tạo bên dưới.`;
+    summaryEl.textContent = summaryText;
 
     const thead = el("thead", {}, [el("tr", {}, [
       el("th", { text: "#" }),
@@ -184,6 +190,7 @@ function initImportApp() {
 
       const CHUNK_SIZE = 50;
       const combinedBatches = [];
+      const combinedErrors = [];
       let totalQuestions = 0;
       const totalFiles = files.length;
       let processedFiles = 0;
@@ -216,6 +223,9 @@ function initImportApp() {
           combinedBatches.push(...payload.data.batches);
           totalQuestions += payload.data.total_questions || 0;
         }
+        if (payload.data?.skipped_errors) {
+          combinedErrors.push(...payload.data.skipped_errors);
+        }
         processedFiles += chunk.length;
       }
 
@@ -226,6 +236,7 @@ function initImportApp() {
         total_files: combinedBatches.length,
         total_questions: totalQuestions,
         batches: combinedBatches,
+        skipped_errors: combinedErrors,
       });
       return;
     }
