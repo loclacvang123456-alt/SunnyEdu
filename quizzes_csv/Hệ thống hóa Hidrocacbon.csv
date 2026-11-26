@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,Chọn phát biểu đúng về ankan,1.00,Ankan là Hidrocacbon chứa vòng benzen,"Ankan là Hidrocabon không no, có CTPT CnH2n+2","Ankan là Hidrocacbon trong phân tử chỉ có liên kết đơn, mạch hở, có CTPT CnH2n+2","Ankan là Hidrocacbon trong phân tử chỉ có 1 liên kết đôi, mạch hở",,,C,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,Ankan có thể tham gia các phản ứng nào sau đây:,1.00,"Phản ứng thế, phan ứng tách, phản ứng cháy","Phản ứng thế, làm mất màu dung dịch thuốc tím KMnO4","phản ứng cộng, phản ứng làm mất màu dung dịch Brom","Phản ứng trùng hợp, phản ứng cộng",,,A,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,Chất nào sau đây làm mất màu dung dịch Brom,1.00,Butan,But - 1- en,Benzen,Metylpropan,,,B,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,Chất nào sau đây tác dụng với dung dịch AgNO3/NH3 tạo kết tủa ?,1.00,but-1-en-2-in,3-metylbut-1-in,đimetylaxetilen,but-2-in,,,B,,,,,Tiếng Anh,,,
+5,SINGLE_CHOICE,READING,STANDARD,Công thức phân tử của Ankađien là,1.00,CnH2n (n≥2)C_nH_{2n}\ \left(n\ge2\right)Cn H2n (n≥2),CnH2n−2 (n≥3)C_nH_{2n-2}\ \left(n\ge3\right)Cn H2n−2 (n≥3),CnH2n−2 (n≥2)C_nH_{2n-2}\ \left(n\ge2\right)Cn H2n−2 (n≥2),CnH2n+2 (n≥2)C_nH_{2n+2}\ \left(n\ge2\right)Cn H2n+2 (n≥2),,,B,,,,,Tiếng Anh,,,
+6,SINGLE_CHOICE,READING,STANDARD,Dãy đồng đẳng của benzen có công thức chung là,1.00,CnH2n+6; n >= 6.,CnH2n-6; n >=3.,CnH2n-6; n >= 6.,CnH2n+6; n >= 3.,,,C,,,,,Tiếng Anh,,,
+7,SINGLE_CHOICE,READING,STANDARD,"Trong các Hidrocacbon sau, chất thuộc loại ankađien liên hợp là",1.00,CH3-CH=CH-CH3,CH2=CH-CH2-CH=CH2,CH3-CH=CH-CH=CH2,CH2=C=CH2,,,C,,,,,Tiếng Anh,,,
+8,SINGLE_CHOICE,READING,STANDARD,Để phân biệt C2H6; C2H4; C2H2 dùng cặp hoá chất:,1.00,A. H2; dd Br2,B. KMnO4; dd Br2,C. dd Br2; AgNO3/ dd NH3,D. O2; AgNO3/ dd NH3,,,C,,,,,Tiếng Anh,,,
+9,SINGLE_CHOICE,READING,STANDARD,Hãy chọn khái niệm đúng về ankin?,1.00,True,False,,,,,B,,,,,Tiếng Anh,,,
+10,SINGLE_CHOICE,READING,STANDARD,Chất nào sau đây là ankin?,1.00,True,False,,,,,B,,,,,Tiếng Anh,,,

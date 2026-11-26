@@ -1,0 +1,2 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - READ and ANSWER Đọc và trả lời câu hỏi GIRL: Who’s playing the piano? BOY: It’s Sue. She loves the piano. GIRL: Is Ben playing with her? BOY: No. She’s playing with her sisters. Who’s playing the piano? -->,1.00,It's Sue,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc She (go) _______ to the gym every morning,1.00,goes,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc They (watch) ____ a movie in the living room right now,1.00,are watching,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc We (already / finish) _____ our homework,1.00,have already finished,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc I (visit) _____ my grandparents in Haiphong yesterday,1.00,visited,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc He (call) _____ you tomorrow,1.00,will call,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc The sun (rise) _____ in the east,1.00,rises,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Look! The children (play) _____ soccer in the yard,1.00,are playing,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc My sister (live) ____ in Hanoi since 2018,1.00,has lived,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Last night, we (eat) ____ dinner at a local seafood restaurant",1.00,ate,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc I think it (rain) _____ tonight,1.00,will rain,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,13 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu She is good ……… the Maths,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu They are bad ……… singing,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The boy is clever ……… painting,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The famers are quick ……… cutting rice,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The students are excellent ……… playing football,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The old woman is annoyed ……… backache,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu My father is angry ……… his daughter,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu I am surprised ……… my birthday,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The dog is shocked ……… the cat,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The monkey is amazed ……… looking forest,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The teachers are present ……… the classrooms,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu My sister is clumsy ……… cooking,1.00,at,,,,,,A,,,,,Tiếng Anh,,,

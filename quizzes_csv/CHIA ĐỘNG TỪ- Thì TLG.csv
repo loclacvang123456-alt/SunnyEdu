@@ -1,0 +1,4 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH - Listen and choose Where are Kim’s jeans?,1.00,"Where are your new jeans, Kim?|Mmm. Are they in my bedroom?|No, they aren’t. And they aren’t in the bathroom.|Oh, I know. They’re in the living-room.",,,,,,,,,,,Tiếng Anh,,,
+2,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH - Listen and choose What’s Pat’s favourite food?,1.00,"What’s your favourite food, Pat? Burgers?|No. I don’t like them.|Is it French fries?|No, my favourite food is ice cream.",,,,,,,,,,,Tiếng Anh,,,
+3,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH - Listen and choose Who is Ben’s teacher?,1.00,"Who’s your teacher, Ben?|Her name is Sue. She’s got long brown hair.|Does she wear glasses?|No, she doesn’t.",,,,,,,,,,,Tiếng Anh,,,

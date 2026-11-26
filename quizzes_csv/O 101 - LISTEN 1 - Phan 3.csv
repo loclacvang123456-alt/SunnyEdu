@@ -1,0 +1,2 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Odd one out,1.00,kangaroo,money,monkey,lion,,,B,,,,,Tiếng Anh,,,

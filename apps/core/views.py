@@ -494,6 +494,7 @@ def student_assignment_result(request, assignment_id):
             'is_partial': is_partial,
             'is_wrong': is_wrong,
             'has_response': bool(resp),
+            'image_url': q.image_url,
             'explanation': q.explanation,
         }
 

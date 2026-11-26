@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences There’s no point in getting upset about that --> It’s not worth,1.00,getting upset about that,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences He runs quickly --> How,1.00,quickly he runs!,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences The girl is so beautiful --> What !,1.00,a beautiful girl,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences You don’t need to come here --> It’s not necessary,1.00,for you to come here,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences It’s not necessary for you to come here --> You don’t,1.00,need to come here,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences She doesn't live there anymore --> No longer,1.00,does she live there,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: does she live there | She no longer live there,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences My sister was accustomed to sleeping late --> My sister was,1.00,used to sleeping late,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences My sister was used to sleeping late --> My sister was accustomed,1.00,to sleeping late,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Rewrite the sentences He studies hard because he wants to pass the exam --> He studies,1.00,hard to pass the exam,,,,,,A,,,,,Tiếng Anh,,,
+10,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng,1.00,"Because|it's stormy|right now,|we can't|go to work",,,,,,,,,,,Tiếng Anh,,,

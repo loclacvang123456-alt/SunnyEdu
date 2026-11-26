@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN Mary went to the zoo last week --> to the zoo last week?,1.00,Did Mary go,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN You spoke English in 2020 --> English in 2020?,1.00,Did you speak,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN They wrote a letter last Monday --> a letter last Monday?,1.00,Did they write,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN Mary drove a car ten days ago --> a car ten days ago?,1.00,Did Mary drive,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN John walked to school last year --> to school last year?,1.00,Did John walk,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN Tim enjoyed the party last month --> the party last month?,1.00,Did Tim enjoy,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN She opened the door last week --> the door last week?,1.00,Did she open,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN Tom planted flowers three days ago --> flowers three days ago?,1.00,Did Tom plant,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN She was in the room yesterday --> in the room yesterday?,1.00,Was she,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển câu sau sang câu NGHI VẤN They were on the beach last week --> on the beach last week?,1.00,Were they,,,,,,A,,,,,Tiếng Anh,,,

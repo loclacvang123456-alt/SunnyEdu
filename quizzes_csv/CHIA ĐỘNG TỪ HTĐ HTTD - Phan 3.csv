@@ -1,0 +1,2 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc. Minh (write /not/ usually) letter every year.,1.00,doesn't usually write,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: doesn't usually write | does not usually write,

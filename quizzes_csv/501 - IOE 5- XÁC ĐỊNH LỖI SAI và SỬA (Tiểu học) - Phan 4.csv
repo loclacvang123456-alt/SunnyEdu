@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. How far is it on Hanoi to Ho Chi Minh City?,1.00,from,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. It's summer time. Let's going swimming.,1.00,go,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. I kicking the ball and it went to the net.,1.00,kicked,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. She is waiting on me at the school gate.,1.00,for,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. After lunch, I'm going to look around to my parents.",1.00,with,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. Where are you and your family last weekend?,1.00,were,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. What types of foods would you like?,1.00,food,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. Because of I'm tired, I don't go to school.",1.00,Because,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. I always makes cakes with my mother and my sister.,1.00,make,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Trong câu có một lỗi sai. Xác định lỗi sai và SỬA. They sit together and sang ""Yesterday once more"".",1.00,sat,,,,,,A,,,,,Tiếng Anh,,,

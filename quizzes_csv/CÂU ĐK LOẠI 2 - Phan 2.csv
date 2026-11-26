@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,What would you do if you (lose) your passport in a foreign country?,1.00,lost,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,What (you do) if you lost your passport in a foreign country?,1.00,would you do,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,What (you do) if somebody throw an egg at you?,1.00,would you do,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,What (you do) if your car was stolen?,1.00,would you do,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,"If we (catch) the 10.30 train, we would arrive too early.",1.00,caught,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,"If he (take) the examination, he would fail it.",1.00,took,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,"If he took the examination, he ( fail) it.",1.00,would fail,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,What (you do) if a millionare asked you to marry him?,1.00,would you do,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,What would you do if a begger (ask) you to marry him?,1.00,asked,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,"If she (be) a teacher, she would do it.",1.00,were,,,,,,A,,,,,Tiếng Anh,,,

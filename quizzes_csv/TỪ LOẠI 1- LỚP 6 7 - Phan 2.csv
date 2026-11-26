@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của từ trong ngoặc I don’t like the …….. weather. (rain),1.00,rainy,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của từ trong ngoặc That …….. can play the guitar very well. ( music),1.00,musician,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của từ trong ngoặc Is Quang Ninh a …….. province? ( mountain),1.00,mountainous,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của từ trong ngoặc AIDS is a …….. disease. (DANGER),1.00,dangerous,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc His ……….. makes his parents feel sad. (lazy),1.00,laziness,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc You should ……….. to your teacher. (apology),1.00,apologize,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc We’re so ……….. of her for telling the truth. (pride),1.00,proud,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc Paris is ……….. for the Eiffel Tower. (fame),1.00,famous,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc How ……….. of you to break that cup! (care),1.00,careless,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH - TỪ LOẠI Dùng dạng đúng của từ trong ngoặc To my ……….., the monkey peeled a banana and offered it to me. (amaze)",1.00,amazement,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pencil case,pencil,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e1a91e5a-8075-4a08-9a18-b5da8db037f1
+2,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pen,pencil,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ec062614-3056-434e-9625-22f2aa0a81ce
+3,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pencil case,pencil,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e1a91e5a-8075-4a08-9a18-b5da8db037f1
+4,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pen,pencil,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ec062614-3056-434e-9625-22f2aa0a81ce
+5,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pen,pens,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/45deb39b-c37d-41fc-aa29-05ad12ddd231
+6,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,bag,pen,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d445c71c-c23a-41d5-ae46-8d5f7b590925
+7,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,book,bookcase,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fe089af6-3f11-47bf-b9ac-79aaf1efb995
+8,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,chair,desk,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c51f2e4e-fce6-49c7-96f9-3339252dc964
+9,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,ruler,pen,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/10d0e554-ea44-4e60-8e8c-644cd6983ab3
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,pen,1.00,pencil,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/da812c76-f1ba-48d0-991e-534509deb904
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,bo,1.00,book,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a7c46284-379c-475c-8dfa-7f88a1fddc31
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,bd,1.00,bird,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cdcadd77-2f2c-44bf-a476-87e6e23a7023
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,mker,1.00,marker,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/81a489c5-0f49-45dd-8192-7ff72eef4f33
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,pen,1.00,pencil,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/306c05b1-e26b-4a21-9d9a-cd04fca7ed9a
+15,SINGLE_CHOICE,READING,STANDARD,cray....,1.00,on,no,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b0ce9b51-c1dc-4b6f-a35d-aed310f06115
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,There are markers,1.00,five,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a40cef7e-08c5-4b6e-a07b-5210f01d2540
+17,SINGLE_CHOICE,READING,STANDARD,There are ...........,1.00,four markers,five markers,a marker,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6fbca1fe-2d34-4dc6-9ea6-a4849786326c
+18,SINGLE_CHOICE,READING,STANDARD,two...........,1.00,hearts,heart,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e904d209-d8bd-4d2c-af72-f4903efe172e
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,two + two =,1.00,four,,,,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,There are pens,1.00,seven,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/faee0219-26db-4374-a5c0-575562f6d740
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,It's a,1.00,notebook,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c07d665e-3606-4e27-80a2-c3b0fca8a6fe
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,a,1.00,marker,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/28ad9db7-6c30-4e4c-835d-095ded2e42e1
+23,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It's a pen,It’s a monkey.,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1aa89568-f104-4dba-9fa9-f8d803a4b14e
+24,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It's a cow,It’s a lion.,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c54ff532-901a-406e-ab1f-e7d82cbc73e8
+25,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It's a goat,It’s a lion.,It’s a monkey.,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9d05404b-e5a0-4e6d-bc24-bcfb234af87d
+26,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It’s a monkey.,It’s a rabbit.,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ac7bc2b6-caa1-4f5a-929c-be09ab15341f
+27,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It’s a monkey.,It’s a frog.,It’s a giraffe.,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2ce39359-7c2f-4dfd-8ac8-0e976a1e1ffc
+28,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It’s a rabbit.,It’s a giraffe.,It’s a bird.,,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2e8b32c0-2622-4660-9d72-a58baa417d94
+29,SINGLE_CHOICE,READING,STANDARD,What’s this?,1.00,It’s a bananas,It’s a rabbit.,It’s a banana.,,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b0020a4d-4053-49e4-9d9a-8362f0712b2c
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s a ………...,1.00,cat,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d99a96d6-7426-486a-9e8a-dd5b0c7c87e0
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s an ………...,1.00,elephant,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/01e46d8b-4ac9-44e4-853b-54183a322953
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s a ………...,1.00,chicken,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/da951503-cf3e-4d79-af1b-a91071ed5af8
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s a ………...,1.00,fish,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/eb2237c8-2233-43f4-9830-2e17ee6dfad6
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s a ………...,1.00,egg,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9fdab77b-9edb-4820-a7c9-7813d2f803f0
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,What’s this? It’s a ………...,1.00,giraffe,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a6dc761f-53b1-400d-a6c6-d9256a137819
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,I like an,1.00,orange,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c16fe6ae-da90-4755-92b5-985b4c4e9328
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,three,1.00,monkeys,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a8e2ac12-4fd9-4d66-8180-fd19b779783c
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp chữ cái thành từ đúng: penilc,1.00,pencil,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d84f86c3-e230-41b9-8dc0-41e2144240f0
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,Is this a ?,1.00,pencil,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f093c00c-27d4-46c6-856a-1b54333105d6
+40,SINGLE_CHOICE,READING,STANDARD,Is this a pen?,1.00,Yes,No,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/60f2305e-906b-4629-a155-6a9756f8104c
+41,SINGLE_CHOICE,READING,STANDARD,Is this a pencil?,1.00,Yes,No,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/97eeb1e2-a47d-4986-874f-e7b6b6403ba3
+42,SINGLE_CHOICE,READING,STANDARD,Is this a bag?,1.00,Yes,No,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ee1d14d1-b6ed-4a2c-a42e-531ef7b6dad0
+43,SINGLE_CHOICE,READING,STANDARD,Is this a book?,1.00,Yes,No,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/13d01801-8f9e-487e-af35-79e7f6092fda
+44,SINGLE_CHOICE,READING,STANDARD,Is this a ruler?,1.00,Yes,No,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/09c9de14-5c23-4fda-a9af-b5396bce2ef4
+45,SINGLE_CHOICE,READING,STANDARD,What's this? - ..............,1.00,It's desk,it's a pencil,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f75980f6-5b36-4706-9869-7e8a51ae4322
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,cow,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/35583bf2-6f45-4611-ae11-9cff3329b925
+47,SINGLE_CHOICE,READING,STANDARD,She is my ............,1.00,mother,grandmother,grandfather,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/65a72558-6523-4e4c-9236-9bb3be33762f
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,She is my mor,1.00,mother,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/14992d3c-bc75-4557-87fe-2f3f87e20675
+49,SINGLE_CHOICE,READING,STANDARD,He is my ............,1.00,grandfather,grandmother,sister,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/175fdd5a-1d3c-4570-82c0-de468023413f
+50,SINGLE_CHOICE,READING,STANDARD,He is my ............,1.00,sister,grandfather,father,,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2ab007b8-e538-4459-ba10-ebbd21da2d47

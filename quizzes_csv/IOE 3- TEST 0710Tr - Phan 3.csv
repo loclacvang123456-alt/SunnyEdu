@@ -1,0 +1,9 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. bid,1.00,bird,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. mp,1.00,map,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. fooall,1.00,football,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. duk,1.00,duck,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. dss,1.00,dress,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. ice-cm,1.00,ice-cream,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. cany,1.00,candy,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đầy đủ từ còn thiếu vào chỗ trống. teaer,1.00,teacher,,,,,,A,,,,,Tiếng Anh,,,

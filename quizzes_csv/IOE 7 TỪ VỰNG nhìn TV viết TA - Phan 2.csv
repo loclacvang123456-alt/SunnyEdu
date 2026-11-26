@@ -1,0 +1,7 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH How much is a bowl of (mì bò)soup?,1.00,beef noodle,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH There is a lot of pepper in my fried (rau).,1.00,vegetables,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH Tony (thức dậy muộn)this morning, so he was late for school.",1.00,woke up late,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH We will (làm bưu thiếp)and sell them.,1.00,make postcards,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH You can have some (nước cam)instead.,1.00,orange juice,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn từ /cụm từ TIẾNG VIỆT để viết từ/ cụm từ TIẾNG ANH You should not read in bed (bởi vì)it's not good for your back.,1.00,because,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,15 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,13 + 6 = .......,1.00,19,18,17,,,,A,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,3 chục = ......,1.00,10,20,30,,,,C,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,12 + 7 .......... 17 + 2,1.00,<,=,>,,,,B,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,"Cây gì không lá, không hoa Sáng đêm sinh nhật cả nhà vây quanh (Là gì?)",1.00,Hình A (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d07d26ba-43fa-4aa3-94a7-3fb05d85220c),Hình B (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e76830e8-37a6-4c7e-97ad-955d0c3a86fc),Hình C (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c3dbb3dc-e1cc-4c43-869d-db6de8783c5a),,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d07d26ba-43fa-4aa3-94a7-3fb05d85220c
+5,SINGLE_CHOICE,READING,STANDARD,Một tuần có mấy ngày?,1.00,5,6,7,,,,C,,,,,Tiếng Anh,,,
+6,SINGLE_CHOICE,READING,STANDARD,........ + 11 = 18,1.00,6,7,8,,,,B,,,,,Tiếng Anh,,,
+7,SINGLE_CHOICE,READING,STANDARD,Con nhện có mấy chân?,1.00,8 chân,4 chân,2 chân,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cc2c1df0-c620-45c2-b209-c34b7a8a1eb2
+8,SINGLE_CHOICE,READING,STANDARD,Hình vẽ trên có mấy hình tròn ?,1.00,2,3,4,,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/100c8f98-afb5-47b3-9603-b8731f36757e
+9,SINGLE_CHOICE,READING,STANDARD,Phép tính đúng trong ô trống là,1.00,9 - 4 = 5,5 + 4 = 9,9 - 5 = 4,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/26e04f23-433e-4257-a16d-086d7cb060c7
+10,SINGLE_CHOICE,READING,STANDARD,Hình vẽ trên có bao nhiêu điểm ?,1.00,4,5,3,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4f11df28-9bd4-4a00-a48c-ef94da2665ad
+11,SINGLE_CHOICE,READING,STANDARD,3 con gà và 1 con chó thì có tổng tất cả mấy chân?,1.00,8,9,10,,,,C,,,,,Tiếng Anh,,,
+12,SINGLE_CHOICE,READING,STANDARD,"Sắp xếp các số 19, 10, 14, 12, 9 theo thứ tự tăng dần",1.00,"19,14,12,10,9","9,10,12,19,14","9,10,12,14,19",,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/06859ee8-5551-404c-8262-162f43878a08
+13,SINGLE_CHOICE,READING,STANDARD,Phép cộng nào có kết quả bằng 18,1.00,16 + 2,17 + 2,9 + 1,,,,A,,,,,Tiếng Anh,,,
+14,SINGLE_CHOICE,READING,STANDARD,Số liền sau số lớn nhất có một chữ số là:,1.00,10,8,9,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1b8d8f41-57fa-447c-a42c-ba8565c1de4a

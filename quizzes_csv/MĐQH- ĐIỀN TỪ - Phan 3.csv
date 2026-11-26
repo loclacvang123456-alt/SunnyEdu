@@ -1,0 +1,5 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - ĐIỀN TỪ - Mệnh đề quan hệ The table ………..leg is broken can’t be used,1.00,whose,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - ĐIỀN TỪ - Mệnh đề quan hệ The pen ………..I lost was a good one.,1.00,which,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH - ĐIỀN TỪ - Mệnh đề quan hệ Doctor John, ………..son is small, is very old.",1.00,whose,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - ĐIỀN TỪ - Mệnh đề quan hệ The house ………..I lived last year was sold.,1.00,where,,,,,,A,,,,,Tiếng Anh,,,

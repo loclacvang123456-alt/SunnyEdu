@@ -1,0 +1,27 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,my /This/ pencil /is,1.00,This is my pencil.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5fd83a7b-159a-4ee3-946c-835498a7a1c5
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,This /pen./ is /my/,1.00,This is my pen.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5692575c-faad-47fa-957f-654f27da51b2
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,This/ is/ book./ my,1.00,This is my book.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/274aef43-574e-425c-a180-814f24bc8c1f
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,This /desk./ is/ my,1.00,This is my desk.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/458731f2-ce22-48b0-815f-e9e144ca91bd
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,This/ is /chair./ my,1.00,This is my chair.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1ecbae26-87c9-48b8-bfb6-efcd05cfe9b8
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,my /ruler. /This /is,1.00,This is my ruler.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/68f49b2a-cb69-4134-8647-bff3ed755de8
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,is/ my /This /bag.,1.00,This is my bag.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/dea4a89e-084e-4523-bd17-28a9efe6f002
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,eraser. /This/ is /my,1.00,This is my eraser.,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2e856ecc-422f-49ee-ac70-3a0b9e93ac6e
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,What/this/is?,1.00,What is this?,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: It's /purple /a/ pen./,1.00,It's a purple pen.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a purple pen. | It is a purple pen.,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: pencil. /It's /a/ yellow/,1.00,It's a yellow pencil.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a yellow pencil. | It is a yellow pencil.,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: bag. /It's /a /green/,1.00,It's a green bag.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a green bag. | It is a green bag.,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: It's /book. /a/ red/,1.00,It's a red book.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a red book. | It is a red book.,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /grey /It's /desk.,1.00,It's a grey desk.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a grey desk. | It is a grey desk.,
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: orange /It's /an /chair./,1.00,It's an orange chair.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's an orange chair. | It is an orange chair.,
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: yellow /It's /a ruler./,1.00,It's a yellow ruler.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a yellow ruler. | It is a yellow ruler.,
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: It's /eraser. /pink/ a,1.00,It's a pink eraser.,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's a pink eraser. | It is a pink eraser.,
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: this/ a/ map?/ Is,1.00,Is this a map?,,,,,,A,,,,,Tiếng Anh,,,
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: this/ a/ map?/ Is,1.00,Is this a map?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0c39a197-cf14-4741-a121-e366c7b297f7
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /this/ Is /board?,1.00,Is this a board?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/aa9d3675-4e0d-4bec-a289-8a91a0a0d211
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: this /globe/ Is /a?,1.00,Is this a globe?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3eb6fcbc-b489-4252-b2b7-4c9196e7ffbc
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: this /a/ table?/ Is,1.00,Is this a table?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9fb52890-2a1a-4b7a-a6e8-b48b14e8ad5a
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /this/ Is /crayon?,1.00,Is this a crayon?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cf90e989-d23b-4a29-9c73-0a2d55e55d98
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /this / Is / poster?,1.00,Is this a poster?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6c9a00c7-b799-4628-9c55-efc65af5b4a0
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /this/ Is /marker?,1.00,Is this a marker?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d36b713a-a841-4ea2-ab15-50f61c38d834
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,Sắp xếp: a /this /Is/ wastebasket?,1.00,Is this a wastebasket?,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/97643e5a-4731-4c84-8247-0b911cb91a00

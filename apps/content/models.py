@@ -106,6 +106,7 @@ class Question(Entity):
     max_points = models.DecimalField(max_digits=8, decimal_places=2)
     passage = models.ForeignKey(Passage, on_delete=models.PROTECT, null=True, blank=True, related_name="questions")
     explanation = models.TextField(blank=True, default="")
+    image_url = models.CharField(max_length=1000, blank=True, default="")
     pirate_game = models.BooleanField(null=True, blank=True, default=None)
 
     class Meta:

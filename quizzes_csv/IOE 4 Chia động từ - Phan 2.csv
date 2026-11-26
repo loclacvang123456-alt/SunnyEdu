@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc His teddy bears (be) …… in different colours.,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What can he (do) ……? - He can swim,1.00,do,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc My friend (like) ……. maths,1.00,likes,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc It's Monday today. We (be) …… having a Music lesson.,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What (be) …… the weather like yesterday?,1.00,was,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What …… the weather be like tomorrow?,1.00,will,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc I (skip) ……. in the park with my sister every Thursday.,1.00,skip,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Thursday (be) …… the fourth day of the week.,1.00,is,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc My sister can (sing) ……., but she can't dance.",1.00,sing,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc His teddy bears (be / not) …… in different colours.,1.00,aren't,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: aren't | are not,

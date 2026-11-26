@@ -7,7 +7,7 @@ from django.db import transaction
 from django.utils import timezone
 from .models import Asset, AnswerKeyOption, Exam, ExamVersion, MatchKey, Passage, Question, QuestionOption, QuestionTag, RubricCriterion, Tag
 
-FIELDS = ("position", "type", "skill", "difficulty", "prompt", "max_points", "option_a", "option_b", "option_c", "option_d", "option_e", "option_f", "correct_options", "passage_ref", "passage_text", "audio_asset_id", "transcript", "topic_tags", "error_tags", "explanation")
+FIELDS = ("position", "type", "skill", "difficulty", "prompt", "max_points", "option_a", "option_b", "option_c", "option_d", "option_e", "option_f", "correct_options", "passage_ref", "passage_text", "audio_asset_id", "transcript", "topic_tags", "error_tags", "explanation", "image_url")
 LEVELS = {"0": "Không có bằng chứng đáp ứng", "1": "Đáp ứng ít", "2": "Đáp ứng một phần", "3": "Đáp ứng phần lớn", "4": "Đáp ứng đầy đủ"}
 RUBRICS = {"TEXT": [("task", "Hoàn thành yêu cầu"), ("organization", "Tổ chức ý"), ("vocabulary", "Từ vựng"), ("grammar", "Ngữ pháp")], "AUDIO": [("task", "Nội dung"), ("fluency", "Độ trôi chảy"), ("language", "Từ vựng và ngữ pháp"), ("pronunciation", "Phát âm dễ hiểu")]}
 
@@ -58,9 +58,17 @@ def parse_questions(data, filename):
     if filename.lower().endswith('.csv'):
         try:
             reader = csv.DictReader(io.StringIO(data.decode('utf-8-sig'), newline=''))
-            if not reader.fieldnames or reader.fieldnames[:len(FIELDS)] != list(FIELDS):
+            headers = [h.strip() for h in (reader.fieldnames or [])]
+            if headers[:len(FIELDS)] == list(FIELDS):
+                active_fields = list(FIELDS)
+            elif headers[:len(FIELDS)-1] == list(FIELDS[:-1]):
+                active_fields = list(FIELDS[:-1])
+            else:
                 raise ValidationError("Cột CSV không khớp mẫu.")
-            rows = [r for r in reader if any((r.get(k) or '').strip() for k in FIELDS)]
+            rows = []
+            for r in reader:
+                if any((r.get(k) or '').strip() for k in active_fields):
+                    rows.append({k: (r.get(k) or '').strip() for k in FIELDS})
         except UnicodeDecodeError as e:
             raise ValidationError("CSV phải dùng UTF-8.") from e
     elif filename.lower().endswith('.xlsx'):
@@ -76,17 +84,25 @@ def parse_questions(data, filename):
             sheet = workbook['questions']
             values = sheet.iter_rows()
             first = next(values, None)
-            if not first or [c.value for c in first[:len(FIELDS)]] != list(FIELDS):
+            first_vals = [c.value for c in first] if first else []
+            if first_vals[:len(FIELDS)] == list(FIELDS):
+                active_fields = list(FIELDS)
+            elif first_vals[:len(FIELDS)-1] == list(FIELDS[:-1]):
+                active_fields = list(FIELDS[:-1])
+            else:
                 raise ValidationError("Cột XLSX không khớp mẫu.")
             rows = []
             for cells in values:
                 cell_list = list(cells)
                 if any(getattr(c, 'data_type', None) == 'f' for c in cell_list):
                     raise ValidationError("Không nhận công thức XLSX.")
-                core_cells = (cell_list + [None] * max(0, len(FIELDS) - len(cell_list)))[:len(FIELDS)]
+                core_cells = (cell_list + [None] * max(0, len(active_fields) - len(cell_list)))[:len(active_fields)]
                 if all(c is None or c.value is None or str(c.value).strip() == '' for c in core_cells):
                     continue
-                rows.append({key: '' if (c is None or c.value is None) else str(c.value) for key, c in zip(FIELDS, core_cells)})
+                row_dict = {key: '' if (c is None or c.value is None) else str(c.value) for key, c in zip(active_fields, core_cells)}
+                if 'image_url' not in row_dict:
+                    row_dict['image_url'] = ''
+                rows.append(row_dict)
             workbook.close()
         except (zipfile.BadZipFile, KeyError, ValueError) as e:
             raise ValidationError("XLSX không hợp lệ.") from e
@@ -221,7 +237,7 @@ def create_imported_exam(owner, title, rows, exam=None):
                 except (Asset.DoesNotExist, ValueError) as e:
                     raise ValidationError('Tệp nghe không tồn tại hoặc chưa sẵn sàng.') from e
             passages[ref] = Passage.objects.create(version=version, ref=ref, text_body=row['passage_text'], audio_asset=audio, transcript=row['transcript'])
-        question = Question.objects.create(version=version, position=int(row['position']), type=row['type'], skill=row['skill'], difficulty=row['difficulty'], prompt=row['prompt'], max_points=Decimal(row['max_points']), passage=passages.get(ref), explanation=row['explanation'])
+        question = Question.objects.create(version=version, position=int(row['position']), type=row['type'], skill=row['skill'], difficulty=row['difficulty'], prompt=row['prompt'], max_points=Decimal(row['max_points']), passage=passages.get(ref), explanation=row['explanation'], image_url=row.get('image_url', ''))
         options = [row['option_'+c.lower()] for c in 'ABCDEF']
         answer = row['correct_options'].split('|') if row['correct_options'] else []
         if row['type'] == 'STRESS_CHOICE':

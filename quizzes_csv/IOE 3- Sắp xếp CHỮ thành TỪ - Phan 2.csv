@@ -1,0 +1,8 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa My clasrsoom is on the second floor.,1.00,classroom,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa I like chses but my brother doesn’t like it,1.00,chess,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa My school has seven clsrasooms,1.00,classrooms,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa Red is my fobaotll team's colour,1.00,football,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa My favourite sports are football and badmtoinn.,1.00,badminton,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa Is the girl in yellow skirt your clasmaste?,1.00,classmate,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các chữ cái thành từ có nghĩa Whree is my little cat?,1.00,Where,,,,,,A,,,,,Tiếng Anh,,,

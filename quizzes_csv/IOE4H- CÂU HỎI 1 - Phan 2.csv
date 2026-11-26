@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH the beautiful doll? The beautiful doll is on the bookshelf.,1.00,Where is,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH didn’t you play baseball yesterday? I didn’t play baseball yesterday because it was rainy,1.00,Why,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH is Lan’s birthday? It’s on June, 15th",1.00,When,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH your grandmother yesterday morning?,1.00,Where was,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Vietnam have a plenty of attractive festivals? Yes, it does",1.00,Does,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH We watd TV yesterday evening.,1.00,watched,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH My mother I have dinner at 6.30 pm.,1.00,and,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Many anals live on deserts.,1.00,animals,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH How many cirles are there in the poster?,1.00,circles,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Does your uncle work in the faory?,1.00,factory,,,,,,A,,,,,Tiếng Anh,,,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Last month, my school held an English feval.",1.00,festival,,,,,,A,,,,,Tiếng Anh,,,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,Writing a dictation is diffult.,1.00,difficult,,,,,,A,,,,,Tiếng Anh,,,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Vietnam has a plenty of atttive festivals.,1.00,attractive,,,,,,A,,,,,Tiếng Anh,,,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,Mr. Minh lives the fifth floor of a building in Hanoi.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+15,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH What time do they watch TV?,1.00,They watch TV at 8 p.m,She has dinner at 6.30 pm.,I have PE on Monday,Many animals live on deserts.,,,A,,,,,Tiếng Anh,,,
+16,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Chọn đáp án đúng. When do you have PE?,1.00,I have PE on Monday,Many animals live on deserts.,It’s Thursday,We watched TV yesterday evening.,,,A,,,,,Tiếng Anh,,,
+17,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Chọn đáp án đúng. How many circles are there in the poster?,1.00,There are 6,He is watching TV.,They are big clouds.,"No, I can’t",,,A,,,,,Tiếng Anh,,,
+18,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Chọn đáp án đúng. Where is the cat?,1.00,The cat is under that chair.,My sister goes home at five o’clock.,They are interesting books,I have got three skirts,,,A,,,,,Tiếng Anh,,,
+19,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Chọn đáp án đúng. What did they paint this afternoon?,1.00,They painted big masks this afternoon.,He is watching TV.,They ride their bicycles to school every morning.,They watched TV at 8 p.m,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. My sister doesn’t like crocod…..s.,1.00,crocodiles,,,,,,A,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. Alice is a st…nt at Oxford Primary school,1.00,student,,,,,,A,,,,,Tiếng Anh,,,
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. This pen is for you. – Thank you very m….h,1.00,much,,,,,,A,,,,,Tiếng Anh,,,
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. Linh’s uncle is from England. He’s Engl….. .,1.00,English,,,,,,A,,,,,Tiếng Anh,,,
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. Give me a gl…… of milk, please.",1.00,glass,,,,,,A,,,,,Tiếng Anh,,,
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: Điền từ còn thiếu vào chỗ trống. That’s a gr…..t idea.,1.00,great,,,,,,A,,,,,Tiếng Anh,,,
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: She is TV right now,1.00,watching,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6bec7d97-5b89-4d0b-95d8-94254c2e98e9
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,TV,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: TV | television,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9fa16cb5-1ab9-4feb-9678-80b01c876bed
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,shoe,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ca065ed3-b002-4fcb-abc4-c92847db1c3f
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,kitchen,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/248a864c-e408-40fd-9e95-e19267715e70
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,flower,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b2c89615-9ab1-473c-abac-5b0505cba671
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: She is with a doll,1.00,playing,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9a4d3ddc-ca0e-449a-b50c-bb9f21c33084
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,ball,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/660a4510-4010-487f-823d-e2007b5660d3
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,clock,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9f114647-056d-415b-b7d2-4294c8684e1b
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,horse,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8c7cc29e-bb52-4890-a4e5-2ffd75aa5c0f
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,lamp,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ffd22ac8-94d7-4681-91f0-6bfb0f1ca3d9
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,telephone,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/03bcafc9-2b2a-4150-a443-fa8b7419db75
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: It's a,1.00,skirt,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4afbd3b6-ba45-4ce2-9fa1-8c39d3af50ad
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a clm,1.00,classroom,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/11a902c7-7e03-4a02-b569-3add41be5400
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,hat,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2ca37244-119d-4179-b6be-7bed36289ade
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,bike,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: bike | bicycle,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e57661cf-3389-489b-8b68-663c117e95a2
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,cake,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ad416607-9660-4956-9633-8a9cfa001845
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,bed,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/366f3420-3453-493c-af69-74f1c74cd976
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH He can w to school,1.00,walk,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2bd0e273-f553-404e-bad3-5521fd20ef1d
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,mirror,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/28a5ebe5-9b4a-4036-a979-86cef07acd23
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH When’s your birthday, Mai? It’s on the of March.",1.00,fifth,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/28b20119-6896-48cd-9607-2d164f63dce7
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH W…. did you meet? – Some famous musicians.,1.00,Who,,,,,,A,,,,,Tiếng Anh,,,
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH He listens to E……h s…ng in his free time.,1.00,English songs,,,,,,A,,,,,Tiếng Anh,,,
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Science lessons …… also interesting.,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH He’s always busy …… he’s a businessman,1.00,because,,,,,,A,,,,,Tiếng Anh,,,
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH L…… go to the cinema. – That’s a good idea.,1.00,Let’s,,,,,,A,,,,,Tiếng Anh,,,

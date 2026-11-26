@@ -1,0 +1,13 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: VIẾT ĐÁP ÁN ĐÚNG Do/Does/have/has/is/am/are/ don't/doesn't/isn't/aren't/haven't That an old building,1.00,is,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: is | isn't,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH: VIẾT ĐÁP ÁN ĐÚNG Do/Does/have/has/is/am/are/ don't/doesn't/isn't/aren't/haven't quiet, boys",1.00,Be,,,,,,A,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng .................. are playing football,1.00,They,This,That,,,,A,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng ................... are many clouds in the sky.,1.00,There,This,That,,,,A,,,,,Tiếng Anh,,,
+5,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng Their bags .................. yellow and green,1.00,are,is,am,,,,A,,,,,Tiếng Anh,,,
+6,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng .................... go to school together,1.00,Let’s,Does,Are,Have,,,A,,,,,Tiếng Anh,,,
+7,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng ................. play with me.,1.00,Let’s,Does,Have,,,,A,,,,,Tiếng Anh,,,
+8,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng .................. write a postcard,1.00,Don't,Do,Doesn't,,,,A,,,,,Tiếng Anh,,,
+9,SINGLE_CHOICE,READING,STANDARD,"TIẾNG ANH THẦY BÍCH: Choose the best answer Chọn đáp án đúng ............... Linda got a dog? Yes, she has",1.00,Has,Have,Do,Does,,,A,,,,,Tiếng Anh,,,
+10,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa,1.00,What do they have?|What do you have?|Has he got a cat?|Does he have a bird?|Have you got a lion?,,,,,,,,,,,Tiếng Anh,,,
+11,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa,1.00,Has he got a cat?|Have they got a giraffe?|Do you have a pen?|Does he have a bird?|What are those?,,,,,,,,,,,Tiếng Anh,,,
+12,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa,1.00,Is there a classroom?|Are they keys?|What are these?|Is this a notebook?|Have they got a giraffe?,,,,,,,,,,,Tiếng Anh,,,

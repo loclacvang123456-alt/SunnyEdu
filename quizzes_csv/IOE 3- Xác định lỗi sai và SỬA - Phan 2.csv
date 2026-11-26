@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Let’s listens to music,1.00,listen,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Let’s cooking dinner,1.00,cook,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Let’s visiting grandparents,1.00,visit,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Let’s cleaning the floor,1.00,clean,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Let’s tells a story,1.00,tell,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Don’t gives some fruits,1.00,give,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Don’t takes a shower,1.00,take,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Don’t speaking English,1.00,speak,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Doesn’t write a passage,1.00,Don’t,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xác định lỗi sai trong câu và SỬA. Doesn’t go to the park,1.00,Don’t,,,,,,A,,,,,Tiếng Anh,,,

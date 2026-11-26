@@ -1,0 +1,10 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng cái của anh/ bạn,1.00,yours,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng cái của anh ấy,1.00,his,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng cái của chị ấy,1.00,hers,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng cái của chúng tôi,1.00,ours,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng cái của họ/ chúng,1.00,theirs,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng họ/ chúng,1.00,They,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng chúng tôi,1.00,We,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng Cô ấy,1.00,She,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Viết từ Tiếng Anh tương ứng Anh ấy,1.00,He,,,,,,A,,,,,Tiếng Anh,,,

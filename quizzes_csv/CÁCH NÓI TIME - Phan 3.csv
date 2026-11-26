@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Monday is the day of the week,1.00,first,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Tuesday is the ……… day of the week,1.00,second,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Wednesday is the ……… day of the week,1.00,third,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Thursday is the …….. day of the week,1.00,fourth,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Friday is the ……… day of the week,1.00,fifth,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Saturday is the ……… day of the week,1.00,sixth,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Nhìn và viết đáp án đúng Sunday is the ………. day of the week,1.00,seventh,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn và viết bằng T.Anh tương ứng Tháng hai :,1.00,February,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn và viết bằng T.Anh tương ứng Tháng Giêng :,1.00,January,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn và viết bằng T.Anh tương ứng 100 :,1.00,one hundred,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,21 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,We can’t take any photos because of the rain.,We can’t take any photos because the rain.,,,,,A,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,We can’t take any photos because of the rain.,We can’t take some photos because of the rain.,,,,,A,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,Her name is Allie.,He name is Allie.,,,,,A,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,How's the weather in Hue?,How the weather in Hue?,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,that man? He’s my father. Really? He’s young!,1.00,Who’s,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/3a239a6b-5252-457c-bbbb-ce53cca6a55e
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,Who’s that man? He’s my father. Really? He’s !,1.00,young,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/63dedd49-ad74-4395-a89e-4f2cbf1599ff
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,And that’s my mother him. She’s nice!,1.00,next to,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/54daa859-43b0-431b-8de8-c8d20e2068bc
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,That’s my next to him.,1.00,mother,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/837008b4-27aa-4a64-9c3b-b37a755b7be8
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,That’s my brother. How old is ? He’s seven.,1.00,your brother,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/7df6b44f-1600-4265-8046-e6148adadce5
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,That’s my grandmother. How old is she? She’s -five.,1.00,sixty,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/d5bbd080-5fe6-4a4b-8c94-4992b55fd69a
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,That’s my How old is she? She’s sixty-five.,1.00,grandmother,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/478916d7-9b01-4cd6-98ad-b8e02312e632
+12,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,"Come in, please, children.","Comes in, please, children.",,,,,A,,,,,Tiếng Anh,,,
+13,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,What toy do you like for your birthday?,What toy do you like for you birthday?,,,,,A,,,,,Tiếng Anh,,,
+14,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,How old is your teacher Math?,How old is your Math teacher?,,,,,B,,,,,Tiếng Anh,,,
+15,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,What does your friends do at break time?,What does your friend do at break time?,,,,,B,,,,,Tiếng Anh,,,
+16,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,I often do puzzles with my brother.,I do often puzzles with my brother.,,,,,A,,,,,Tiếng Anh,,,
+17,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,There’s one big cloud in the sky.,There’s one big clouds in the sky.,,,,,A,,,,,Tiếng Anh,,,
+18,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,Is the bakery near the supermarket?,Is the bakery the supermarket?,,,,,A,,,,,Tiếng Anh,,,
+19,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,Are there any books in the school bag?,Are there some books in the school bag?,,,,,A,,,,,Tiếng Anh,,,
+20,SINGLE_CHOICE,READING,STANDARD,Chọn câu đúng.,1.00,"Pick up your ruler, Sam.","Picks up your ruler, Sam.",,,,,A,,,,,Tiếng Anh,,,

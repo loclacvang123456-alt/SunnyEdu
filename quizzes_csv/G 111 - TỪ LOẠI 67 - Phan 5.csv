@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc Each of my friends has a …………. character. (differ),1.00,different,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc My uncle often spends his free time doing volunteer work at a local ………. (orphan).,1.00,orphanage,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc Trung and his brother like ……… movies very much. (act),1.00,action,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc Bell experimented with ways of transmitting…… over a long distance. (speak),1.00,speech,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc There wasn’t any ……. in our village two years ago. (electric),1.00,electricity,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc Everyone was ….. at the soccer match. (excite),1.00,excited,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc The ……… of radio was made by Marconi. (invent),1.00,invention,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc My mom enjoys cooking on a gas (cook),1.00,cooker,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc Near my house there is a market. It’s very ……… (noise),1.00,noisy,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH: TỪ LOẠI - Dùng dạng đúng của từ trong ngoặc The photocopy is between the ……….and the drugstore. (bake),1.00,bakery,,,,,,A,,,,,Tiếng Anh,,,

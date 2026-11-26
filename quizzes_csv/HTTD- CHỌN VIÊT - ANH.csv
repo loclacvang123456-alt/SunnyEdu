@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Cô ấy đang đọc sách bây giờ?,1.00,Is she reading a book now?,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: Is she reading a book now? | Is she reading a book right now? | Is she reading a book at the moment?,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Họ không lái xe mới bây giờ.,1.00,They aren't driving their new car now,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: They aren't driving their new car now | They aren't driving their new car right now | They aren't driving their new car at the moment,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Có phải bạn đang học tiếng Anh?,1.00,Are you learning English?,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Ai đang nấu ăn trong bếp?,1.00,Who is cooking in the kitchen?,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Anh ấy đang làm gì?,1.00,What is he doing?,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Bố bạn đang đi đâu?,1.00,Where is your father going?,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Linda đang hát thế nào?,1.00,How is Linda singing?,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Mẹ của bạn đang chạy nhanh,1.00,Your mother is running quickly,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: Your mother is running quickly | Your mother is running fast,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh Jim đang trèo cây phải không?,1.00,Is Jim climbing a tree?,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: Is Jim climbing a tree? | Is Jim climbing the tree?,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang Tiếng Anh John đang đi đâu hôm nay?,1.00,Where is John going today?,,,,,,A,,,,,Tiếng Anh,,,

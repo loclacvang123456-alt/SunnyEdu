@@ -1,0 +1,15 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,Hôm nay là thứ mấy ?,1.00,Thứ hai,Thứ ba,Thứ tư,Thứ năm,,,C,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,13 + 6 = ..........,1.00,17,18,19,,,,C,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,Phép cộng nào có kết quả bằng 16 ?,1.00,16 + 2,3 + 3,11 + 5,,,,C,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,14 + 5 .... 15 + 4,1.00,>,<,=,,,,C,,,,,Tiếng Anh,,,
+5,SINGLE_CHOICE,READING,STANDARD,2 chục = ......,1.00,10,2,20,,,,C,,,,,Tiếng Anh,,,
+6,SINGLE_CHOICE,READING,STANDARD,"Cây gì không lá, không hoa Sáng đêm sinh nhật cả nhà vây quanh (Là gì?)",1.00,Hình A (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d07d26ba-43fa-4aa3-94a7-3fb05d85220c),Hình B (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e76830e8-37a6-4c7e-97ad-955d0c3a86fc),Hình C (Ảnh: https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c3dbb3dc-e1cc-4c43-869d-db6de8783c5a),,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d07d26ba-43fa-4aa3-94a7-3fb05d85220c
+7,SINGLE_CHOICE,READING,STANDARD,........ + 11 = 18,1.00,6,7,8,,,,B,,,,,Tiếng Anh,,,
+8,SINGLE_CHOICE,READING,STANDARD,Con nhện có mấy chân?,1.00,8 chân,4 chân,2 chân,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cc2c1df0-c620-45c2-b209-c34b7a8a1eb2
+9,SINGLE_CHOICE,READING,STANDARD,Hình vẽ trên có mấy hình tròn ?,1.00,2,3,4,,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/100c8f98-afb5-47b3-9603-b8731f36757e
+10,SINGLE_CHOICE,READING,STANDARD,3 con gà và 1 con chó thì có tổng tất cả mấy chân?,1.00,8,9,10,,,,C,,,,,Tiếng Anh,,,
+11,SINGLE_CHOICE,READING,STANDARD,"Sắp xếp các số 19, 10, 14, 12, 9 theo thứ tự tăng dần",1.00,"19,14,12,10,9","9,10,12,19,14","9,10,12,14,19",,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/06859ee8-5551-404c-8262-162f43878a08
+12,SINGLE_CHOICE,READING,STANDARD,Số liền sau số lớn nhất có một chữ số là:,1.00,10,8,9,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1b8d8f41-57fa-447c-a42c-ba8565c1de4a
+13,SINGLE_CHOICE,READING,STANDARD,Số liền trước của 15 là .......,1.00,14,15,16,,,,A,,,,,Tiếng Anh,,,
+14,SINGLE_CHOICE,READING,STANDARD,13 + 4 + ..... = 19,1.00,12,5,2,,,,C,,,,,Tiếng Anh,,,

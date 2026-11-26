@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. Learning to speak another language not easy.,1.00,is,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. What’s the matter your cat?,1.00,with,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. Do you hear at the new sports centre?,1.00,about,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. The bears have a long sleep winter.,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. A clock tes you the time.,1.00,tells,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. there any photocopy stores near our school?,1.00,Are,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. Melanie is the oly daughter of Mrs. Daisy,1.00,only,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,We are never free Sundays.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. My brother is a good football plr.,1.00,player,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH. Lien enjed talking about her favorite film star.,1.00,enjoyed,,,,,,A,,,,,Tiếng Anh,,,
+11,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép các cụm từ thành câu có nghĩa.,1.00,There is a long|People in different places|Hung visits his grandparents|There are four|Huong often spends,,,,,,,,,,,Tiếng Anh,,,
+12,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép các cụm từ thành câu có nghĩa.,1.00,Jack wore|What do you have|Sometimes she goes out|Can we go|Should we brush our,,,,,,,,,,,Tiếng Anh,,,
+13,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép các cụm từ thành câu có nghĩa.,1.00,Do you think you can|Are those the toys|Let’s play some computer games|You should be careful|The bells ring at the,,,,,,,,,,,Tiếng Anh,,,
+14,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,I practise speaking English by|We are going to stay at a|They grew up together|These letters are from|It is very noisy here,,,,,,,,,,,Tiếng Anh,,,
+15,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,We have Physics on|Apple juice is his|My family are preparing|I dream of becoming|Who do you often,,,,,,,,,,,Tiếng Anh,,,
+16,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,We need to buy some more|The dictionary is very useful for|Linda watches|Linh always does|We have got English and,,,,,,,,,,,Tiếng Anh,,,
+17,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,Learning to speak another language|What’s the matter|Do you hear|The bears have a long sleep|A clock tells you,,,,,,,,,,,Tiếng Anh,,,
+18,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,"My cat is under|Are there any photocopy stores|Melanie is the only daughter|I have some bananas, some hats|Where are the",,,,,,,,,,,Tiếng Anh,,,
+19,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,We are never free on|My brother is a good|Lien enjoyed talking|They want to travel to many|It took us one,,,,,,,,,,,Tiếng Anh,,,
+20,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,I like listening to|What languages|This old man is|Apples are usually cheaper|What color is the car?,,,,,,,,,,,Tiếng Anh,,,
+21,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,Where is the window?|How many pictures are there?|What are the children doing?|When did the mirror on the wall?|Why the door is tall?,,,,,,,,,,,Tiếng Anh,,,
+22,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH: Ghép các cụm từ thành câu có nghĩa.,1.00,Does the boy like a red car?|Do the children play happily?|Is the mother watching TV now?|Where is the big table?|Is the room blonde?,,,,,,,,,,,Tiếng Anh,,,
+23,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,There is|a long wooden|table in|the kitchen.,,,,,,,,,,,Tiếng Anh,,,
+24,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,People|in different places|like eating|different food.,,,,,,,,,,,Tiếng Anh,,,
+25,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Hung visits|his grandparents|once|a week.,,,,,,,,,,,Tiếng Anh,,,
+26,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Huong often|spends|30 minutes practising|listening|everyday.,,,,,,,,,,,Tiếng Anh,,,
+27,WORD_ORDER,READING,STANDARD,Reorder the following,1.00,Sometimes|she|goes out|for dinner|with friends.,,,,,,,,,,,Tiếng Anh,,,
+28,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Should we|brush|our teeth|after every meals.,,,,,,,,,,,Tiếng Anh,,,
+29,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Let’s|play|some computer games|after school.,,,,,,,,,,,Tiếng Anh,,,
+30,WORD_ORDER,READING,STANDARD,Reorder the following,1.00,You should|be careful|when you|cross the road.,,,,,,,,,,,Tiếng Anh,,,
+31,WORD_ORDER,READING,STANDARD,Reorder the following,1.00,The bells ring|at the end|of our|lesson.,,,,,,,,,,,Tiếng Anh,,,
+32,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,I practise|speaking English|by talking|with my foreign friends.,,,,,,,,,,,Tiếng Anh,,,
+33,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,They|grew up|together|on a farm|in England.,,,,,,,,,,,Tiếng Anh,,,
+34,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,It is very|noisy here|so|I can’t|hear you.,,,,,,,,,,,Tiếng Anh,,,
+35,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Linh always|does morning exercise|at 6 am|every morning.,,,,,,,,,,,Tiếng Anh,,,
+36,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu có nghĩa.,1.00,Learning to|speak another language|is not|easy.,,,,,,,,,,,Tiếng Anh,,,
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,anls,1.00,animals,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cf6e1141-a0d7-4857-854d-d9d7914c257c
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's an,1.00,apple,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ce337e86-5246-43d5-8ff0-8f1009c01251
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH She is an,1.00,artist,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/677befd3-eeba-4ee9-8954-0e5738f96df4
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH It's a,1.00,bed,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fdc3360e-82f5-4788-8bbc-88f79dff02a1
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH --------------------------------------------------- It's a red,1.00,car,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/278da02f-f8fe-4d8d-943c-9c26979c48ad
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH There are people on the red car,1.00,four,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/083a691e-4e7c-4629-9cc3-cc2f09e8f895
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,He his bike every day,1.00,rides,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9f666a98-96a6-487a-b2e5-b4ffeb3f01a7
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,He his bike now,1.00,is riding,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0892598c-2ba8-4e81-8b88-f6a73e7f8220
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,He his bike yesterday,1.00,rode,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6ed71f8d-8147-4fd2-b8f1-1c2a1ef35c07
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,She is in the,1.00,garden,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/50fafdb6-53b0-44e7-8234-e75cb8e10092
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,She wears a new,1.00,T-shirt,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8f2001d2-ef43-4400-9933-58d09867176a
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,She is in the,1.00,classroom,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b592b695-e8cd-488a-a7f7-0466afb48d9c
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,She likes books,1.00,reading,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3a002f7b-0edd-42ae-bc87-bff55366e579
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,Mr Bich is an ........ ...........,1.00,English teacher,,,,,,A,,,,,Tiếng Anh,,,

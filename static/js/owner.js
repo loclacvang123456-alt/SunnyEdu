@@ -36,7 +36,76 @@ function initImportApp() {
   const summaryEl = document.getElementById("import-summary");
   const tableEl = document.getElementById("import-table");
   const commitBtn = document.getElementById("import-commit-btn");
+  const fileInput = document.getElementById("imp-file");
+  const titleInput = document.getElementById("imp-title");
+  const examSelect = document.getElementById("imp-exam");
   let lastBatch = null;
+
+  // Auto-detect exam title from filename on selection
+  if (fileInput && titleInput) {
+    fileInput.addEventListener("change", () => {
+      const files = Array.from(fileInput.files || []);
+      if (files.length === 1) {
+        const detected = files[0].name.replace(/\.[^/.]+$/, "").replace(/[_-]+/g, " ").trim();
+        if (!titleInput.value.trim() || titleInput.dataset.autofilled === "1") {
+          titleInput.value = detected;
+          titleInput.dataset.autofilled = "1";
+        }
+        titleInput.disabled = false;
+        if (examSelect) examSelect.disabled = false;
+      } else if (files.length > 1) {
+        titleInput.value = "";
+        titleInput.placeholder = `Tự động nhận diện tên cho cả ${files.length} tệp đã chọn`;
+        titleInput.disabled = true;
+        if (examSelect) {
+          examSelect.value = "";
+          examSelect.disabled = true;
+        }
+      }
+    });
+    titleInput.addEventListener("input", () => {
+      delete titleInput.dataset.autofilled;
+    });
+  }
+
+  function renderBatchPreview(data) {
+    lastBatch = { isBatch: true, batches: data.batches || [] };
+    resultBox.hidden = false;
+    tableEl.replaceChildren();
+    summaryEl.className = "notice";
+    summaryEl.textContent = `Đã kiểm tra ${data.total_files} tệp (${data.total_questions} câu hỏi). Tất cả đều hợp lệ. Hãy kiểm tra tên từng đề rồi bấm nút Tạo bên dưới.`;
+
+    const thead = el("thead", {}, [el("tr", {}, [
+      el("th", { text: "#" }),
+      el("th", { text: "Tên tệp" }),
+      el("th", { text: "Tiêu đề đề thi sẽ tạo" }),
+      el("th", { text: "Số câu" }),
+      el("th", { text: "Trạng thái" }),
+    ])]);
+
+    const tbody = el("tbody", {}, (data.batches || []).map((b, i) => {
+      const inputEl = document.createElement("input");
+      inputEl.type = "text";
+      inputEl.className = "batch-title-input";
+      inputEl.dataset.batchId = b.batch_id;
+      inputEl.value = b.default_title || "";
+      inputEl.style.width = "100%";
+      inputEl.style.minWidth = "220px";
+      inputEl.maxLength = 200;
+
+      return el("tr", {}, [
+        el("td", { text: String(i + 1) }),
+        el("td", { text: b.filename }),
+        el("td", {}, [inputEl]),
+        el("td", { text: `${b.question_count} câu` }),
+        el("td", { text: "Hợp lệ" }),
+      ]);
+    }));
+
+    tableEl.append(thead, tbody);
+    commitBtn.disabled = data.total_files === 0;
+    commitBtn.title = `Tạo toàn bộ ${data.total_files} đề thi`;
+  }
 
   function renderPreview(batch) {
     lastBatch = batch;
@@ -63,6 +132,7 @@ function initImportApp() {
       ])));
       tableEl.append(thead, tbody);
       commitBtn.disabled = rows.length === 0 || hasErrors;
+      commitBtn.title = "Tạo bản nháp";
     } else {
       const errorCount = rows.filter((r) => r.errors && r.errors.length).length;
       const existingCount = rows.filter((r) => r.exists_in_db).length;
@@ -89,10 +159,15 @@ function initImportApp() {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const files = Array.from(fileInput?.files || []);
+    const isMulti = files.length > 1;
+    const endpoint = (isMulti && kind === "QUESTIONS") ? "/api/v1/owner/imports/batch-preview" : "/api/v1/owner/imports/preview";
+
     const fd = new FormData(form);
     fd.set("kind", kind);
     commitBtn.disabled = true;
-    const res = await fetch("/api/v1/owner/imports/preview", {
+
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "X-CSRFToken": csrfToken(form) },
       body: fd,
@@ -107,15 +182,53 @@ function initImportApp() {
       summaryEl.textContent = payload.error?.message || "Không thể đọc tệp nhập.";
       return;
     }
-    renderPreview(payload.data);
+
+    if (isMulti && kind === "QUESTIONS") {
+      renderBatchPreview(payload.data);
+    } else {
+      renderPreview(payload.data);
+    }
   });
 
   commitBtn.addEventListener("click", async () => {
     if (!lastBatch) return;
     commitBtn.disabled = true;
+
+    // Batch commit for multiple files
+    if (lastBatch.isBatch) {
+      const inputs = tableEl.querySelectorAll(".batch-title-input");
+      const titleMap = {};
+      inputs.forEach((inp) => { titleMap[inp.dataset.batchId] = inp.value.trim(); });
+
+      const items = lastBatch.batches.map((b) => ({
+        batch_id: b.batch_id,
+        expected_digest: b.expected_digest,
+        title: titleMap[b.batch_id] || b.default_title,
+      }));
+
+      const res = await fetch("/api/v1/owner/imports/batch-commit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-CSRFToken": csrfToken(form) },
+        body: JSON.stringify({ items }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        summaryEl.className = "notice notice-error";
+        summaryEl.textContent = payload.error?.message || "Xác nhận hàng loạt thất bại.";
+        commitBtn.disabled = false;
+        return;
+      }
+      summaryEl.className = "notice";
+      summaryEl.textContent = `Đã tạo thành công ${payload.data.created_count} đề thi mới! Đang chuyển hướng đến danh sách đề...`;
+      setTimeout(() => { window.location.assign("/teacher/exams/"); }, 800);
+      return;
+    }
+
+    // Single file commit
     const body = { expected_digest: lastBatch.source_digest };
     if (kind === "QUESTIONS") {
-      body.title = document.getElementById("imp-title")?.value?.trim() || "";
+      body.title = document.getElementById("imp-title")?.value?.trim() || lastBatch.default_title || "";
+      body.default_title = lastBatch.default_title || "";
       body.target_exam_id = document.getElementById("imp-exam")?.value || "";
     } else {
       body.class_id = document.getElementById("stu-import-class")?.value || "";

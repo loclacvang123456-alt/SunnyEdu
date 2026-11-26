@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống Is it necry for me to clean the windows?,1.00,necessary,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống You had not tell Susan about the broken glass.,1.00,better,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống You better not tell Susan about the broken glass.,1.00,had,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống She didn’t visit Bangkok two years,1.00,ago,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống She visit Bangkok two years ago.,1.00,didn’t,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: didn’t | did not,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống It’s for lunch. Let’s go!,1.00,time,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống His favorite s is Physics.,1.00,subject,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống American teeers usually collect stamps and coins.,1.00,teenagers,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống What can we do to help se the Earth?,1.00,save,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The boy is very friy.,1.00,friendly,,,,,,A,,,,,Tiếng Anh,,,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống Mathew won’t fishing with his friends.,1.00,go,,,,,,A,,,,,Tiếng Anh,,,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống They aren’t going to open a sonir shop.,1.00,souvenir,,,,,,A,,,,,Tiếng Anh,,,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống What does Tom study in his Geophy class?,1.00,Geography,,,,,,A,,,,,Tiếng Anh,,,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống My house is ope the bakery.,1.00,opposite,,,,,,A,,,,,Tiếng Anh,,,
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống I live in an apnt in town.,1.00,apartment,,,,,,A,,,,,Tiếng Anh,,,
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The shirt is not big for her son to wear.,1.00,enough,,,,,,A,,,,,Tiếng Anh,,,
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The shirt is not big enough her son to wear.,1.00,for,,,,,,A,,,,,Tiếng Anh,,,
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The shirt is not big enough for her son wear.,1.00,to,,,,,,A,,,,,Tiếng Anh,,,
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống When we have a day , we play golf.",1.00,off,,,,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống Does Jane always enjoy a pleant evening or not?,1.00,pleasant,,,,,,A,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống My house is the left of the cinema.,1.00,to,,,,,,A,,,,,Tiếng Anh,,,
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The best apartment is number 79.,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống I am bit tired.,1.00,a,,,,,,A,,,,,Tiếng Anh,,,
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The Nile river is longer the Mekong river.,1.00,than,,,,,,A,,,,,Tiếng Anh,,,
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống My mother is very good cooking.,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống We go to the bakery cakes and sweets.,1.00,to buy,,,,,,A,,,,,Tiếng Anh,,,
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The new refrigerator will me a lot of money.,1.00,cost,,,,,,A,,,,,Tiếng Anh,,,
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống The new refrtor will cost me a lot of money.,1.00,refrigerator,,,,,,A,,,,,Tiếng Anh,,,
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống There are planets in the Solar System,1.00,nine,,,,,,A,,,,,Tiếng Anh,,,
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền đây đủ từ còn thiếu vào chỗ trống There are nine planets in the Solar Sysm,1.00,System,,,,,,A,,,,,Tiếng Anh,,,
+31,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,How did|the police|find|the lost man?,,,,,,,,,,,Tiếng Anh,,,
+32,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,How far|is it|from the park|to the hospital?,,,,,,,,,,,Tiếng Anh,,,
+33,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,Bach|is too|young|to cycle|to school,,,,,,,,,,,Tiếng Anh,,,
+34,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,Are you|interested|in|learning|Geography?,,,,,,,,,,,Tiếng Anh,,,
+35,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,Is it|necessary|for|me to clean|the windows?,,,,,,,,,,,Tiếng Anh,,,
+36,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,The shirt|is not|big enough|for her son|to wear,,,,,,,,,,,Tiếng Anh,,,
+37,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,Does Jane|always enjoy|a pleasant evening|or not?,,,,,,,,,,,Tiếng Anh,,,
+38,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,My mother|is very|good|at|cooking,,,,,,,,,,,Tiếng Anh,,,
+39,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,My house|is|to the left of|the cinema,,,,,,,,,,,Tiếng Anh,,,
+40,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ/cụm từ thành câu có nghĩa.,1.00,My house|is|to the right of|the bakery|in town,,,,,,,,,,,Tiếng Anh,,,
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,market,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/81755c2c-5428-492b-9eee-1f6c29b3521b
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,Bees,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/42f75c33-a1f9-4132-b3fa-20197da8816f
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,tailor,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/99dbb6c1-b477-4e1a-9ed1-9a961486036f
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,take,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5b66926d-2bae-4121-b11c-7ef8dc698dd4
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,stop,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/81bdbb05-118f-444a-bb7b-999e3422bbda
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,washing machine,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ef630975-edc1-4b8f-b7a6-b861282b2257
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,building,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/343aedc8-0495-4642-aeff-e78fb2084ff2
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,sunny,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/19580b25-91e5-4c2e-957e-90280ca22e68
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,It's half past two,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: It's half past two | It's two thirty,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3a03faae-d2a0-4838-be20-9f34aff9a237
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết từ Tiếng Anh tương ứng.,1.00,balcony,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fb6b3ba1-bff9-42e3-b0a1-9c3fface2525

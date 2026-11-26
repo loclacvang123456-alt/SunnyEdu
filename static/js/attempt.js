@@ -492,6 +492,32 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
       passage.append(make('h3', 'Nội dung bài đọc'), make('p', question.passage_text));
       panel.append(passage);
     }
+    if (question.image_url) {
+      const mediaBox = make('div', undefined, 'question-media-wrap');
+      mediaBox.style.margin = '10px 0 16px 0';
+      if (question.image_url.includes('_audio') || question.image_url.match(/\.(mp3|wav|ogg|m4a)($|\?)/i)) {
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.preload = 'none';
+        audio.src = question.image_url;
+        audio.style.width = '100%';
+        audio.style.maxWidth = '420px';
+        mediaBox.append(audio);
+      } else {
+        const img = document.createElement('img');
+        img.src = question.image_url;
+        img.alt = `Hình minh họa câu ${question.position}`;
+        img.className = 'question-illustration';
+        img.loading = 'lazy';
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '360px';
+        img.style.borderRadius = '8px';
+        img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+        img.style.display = 'block';
+        mediaBox.append(img);
+      }
+      field.append(mediaBox);
+    }
   }
   const state = {id: question.question_id, type: question.type, revision: question.response_revision, generation: 0, dirty: false, saving: false, error: false, conflict: false, field, input: null, timer: null, issue: make('div')};
   if (gameQuestion) {

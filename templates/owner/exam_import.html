@@ -42,8 +42,8 @@
     {% csrf_token %}
     <div class="owner-grid-2">
       <div class="field-group">
-        <label for="imp-title">Tiêu đề đề mới (nếu không gắn vào đề sẵn có)</label>
-        <input id="imp-title" name="title" maxlength="200" placeholder="Ví dụ: Đề kiểm tra Unit 6">
+        <label for="imp-title">Tiêu đề đề mới (để trống sẽ tự động lấy theo tên tệp)</label>
+        <input id="imp-title" name="title" maxlength="200" placeholder="Tự động nhận diện từ tên tệp hoặc nhập tay...">
       </div>
       <div class="field-group">
         <label for="imp-exam">Hoặc tạo phiên bản mới cho đề có sẵn</label>
@@ -54,8 +54,9 @@
       </div>
     </div>
     <div class="field-group">
-      <label for="imp-file">Chọn tệp CSV / XLSX</label>
-      <input id="imp-file" type="file" name="file" accept=".csv,.xlsx" required>
+      <label for="imp-file">Chọn tệp CSV / XLSX (hỗ trợ chọn 1 hoặc nhiều tệp cùng lúc)</label>
+      <input id="imp-file" type="file" name="files" accept=".csv,.xlsx" multiple required>
+      <small class="muted" id="imp-file-hint" style="margin-top:4px;display:block;">Có thể giữ phím Ctrl hoặc Shift để chọn hàng loạt tệp CSV/XLSX cùng lúc.</small>
     </div>
     <div>
       <button type="submit" class="button primary st-action-btn" title="Xem trước &amp; kiểm tra lỗi" aria-label="Xem trước &amp; kiểm tra lỗi">

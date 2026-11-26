@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What time|does|your mother|go|to work?,,,,,,,,,,,Tiếng Anh,,,
+2,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What|does|Becky|look|like?,,,,,,,,,,,Tiếng Anh,,,
+3,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Did|you|study English|and Maths|yesterday?,,,,,,,,,,,Tiếng Anh,,,
+4,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Is|Music|his favourite|subject?,,,,,,,,,,,Tiếng Anh,,,
+5,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Are|they|talking|in the kitchen|now?,,,,,,,,,,,Tiếng Anh,,,
+6,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What|are|those|on the|shelf?,,,,,,,,,,,Tiếng Anh,,,
+7,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Do|you|go fishing|once|a week?,,,,,,,,,,,Tiếng Anh,,,
+8,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What|is|Betty|like?,,,,,,,,,,,Tiếng Anh,,,
+9,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Where|were|your aunts|yesterday?,,,,,,,,,,,Tiếng Anh,,,
+10,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Will|you go|on holiday|with your brother|in summer?,,,,,,,,,,,Tiếng Anh,,,
+11,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Is|your dictionary|on my|bookshelf?,,,,,,,,,,,Tiếng Anh,,,
+12,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What|day|is it|today?,,,,,,,,,,,Tiếng Anh,,,
+13,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Does|your mother|work|in a bank?,,,,,,,,,,,Tiếng Anh,,,
+14,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Are|you|going to|the bakery|to buy some bread?,,,,,,,,,,,Tiếng Anh,,,
+15,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Can|you tell|me|what your sister|looks like?,,,,,,,,,,,Tiếng Anh,,,
+16,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,When|will|you|go to the|zoo?,,,,,,,,,,,Tiếng Anh,,,
+17,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Can|I help|him|your bags?|with,,,,,,,,,,,Tiếng Anh,,,
+18,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Did|you|play|the piano|yesterday?,,,,,,,,,,,Tiếng Anh,,,
+19,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Is|she|a famous|nurse?,,,,,,,,,,,Tiếng Anh,,,
+20,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Does|he|have|lunch|at home?,,,,,,,,,,,Tiếng Anh,,,
+21,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Is|her bedroom|big|or small?,,,,,,,,,,,Tiếng Anh,,,
+22,WORD_ORDER,READING,STANDARD,Reorder the following,1.00,Does|Nam|study|English|every day?,,,,,,,,,,,Tiếng Anh,,,
+23,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,When|is|Lan’s|birthday?,,,,,,,,,,,Tiếng Anh,,,
+24,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,What|would|you|like|for lunch?,,,,,,,,,,,Tiếng Anh,,,
+25,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Which|class|is|your sister|in?,,,,,,,,,,,Tiếng Anh,,,
+26,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Is|your dress|in the|wardrobe?,,,,,,,,,,,Tiếng Anh,,,
+27,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Does|Jane|have|any brothers|or sisters?,,,,,,,,,,,Tiếng Anh,,,
+28,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Are|there|many roses|in the|flower garden?,,,,,,,,,,,Tiếng Anh,,,
+29,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Does|he go|to school|by bike|every day?,,,,,,,,,,,Tiếng Anh,,,
+30,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ thành câu đúng.,1.00,Do|you|circle|the correct|words?,,,,,,,,,,,Tiếng Anh,,,
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,dress,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/38308294-d5d2-4dc0-9c83-5bf904373e83
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,guitar,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4346f342-8232-4505-9e16-cd7d95497cf5
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,They are eating two,1.00,burger,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: burger | hamburgers,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fadbd96b-be4d-4901-9fac-52ad34f1e30b
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,I live in this,1.00,house,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/782f09fb-f3b3-4282-a5aa-d6da084c77bc
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,jacket,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/df934c7e-f5e0-4840-a953-a84bcbef97cf
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,She likes a kite,1.00,flying,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3c018f6f-b1bc-4332-a3b1-18b4546ac36f
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,lamp,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5b641a36-d479-46b1-b63b-af6680921e39
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a between two pillows,1.00,cat,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c7b1e447-fd2f-4397-b6b6-841b4e930699
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,The man is in the kitchen,1.00,cooking,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d29a4540-bd51-4a6b-bf60-192362d2335c
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,radio,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9b05545d-5ec4-4ff9-85b3-a64f0fadf29d
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a in the sky,1.00,cloud,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/273ff6ac-db74-4afa-bc97-3a459b6f9fc6
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,My grandmother is a book,1.00,reading,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/db2766fb-2af5-46a2-9728-fce32ea675b7
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a between the chair and the wardrobe,1.00,bed,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4a49b13a-1ff2-42ed-9ad7-5d57478dce8e
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,She is in front of the,1.00,mirror,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3deeb404-c8df-41d8-98c2-3237c4d638d6
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,She is standing in the,1.00,garden,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5a195679-ca0b-449d-9bb3-6fb4b9b9b4f7
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,She is eating in the,1.00,kitchen,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3b78662a-d4c4-4c21-9636-4c2fc92d79a5
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,The boy is a photo,1.00,taking,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/bb53b3db-19c3-442d-a879-d85263925791
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,She is talking on the,1.00,phone,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: phone | telephone,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f94bb71f-f5cc-4af5-90cf-d682f39c1eef
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,My grandmother is TV now,1.00,watching,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/468e74fe-ad04-4ac2-b09e-44a41317cd0a
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,trousers,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d3fa84d6-226c-42e0-8916-16b4e255a702

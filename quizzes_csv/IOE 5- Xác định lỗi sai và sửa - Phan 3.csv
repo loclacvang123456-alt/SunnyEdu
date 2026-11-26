@@ -1,0 +1,9 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. You should doing exercise in the morning.,1.00,do,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. I am thinking about going camp in the mountain.,1.00,camping,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. Thanks. You are very helpfully.,1.00,helpful,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. Tony loves swim. He is very good at it.,1.00,swimming,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. These crocodile are very big and strong.,1.00,crocodiles,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. She can’t go to school today but she's sick.,1.00,because,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. He jumped into the pool, because there wasn't much water in it.",1.00,but,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Xác định lỗi sai và sửa. We do late for the contest. Let's run!,1.00,are,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,21 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,Hãy chọn số bé nhất trong các số sau: 81; 76 ; 90 ; 57 ; 14,1.00,14,90,57,76,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3c4c1f76-4620-48d0-aaa3-926870b7971e
+2,SINGLE_CHOICE,READING,STANDARD,Điền số vào chỗ chấm: 24 + ... = 29,1.00,5,6,4,7,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/5ebbe598-eeff-4482-9d72-c05c1d336c8d
+3,SINGLE_CHOICE,READING,STANDARD,Đây là lời bài hát nào?,1.00,Có con chim vành khuyên,Chim vành khuyên,Vành khuyên ngoan ngoãn,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/_audio/audioQuestions/da08426c-4a94-4bb9-9d57-da12b93db02d
+4,SINGLE_CHOICE,READING,STANDARD,Nội quy nào sau đây con không được thực hiện trong lớp học online là:,1.00,True,False,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b86300a6-59f2-4921-9844-5d303cedf817
+5,SINGLE_CHOICE,READING,STANDARD,Hành động nào sau đây giúp bảo vệ sức khỏe trước dịch bệnh Covid-19?,1.00,True,False,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4fcc5087-57ea-4323-b00b-7f7bb48458f6
+6,SINGLE_CHOICE,READING,STANDARD,Điền vần thích hợp vào chỗ chấm,1.00,iêu,ươu,ưu,iu,,,C,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b6dafb0d-3c78-44c0-b6c8-f61b49738961
+7,SINGLE_CHOICE,READING,STANDARD,Điền vần thích hợp vào chỗ chấm : hát h.......,1.00,ai,ao,ay,au,,,C,,,,,Tiếng Anh,,,
+8,SINGLE_CHOICE,READING,STANDARD,Số lớn hơn 25 và bé hơn 27 là ?,1.00,26,28,24,,,,A,,,,,Tiếng Anh,,,
+9,SINGLE_CHOICE,READING,STANDARD,Số lớn nhất có hai chữ số là :,1.00,99,98,97,,,,A,,,,,Tiếng Anh,,,
+10,SINGLE_CHOICE,READING,STANDARD,Số bé nhất có hai chữ số giống nhau là:,1.00,10,11,22,99,,,B,,,,,Tiếng Anh,,,
+11,SINGLE_CHOICE,READING,STANDARD,"Từ nào không chứa vần ""ương""?",1.00,quê hương,lương thiện,yêu thương,vay mượn,,,D,,,,,Tiếng Anh,,,
+12,SINGLE_CHOICE,READING,STANDARD,Đây là rau gì?,1.00,rau muống,cải bắp,rau mùng tơi,rau cải,,,D,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/7cb2c595-92b2-46f1-be84-3939ee7fea50
+13,SINGLE_CHOICE,READING,STANDARD,Dấu thích hợp điền vào chỗ chấm 34 .......38 là:,1.00,>,<,=,+,,,B,,,,,Tiếng Anh,,,
+14,SINGLE_CHOICE,READING,STANDARD,"Cho các số 25 , 12, 68, 73 . Số bé nhất là:",1.00,25,73,68,12,,,D,,,,,Tiếng Anh,,,
+15,SINGLE_CHOICE,READING,STANDARD,"Cho các số : 56, 20, 11, 89, 78. Số lớn nhất là:",1.00,56,20,78,89,,,D,,,,,Tiếng Anh,,,
+16,SINGLE_CHOICE,READING,STANDARD,"Từ nào sau đây có tiếng chứa vần "" ai""",1.00,cây cau,máy bay,mai sau,,,,C,,,,,Tiếng Anh,,,
+17,SINGLE_CHOICE,READING,STANDARD,Số liền sau của 37 là:,1.00,36,37,38,39,,,C,,,,,Tiếng Anh,,,
+18,SINGLE_CHOICE,READING,STANDARD,Minh có 12 cái bút xanh và 20 cái bút đỏ. Hỏi Minh có tất cả bao nhiêu cái bút?,1.00,30,32,12,13,,,B,,,,,Tiếng Anh,,,
+19,SINGLE_CHOICE,READING,STANDARD,Dấu điền vào chỗ chấm 55 .....55 là:,1.00,>,<,+,=,,,D,,,,,Tiếng Anh,,,
+20,SINGLE_CHOICE,READING,STANDARD,Dấu điền vào chỗ chấm : 89 .......68,1.00,>,<,=,+,,,A,,,,,Tiếng Anh,,,

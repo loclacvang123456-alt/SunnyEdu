@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Is his school Thanh Xuan District?,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu There are four pictures the wall.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Let’s play chess break time.,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu They have Maths the ninth of August,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu They have Maths on the ninth August,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Are they driving their hometown?,1.00,to,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Were they the zoo yesterday?,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Canberra is the capital city Australia.,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Why does your daughter buy a lot books?,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu My birthday isn't in January. It's February.,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu My birthday isn't January. It's in February.,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu I visit my uncle Sundays.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu What does her daughter do school?,1.00,after,,,,,,A,,,,,Tiếng Anh,,,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu What subjects do you have Fridays?,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu March is the third month the year.,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls ride their bicycles school.,1.00,to,,,,,,A,,,,,Tiếng Anh,,,
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Tokyo is the capital city Japan.,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu There is a cinema the bakery and the music shop.,1.00,between,,,,,,A,,,,,Tiếng Anh,,,
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Eyes blink 15 times every minute.,1.00,about,,,,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls go to school bus,1.00,by,,,,,,A,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls go to school train,1.00,by,,,,,,A,,,,,Tiếng Anh,,,
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls go to school taxi,1.00,by,,,,,,A,,,,,Tiếng Anh,,,
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls go to school bike,1.00,by,,,,,,A,,,,,Tiếng Anh,,,
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls go to school foot,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Many animals live deserts.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu New Year Day is January the first.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu They visit their grandparents the first of September.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu They visit their grandparents on the first September.,1.00,of,,,,,,A,,,,,Tiếng Anh,,,
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu James is twelve years old. He is America.,1.00,from,,,,,,A,,,,,Tiếng Anh,,,
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu I’m watching a music video TV.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Is her school Hoan Kiem District?,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu The girls are waiting the school bus.,1.00,for,,,,,,A,,,,,Tiếng Anh,,,
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Thao's birthday is December the second.,1.00,on,,,,,,A,,,,,Tiếng Anh,,,
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu Thao's birthday is December,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu We learn numbers in Maths lessons.,1.00,about,,,,,,A,,,,,Tiếng Anh,,,
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu We learn about numbers Maths lessons.,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu What did you do home yesterday?,1.00,at,,,,,,A,,,,,Tiếng Anh,,,
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền GIỚI TỪ phù hợp để hoàn thành câu There are bones your skin.,1.00,under,,,,,,A,,,,,Tiếng Anh,,,
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box,1.00,above,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/c400941b-1c8a-43b0-974a-e8e946f64c18-v2
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box,1.00,behind,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/197dd139-4c66-4a8c-874f-b9ababa46e20-v2
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box,1.00,in,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/1a0e09ee-7111-4cd8-87b4-927955a5a099-v2
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box and the teddy bear,1.00,between,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/8d159a34-9a18-4a77-9c7c-472539ca5f3b-v2
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box,1.00,near,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/4ec20d44-30c7-46fb-94bf-468888317e1e-v2
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the box,1.00,next to,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/d9cb2514-c83e-4067-9153-372fc2ab1047-v2
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The ball is the boxes,1.00,between,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/7169b305-a4d0-41b5-aa15-124a9897e952-v2
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The apple is the box,1.00,on,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/d41e1a26-d3d6-4efa-bb8a-1695d1695ec8-v2
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The box is the apple,1.00,under,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/91b23d36-3551-44a8-a372-dff9a76f69d3-v2
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The box is the ball,1.00,in front of,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/84cfec8e-d257-4716-af44-42ae5d0192f1-v2
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The box is the ball,1.00,behind,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/a542f471-9e19-42d4-b97d-c2c5bb996061-v2
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write Nhìn hình và viết GIỚI TỪ phù hợp. The dog is the grass,1.00,on,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/1e2f6739-0cbe-413a-9bc8-699f99f5b26e-v2

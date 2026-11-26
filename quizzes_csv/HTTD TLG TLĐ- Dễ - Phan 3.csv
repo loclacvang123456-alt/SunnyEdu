@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc They (not/ jump) at present,1.00,aren't jumping,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: aren't jumping | are not jumping,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc (you/read) a book right now?,1.00,Are you reading,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc (they/brush) their teeth now?,1.00,Are they brushing,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Why (she/ learn) English right now?,1.00,is she learning,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What ( they/ write) English?,1.00,are they writing,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Look! She ( do) my homework now,1.00,is doing,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What she (do) at present ?,1.00,is she doing,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Listen! Lucy and Steve ( play) the piano.,1.00,are playing,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc What ( they /have) at present?,1.00,are they having,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của động từ trong ngoặc Lan ……. (dance) hip hop right now,1.00,is dancing,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,39 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,so lovely.|they are|because|pets|I like,,,,,,,,,,,Tiếng Anh,,,
+2,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Does|Susan|like|wearing|shirts?,,,,,,,,,,,Tiếng Anh,,,
+3,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,I went|to school|late yesterday|because|I got up late,,,,,,,,,,,Tiếng Anh,,,
+4,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Lan|was|at home|with her mother|yesterday,,,,,,,,,,,Tiếng Anh,,,
+5,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,We’re|late|for|the Music Show,,,,,,,,,,,Tiếng Anh,,,
+6,WORD_ORDER,READING,STANDARD,Reorder the following,1.00,You|would feel|tired|if you|have a headache.,,,,,,,,,,,Tiếng Anh,,,
+7,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,I am|going to|have|Maths lessons|on Tuesday,,,,,,,,,,,Tiếng Anh,,,
+8,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,The library|is|crowded|but quiet.,,,,,,,,,,,Tiếng Anh,,,
+9,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,He|has|English|three times|a week,,,,,,,,,,,Tiếng Anh,,,
+10,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,What would|you like|for|breakfast|tomorrow?,,,,,,,,,,,Tiếng Anh,,,
+11,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,How many|candies|are there|in the box?,,,,,,,,,,,Tiếng Anh,,,
+12,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,What time|does|he|read|newspapers?,,,,,,,,,,,Tiếng Anh,,,
+13,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Dad|is not|making|dinner|at the moment,,,,,,,,,,,Tiếng Anh,,,
+14,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,What|did|you|do|this morning?,,,,,,,,,,,Tiếng Anh,,,
+15,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Where|were|you|yesterday|morning?,,,,,,,,,,,Tiếng Anh,,,
+16,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,My mother’s|birthday|is on|14th,,,,,,,,,,,Tiếng Anh,,,
+17,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Look at|the rainbow|over there,,,,,,,,,,,Tiếng Anh,,,
+18,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,What are|you|going to|do|this Tet holiday?,,,,,,,,,,,Tiếng Anh,,,
+19,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,Is|the second|of July|today?,,,,,,,,,,,Tiếng Anh,,,
+20,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Sắp xếp các từ sau thành câu đúng.,1.00,My father|often|reads|books|in his free time,,,,,,,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,mouth,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/add068aa-04bf-4fc4-876e-16177ff20c20
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,sheep,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d9a9f22d-1c9d-4b0b-8520-a4f6c841e209
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,tiger,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/67e61372-62e3-43f3-ad11-19a1507c642b
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,goat,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1bdbf907-6b7c-4cec-b11d-b1bfbdf8ab63
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,She is a book,1.00,reading,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/33ff0585-5403-4909-9a83-1503f5165b8b
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,He is to music now,1.00,listening,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ec728f8a-3e82-44c4-869c-5f9ab3d98ec8
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,She is IV now.,1.00,watching,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/22c15e79-7c55-406d-87bf-fc5865308e67
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,The can swim in the,1.00,sea,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0d5ebb6c-9262-42e2-86ed-091bc39fee52
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,I like,1.00,trousers,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3b89c9ed-f570-42ab-a5c8-36588361bac5
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,He is a kite,1.00,flying,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/58ed12b3-ec36-423c-a35b-ce6df730167a
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,He is now,1.00,sleeping,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/7fc5f663-3c7b-43a8-9a54-e8802f03a078
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a fish here,1.00,tank,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/68c4208e-3ef3-4e13-86dd-d14556d9e90a
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,There are fish in the fish tank.,1.00,seven,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4d7aa5d4-95aa-430e-b279-5b5996c5e48c
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,glass,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/7c72ffb6-978a-48d5-9041-68ac68f9b1f3
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,She is a,1.00,teacher,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2bde9ecb-6773-4e13-b9c3-4fc09faa6684
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,The book is the chair.,1.00,behind,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/68c0fc12-8b8c-41df-8989-da4846a44d36
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,He is now,1.00,sleeping,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1a2c01c0-34d4-4a1c-b925-d33ffa105623
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,We went to the,1.00,zoo,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a1302ca8-e034-4a7f-a3e4-3e2cd1d07c24

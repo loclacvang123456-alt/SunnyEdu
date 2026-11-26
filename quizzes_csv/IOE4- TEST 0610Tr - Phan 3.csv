@@ -1,0 +1,3 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xem video và trả lời câu hỏi. How's weather to day? It's a little,1.00,rainy,,,,,,A,,,,,Tiếng Anh,,,https://youtu.be/0jUnwzfPDos
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Xem video và trả lời câu hỏi. The weather was sunny and,1.00,pleasant,,,,,,A,,,,,Tiếng Anh,,,https://youtu.be/0jUnwzfPDos

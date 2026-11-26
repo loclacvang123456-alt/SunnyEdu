@@ -1,0 +1,1150 @@
+﻿quiz_id,original_title,standard_title,part,total_parts,question_count,filename,has_images,has_audio,question_types
+6b0816e75ed7939db30df10e,E4U7,E4U7,1,1,28,E4U7.csv,True,False,SENTENCE_TRANSFORM
+6afc137d812e4f44f1cfc34c,MLH: ÔN THI: Tổng hợp chia động từ các thì,MLH: ÔN THI: Tổng hợp chia động từ các thì - Phần 1,1,2,50,MLH- ÔN THI- Tổng hợp chia động từ các thì - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6afc137d812e4f44f1cfc34c,MLH: ÔN THI: Tổng hợp chia động từ các thì,MLH: ÔN THI: Tổng hợp chia động từ các thì - Phần 2,2,2,10,MLH- ÔN THI- Tổng hợp chia động từ các thì - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6af18cf5f412f77e40531cc9,A1 READING YES/ NO từng câu,A1 READING YES/ NO từng câu - Phần 1,1,2,50,A1 READING YES- NO từng câu - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6af18cf5f412f77e40531cc9,A1 READING YES/ NO từng câu,A1 READING YES/ NO từng câu - Phần 2,2,2,10,A1 READING YES- NO từng câu - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6aed36bb33a3ccda80f7ee5a,A2 KET listen and write,A2 KET listen and write,1,1,5,A2 KET listen and write.csv,False,True,SENTENCE_TRANSFORM
+6aeae3439510f1ccbce344f8,CONJUNTION EASY choose,CONJUNTION EASY choose,1,1,50,CONJUNTION EASY choose.csv,False,False,SINGLE_CHOICE
+6ae6e6cba35e81dc899f9767,READING7 Read and answer,READING7 Read and answer,1,1,20,READING7 Read and answer.csv,False,False,SENTENCE_TRANSFORM
+6ae33e5315c501a1f3dbdca3,TENSES: CHia dong tu,TENSES: CHia dong tu,1,1,10,TENSES- CHia dong tu.csv,False,False,SENTENCE_TRANSFORM
+6ad72dd751853efd08c7bb15,LỚP 2: NGHE viết TỪ HKI,LỚP 2: NGHE viết TỪ HKI,1,1,32,LỚP 2- NGHE viết TỪ HKI.csv,False,True,SENTENCE_TRANSFORM
+6ad1ea0db072503298a1e086,READING 4 5 6 7,READING 4 5 6 7,1,1,39,READING 4 5 6 7.csv,False,False,SINGLE_CHOICE
+6acf78d4a17720f5765f3c0c,READING: 5 6 7 8,READING: 5 6 7 8,1,1,50,READING- 5 6 7 8.csv,False,False,SINGLE_CHOICE
+6acca056b010dd8e22c2e054,KET: READ and choose,KET: READ and choose,1,1,30,KET- READ and choose.csv,False,False,SINGLE_CHOICE
+6abbca572b838f38e88f8550,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phần 1,1,3,50,CÂU GIÁN TIẾP- CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phan 1.csv,False,False,SINGLE_CHOICE
+6abbca572b838f38e88f8550,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phần 2,2,3,50,CÂU GIÁN TIẾP- CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phan 2.csv,False,False,SINGLE_CHOICE
+6abbca572b838f38e88f8550,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT,CÂU GIÁN TIẾP: CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phần 3,3,3,20,CÂU GIÁN TIẾP- CHỌN THÌ HTTD HTĐ QKĐ HTHT - Phan 3.csv,False,False,SINGLE_CHOICE
+6ab4e56de416bd23fe77b332,E 3 Nhìn hình viết TỪ,E 3 Nhìn hình viết TỪ - Phần 1,1,2,50,E 3 Nhìn hình viết TỪ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6ab4e56de416bd23fe77b332,E 3 Nhìn hình viết TỪ,E 3 Nhìn hình viết TỪ - Phần 2,2,2,12,E 3 Nhìn hình viết TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6ab39512dd233b7c71b33619,E6 Sắp xếp các câu thành HỘI THOẠI,E6 Sắp xếp các câu thành HỘI THOẠI,1,1,28,E6 Sắp xếp các câu thành HỘI THOẠI.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6aaa1422391545c436cf4058,E 1: NGHE và chọn đáp án,E 1: NGHE và chọn đáp án - Phần 1,1,2,50,E 1- NGHE và chọn đáp án - Phan 1.csv,False,True,SINGLE_CHOICE
+6aaa1422391545c436cf4058,E 1: NGHE và chọn đáp án,E 1: NGHE và chọn đáp án - Phần 2,2,2,13,E 1- NGHE và chọn đáp án - Phan 2.csv,False,True,SINGLE_CHOICE
+6aa92938c08520875e365af2,E2: Nhin hinh viet TU,E2: Nhin hinh viet TU,1,1,15,E2- Nhin hinh viet TU.csv,True,False,SENTENCE_TRANSFORM
+6aa7f289cb4403b9201543d9,READING,READING,1,1,1,READING.csv,False,False,SENTENCE_TRANSFORM
+6aa6676bea7ccb2d7e29949b,ENGLISH 1: Nhìn hình viết từ,ENGLISH 1: Nhìn hình viết từ - Phần 1,1,2,50,ENGLISH 1- Nhìn hình viết từ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6aa6676bea7ccb2d7e29949b,ENGLISH 1: Nhìn hình viết từ,ENGLISH 1: Nhìn hình viết từ - Phần 2,2,2,10,ENGLISH 1- Nhìn hình viết từ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6a86fbc0f1f8d6526d97cc14,ĐẢO NGỮ : sắp xếp các từ thành câu,ĐẢO NGỮ : sắp xếp các từ thành câu,1,1,30,ĐẢO NGỮ - sắp xếp các từ thành câu.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+6a818dcc1501e009eeec5118,TRẠNG TỪ: Trắc NGHIỆM,TRẠNG TỪ: Trắc NGHIỆM - Phần 1,1,2,50,TRẠNG TỪ- Trắc NGHIỆM - Phan 1.csv,False,False,SINGLE_CHOICE
+6a818dcc1501e009eeec5118,TRẠNG TỪ: Trắc NGHIỆM,TRẠNG TỪ: Trắc NGHIỆM - Phần 2,2,2,20,TRẠNG TỪ- Trắc NGHIỆM - Phan 2.csv,False,False,SINGLE_CHOICE
+6a8140a2ef9cb4cc41a43be2,TRẠNG TỪ: Điền trạng từ vào chỗ trống,TRẠNG TỪ: Điền trạng từ vào chỗ trống - Phần 1,1,2,50,TRẠNG TỪ- Điền trạng từ vào chỗ trống - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6a8140a2ef9cb4cc41a43be2,TRẠNG TỪ: Điền trạng từ vào chỗ trống,TRẠNG TỪ: Điền trạng từ vào chỗ trống - Phần 2,2,2,20,TRẠNG TỪ- Điền trạng từ vào chỗ trống - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6a802dd78940c1fea78d3d8c,READING: 3 4 5 Nhìn hình trả lời,READING: 3 4 5 Nhìn hình trả lời,1,1,25,READING- 3 4 5 Nhìn hình trả lời.csv,True,False,SENTENCE_TRANSFORM
+6a7eef4fbf117e1083caf43c,STARTERS: chọn TRUE / FALSE dễ,STARTERS: chọn TRUE / FALSE dễ - Phần 1,1,4,50,STARTERS- chọn TRUE - FALSE dễ - Phan 1.csv,True,False,SINGLE_CHOICE
+6a7eef4fbf117e1083caf43c,STARTERS: chọn TRUE / FALSE dễ,STARTERS: chọn TRUE / FALSE dễ - Phần 2,2,4,50,STARTERS- chọn TRUE - FALSE dễ - Phan 2.csv,True,False,SINGLE_CHOICE
+6a7eef4fbf117e1083caf43c,STARTERS: chọn TRUE / FALSE dễ,STARTERS: chọn TRUE / FALSE dễ - Phần 3,3,4,50,STARTERS- chọn TRUE - FALSE dễ - Phan 3.csv,True,False,SINGLE_CHOICE
+6a7eef4fbf117e1083caf43c,STARTERS: chọn TRUE / FALSE dễ,STARTERS: chọn TRUE / FALSE dễ - Phần 4,4,4,50,STARTERS- chọn TRUE - FALSE dễ - Phan 4.csv,True,False,SINGLE_CHOICE
+6a7db0f5a3ef9ccd0ddffd76,TRANG TU: điền trang từ cách thức,TRANG TU: điền trang từ cách thức - Phần 1,1,2,50,TRANG TU- điền trang từ cách thức - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6a7db0f5a3ef9ccd0ddffd76,TRANG TU: điền trang từ cách thức,TRANG TU: điền trang từ cách thức - Phần 2,2,2,4,TRANG TU- điền trang từ cách thức - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6a79919464098d608f51276e,LIÊN TỪ: AND BUT BECAUSE Although,LIÊN TỪ: AND BUT BECAUSE Although,1,1,40,LIÊN TỪ- AND BUT BECAUSE Although.csv,False,False,SENTENCE_TRANSFORM
+6a749882a0d753d31c0a93da,IF -- UNLESS: Chon dap an,IF -- UNLESS: Chon dap an,1,1,25,IF -- UNLESS- Chon dap an.csv,False,False,SINGLE_CHOICE
+6a7441e4c81be114fb306287,A1 READING 2: TRẢ LỜI CÂU HỎI,A1 READING 2: TRẢ LỜI CÂU HỎI,1,1,45,A1 READING 2- TRẢ LỜI CÂU HỎI.csv,True,False,SENTENCE_TRANSFORM
+6a7441b05cf5667641c053d9,A1 READING 3: TRẢ LỜI CÂU HỎI,A1 READING 3: TRẢ LỜI CÂU HỎI,1,1,45,A1 READING 3- TRẢ LỜI CÂU HỎI.csv,True,False,SENTENCE_TRANSFORM
+6a6bf9658022ef658b2bad6b,PTA: STARTERS : YES / NO,PTA: STARTERS : YES / NO - Phần 1,1,2,50,PTA- STARTERS - YES - NO - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6a6bf9658022ef658b2bad6b,PTA: STARTERS : YES / NO,PTA: STARTERS : YES / NO - Phần 2,2,2,40,PTA- STARTERS - YES - NO - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6a6b2e73d49c856df5b70918,SO SÁNH 4,SO SÁNH 4 - Phần 1,1,2,50,SO SÁNH 4 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6a6b2e73d49c856df5b70918,SO SÁNH 4,SO SÁNH 4 - Phần 2,2,2,50,SO SÁNH 4 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6a664f4235c8b86ea1cb0844,A 1 READING: TRẢ LỜI CÂU HỎI,A 1 READING: TRẢ LỜI CÂU HỎI,1,1,45,A 1 READING- TRẢ LỜI CÂU HỎI.csv,True,False,SENTENCE_TRANSFORM
+6a664d76e450c83d906dfcbe,A1 READING: điền từ ch sẵn,A1 READING: điền từ ch sẵn,1,1,17,A1 READING- điền từ ch sẵn.csv,True,False,SENTENCE_TRANSFORM
+6a64a11ebd1f750d0dde4742,CÂU HỎI ĐUÔI CÁC THÌ,CÂU HỎI ĐUÔI CÁC THÌ - Phần 1,1,2,50,CÂU HỎI ĐUÔI CÁC THÌ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6a64a11ebd1f750d0dde4742,CÂU HỎI ĐUÔI CÁC THÌ,CÂU HỎI ĐUÔI CÁC THÌ - Phần 2,2,2,20,CÂU HỎI ĐUÔI CÁC THÌ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6a5f4314b9c11a8908c73046,HTTD CHUYỂN SANG CÂU PHỦ ĐỊNH/ NGHI VẤN,HTTD CHUYỂN SANG CÂU PHỦ ĐỊNH/ NGHI VẤN,1,1,20,HTTD CHUYỂN SANG CÂU PHỦ ĐỊNH- NGHI VẤN.csv,False,False,SENTENCE_TRANSFORM
+6a5a28b995b2c177c8af19ea,VIẾT LẠI CÂU: either or neither nor both and,VIẾT LẠI CÂU: either or neither nor both and,1,1,40,VIẾT LẠI CÂU- either or neither nor both and.csv,False,False,SENTENCE_TRANSFORM
+6a560f3d8068f78ee1ff5320,QKĐ: Chuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,QKĐ: Chuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,1,1,20,QKĐ- Chuyển sang câu PHỦ ĐỊNH- NGHI VẤN.csv,False,False,SENTENCE_TRANSFORM
+6a55ea57222795f6480bf462,HTHT Chuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,HTHT Chuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,1,1,20,HTHT Chuyển sang câu PHỦ ĐỊNH- NGHI VẤN.csv,False,False,SENTENCE_TRANSFORM
+6a559f066b2ce136caa2c3f2,HTĐ: CHuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,HTĐ: CHuyển sang câu PHỦ ĐỊNH/ NGHI VẤN,1,1,20,HTĐ- CHuyển sang câu PHỦ ĐỊNH- NGHI VẤN.csv,False,False,SENTENCE_TRANSFORM
+6a5352cd61700a267a93f74c,ĐẠI TỪ PHẢN THÂN,ĐẠI TỪ PHẢN THÂN,1,1,50,ĐẠI TỪ PHẢN THÂN.csv,False,False,SENTENCE_TRANSFORM
+6a4cba9fbdd101acef39713d,LET 1 chọn YES - NO dễ lớp 1 2,LET 1 chọn YES - NO dễ lớp 1 2 - Phần 1,1,2,50,LET 1 chọn YES - NO dễ lớp 1 2 - Phan 1.csv,True,False,SINGLE_CHOICE
+6a4cba9fbdd101acef39713d,LET 1 chọn YES - NO dễ lớp 1 2,LET 1 chọn YES - NO dễ lớp 1 2 - Phần 2,2,2,50,LET 1 chọn YES - NO dễ lớp 1 2 - Phan 2.csv,True,False,SINGLE_CHOICE
+6a4c7854a633740383721372,PTAO - STARTERS - YES NO 31 - 70,PTAO - STARTERS - YES NO 31 - 70,1,1,3,PTAO - STARTERS - YES NO 31 - 70.csv,True,False,SENTENCE_TRANSFORM
+6a4a89ec738a06c06daba4d2,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2 - Phần 1,1,2,50,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6a4a89ec738a06c06daba4d2,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2 - Phần 2,2,2,30,LET 1 Nhìn hình và CHÉP LẠI TỪ lớp 1 2 3 A2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6a4772d5009d55fe5e292f42,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1 - Phần 1,1,2,50,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6a4772d5009d55fe5e292f42,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1 - Phần 2,2,2,50,LET 1 NHÌN HÌNH và CHÉP TỪ dễ lớp 1 2 3 A1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6a471a0c13e5271c050e9e81,WORD FORM 7.1 Lớp 7 Dùng dạng đúng TỪ,WORD FORM 7.1 Lớp 7 Dùng dạng đúng TỪ,1,1,10,WORD FORM 7.1 Lớp 7 Dùng dạng đúng TỪ.csv,False,False,SENTENCE_TRANSFORM
+6a4508b7d8364478ef22fded,QUESTIONS Tiểu học 2 dễ,QUESTIONS Tiểu học 2 dễ - Phần 1,1,2,50,QUESTIONS Tiểu học 2 dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6a4508b7d8364478ef22fded,QUESTIONS Tiểu học 2 dễ,QUESTIONS Tiểu học 2 dễ - Phần 2,2,2,50,QUESTIONS Tiểu học 2 dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6a427870e8da125f8bdb371c,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC - Phần 1,1,2,50,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC - Phan 1.csv,False,False,SINGLE_CHOICE
+6a427870e8da125f8bdb371c,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC - Phần 2,2,2,50,CÂU GIÁN TIẾP - HTĐ HTTD HTHT TLĐ - Chọn ABC - Phan 2.csv,False,False,SINGLE_CHOICE
+6a425cdc9c727962ea11f519,CÂU GIÁN TIẾP - HTHT - Chọn ABC,CÂU GIÁN TIẾP - HTHT - Chọn ABC,1,1,20,CÂU GIÁN TIẾP - HTHT - Chọn ABC.csv,False,False,SINGLE_CHOICE
+6a4250cc0d983135bf8327b9,CÂU GIÁN TIẾP - TLĐ - Chọn ABCD,CÂU GIÁN TIẾP - TLĐ - Chọn ABCD,1,1,20,CÂU GIÁN TIẾP - TLĐ - Chọn ABCD.csv,False,False,SINGLE_CHOICE
+6a3dea9c285b04f9b3396e8f,THÌ HTĐ - Dùng dạng đúng của ĐỘNG TỪ,THÌ HTĐ - Dùng dạng đúng của ĐỘNG TỪ,1,1,50,THÌ HTĐ - Dùng dạng đúng của ĐỘNG TỪ.csv,False,False,SENTENCE_TRANSFORM
+6a3ce34e68b5bb92a05bf54e,CÂU GIÁN TIẾP - HTTD - CHỌN ABCD,CÂU GIÁN TIẾP - HTTD - CHỌN ABCD,1,1,40,CÂU GIÁN TIẾP - HTTD - CHỌN ABCD.csv,False,False,SINGLE_CHOICE
+6a3c92920e0f757f8b77a597,CÂU GIÁN TIẾP - HTĐ- CHỌN ABCD,CÂU GIÁN TIẾP - HTĐ- CHỌN ABCD,1,1,40,CÂU GIÁN TIẾP - HTĐ- CHỌN ABCD.csv,False,False,SINGLE_CHOICE
+6a3b9db6979e5f2d706bd003,READING 4 5 6,READING 4 5 6,1,1,1,READING 4 5 6.csv,False,False,SENTENCE_TRANSFORM
+6a3b95fe763fa21cc92a7b10,READING E3 điền từ,READING E3 điền từ,1,1,50,READING E3 điền từ.csv,True,False,SENTENCE_TRANSFORM
+6a39fa672bf8279d93b8c44b,3 ĐỘNG TỪ BQT ..../..../.... ĐIỀN TỪ,3 ĐỘNG TỪ BQT ..../..../.... ĐIỀN TỪ,1,1,40,3 ĐỘNG TỪ BQT ....-....-.... ĐIỀN TỪ.csv,False,False,SENTENCE_TRANSFORM
+6a35fae9b417d7494ea605f8,SO SÁNH: Chọn đáp án dễ,SO SÁNH: Chọn đáp án dễ,1,1,50,SO SÁNH- Chọn đáp án dễ.csv,False,False,SINGLE_CHOICE
+6a0f0bb0206b2cc78e408e30,CÂU GIÁN TIẾP: QKĐ chuyển,CÂU GIÁN TIẾP: QKĐ chuyển,1,1,35,CÂU GIÁN TIẾP- QKĐ chuyển.csv,False,False,SENTENCE_TRANSFORM
+6a0f071a1025c9feac6be37e,CÂU GIÁN TIẾP: HTTD chuyển,CÂU GIÁN TIẾP: HTTD chuyển,1,1,38,CÂU GIÁN TIẾP- HTTD chuyển.csv,False,False,SENTENCE_TRANSFORM
+6a0e84051c624279e271c125,FF1: NGHE and WRITE WORDS,FF1: NGHE and WRITE WORDS - Phần 1,1,2,50,FF1- NGHE and WRITE WORDS - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+6a0e84051c624279e271c125,FF1: NGHE and WRITE WORDS,FF1: NGHE and WRITE WORDS - Phần 2,2,2,30,FF1- NGHE and WRITE WORDS - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+6a0e6b08d3b35b44416b4095,FF1: NGHE và chọn dễ,FF1: NGHE và chọn dễ - Phần 1,1,2,50,FF1- NGHE và chọn dễ - Phan 1.csv,False,True,SINGLE_CHOICE
+6a0e6b08d3b35b44416b4095,FF1: NGHE và chọn dễ,FF1: NGHE và chọn dễ - Phần 2,2,2,5,FF1- NGHE và chọn dễ - Phan 2.csv,False,True,SINGLE_CHOICE
+6a0c6a3add33f2fb72731683,CÂU GIÁN TIẾP: THÌ HIỆN TẠI ĐƠN chuyển,CÂU GIÁN TIẾP: THÌ HIỆN TẠI ĐƠN chuyển,1,1,30,CÂU GIÁN TIẾP- THÌ HIỆN TẠI ĐƠN chuyển.csv,False,False,SENTENCE_TRANSFORM
+6a0bc84ee5949ff03dd6382c,1 ĐỀ ÔN THI VÀO 10,1 ĐỀ ÔN THI VÀO 10 - Phần 1,1,2,50,1 ĐỀ ÔN THI VÀO 10 - Phan 1.csv,False,False,SINGLE_CHOICE
+6a0bc84ee5949ff03dd6382c,1 ĐỀ ÔN THI VÀO 10,1 ĐỀ ÔN THI VÀO 10 - Phần 2,2,2,40,1 ĐỀ ÔN THI VÀO 10 - Phan 2.csv,False,False,SINGLE_CHOICE
+6a042a2f34204099ab30cba0,ENGLISH 3: NGHE CÂU HỎI va A B C D EASY,ENGLISH 3: NGHE CÂU HỎI va A B C D EASY - Phần 1,1,2,50,ENGLISH 3- NGHE CÂU HỎI va A B C D EASY - Phan 1.csv,False,True,SINGLE_CHOICE
+6a042a2f34204099ab30cba0,ENGLISH 3: NGHE CÂU HỎI va A B C D EASY,ENGLISH 3: NGHE CÂU HỎI va A B C D EASY - Phần 2,2,2,30,ENGLISH 3- NGHE CÂU HỎI va A B C D EASY - Phan 2.csv,False,True,SINGLE_CHOICE
+6a02f7398595d969c4808e0d,ENGLISH 3: NGHE và viết câu hỏi DỄ,ENGLISH 3: NGHE và viết câu hỏi DỄ - Phần 1,1,2,50,ENGLISH 3- NGHE và viết câu hỏi DỄ - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+6a02f7398595d969c4808e0d,ENGLISH 3: NGHE và viết câu hỏi DỄ,ENGLISH 3: NGHE và viết câu hỏi DỄ - Phần 2,2,2,30,ENGLISH 3- NGHE và viết câu hỏi DỄ - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+6a02eaa23cd6ab39286a7830,ENGLISH 3: NGHE và Viết TRẢ LỜI,ENGLISH 3: NGHE và Viết TRẢ LỜI - Phần 1,1,2,50,ENGLISH 3- NGHE và Viết TRẢ LỜI - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+6a02eaa23cd6ab39286a7830,ENGLISH 3: NGHE và Viết TRẢ LỜI,ENGLISH 3: NGHE và Viết TRẢ LỜI - Phần 2,2,2,30,ENGLISH 3- NGHE và Viết TRẢ LỜI - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+6a0198e99aaca593fbe40707,ENGLISH 3: Nghe và viết CAU HOI 3 4 5,ENGLISH 3: Nghe và viết CAU HOI 3 4 5 - Phần 1,1,2,50,ENGLISH 3- Nghe và viết CAU HOI 3 4 5 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+6a0198e99aaca593fbe40707,ENGLISH 3: Nghe và viết CAU HOI 3 4 5,ENGLISH 3: Nghe và viết CAU HOI 3 4 5 - Phần 2,2,2,30,ENGLISH 3- Nghe và viết CAU HOI 3 4 5 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+69f9aea3fe9a3acc79c0a626,KET 1 2,KET 1 2,1,1,30,KET 1 2.csv,True,False,SENTENCE_TRANSFORM
+69f08c2bcb829657cf66c543,IOE 2 cấp TỈNH và XÃ chọn A B C D,IOE 2 cấp TỈNH và XÃ chọn A B C D - Phần 1,1,2,50,IOE 2 cấp TỈNH và XÃ chọn A B C D - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+69f08c2bcb829657cf66c543,IOE 2 cấp TỈNH và XÃ chọn A B C D,IOE 2 cấp TỈNH và XÃ chọn A B C D - Phần 2,2,2,50,IOE 2 cấp TỈNH và XÃ chọn A B C D - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+69f06c6b49de886c022caa5f,IOE 2 CẤP TỈNH: NHÌN HÌNH VÀ VIẾT A B C D,IOE 2 CẤP TỈNH: NHÌN HÌNH VÀ VIẾT A B C D,1,1,40,IOE 2 CẤP TỈNH- NHÌN HÌNH VÀ VIẾT A B C D.csv,True,False,SENTENCE_TRANSFORM
+69f0622239a20c3a604369bf,IOE 2 CẤP XÃ: Nhìn hình viết đáp án abcd,IOE 2 CẤP XÃ: Nhìn hình viết đáp án abcd,1,1,31,IOE 2 CẤP XÃ- Nhìn hình viết đáp án abcd.csv,True,False,SENTENCE_TRANSFORM
+69ef8ea66f39e6da97c24d3d,1 READING 7 Đọc và Trả lời,1 READING 7 Đọc và Trả lời,1,1,10,1 READING 7 Đọc và Trả lời.csv,False,False,SENTENCE_TRANSFORM
+69eb23f84f1d46c2795e8fa8,IOE 2 TỈNH: Nhìn hình viết MỘT TỪ,IOE 2 TỈNH: Nhìn hình viết MỘT TỪ,1,1,50,IOE 2 TỈNH- Nhìn hình viết MỘT TỪ.csv,True,False,SENTENCE_TRANSFORM
+69e9d0e3a10da0af16d79ef6,1 PTA STARTERS Điền từ cho sẵn 1 - 21,1 PTA STARTERS Điền từ cho sẵn 1 - 21,1,1,20,1 PTA STARTERS Điền từ cho sẵn 1 - 21.csv,True,False,SENTENCE_TRANSFORM
+69e96acc22c82abbe3709873,ĐỀ VÀO 10 BẠC LIÊU 2023 2024,ĐỀ VÀO 10 BẠC LIÊU 2023 2024,1,1,17,ĐỀ VÀO 10 BẠC LIÊU 2023 2024.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+69e7741e64328dab903f293f,1 REWRITE grade 7 choose the best answer,1 REWRITE grade 7 choose the best answer,1,1,19,1 REWRITE grade 7 choose the best answer.csv,False,False,SINGLE_CHOICE
+69e18393da9af554e20f617a,2 PRE A1 NUMBER Spelling NGHE điền 1 từ,2 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phần 1,1,2,50,2 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+69e18393da9af554e20f617a,2 PRE A1 NUMBER Spelling NGHE điền 1 từ,2 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phần 2,2,2,9,2 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+69e0a5b525fc5a1b864b5840,PRE A1 NUMBER and SPELLING điền từ cho sắn,PRE A1 NUMBER and SPELLING điền từ cho sắn,1,1,50,PRE A1 NUMBER and SPELLING điền từ cho sắn.csv,False,False,SENTENCE_TRANSFORM
+69e02fe313a1dc4a9bb60560,PRE A1 NUMBER and SPELLING: Read and fill ONE-WORD,PRE A1 NUMBER and SPELLING: Read and fill ONE-WORD,1,1,50,PRE A1 NUMBER and SPELLING- Read and fill ONE-WORD.csv,False,False,SENTENCE_TRANSFORM
+69dd912c0e3dda0b1e6051e1,A1 READING chọn đáp án,A1 READING chọn đáp án - Phần 1,1,4,50,A1 READING chọn đáp án - Phan 1.csv,False,False,SINGLE_CHOICE
+69dd912c0e3dda0b1e6051e1,A1 READING chọn đáp án,A1 READING chọn đáp án - Phần 2,2,4,50,A1 READING chọn đáp án - Phan 2.csv,False,False,SINGLE_CHOICE
+69dd912c0e3dda0b1e6051e1,A1 READING chọn đáp án,A1 READING chọn đáp án - Phần 3,3,4,50,A1 READING chọn đáp án - Phan 3.csv,False,False,SINGLE_CHOICE
+69dd912c0e3dda0b1e6051e1,A1 READING chọn đáp án,A1 READING chọn đáp án - Phần 4,4,4,50,A1 READING chọn đáp án - Phan 4.csv,False,False,SINGLE_CHOICE
+69dca52de1f6c01b558f458d,PT ẢO: FLYERS - Đọc và chọn 4 đáp án,PT ẢO: FLYERS - Đọc và chọn 4 đáp án,1,1,50,PT ẢO- FLYERS - Đọc và chọn 4 đáp án.csv,False,False,SINGLE_CHOICE
+69da1a39a3adfaef8777069e,ENGLISH 3 Nghe và chọn lớp 1 2,ENGLISH 3 Nghe và chọn lớp 1 2,1,1,18,ENGLISH 3 Nghe và chọn lớp 1 2.csv,False,True,SINGLE_CHOICE
+69d8b5c28cfca91658d2bccc,PT ẢO: STARTERS - Sắp xếp chữ cái thành TỪ,PT ẢO: STARTERS - Sắp xếp chữ cái thành TỪ - Phần 1,1,2,50,PT ẢO- STARTERS - Sắp xếp chữ cái thành TỪ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+69d8b5c28cfca91658d2bccc,PT ẢO: STARTERS - Sắp xếp chữ cái thành TỪ,PT ẢO: STARTERS - Sắp xếp chữ cái thành TỪ - Phần 2,2,2,20,PT ẢO- STARTERS - Sắp xếp chữ cái thành TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+69d60027854fe63ab7f1e071,PRE A1 READING chọn đáp án cho sẳn,PRE A1 READING chọn đáp án cho sẳn - Phần 1,1,5,50,PRE A1 READING chọn đáp án cho sẳn - Phan 1.csv,False,False,SINGLE_CHOICE
+69d60027854fe63ab7f1e071,PRE A1 READING chọn đáp án cho sẳn,PRE A1 READING chọn đáp án cho sẳn - Phần 2,2,5,50,PRE A1 READING chọn đáp án cho sẳn - Phan 2.csv,False,False,SINGLE_CHOICE
+69d60027854fe63ab7f1e071,PRE A1 READING chọn đáp án cho sẳn,PRE A1 READING chọn đáp án cho sẳn - Phần 3,3,5,50,PRE A1 READING chọn đáp án cho sẳn - Phan 3.csv,False,False,SINGLE_CHOICE
+69d60027854fe63ab7f1e071,PRE A1 READING chọn đáp án cho sẳn,PRE A1 READING chọn đáp án cho sẳn - Phần 4,4,5,50,PRE A1 READING chọn đáp án cho sẳn - Phan 4.csv,False,False,SINGLE_CHOICE
+69d60027854fe63ab7f1e071,PRE A1 READING chọn đáp án cho sẳn,PRE A1 READING chọn đáp án cho sẳn - Phần 5,5,5,48,PRE A1 READING chọn đáp án cho sẳn - Phan 5.csv,False,False,SINGLE_CHOICE
+69d3a68482fe3274bf9612b9,A1 READ và sắp xếp thành HỘI THOẠI,A1 READ và sắp xếp thành HỘI THOẠI - Phần 1,1,2,50,A1 READ và sắp xếp thành HỘI THOẠI - Phan 1.csv,False,False,WORD_ORDER
+69d3a68482fe3274bf9612b9,A1 READ và sắp xếp thành HỘI THOẠI,A1 READ và sắp xếp thành HỘI THOẠI - Phần 2,2,2,34,A1 READ và sắp xếp thành HỘI THOẠI - Phan 2.csv,False,False,WORD_ORDER
+69cf25f212855d2e32edfc0b,3 PRE A1 READING NHÌN HÌNH chọn TRUE/ FALSE 23,3 PRE A1 READING NHÌN HÌNH chọn TRUE/ FALSE 23 - Phần 1,1,2,50,3 PRE A1 READING NHÌN HÌNH chọn TRUE- FALSE 23 - Phan 1.csv,True,False,SINGLE_CHOICE
+69cf25f212855d2e32edfc0b,3 PRE A1 READING NHÌN HÌNH chọn TRUE/ FALSE 23,3 PRE A1 READING NHÌN HÌNH chọn TRUE/ FALSE 23 - Phần 2,2,2,50,3 PRE A1 READING NHÌN HÌNH chọn TRUE- FALSE 23 - Phan 2.csv,True,False,SINGLE_CHOICE
+69cf1fd0dab3ca1824c689e8,1 PRE A1 READING Nhìn hình chọn TRUE/FALSE,1 PRE A1 READING Nhìn hình chọn TRUE/FALSE - Phần 1,1,2,50,1 PRE A1 READING Nhìn hình chọn TRUE-FALSE - Phan 1.csv,True,False,SINGLE_CHOICE
+69cf1fd0dab3ca1824c689e8,1 PRE A1 READING Nhìn hình chọn TRUE/FALSE,1 PRE A1 READING Nhìn hình chọn TRUE/FALSE - Phần 2,2,2,6,1 PRE A1 READING Nhìn hình chọn TRUE-FALSE - Phan 2.csv,True,False,SINGLE_CHOICE
+69ca5264e5921bf193ae7091,MAKE QUESTIONS 1,MAKE QUESTIONS 1,1,1,50,MAKE QUESTIONS 1.csv,False,False,SENTENCE_TRANSFORM
+69ca2bfdb01b2fe8af26da94,2 PRE A1 READING nhìn chọn TRUE/ FALSE: Lớp 2 3,2 PRE A1 READING nhìn chọn TRUE/ FALSE: Lớp 2 3,1,1,50,2 PRE A1 READING nhìn chọn TRUE- FALSE- Lớp 2 3.csv,True,False,SINGLE_CHOICE
+69c631ed9ffda4168737c975,READING Đọc đoạn văn và Điền từ lớp 3 4 5,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phần 1,1,3,50,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phan 1.csv,False,False,SINGLE_CHOICE
+69c631ed9ffda4168737c975,READING Đọc đoạn văn và Điền từ lớp 3 4 5,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phần 2,2,3,50,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phan 2.csv,False,False,SINGLE_CHOICE
+69c631ed9ffda4168737c975,READING Đọc đoạn văn và Điền từ lớp 3 4 5,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phần 3,3,3,50,READING Đọc đoạn văn và Điền từ lớp 3 4 5 - Phan 3.csv,False,False,SINGLE_CHOICE
+69c240beea3a09559bf974a7,READING 3 4A TRẮC NGHIỆM,READING 3 4A TRẮC NGHIỆM,1,1,49,READING 3 4A TRẮC NGHIỆM.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+69c0f090d1ff2165a31bd885,READING 7A,READING 7A - Phần 1,1,2,50,READING 7A - Phan 1.csv,False,False,SINGLE_CHOICE
+69c0f090d1ff2165a31bd885,READING 7A,READING 7A - Phần 2,2,2,15,READING 7A - Phan 2.csv,False,False,SINGLE_CHOICE
+69bfba00715d614b6b2bc30f,E5 LOOK LISTEN and REPEAT 1,E5 LOOK LISTEN and REPEAT 1 - Phần 1,1,2,50,E5 LOOK LISTEN and REPEAT 1 - Phan 1.csv,False,True,SINGLE_CHOICE
+69bfba00715d614b6b2bc30f,E5 LOOK LISTEN and REPEAT 1,E5 LOOK LISTEN and REPEAT 1 - Phần 2,2,2,48,E5 LOOK LISTEN and REPEAT 1 - Phan 2.csv,False,True,SINGLE_CHOICE
+69be04ad2f682d8121835e2a,IOE 3: Sắp xếp các từ thành câu 2,IOE 3: Sắp xếp các từ thành câu 2 - Phần 1,1,2,50,IOE 3- Sắp xếp các từ thành câu 2 - Phan 1.csv,False,False,WORD_ORDER
+69be04ad2f682d8121835e2a,IOE 3: Sắp xếp các từ thành câu 2,IOE 3: Sắp xếp các từ thành câu 2 - Phần 2,2,2,50,IOE 3- Sắp xếp các từ thành câu 2 - Phan 2.csv,False,False,WORD_ORDER
+69bbef4a23a97514f4941916,Thì QUÁ KHỨ ĐƠN : dễ 1,Thì QUÁ KHỨ ĐƠN : dễ 1 - Phần 1,1,2,50,Thì QUÁ KHỨ ĐƠN - dễ 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+69bbef4a23a97514f4941916,Thì QUÁ KHỨ ĐƠN : dễ 1,Thì QUÁ KHỨ ĐƠN : dễ 1 - Phần 2,2,2,20,Thì QUÁ KHỨ ĐƠN - dễ 1 - Phan 2.csv,False,False,SINGLE_CHOICE
+69b7da99512254fc1876b652,1 PTA STARTERS Điền từ cho sẵn,1 PTA STARTERS Điền từ cho sẵn,1,1,10,1 PTA STARTERS Điền từ cho sẵn.csv,True,False,SENTENCE_TRANSFORM
+69b61e192af1cf8f5533f610,Have / Have got : Dịch TV sang TA,Have / Have got : Dịch TV sang TA,1,1,50,Have - Have got - Dịch TV sang TA.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+69b2c9fa9163af8deb9d27e5,READING 3.2: ĐỌC và TRẢ LỜI,READING 3.2: ĐỌC và TRẢ LỜI,1,1,35,READING 3.2- ĐỌC và TRẢ LỜI.csv,False,False,SENTENCE_TRANSFORM
+69a8ee6a9faf8fe6607616ae,PRE A1 Daily activity NGHE và chọn dễ,PRE A1 Daily activity NGHE và chọn dễ,1,1,50,PRE A1 Daily activity NGHE và chọn dễ.csv,False,True,SINGLE_CHOICE
+69a68ca147036bec70e8a26b,PRE A1 daily activity NGHE và điền đáp án,PRE A1 daily activity NGHE và điền đáp án,1,1,50,PRE A1 daily activity NGHE và điền đáp án.csv,False,True,SENTENCE_TRANSFORM
+69a3a341f5cef191d07d3420,QUESTIONS sap xep cac tu thanh cau hoi,QUESTIONS sap xep cac tu thanh cau hoi,1,1,47,QUESTIONS sap xep cac tu thanh cau hoi.csv,False,False,WORD_ORDER
+699da7bf11239e9f885e428f,789 REWRITE Viết lại câu,789 REWRITE Viết lại câu - Phần 1,1,2,50,789 REWRITE Viết lại câu - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+699da7bf11239e9f885e428f,789 REWRITE Viết lại câu,789 REWRITE Viết lại câu - Phần 2,2,2,10,789 REWRITE Viết lại câu - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+698c4c471a41947fe081a40a,TRẮC NGHIỆM thì HTĐ HTTD QKĐ,TRẮC NGHIỆM thì HTĐ HTTD QKĐ - Phần 1,1,2,50,TRẮC NGHIỆM thì HTĐ HTTD QKĐ - Phan 1.csv,False,False,SINGLE_CHOICE
+698c4c471a41947fe081a40a,TRẮC NGHIỆM thì HTĐ HTTD QKĐ,TRẮC NGHIỆM thì HTĐ HTTD QKĐ - Phần 2,2,2,16,TRẮC NGHIỆM thì HTĐ HTTD QKĐ - Phan 2.csv,False,False,SINGLE_CHOICE
+6989acd833758097bf4270d2,TỪ LOẠI dễ Nhìn TV viết từ TAnh,TỪ LOẠI dễ Nhìn TV viết từ TAnh,1,1,30,TỪ LOẠI dễ Nhìn TV viết từ TAnh.csv,False,False,SENTENCE_TRANSFORM
+69885206fec04565e0a1a0c6,Thì QKĐ TRẮC NGHIỆM dễ,Thì QKĐ TRẮC NGHIỆM dễ,1,1,20,Thì QKĐ TRẮC NGHIỆM dễ.csv,False,False,SINGLE_CHOICE
+6986eab455d538c13c40fe3c,PT ẢO: STARTERS choose RIGHT Wrong lớp 1 2 3,PT ẢO: STARTERS choose RIGHT Wrong lớp 1 2 3,1,1,50,PT ẢO- STARTERS choose RIGHT Wrong lớp 1 2 3.csv,True,False,SINGLE_CHOICE
+6983ee1480f9ff323e869c1c,PRE A1 COLOUR and pre: NGHE va TRUE FALSE,PRE A1 COLOUR and pre: NGHE va TRUE FALSE,1,1,30,PRE A1 COLOUR and pre- NGHE va TRUE FALSE.csv,False,True,SINGLE_CHOICE
+698328505e471c3860cec3b9,TRẮC NGHIỆM: HTĐ HTTD HTHT QKĐ dễ,TRẮC NGHIỆM: HTĐ HTTD HTHT QKĐ dễ - Phần 1,1,2,50,TRẮC NGHIỆM- HTĐ HTTD HTHT QKĐ dễ - Phan 1.csv,False,False,SINGLE_CHOICE
+698328505e471c3860cec3b9,TRẮC NGHIỆM: HTĐ HTTD HTHT QKĐ dễ,TRẮC NGHIỆM: HTĐ HTTD HTHT QKĐ dễ - Phần 2,2,2,36,TRẮC NGHIỆM- HTĐ HTTD HTHT QKĐ dễ - Phan 2.csv,False,False,SINGLE_CHOICE
+6982f32580f9ff323e854d77,PRE A1 COLOUR and pre: ĐIỀN GIỚI TỪ,PRE A1 COLOUR and pre: ĐIỀN GIỚI TỪ,1,1,22,PRE A1 COLOUR and pre- ĐIỀN GIỚI TỪ.csv,False,True,SENTENCE_TRANSFORM
+69829bb6d74334fc9e6924d8,PRE A1 COKOUR the picture: Nghe và viết 2 từ,PRE A1 COKOUR the picture: Nghe và viết 2 từ,1,1,38,PRE A1 COKOUR the picture- Nghe và viết 2 từ.csv,False,True,SENTENCE_TRANSFORM
+697b1b30e7f3ce502da7d4be,"ĐẢO NGỮ mẫu 2: AT NO TIMe, under, no longer, nowhereno account,","ĐẢO NGỮ mẫu 2: AT NO TIMe, under, no longer, nowhereno account,",1,1,37,"ĐẢO NGỮ mẫu 2- AT NO TIMe, under, no longer, nowhereno account,.csv",False,False,SINGLE_CHOICE | WORD_ORDER
+69788e43fc2f078e82326cc8,CÁCH NÓI GIỜ 1,CÁCH NÓI GIỜ 1 - Phần 1,1,2,50,CÁCH NÓI GIỜ 1 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+69788e43fc2f078e82326cc8,CÁCH NÓI GIỜ 1,CÁCH NÓI GIỜ 1 - Phần 2,2,2,50,CÁCH NÓI GIỜ 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+697865b6fc2f078e8232400d,"ĐẢO NGỮ dạng 1: NEVER, SELDOM, SCARCELY, HAREDLY EVERChọn đáp án","ĐẢO NGỮ dạng 1: NEVER, SELDOM, SCARCELY, HAREDLY EVERChọn đáp án",1,1,42,"ĐẢO NGỮ dạng 1- NEVER, SELDOM, SCARCELY, HAREDLY EVERChọn đáp án.csv",False,False,SINGLE_CHOICE | WORD_ORDER
+6971f19d58be2c623f921b4a,LIÊN TỪ dễ: BÀI 20 điền 1 Liên từ vào chỗ trống,LIÊN TỪ dễ: BÀI 20 điền 1 Liên từ vào chỗ trống,1,1,41,LIÊN TỪ dễ- BÀI 20 điền 1 Liên từ vào chỗ trống.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+696ad1a719dcdb1508ca8905,STARTERS: ACTIONS VERBS,STARTERS: ACTIONS VERBS,1,1,35,STARTERS- ACTIONS VERBS.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+696a0bdc2cd98a172d178546,IOE 3: Xác định danh từ số ít và số nhiều,IOE 3: Xác định danh từ số ít và số nhiều,1,1,40,IOE 3- Xác định danh từ số ít và số nhiều.csv,False,False,SINGLE_CHOICE
+696a05569c752368fbfb9093,TỪ LOẠI TIỂU HỌC: XÁC ĐỊNH S V N ADJ,TỪ LOẠI TIỂU HỌC: XÁC ĐỊNH S V N ADJ,1,1,40,TỪ LOẠI TIỂU HỌC- XÁC ĐỊNH S V N ADJ.csv,False,False,SENTENCE_TRANSFORM
+6968b490fdb547e92f510306,"TỪ LOẠI dễ: BÀI SỐ 7 Xác định Adj. ADv , N, V","TỪ LOẠI dễ: BÀI SỐ 7 Xác định Adj. ADv , N, V - Phần 1",1,2,50,"TỪ LOẠI dễ- BÀI SỐ 7 Xác định Adj. ADv , N, V - Phan 1.csv",False,False,SENTENCE_TRANSFORM
+6968b490fdb547e92f510306,"TỪ LOẠI dễ: BÀI SỐ 7 Xác định Adj. ADv , N, V","TỪ LOẠI dễ: BÀI SỐ 7 Xác định Adj. ADv , N, V - Phần 2",2,2,20,"TỪ LOẠI dễ- BÀI SỐ 7 Xác định Adj. ADv , N, V - Phan 2.csv",False,False,SENTENCE_TRANSFORM
+6967489cbf08fe5caa4b0a75,TỪ LOẠI dễ: BÀI SỐ 5 : Dùng dạng đúng của từ,TỪ LOẠI dễ: BÀI SỐ 5 : Dùng dạng đúng của từ,1,1,50,TỪ LOẠI dễ- BÀI SỐ 5 - Dùng dạng đúng của từ.csv,False,False,SENTENCE_TRANSFORM
+6965f2998c4591e3a6471321,THÌ HTHT: TRẮC NGHIỆM dễ,THÌ HTHT: TRẮC NGHIỆM dễ,1,1,20,THÌ HTHT- TRẮC NGHIỆM dễ.csv,False,False,SINGLE_CHOICE
+6964c568392c23cf8179e43c,THÌ HTTD: TRẮC NGHIỆM dễ,THÌ HTTD: TRẮC NGHIỆM dễ,1,1,20,THÌ HTTD- TRẮC NGHIỆM dễ.csv,False,False,SINGLE_CHOICE
+6961c002811df3f54c23ccd2,THÌ HTĐ: TRẮC NGHIỆM đẽ,THÌ HTĐ: TRẮC NGHIỆM đẽ,1,1,50,THÌ HTĐ- TRẮC NGHIỆM đẽ.csv,False,False,SINGLE_CHOICE
+695f12dd4a55078270c143cf,LET 1: NHÌN HÌNH CHỌN Đ.ÁN LỚP 1,LET 1: NHÌN HÌNH CHỌN Đ.ÁN LỚP 1 - Phần 1,1,2,50,LET 1- NHÌN HÌNH CHỌN Đ.ÁN LỚP 1 - Phan 1.csv,True,False,SINGLE_CHOICE
+695f12dd4a55078270c143cf,LET 1: NHÌN HÌNH CHỌN Đ.ÁN LỚP 1,LET 1: NHÌN HÌNH CHỌN Đ.ÁN LỚP 1 - Phần 2,2,2,50,LET 1- NHÌN HÌNH CHỌN Đ.ÁN LỚP 1 - Phan 2.csv,True,False,SINGLE_CHOICE
+695dca138743a437097785e5,LET 1 NGHE và CHỌN lớp 1 2,LET 1 NGHE và CHỌN lớp 1 2 - Phần 1,1,2,50,LET 1 NGHE và CHỌN lớp 1 2 - Phan 1.csv,False,True,SINGLE_CHOICE
+695dca138743a437097785e5,LET 1 NGHE và CHỌN lớp 1 2,LET 1 NGHE và CHỌN lớp 1 2 - Phần 2,2,2,50,LET 1 NGHE và CHỌN lớp 1 2 - Phan 2.csv,False,True,SINGLE_CHOICE
+695b9110035418349cae1f3b,READING and answer Tiểu học 3 4 5 (2),READING and answer Tiểu học 3 4 5 (2),1,1,30,READING and answer Tiểu học 3 4 5 (2).csv,False,False,SENTENCE_TRANSFORM
+695b6f1b389668380f38f67b,READING 6 CHOOSE the answer 2,READING 6 CHOOSE the answer 2,1,1,50,READING 6 CHOOSE the answer 2.csv,False,False,SINGLE_CHOICE
+695a303de0a43d9407bd971d,READING 6 CHOOSE the answer 1,READING 6 CHOOSE the answer 1,1,1,50,READING 6 CHOOSE the answer 1.csv,False,False,SINGLE_CHOICE
+694f3c55dd5eef7b7bafaa69,IOE 3 Viết từ TA tương ứng TV,IOE 3 Viết từ TA tương ứng TV,1,1,20,IOE 3 Viết từ TA tương ứng TV.csv,False,False,SENTENCE_TRANSFORM
+694d02df31d8fcaf1de6db1d,IOE 2: Nhìn hình viết đáp án A B C D,IOE 2: Nhìn hình viết đáp án A B C D,1,1,10,IOE 2- Nhìn hình viết đáp án A B C D.csv,True,False,SENTENCE_TRANSFORM
+694b5487d9092786de3cf5e0,PT ẢO MOVERS: LOOK at the picture 1,PT ẢO MOVERS: LOOK at the picture 1,1,1,37,PT ẢO MOVERS- LOOK at the picture 1.csv,True,False,SENTENCE_TRANSFORM
+694a94497228a5a0b3d2ea82,LIÊN TỪ dễ,LIÊN TỪ dễ,1,1,50,LIÊN TỪ dễ.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+69426f5e925fe51f77a8b83d,PT ẢO STARTERS: NHÌN HÌNH VIẾT TỪ,PT ẢO STARTERS: NHÌN HÌNH VIẾT TỪ,1,1,50,PT ẢO STARTERS- NHÌN HÌNH VIẾT TỪ.csv,True,False,SENTENCE_TRANSFORM
+694204b8e159fb4b332a7278,PT ẢO: Starters Viết RIGHT WRONG,PT ẢO: Starters Viết RIGHT WRONG - Phần 1,1,2,50,PT ẢO- Starters Viết RIGHT WRONG - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+694204b8e159fb4b332a7278,PT ẢO: Starters Viết RIGHT WRONG,PT ẢO: Starters Viết RIGHT WRONG - Phần 2,2,2,10,PT ẢO- Starters Viết RIGHT WRONG - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+693feba02be27ef8c1372ec2,HTHT: Điền động từ phù hợp,HTHT: Điền động từ phù hợp,1,1,20,HTHT- Điền động từ phù hợp.csv,False,False,SENTENCE_TRANSFORM
+693fea5840968ba10a9c24b0,QKĐ: Điền động từ phù hợp,QKĐ: Điền động từ phù hợp,1,1,20,QKĐ- Điền động từ phù hợp.csv,False,False,SENTENCE_TRANSFORM
+693fe9824d57783f3c3c4fa9,HTTD: Điền động từ phù hợp,HTTD: Điền động từ phù hợp,1,1,20,HTTD- Điền động từ phù hợp.csv,False,False,SENTENCE_TRANSFORM
+693fe7638ea98327a2534f66,HTĐ: Điền động từ phù hợp,HTĐ: Điền động từ phù hợp,1,1,20,HTĐ- Điền động từ phù hợp.csv,False,False,SENTENCE_TRANSFORM
+693fe61dd6fdd4ce96430425,TLĐ: Điền từ phù hợp vào chỗ trống,TLĐ: Điền từ phù hợp vào chỗ trống,1,1,20,TLĐ- Điền từ phù hợp vào chỗ trống.csv,False,False,SENTENCE_TRANSFORM
+693fdedc40968ba10a9c1bd6,THÌ TLG - ĐIỀN ĐỘNG TỪ PHÙ HỢP,THÌ TLG - ĐIỀN ĐỘNG TỪ PHÙ HỢP,1,1,20,THÌ TLG - ĐIỀN ĐỘNG TỪ PHÙ HỢP.csv,False,False,SENTENCE_TRANSFORM
+693e80f5c717c90a6c7f443f,CÁC THÌ: Điền động từ phù hợp với các thì,CÁC THÌ: Điền động từ phù hợp với các thì - Phần 1,1,2,50,CÁC THÌ- Điền động từ phù hợp với các thì - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+693e80f5c717c90a6c7f443f,CÁC THÌ: Điền động từ phù hợp với các thì,CÁC THÌ: Điền động từ phù hợp với các thì - Phần 2,2,2,50,CÁC THÌ- Điền động từ phù hợp với các thì - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+69337bc2c3b8eb4523cec182,NGỮ ÂM TIỂU HỌC 2,NGỮ ÂM TIỂU HỌC 2 - Phần 1,1,2,50,NGỮ ÂM TIỂU HỌC 2 - Phan 1.csv,False,False,SINGLE_CHOICE
+69337bc2c3b8eb4523cec182,NGỮ ÂM TIỂU HỌC 2,NGỮ ÂM TIỂU HỌC 2 - Phần 2,2,2,50,NGỮ ÂM TIỂU HỌC 2 - Phan 2.csv,False,False,SINGLE_CHOICE
+691d77bfeda36c6c0930f0b0,PRE A1 word and pre: :Nghe chọn Tiếng Việt lớp 2 3 4,PRE A1 word and pre: :Nghe chọn Tiếng Việt lớp 2 3 4,1,1,50,PRE A1 word and pre- -Nghe chọn Tiếng Việt lớp 2 3 4.csv,False,True,SINGLE_CHOICE
+691c1fc1b218eccc4620653d,PRE A1 Word and pre: TRUE FALSE easy,PRE A1 Word and pre: TRUE FALSE easy,1,1,33,PRE A1 Word and pre- TRUE FALSE easy.csv,False,True,SINGLE_CHOICE
+691af1316d09c7bd7a30f2af,PRE A1 word and pre: Listen and write WORD,PRE A1 word and pre: Listen and write WORD - Phần 1,1,2,50,PRE A1 word and pre- Listen and write WORD - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+691af1316d09c7bd7a30f2af,PRE A1 word and pre: Listen and write WORD,PRE A1 word and pre: Listen and write WORD - Phần 2,2,2,30,PRE A1 word and pre- Listen and write WORD - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+691769e47ad338d243fec59b,PREA1 NGHE CHON lop 2 3 Word and prepositions,PREA1 NGHE CHON lop 2 3 Word and prepositions,1,1,13,PREA1 NGHE CHON lop 2 3 Word and prepositions.csv,False,True,SINGLE_CHOICE
+6912f03f036b111b00e46325,ĐÊ GIỮA KỲ LỚP 7,ĐÊ GIỮA KỲ LỚP 7,1,1,11,ĐÊ GIỮA KỲ LỚP 7.csv,False,False,SENTENCE_TRANSFORM
+69119eea10ebc32a218050c5,READING and answer tiểu học 3 4 5 ( 1),READING and answer tiểu học 3 4 5 ( 1),1,1,50,READING and answer tiểu học 3 4 5 ( 1).csv,False,False,SENTENCE_TRANSFORM
+690c55c245f00b3a299a1ae0,A1 READ the story and FILL,A1 READ the story and FILL,1,1,30,A1 READ the story and FILL.csv,True,False,SENTENCE_TRANSFORM
+6909632737f2fa7b1c465d60,READING 6 7 8,READING 6 7 8,1,1,16,READING 6 7 8.csv,False,False,SENTENCE_TRANSFORM
+6904acb17fcef8667fd8c639,READING grade 2 3,READING grade 2 3,1,1,5,READING grade 2 3.csv,False,False,SENTENCE_TRANSFORM
+68ff7fa9187cc75a0c455608,A1 READING YES/ NO,A1 READING YES/ NO,1,1,15,A1 READING YES- NO.csv,True,False,SENTENCE_TRANSFORM
+68f74bd8ecfe2057753018f6,READING grade 2 3 4,READING grade 2 3 4,1,1,18,READING grade 2 3 4.csv,True,False,SINGLE_CHOICE
+68f5e9d37930c3623fc1d98a,CÂU ĐIỀU KIỆN LOẠI 1,CÂU ĐIỀU KIỆN LOẠI 1,1,1,50,CÂU ĐIỀU KIỆN LOẠI 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+68de2f7ed3db2acdb53c810a,LIÊN TỪ: TRĂC NGHIỆM,LIÊN TỪ: TRĂC NGHIỆM - Phần 1,1,2,50,LIÊN TỪ- TRĂC NGHIỆM - Phan 1.csv,False,False,SINGLE_CHOICE
+68de2f7ed3db2acdb53c810a,LIÊN TỪ: TRĂC NGHIỆM,LIÊN TỪ: TRĂC NGHIỆM - Phần 2,2,2,50,LIÊN TỪ- TRĂC NGHIỆM - Phan 2.csv,False,False,SINGLE_CHOICE
+68db9f8941a6ae8ce499d719,CÁU TRÚC CÁC THÌ,CÁU TRÚC CÁC THÌ,1,1,40,CÁU TRÚC CÁC THÌ.csv,False,False,SENTENCE_TRANSFORM
+68db8391861614447944a429,TLĐ: DỊCH VIỆT ANH,TLĐ: DỊCH VIỆT ANH,1,1,20,TLĐ- DỊCH VIỆT ANH.csv,False,False,SENTENCE_TRANSFORM
+68db453622e2a56b58e1f9a6,QKĐ: DỊCH VIỆT ANH,QKĐ: DỊCH VIỆT ANH,1,1,20,QKĐ- DỊCH VIỆT ANH.csv,False,False,SENTENCE_TRANSFORM
+68db3dc8a19c31d0f4143a81,HTĐ: Dịch VIỆT ANH,HTĐ: Dịch VIỆT ANH,1,1,44,HTĐ- Dịch VIỆT ANH.csv,False,False,SENTENCE_TRANSFORM
+68da667b9b198ce20a80d40c,HTTD Dịch Việt Anh,HTTD Dịch Việt Anh,1,1,10,HTTD Dịch Việt Anh.csv,False,False,SENTENCE_TRANSFORM
+68d899b4859afbe59049aeb9,Wh questions Tiểu học,Wh questions Tiểu học - Phần 1,1,2,50,Wh questions Tiểu học - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+68d899b4859afbe59049aeb9,Wh questions Tiểu học,Wh questions Tiểu học - Phần 2,2,2,50,Wh questions Tiểu học - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+68d600730fe4d857c7e8706a,NEXT MOVE TA 1 nghe chon,NEXT MOVE TA 1 nghe chon,1,1,50,NEXT MOVE TA 1 nghe chon.csv,False,True,SINGLE_CHOICE
+68cbf2e55446538cb52d5021,ĐÔNG TỪ BẤT QUY TẮC: Nhìn nghĩa viết ĐỘNG TỪ N Thể,ĐÔNG TỪ BẤT QUY TẮC: Nhìn nghĩa viết ĐỘNG TỪ N Thể - Phần 1,1,2,50,ĐÔNG TỪ BẤT QUY TẮC- Nhìn nghĩa viết ĐỘNG TỪ N Thể - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+68cbf2e55446538cb52d5021,ĐÔNG TỪ BẤT QUY TẮC: Nhìn nghĩa viết ĐỘNG TỪ N Thể,ĐÔNG TỪ BẤT QUY TẮC: Nhìn nghĩa viết ĐỘNG TỪ N Thể - Phần 2,2,2,15,ĐÔNG TỪ BẤT QUY TẮC- Nhìn nghĩa viết ĐỘNG TỪ N Thể - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+68cbd5e9309c9f7aee63e495,PRE A1 DAILY activity: NGHE viết TRUE / FALSE,PRE A1 DAILY activity: NGHE viết TRUE / FALSE - Phần 1,1,2,50,PRE A1 DAILY activity- NGHE viết TRUE - FALSE - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+68cbd5e9309c9f7aee63e495,PRE A1 DAILY activity: NGHE viết TRUE / FALSE,PRE A1 DAILY activity: NGHE viết TRUE / FALSE - Phần 2,2,2,14,PRE A1 DAILY activity- NGHE viết TRUE - FALSE - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+68cbbecb4253ffafa31b2a21,A1 NGHE và chọn HÌNH,A1 NGHE và chọn HÌNH,1,1,24,A1 NGHE và chọn HÌNH.csv,False,True,SINGLE_CHOICE
+68cb774b747bddb730636dbc,A1 NGHE và VIẾT TỪ Daily activity,A1 NGHE và VIẾT TỪ Daily activity,1,1,36,A1 NGHE và VIẾT TỪ Daily activity.csv,False,True,SENTENCE_TRANSFORM
+68c28f64a65e1c6a5bed94c0,1 PRE A1 NUMBER Spelling NGHE điền 1 từ,1 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phần 1,1,2,50,1 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+68c28f64a65e1c6a5bed94c0,1 PRE A1 NUMBER Spelling NGHE điền 1 từ,1 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phần 2,2,2,50,1 PRE A1 NUMBER Spelling NGHE điền 1 từ - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+68beae5a8798567c994fb7d7,TỪ LOẠI 1 khá dễ,TỪ LOẠI 1 khá dễ,1,1,50,TỪ LOẠI 1 khá dễ.csv,False,False,SENTENCE_TRANSFORM
+68afcccdbe72f7f5a20561cb,NGHE VIẾT bảng chữ cái,NGHE VIẾT bảng chữ cái,1,1,22,NGHE VIẾT bảng chữ cái.csv,False,True,SENTENCE_TRANSFORM
+68ac76b3342b07696d29aae6,CÂU BĐ CÁC THÌ chọn đáp án,CÂU BĐ CÁC THÌ chọn đáp án - Phần 1,1,2,50,CÂU BĐ CÁC THÌ chọn đáp án - Phan 1.csv,False,False,SINGLE_CHOICE
+68ac76b3342b07696d29aae6,CÂU BĐ CÁC THÌ chọn đáp án,CÂU BĐ CÁC THÌ chọn đáp án - Phần 2,2,2,44,CÂU BĐ CÁC THÌ chọn đáp án - Phan 2.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+68a83b3bb75ace5784f0ee5e,CÂU BĐ: QUÁ KHỨ ĐƠN: Chọn đáp án,CÂU BĐ: QUÁ KHỨ ĐƠN: Chọn đáp án,1,1,10,CÂU BĐ- QUÁ KHỨ ĐƠN- Chọn đáp án.csv,False,False,SINGLE_CHOICE
+68a81724d5c8a65f5bcff6f2,CÂU BĐ: TƯƠNG LAI GẦN: Chọn đáp án,CÂU BĐ: TƯƠNG LAI GẦN: Chọn đáp án,1,1,10,CÂU BĐ- TƯƠNG LAI GẦN- Chọn đáp án.csv,False,False,SINGLE_CHOICE
+68a8139f88a643f580824c9d,CÂU BĐ: TƯƠNG LAI ĐƠN: Chọn đáp án,CÂU BĐ: TƯƠNG LAI ĐƠN: Chọn đáp án,1,1,10,CÂU BĐ- TƯƠNG LAI ĐƠN- Chọn đáp án.csv,False,False,SINGLE_CHOICE
+68a7d9c06efa4c78a53488a2,Câu BĐ: HIỆN TẠI HOÀN THÀNH: Chọn đáp án,Câu BĐ: HIỆN TẠI HOÀN THÀNH: Chọn đáp án,1,1,10,Câu BĐ- HIỆN TẠI HOÀN THÀNH- Chọn đáp án.csv,False,False,SINGLE_CHOICE
+68a7d2d7d3b676ccc59fcbda,Câu BĐ: Hiện Tại Tiếp diễn - Chọn đáp án,Câu BĐ: Hiện Tại Tiếp diễn - Chọn đáp án,1,1,14,Câu BĐ- Hiện Tại Tiếp diễn - Chọn đáp án.csv,False,False,SINGLE_CHOICE
+68a72baa2f3d3e265437933b,Câu BĐ: Hiện tại đơn : Chọn đáp án,Câu BĐ: Hiện tại đơn : Chọn đáp án,1,1,20,Câu BĐ- Hiện tại đơn - Chọn đáp án.csv,False,False,SINGLE_CHOICE
+689d9586171261219586dfd1,LET 1: LISTEN and CHOOSE easy LỚP 234,LET 1: LISTEN and CHOOSE easy LỚP 234 - Phần 1,1,2,50,LET 1- LISTEN and CHOOSE easy LỚP 234 - Phan 1.csv,False,True,SINGLE_CHOICE
+689d9586171261219586dfd1,LET 1: LISTEN and CHOOSE easy LỚP 234,LET 1: LISTEN and CHOOSE easy LỚP 234 - Phần 2,2,2,9,LET 1- LISTEN and CHOOSE easy LỚP 234 - Phan 2.csv,False,True,SINGLE_CHOICE
+689a95be60c70643d01077df,PRE A1: ĐỌC và TRẢ LỜI câu hỏi,PRE A1: ĐỌC và TRẢ LỜI câu hỏi - Phần 1,1,2,50,PRE A1- ĐỌC và TRẢ LỜI câu hỏi - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+689a95be60c70643d01077df,PRE A1: ĐỌC và TRẢ LỜI câu hỏi,PRE A1: ĐỌC và TRẢ LỜI câu hỏi - Phần 2,2,2,1,PRE A1- ĐỌC và TRẢ LỜI câu hỏi - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+688c1329cadacc643376304b,LET 1 2 3 4: Nghe và viết câu,LET 1 2 3 4: Nghe và viết câu,1,1,25,LET 1 2 3 4- Nghe và viết câu.csv,False,True,SENTENCE_TRANSFORM
+688364d1db01633163ed634d,LET 1: NGHE và VIẾT TỪ lớp 2 3 4,LET 1: NGHE và VIẾT TỪ lớp 2 3 4 - Phần 1,1,2,50,LET 1- NGHE và VIẾT TỪ lớp 2 3 4 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+688364d1db01633163ed634d,LET 1: NGHE và VIẾT TỪ lớp 2 3 4,LET 1: NGHE và VIẾT TỪ lớp 2 3 4 - Phần 2,2,2,40,LET 1- NGHE và VIẾT TỪ lớp 2 3 4 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+6879b409568a0f1b64d66178,PRE A1 NGHE và trả lời câu hỏi,PRE A1 NGHE và trả lời câu hỏi,1,1,40,PRE A1 NGHE và trả lời câu hỏi.csv,False,True,SENTENCE_TRANSFORM
+6878b28c2989bab5c959f6f4,A2 Nghe và sắp xếp các câu thanh hội thoại,A2 Nghe và sắp xếp các câu thanh hội thoại,1,1,18,A2 Nghe và sắp xếp các câu thanh hội thoại.csv,False,True,WORD_ORDER
+68775ccd4b72802b465d07f9,A2 NGHE và chọn hình,A2 NGHE và chọn hình,1,1,30,A2 NGHE và chọn hình.csv,False,True,SINGLE_CHOICE
+6870baaddd7bbb625a3016a5,CÁC THÌ: CHUYỂN sang PĐ NV,CÁC THÌ: CHUYỂN sang PĐ NV - Phần 1,1,2,50,CÁC THÌ- CHUYỂN sang PĐ NV - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6870baaddd7bbb625a3016a5,CÁC THÌ: CHUYỂN sang PĐ NV,CÁC THÌ: CHUYỂN sang PĐ NV - Phần 2,2,2,30,CÁC THÌ- CHUYỂN sang PĐ NV - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+686b9fe58c3fe8f986671bbf,ĐẠI TỪ,ĐẠI TỪ - Phần 1,1,2,50,ĐẠI TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+686b9fe58c3fe8f986671bbf,ĐẠI TỪ,ĐẠI TỪ - Phần 2,2,2,10,ĐẠI TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6866c5a960302e5cc5f715d1,LET 1: U1: Lissten and chooose 1 2,LET 1: U1: Lissten and chooose 1 2,1,1,11,LET 1- U1- Lissten and chooose 1 2.csv,False,True,SINGLE_CHOICE
+685a32989db9d981e25a5b23,E3 LOOK LISTEN and REPEAT 1,E3 LOOK LISTEN and REPEAT 1 - Phần 1,1,2,50,E3 LOOK LISTEN and REPEAT 1 - Phan 1.csv,False,True,SINGLE_CHOICE
+685a32989db9d981e25a5b23,E3 LOOK LISTEN and REPEAT 1,E3 LOOK LISTEN and REPEAT 1 - Phần 2,2,2,20,E3 LOOK LISTEN and REPEAT 1 - Phan 2.csv,False,True,SINGLE_CHOICE
+68595ad026daecbf9dbaba7a,GERUND Lý thuyết,GERUND Lý thuyết,1,1,50,GERUND Lý thuyết.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+685936b3f711ee55665c9314,PRE A1 READING 2 ĐIỀN TỪ cho sẵn,PRE A1 READING 2 ĐIỀN TỪ cho sẵn,1,1,30,PRE A1 READING 2 ĐIỀN TỪ cho sẵn.csv,True,False,SENTENCE_TRANSFORM
+6858a540916c64dff847876a,LET 1: NHÌN HÌNH CHỌN ĐÁP ẤN dễ: Lớp 1 2,LET 1: NHÌN HÌNH CHỌN ĐÁP ẤN dễ: Lớp 1 2,1,1,10,LET 1- NHÌN HÌNH CHỌN ĐÁP ẤN dễ- Lớp 1 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6847eaa484ed5771373f222c,READING 1 THI VÀO 10.1,READING 1 THI VÀO 10.1,1,1,10,READING 1 THI VÀO 10.1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+682068ab89e96c79c32ef5f6,THÌ TƯƠNG LAI ĐƠN: CÁCH DÙNG,THÌ TƯƠNG LAI ĐƠN: CÁCH DÙNG,1,1,30,THÌ TƯƠNG LAI ĐƠN- CÁCH DÙNG.csv,False,False,SINGLE_CHOICE
+681d58307a25976c687dccda,BIỂN BÁO GIAO THÔNG,BIỂN BÁO GIAO THÔNG,1,1,9,BIỂN BÁO GIAO THÔNG.csv,True,False,SENTENCE_TRANSFORM
+681875055e6537ae6723f2a7,READ and WRITE,READ and WRITE,1,1,40,READ and WRITE.csv,True,False,SENTENCE_TRANSFORM
+681737c153d549a8342b3d7b,CHIA ĐỘNG TỪ các thì : Khó,CHIA ĐỘNG TỪ các thì : Khó - Phần 1,1,2,50,CHIA ĐỘNG TỪ các thì - Khó - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+681737c153d549a8342b3d7b,CHIA ĐỘNG TỪ các thì : Khó,CHIA ĐỘNG TỪ các thì : Khó - Phần 2,2,2,25,CHIA ĐỘNG TỪ các thì - Khó - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+681083a928cabbc7495c4276,PTA: MOVERS - ĐỌC ĐIỀN TỪ CHO SẴN 1 - 10 KHÓ,PTA: MOVERS - ĐỌC ĐIỀN TỪ CHO SẴN 1 - 10 KHÓ,1,1,22,PTA- MOVERS - ĐỌC ĐIỀN TỪ CHO SẴN 1 - 10 KHÓ.csv,True,False,SENTENCE_TRANSFORM
+680b4319ae852f18cb33a16c,WISH IF ONLY MAI LAN HƯƠNG,WISH IF ONLY MAI LAN HƯƠNG - Phần 1,1,3,50,WISH IF ONLY MAI LAN HƯƠNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+680b4319ae852f18cb33a16c,WISH IF ONLY MAI LAN HƯƠNG,WISH IF ONLY MAI LAN HƯƠNG - Phần 2,2,3,50,WISH IF ONLY MAI LAN HƯƠNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+680b4319ae852f18cb33a16c,WISH IF ONLY MAI LAN HƯƠNG,WISH IF ONLY MAI LAN HƯƠNG - Phần 3,3,3,10,WISH IF ONLY MAI LAN HƯƠNG - Phan 3.csv,False,False,SINGLE_CHOICE
+68089eebad2b1ae67f196911,ĐỀ THI VÀO 10 2024 Bạc Liêu + BAC NINH,ĐỀ THI VÀO 10 2024 Bạc Liêu + BAC NINH,1,1,50,ĐỀ THI VÀO 10 2024 Bạc Liêu + BAC NINH.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+680791628a5a7382ee830c2f,TAG- QUESTIONS Điền từ,TAG- QUESTIONS Điền từ - Phần 1,1,2,50,TAG- QUESTIONS Điền từ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+680791628a5a7382ee830c2f,TAG- QUESTIONS Điền từ,TAG- QUESTIONS Điền từ - Phần 2,2,2,50,TAG- QUESTIONS Điền từ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6806271beca1e4d35fed7e7c,1 PTA: STARTERS đọc điền từ cho sẵn 2,1 PTA: STARTERS đọc điền từ cho sẵn 2,1,1,10,1 PTA- STARTERS đọc điền từ cho sẵn 2.csv,True,False,SENTENCE_TRANSFORM
+680623ca4ef02489b80f0d1e,PTA: STARTERS 1- 4 READING YES NO,PTA: STARTERS 1- 4 READING YES NO,1,1,30,PTA- STARTERS 1- 4 READING YES NO.csv,True,False,SENTENCE_TRANSFORM
+6805f3167797b1abce3c03c0,CÂU GIÁN TIẾP - MAI LAN HƯƠNG,CÂU GIÁN TIẾP - MAI LAN HƯƠNG - Phần 1,1,2,50,CÂU GIÁN TIẾP - MAI LAN HƯƠNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6805f3167797b1abce3c03c0,CÂU GIÁN TIẾP - MAI LAN HƯƠNG,CÂU GIÁN TIẾP - MAI LAN HƯƠNG - Phần 2,2,2,30,CÂU GIÁN TIẾP - MAI LAN HƯƠNG - Phan 2.csv,False,False,SINGLE_CHOICE
+68045b834ef02489b80e6776,PREPOSITIONS Tieu hoc,PREPOSITIONS Tieu hoc - Phần 1,1,2,50,PREPOSITIONS Tieu hoc - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+68045b834ef02489b80e6776,PREPOSITIONS Tieu hoc,PREPOSITIONS Tieu hoc - Phần 2,2,2,4,PREPOSITIONS Tieu hoc - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+67fb0dda15593afe49d93efa,IOE 3 QUESTIONS Trac nghiem,IOE 3 QUESTIONS Trac nghiem - Phần 1,1,2,50,IOE 3 QUESTIONS Trac nghiem - Phan 1.csv,False,False,SINGLE_CHOICE
+67fb0dda15593afe49d93efa,IOE 3 QUESTIONS Trac nghiem,IOE 3 QUESTIONS Trac nghiem - Phần 2,2,2,50,IOE 3 QUESTIONS Trac nghiem - Phan 2.csv,False,False,SINGLE_CHOICE
+67fa5533c1442f54ecc6604a,MỆNH ĐỀ NHƯỢNG BÔ: Although Even though Though,MỆNH ĐỀ NHƯỢNG BÔ: Although Even though Though - Phần 1,1,2,50,MỆNH ĐỀ NHƯỢNG BÔ- Although Even though Though - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67fa5533c1442f54ecc6604a,MỆNH ĐỀ NHƯỢNG BÔ: Although Even though Though,MỆNH ĐỀ NHƯỢNG BÔ: Although Even though Though - Phần 2,2,2,23,MỆNH ĐỀ NHƯỢNG BÔ- Although Even though Though - Phan 2.csv,False,False,SINGLE_CHOICE
+67f8806b2b623cd504e35c10,ĐỀ THI VÀO 10 SỐ 2,ĐỀ THI VÀO 10 SỐ 2 - Phần 1,1,2,50,ĐỀ THI VÀO 10 SỐ 2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67f8806b2b623cd504e35c10,ĐỀ THI VÀO 10 SỐ 2,ĐỀ THI VÀO 10 SỐ 2 - Phần 2,2,2,10,ĐỀ THI VÀO 10 SỐ 2 - Phan 2.csv,False,False,SINGLE_CHOICE
+67f245a5a4218e174392a7e8,READING SKILL 1.1,READING SKILL 1.1,1,1,45,READING SKILL 1.1.csv,True,False,SENTENCE_TRANSFORM
+67f1c5969056ae0b740014df,READING 3.1,READING 3.1 - Phần 1,1,2,50,READING 3.1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+67f1c5969056ae0b740014df,READING 3.1,READING 3.1 - Phần 2,2,2,35,READING 3.1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+67ef953adea73fe621b0dd0d,READING 4.1,READING 4.1,1,1,31,READING 4.1.csv,False,False,SENTENCE_TRANSFORM
+67ef94e6bfcb771d3a5be5ea,VIẾT CẤU TRÚC BỊ ĐỘNG,VIẾT CẤU TRÚC BỊ ĐỘNG,1,1,31,VIẾT CẤU TRÚC BỊ ĐỘNG.csv,False,False,SINGLE_CHOICE
+67ef94a77f5541cd16a4ab3b,READING 5.2,READING 5.2,1,1,2,READING 5.2.csv,False,False,SENTENCE_TRANSFORM
+67eca576194c0d9f350306fa,READING 5.1,READING 5.1 - Phần 1,1,2,50,READING 5.1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67eca576194c0d9f350306fa,READING 5.1,READING 5.1 - Phần 2,2,2,50,READING 5.1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67e7eab2a595127a5feac42f,LIÊN TỪ dễ,LIÊN TỪ dễ - Phần 1,1,3,50,LIÊN TỪ dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67e7eab2a595127a5feac42f,LIÊN TỪ dễ,LIÊN TỪ dễ - Phần 2,2,3,50,LIÊN TỪ dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+67e7eab2a595127a5feac42f,LIÊN TỪ dễ,LIÊN TỪ dễ - Phần 3,3,3,10,LIÊN TỪ dễ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+67e502ee9f0b3f770144626d,PRE A1 NGHE sắp xếp câu thành hội thoại,PRE A1 NGHE sắp xếp câu thành hội thoại - Phần 1,1,3,50,PRE A1 NGHE sắp xếp câu thành hội thoại - Phan 1.csv,False,True,WORD_ORDER
+67e502ee9f0b3f770144626d,PRE A1 NGHE sắp xếp câu thành hội thoại,PRE A1 NGHE sắp xếp câu thành hội thoại - Phần 2,2,3,50,PRE A1 NGHE sắp xếp câu thành hội thoại - Phan 2.csv,False,True,WORD_ORDER
+67e502ee9f0b3f770144626d,PRE A1 NGHE sắp xếp câu thành hội thoại,PRE A1 NGHE sắp xếp câu thành hội thoại - Phần 3,3,3,8,PRE A1 NGHE sắp xếp câu thành hội thoại - Phan 3.csv,False,True,WORD_ORDER
+67e363b15fcdb7eb5565a9e3,ĐỀ THI VÀO 10 số 1,ĐỀ THI VÀO 10 số 1 - Phần 1,1,2,50,ĐỀ THI VÀO 10 số 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67e363b15fcdb7eb5565a9e3,ĐỀ THI VÀO 10 số 1,ĐỀ THI VÀO 10 số 1 - Phần 2,2,2,20,ĐỀ THI VÀO 10 số 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+67e13d0ec536e0ec49df1f24,TƯƠNG LAI ĐƠN: Dịch Việt - Anh,TƯƠNG LAI ĐƠN: Dịch Việt - Anh,1,1,10,TƯƠNG LAI ĐƠN- Dịch Việt - Anh.csv,True,False,SENTENCE_TRANSFORM
+67e1229bc536e0ec49df020f,ENGLISH 3 Video,ENGLISH 3 Video,1,1,3,ENGLISH 3 Video.csv,False,False,SENTENCE_TRANSFORM
+67d00224a176a2fdbde99874,GTNP: TỪ LOẠI T. NGHIỆM,GTNP: TỪ LOẠI T. NGHIỆM - Phần 1,1,2,50,GTNP- TỪ LOẠI T. NGHIỆM - Phan 1.csv,False,False,SINGLE_CHOICE
+67d00224a176a2fdbde99874,GTNP: TỪ LOẠI T. NGHIỆM,GTNP: TỪ LOẠI T. NGHIỆM - Phần 2,2,2,10,GTNP- TỪ LOẠI T. NGHIỆM - Phan 2.csv,False,False,SINGLE_CHOICE
+67c441ca82d9894627106777,CHIA ĐỘNG TỪ HTĐ HTTD,CHIA ĐỘNG TỪ HTĐ HTTD - Phần 1,1,3,50,CHIA ĐỘNG TỪ HTĐ HTTD - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+67c441ca82d9894627106777,CHIA ĐỘNG TỪ HTĐ HTTD,CHIA ĐỘNG TỪ HTĐ HTTD - Phần 2,2,3,50,CHIA ĐỘNG TỪ HTĐ HTTD - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+67c441ca82d9894627106777,CHIA ĐỘNG TỪ HTĐ HTTD,CHIA ĐỘNG TỪ HTĐ HTTD - Phần 3,3,3,1,CHIA ĐỘNG TỪ HTĐ HTTD - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+67c00f4b5c5b24a718fab2bf,SOUND GREAT 1,SOUND GREAT 1 - Phần 1,1,2,50,SOUND GREAT 1 - Phan 1.csv,True,True,SENTENCE_TRANSFORM
+67c00f4b5c5b24a718fab2bf,SOUND GREAT 1,SOUND GREAT 1 - Phần 2,2,2,28,SOUND GREAT 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+67bd8ac144dac2dc4a160ff1,RELATIVE RÚT GỌN MĐQH,RELATIVE RÚT GỌN MĐQH - Phần 1,1,2,50,RELATIVE RÚT GỌN MĐQH - Phan 1.csv,False,False,SINGLE_CHOICE
+67bd8ac144dac2dc4a160ff1,RELATIVE RÚT GỌN MĐQH,RELATIVE RÚT GỌN MĐQH - Phần 2,2,2,5,RELATIVE RÚT GỌN MĐQH - Phan 2.csv,False,False,SINGLE_CHOICE
+67b84307b841fdb52f3240f1,200 CÂU BỊ ĐỘNG T.Nghiem,200 CÂU BỊ ĐỘNG T.Nghiem - Phần 1,1,2,50,200 CÂU BỊ ĐỘNG T.Nghiem - Phan 1.csv,False,False,SINGLE_CHOICE
+67b84307b841fdb52f3240f1,200 CÂU BỊ ĐỘNG T.Nghiem,200 CÂU BỊ ĐỘNG T.Nghiem - Phần 2,2,2,35,200 CÂU BỊ ĐỘNG T.Nghiem - Phan 2.csv,False,False,SINGLE_CHOICE
+67b6d9e3959aa751d23b970e,NGỮ PHÁP tiểu học SỐ ít số nhiều,NGỮ PHÁP tiểu học SỐ ít số nhiều - Phần 1,1,2,50,NGỮ PHÁP tiểu học SỐ ít số nhiều - Phan 1.csv,True,True,SENTENCE_TRANSFORM
+67b6d9e3959aa751d23b970e,NGỮ PHÁP tiểu học SỐ ít số nhiều,NGỮ PHÁP tiểu học SỐ ít số nhiều - Phần 2,2,2,10,NGỮ PHÁP tiểu học SỐ ít số nhiều - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+67b583c2d1789389583d7c8f,HTTD: CHỌN VIÊT - ANH,HTTD: CHỌN VIÊT - ANH,1,1,10,HTTD- CHỌN VIÊT - ANH.csv,False,False,SENTENCE_TRANSFORM
+67b4635cee23050b091253ca,HTĐ: CHỌN VIET - ANH,HTĐ: CHỌN VIET - ANH,1,1,13,HTĐ- CHỌN VIET - ANH.csv,False,False,SENTENCE_TRANSFORM
+67af0b1c965e8396c3c78f62,TRẮC NGHIỆM BỊ ĐỘNG,TRẮC NGHIỆM BỊ ĐỘNG,1,1,40,TRẮC NGHIỆM BỊ ĐỘNG.csv,False,False,SINGLE_CHOICE
+678f4d803f5a5c8cb2d13c4c,MODULE 2 COUTABLE and uncoutable quantifiers,MODULE 2 COUTABLE and uncoutable quantifiers,1,1,50,MODULE 2 COUTABLE and uncoutable quantifiers.csv,False,False,SINGLE_CHOICE
+678e128e8363c7cba2974f09,LET 1: Nhìn hình trả lời câu hỏi LỚP 2 3 4 5,LET 1: Nhìn hình trả lời câu hỏi LỚP 2 3 4 5 - Phần 1,1,2,50,LET 1- Nhìn hình trả lời câu hỏi LỚP 2 3 4 5 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+678e128e8363c7cba2974f09,LET 1: Nhìn hình trả lời câu hỏi LỚP 2 3 4 5,LET 1: Nhìn hình trả lời câu hỏi LỚP 2 3 4 5 - Phần 2,2,2,47,LET 1- Nhìn hình trả lời câu hỏi LỚP 2 3 4 5 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+677e586736274ae84466a103,ENGLISH 3 Nhìn phiên âm viết từ T Anh,ENGLISH 3 Nhìn phiên âm viết từ T Anh,1,1,31,ENGLISH 3 Nhìn phiên âm viết từ T Anh.csv,True,False,SENTENCE_TRANSFORM
+676d0c21795955978a95ce21,ENGLISH 2: CHỌN VIỆT - ANH,ENGLISH 2: CHỌN VIỆT - ANH - Phần 1,1,2,50,ENGLISH 2- CHỌN VIỆT - ANH - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+676d0c21795955978a95ce21,ENGLISH 2: CHỌN VIỆT - ANH,ENGLISH 2: CHỌN VIỆT - ANH - Phần 2,2,2,30,ENGLISH 2- CHỌN VIỆT - ANH - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+676b6a2ea9b806cb53ae7d76,IOE 3: HUYỆN CHỌN T VIỆT and T ANH,IOE 3: HUYỆN CHỌN T VIỆT and T ANH - Phần 1,1,2,50,IOE 3- HUYỆN CHỌN T VIỆT and T ANH - Phan 1.csv,False,False,SINGLE_CHOICE
+676b6a2ea9b806cb53ae7d76,IOE 3: HUYỆN CHỌN T VIỆT and T ANH,IOE 3: HUYỆN CHỌN T VIỆT and T ANH - Phần 2,2,2,10,IOE 3- HUYỆN CHỌN T VIỆT and T ANH - Phan 2.csv,False,False,SINGLE_CHOICE
+676a7866b5d8655820969208,84 câu: CHỌN T VIỆT and T ANH,84 câu: CHỌN T VIỆT and T ANH - Phần 1,1,2,50,84 câu- CHỌN T VIỆT and T ANH - Phan 1.csv,False,False,SINGLE_CHOICE
+676a7866b5d8655820969208,84 câu: CHỌN T VIỆT and T ANH,84 câu: CHỌN T VIỆT and T ANH - Phần 2,2,2,20,84 câu- CHỌN T VIỆT and T ANH - Phan 2.csv,False,False,SINGLE_CHOICE
+676a0b07f30aa851e05d7b91,IOE 4 Chọn T VIỆT and T ANH,IOE 4 Chọn T VIỆT and T ANH - Phần 1,1,2,50,IOE 4 Chọn T VIỆT and T ANH - Phan 1.csv,False,False,SINGLE_CHOICE
+676a0b07f30aa851e05d7b91,IOE 4 Chọn T VIỆT and T ANH,IOE 4 Chọn T VIỆT and T ANH - Phần 2,2,2,10,IOE 4 Chọn T VIỆT and T ANH - Phan 2.csv,False,False,SINGLE_CHOICE
+67693dde6167105ee89252e1,IOE 5 Chọn T VIỆT - T ANH,IOE 5 Chọn T VIỆT - T ANH - Phần 1,1,2,50,IOE 5 Chọn T VIỆT - T ANH - Phan 1.csv,False,False,SINGLE_CHOICE
+67693dde6167105ee89252e1,IOE 5 Chọn T VIỆT - T ANH,IOE 5 Chọn T VIỆT - T ANH - Phần 2,2,2,10,IOE 5 Chọn T VIỆT - T ANH - Phan 2.csv,False,False,SINGLE_CHOICE
+6767c236a9ec5654cbd77ba6,LET 1 nghe nghe chọn từ LỚP 1,LET 1 nghe nghe chọn từ LỚP 1,1,1,1,LET 1 nghe nghe chọn từ LỚP 1.csv,False,False,SENTENCE_TRANSFORM
+6764a16089521148d0c071a8,PRE A1 READ and CHOOSE the correct picture,PRE A1 READ and CHOOSE the correct picture - Phần 1,1,2,50,PRE A1 READ and CHOOSE the correct picture - Phan 1.csv,True,False,SINGLE_CHOICE
+6764a16089521148d0c071a8,PRE A1 READ and CHOOSE the correct picture,PRE A1 READ and CHOOSE the correct picture - Phần 2,2,2,22,PRE A1 READ and CHOOSE the correct picture - Phan 2.csv,True,False,SINGLE_CHOICE
+67649d1150f174f6714b7d6a,A1 READ and choose the correct picture,A1 READ and choose the correct picture - Phần 1,1,2,50,A1 READ and choose the correct picture - Phan 1.csv,True,False,SINGLE_CHOICE
+67649d1150f174f6714b7d6a,A1 READ and choose the correct picture,A1 READ and choose the correct picture - Phần 2,2,2,28,A1 READ and choose the correct picture - Phan 2.csv,True,False,SINGLE_CHOICE
+676276b36b0ac1823ccdd8c7,PHÒNG THI ẢO: KET,PHÒNG THI ẢO: KET - Phần 1,1,2,50,PHÒNG THI ẢO- KET - Phan 1.csv,True,False,SINGLE_CHOICE
+676276b36b0ac1823ccdd8c7,PHÒNG THI ẢO: KET,PHÒNG THI ẢO: KET - Phần 2,2,2,10,PHÒNG THI ẢO- KET - Phan 2.csv,True,False,SINGLE_CHOICE
+676003247b97cc9a9cc8ac95,HSG 6 ĐỀ số 1,HSG 6 ĐỀ số 1,1,1,50,HSG 6 ĐỀ số 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6758f82e8955946c3f46037e,SO SÁNH Viết lại câu,SO SÁNH Viết lại câu - Phần 1,1,2,50,SO SÁNH Viết lại câu - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6758f82e8955946c3f46037e,SO SÁNH Viết lại câu,SO SÁNH Viết lại câu - Phần 2,2,2,50,SO SÁNH Viết lại câu - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+675791613ea9911f3c528322,TRANG TỪ so sánh TRẠNG TỪ,TRANG TỪ so sánh TRẠNG TỪ - Phần 1,1,2,50,TRANG TỪ so sánh TRẠNG TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+675791613ea9911f3c528322,TRANG TỪ so sánh TRẠNG TỪ,TRANG TỪ so sánh TRẠNG TỪ - Phần 2,2,2,40,TRANG TỪ so sánh TRẠNG TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6752b38359b567a442d760b9,A1 NGHE và sắp xếp lại các câu,A1 NGHE và sắp xếp lại các câu - Phần 1,1,2,50,A1 NGHE và sắp xếp lại các câu - Phan 1.csv,False,True,WORD_ORDER
+6752b38359b567a442d760b9,A1 NGHE và sắp xếp lại các câu,A1 NGHE và sắp xếp lại các câu - Phần 2,2,2,40,A1 NGHE và sắp xếp lại các câu - Phan 2.csv,False,True,WORD_ORDER
+6752ae1daadc36042a887263,A1 READ and choose pictures,A1 READ and choose pictures - Phần 1,1,2,50,A1 READ and choose pictures - Phan 1.csv,True,False,SINGLE_CHOICE
+6752ae1daadc36042a887263,A1 READ and choose pictures,A1 READ and choose pictures - Phần 2,2,2,10,A1 READ and choose pictures - Phan 2.csv,True,False,SINGLE_CHOICE
+6751f2ceebc9bf574ccf1071,A1 LISTEN and choose daily activities,A1 LISTEN and choose daily activities - Phần 1,1,2,50,A1 LISTEN and choose daily activities - Phan 1.csv,False,True,SINGLE_CHOICE
+6751f2ceebc9bf574ccf1071,A1 LISTEN and choose daily activities,A1 LISTEN and choose daily activities - Phần 2,2,2,10,A1 LISTEN and choose daily activities - Phan 2.csv,False,True,SINGLE_CHOICE
+67515a63dedc49e6cfed44e7,IOE 3: Sắp xếp CHỮ thành TỪ,IOE 3: Sắp xếp CHỮ thành TỪ - Phần 1,1,2,50,IOE 3- Sắp xếp CHỮ thành TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+67515a63dedc49e6cfed44e7,IOE 3: Sắp xếp CHỮ thành TỪ,IOE 3: Sắp xếp CHỮ thành TỪ - Phần 2,2,2,7,IOE 3- Sắp xếp CHỮ thành TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6746df7792482603d5bc2791,PHÒNG THI ẢO: PET,PHÒNG THI ẢO: PET,1,1,50,PHÒNG THI ẢO- PET.csv,True,False,SINGLE_CHOICE
+67468c2c9dea326aebb49818,PHÒNG THI ẢO: FLYERS 1,PHÒNG THI ẢO: FLYERS 1 - Phần 1,1,3,50,PHÒNG THI ẢO- FLYERS 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+67468c2c9dea326aebb49818,PHÒNG THI ẢO: FLYERS 1,PHÒNG THI ẢO: FLYERS 1 - Phần 2,2,3,50,PHÒNG THI ẢO- FLYERS 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+67468c2c9dea326aebb49818,PHÒNG THI ẢO: FLYERS 1,PHÒNG THI ẢO: FLYERS 1 - Phần 3,3,3,19,PHÒNG THI ẢO- FLYERS 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+673e9ef1d842f8e3e9f87bfd,PT ẢO: STATERS 2 -TRẢ LỜI - MỘT TỪ,PT ẢO: STATERS 2 -TRẢ LỜI - MỘT TỪ - Phần 1,1,2,50,PT ẢO- STATERS 2 -TRẢ LỜI - MỘT TỪ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+673e9ef1d842f8e3e9f87bfd,PT ẢO: STATERS 2 -TRẢ LỜI - MỘT TỪ,PT ẢO: STATERS 2 -TRẢ LỜI - MỘT TỪ - Phần 2,2,2,50,PT ẢO- STATERS 2 -TRẢ LỜI - MỘT TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+673b226ea803321a2dc67230,VIẾT LẠI CÂU 1 -10,VIẾT LẠI CÂU 1 -10,1,1,38,VIẾT LẠI CÂU 1 -10.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+673aeda97adbd211f5925b9b,PTA : MOVERS TEST READ and CHOOSE 1 - 15,PTA : MOVERS TEST READ and CHOOSE 1 - 15 - Phần 1,1,2,50,PTA - MOVERS TEST READ and CHOOSE 1 - 15 - Phan 1.csv,False,False,SINGLE_CHOICE
+673aeda97adbd211f5925b9b,PTA : MOVERS TEST READ and CHOOSE 1 - 15,PTA : MOVERS TEST READ and CHOOSE 1 - 15 - Phần 2,2,2,50,PTA - MOVERS TEST READ and CHOOSE 1 - 15 - Phan 2.csv,False,False,SINGLE_CHOICE
+6735453af0ee835463aaac50,A2 READING,A2 READING,1,1,10,A2 READING.csv,False,False,SENTENCE_TRANSFORM
+67345500f9b75d91136e704b,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phần 1,1,3,50,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phan 1.csv,False,False,WORD_ORDER
+67345500f9b75d91136e704b,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phần 2,2,3,50,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phan 2.csv,False,False,WORD_ORDER
+67345500f9b75d91136e704b,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phần 3,3,3,40,THẦY BÍCH 1 - 10 Sắp xếp các từ thành câu - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6731becca869a842cc1f0025,SO TOO NEITHER EITHER,SO TOO NEITHER EITHER - Phần 1,1,2,50,SO TOO NEITHER EITHER - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6731becca869a842cc1f0025,SO TOO NEITHER EITHER,SO TOO NEITHER EITHER - Phần 2,2,2,50,SO TOO NEITHER EITHER - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+672ed1d59bdbb3100481f596,THÌ TLĐ + TLG dễ,THÌ TLĐ + TLG dễ - Phần 1,1,3,50,THÌ TLĐ + TLG dễ - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+672ed1d59bdbb3100481f596,THÌ TLĐ + TLG dễ,THÌ TLĐ + TLG dễ - Phần 2,2,3,50,THÌ TLĐ + TLG dễ - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+672ed1d59bdbb3100481f596,THÌ TLĐ + TLG dễ,THÌ TLĐ + TLG dễ - Phần 3,3,3,15,THÌ TLĐ + TLG dễ - Phan 3.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+6722f0efe66c0b44cf04c275,IOE 3: HUYỆN 3110 24 : TỪ VỰNG,IOE 3: HUYỆN 3110 24 : TỪ VỰNG - Phần 1,1,2,50,IOE 3- HUYỆN 3110 24 - TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6722f0efe66c0b44cf04c275,IOE 3: HUYỆN 3110 24 : TỪ VỰNG,IOE 3: HUYỆN 3110 24 : TỪ VỰNG - Phần 2,2,2,44,IOE 3- HUYỆN 3110 24 - TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6721e9462192cb7a19fdef3e,IOE 4: HUYỆN: TỪ VỰNG,IOE 4: HUYỆN: TỪ VỰNG - Phần 1,1,2,50,IOE 4- HUYỆN- TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6721e9462192cb7a19fdef3e,IOE 4: HUYỆN: TỪ VỰNG,IOE 4: HUYỆN: TỪ VỰNG - Phần 2,2,2,10,IOE 4- HUYỆN- TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+671b44e01ad203171da673ed,PRE A1: Đọc vằ sắp xếp thành hội thoại,PRE A1: Đọc vằ sắp xếp thành hội thoại - Phần 1,1,3,50,PRE A1- Đọc vằ sắp xếp thành hội thoại - Phan 1.csv,False,False,WORD_ORDER
+671b44e01ad203171da673ed,PRE A1: Đọc vằ sắp xếp thành hội thoại,PRE A1: Đọc vằ sắp xếp thành hội thoại - Phần 2,2,3,50,PRE A1- Đọc vằ sắp xếp thành hội thoại - Phan 2.csv,False,False,WORD_ORDER
+671b44e01ad203171da673ed,PRE A1: Đọc vằ sắp xếp thành hội thoại,PRE A1: Đọc vằ sắp xếp thành hội thoại - Phần 3,3,3,28,PRE A1- Đọc vằ sắp xếp thành hội thoại - Phan 3.csv,False,False,WORD_ORDER
+671211b7c1df63930f725fd7,IOE 8 Sắp xếp các từ,IOE 8 Sắp xếp các từ - Phần 1,1,2,50,IOE 8 Sắp xếp các từ - Phan 1.csv,False,False,WORD_ORDER
+671211b7c1df63930f725fd7,IOE 8 Sắp xếp các từ,IOE 8 Sắp xếp các từ - Phần 2,2,2,10,IOE 8 Sắp xếp các từ - Phan 2.csv,False,False,WORD_ORDER
+670f0892f50de7d1b77408d0,PRE A1 Listen and write WORDS,PRE A1 Listen and write WORDS - Phần 1,1,3,50,PRE A1 Listen and write WORDS - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+670f0892f50de7d1b77408d0,PRE A1 Listen and write WORDS,PRE A1 Listen and write WORDS - Phần 2,2,3,50,PRE A1 Listen and write WORDS - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+670f0892f50de7d1b77408d0,PRE A1 Listen and write WORDS,PRE A1 Listen and write WORDS - Phần 3,3,3,50,PRE A1 Listen and write WORDS - Phan 3.csv,False,True,SENTENCE_TRANSFORM
+670e2fe0b3ae1b3860d71ba7,WORD FORM 3 GTNP,WORD FORM 3 GTNP - Phần 1,1,2,50,WORD FORM 3 GTNP - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+670e2fe0b3ae1b3860d71ba7,WORD FORM 3 GTNP,WORD FORM 3 GTNP - Phần 2,2,2,50,WORD FORM 3 GTNP - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+670db7e1acfb63ce28042e65,VỊ TRÍ CỦA TỪ LOẠI,VỊ TRÍ CỦA TỪ LOẠI - Phần 1,1,2,50,VỊ TRÍ CỦA TỪ LOẠI - Phan 1.csv,False,False,SINGLE_CHOICE
+670db7e1acfb63ce28042e65,VỊ TRÍ CỦA TỪ LOẠI,VỊ TRÍ CỦA TỪ LOẠI - Phần 2,2,2,20,VỊ TRÍ CỦA TỪ LOẠI - Phan 2.csv,False,False,SINGLE_CHOICE
+670cde37295197c1c53cd0af,WORD FORM Lớp 7,WORD FORM Lớp 7 - Phần 1,1,2,50,WORD FORM Lớp 7 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+670cde37295197c1c53cd0af,WORD FORM Lớp 7,WORD FORM Lớp 7 - Phần 2,2,2,50,WORD FORM Lớp 7 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+670b4ce2a3f54007b16c9d04,NGHE lớp 1 2,NGHE lớp 1 2,1,1,7,NGHE lớp 1 2.csv,False,True,SINGLE_CHOICE
+6708ea57975ce51f9684a784,WORD FORMATION 1,WORD FORMATION 1,1,1,30,WORD FORMATION 1.csv,False,False,SENTENCE_TRANSFORM
+67073e50b50542dd83f5854e,ĐẢO NGỮ: Tổng hợp,ĐẢO NGỮ: Tổng hợp - Phần 1,1,2,50,ĐẢO NGỮ- Tổng hợp - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+67073e50b50542dd83f5854e,ĐẢO NGỮ: Tổng hợp,ĐẢO NGỮ: Tổng hợp - Phần 2,2,2,26,ĐẢO NGỮ- Tổng hợp - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+670634fa9c7da21d937f47ef,ĐẢO NGỮ: No sooner Only Should Were Had So Such,ĐẢO NGỮ: No sooner Only Should Were Had So Such - Phần 1,1,3,50,ĐẢO NGỮ- No sooner Only Should Were Had So Such - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+670634fa9c7da21d937f47ef,ĐẢO NGỮ: No sooner Only Should Were Had So Such,ĐẢO NGỮ: No sooner Only Should Were Had So Such - Phần 2,2,3,50,ĐẢO NGỮ- No sooner Only Should Were Had So Such - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+670634fa9c7da21d937f47ef,ĐẢO NGỮ: No sooner Only Should Were Had So Such,ĐẢO NGỮ: No sooner Only Should Were Had So Such - Phần 3,3,3,20,ĐẢO NGỮ- No sooner Only Should Were Had So Such - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6705e4f0947bc780a3580d7a,ĐẢO NGỮ: Never Rarely Seldom Little NOT,ĐẢO NGỮ: Never Rarely Seldom Little NOT - Phần 1,1,2,50,ĐẢO NGỮ- Never Rarely Seldom Little NOT - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6705e4f0947bc780a3580d7a,ĐẢO NGỮ: Never Rarely Seldom Little NOT,ĐẢO NGỮ: Never Rarely Seldom Little NOT - Phần 2,2,2,22,ĐẢO NGỮ- Never Rarely Seldom Little NOT - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6704f4f7932f2f05153521cb,IOE 4 Chia động từ,IOE 4 Chia động từ - Phần 1,1,2,50,IOE 4 Chia động từ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6704f4f7932f2f05153521cb,IOE 4 Chia động từ,IOE 4 Chia động từ - Phần 2,2,2,10,IOE 4 Chia động từ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66fa5c2bd29bb819bda65e80,ĐẠI TỪ - lớp 6 7 8 9,ĐẠI TỪ - lớp 6 7 8 9 - Phần 1,1,3,50,ĐẠI TỪ - lớp 6 7 8 9 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+66fa5c2bd29bb819bda65e80,ĐẠI TỪ - lớp 6 7 8 9,ĐẠI TỪ - lớp 6 7 8 9 - Phần 2,2,3,50,ĐẠI TỪ - lớp 6 7 8 9 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66fa5c2bd29bb819bda65e80,ĐẠI TỪ - lớp 6 7 8 9,ĐẠI TỪ - lớp 6 7 8 9 - Phần 3,3,3,30,ĐẠI TỪ - lớp 6 7 8 9 - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+66fa4ed0ea2968d95b2606c8,ĐẠI TỪ - từ vựng,ĐẠI TỪ - từ vựng - Phần 1,1,2,50,ĐẠI TỪ - từ vựng - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66fa4ed0ea2968d95b2606c8,ĐẠI TỪ - từ vựng,ĐẠI TỪ - từ vựng - Phần 2,2,2,9,ĐẠI TỪ - từ vựng - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66f4b2f85c809f4f0f9e125a,PRE A1 READING chon hinh,PRE A1 READING chon hinh - Phần 1,1,4,50,PRE A1 READING chon hinh - Phan 1.csv,True,False,SINGLE_CHOICE
+66f4b2f85c809f4f0f9e125a,PRE A1 READING chon hinh,PRE A1 READING chon hinh - Phần 2,2,4,50,PRE A1 READING chon hinh - Phan 2.csv,True,False,SINGLE_CHOICE
+66f4b2f85c809f4f0f9e125a,PRE A1 READING chon hinh,PRE A1 READING chon hinh - Phần 3,3,4,50,PRE A1 READING chon hinh - Phan 3.csv,True,False,SINGLE_CHOICE
+66f4b2f85c809f4f0f9e125a,PRE A1 READING chon hinh,PRE A1 READING chon hinh - Phần 4,4,4,9,PRE A1 READING chon hinh - Phan 4.csv,True,False,SINGLE_CHOICE
+66c934d8b5020acadeec06fc,IOE 3 Điền động từ Is are am do does,IOE 3 Điền động từ Is are am do does - Phần 1,1,2,50,IOE 3 Điền động từ Is are am do does - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66c934d8b5020acadeec06fc,IOE 3 Điền động từ Is are am do does,IOE 3 Điền động từ Is are am do does - Phần 2,2,2,42,IOE 3 Điền động từ Is are am do does - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66c30827829456b848372a60,SỰ HÒA HỢP S V,SỰ HÒA HỢP S V - Phần 1,1,2,50,SỰ HÒA HỢP S V - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66c30827829456b848372a60,SỰ HÒA HỢP S V,SỰ HÒA HỢP S V - Phần 2,2,2,35,SỰ HÒA HỢP S V - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66c1a261f04ccf07ed6623ca,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824 - Phần 1,1,2,50,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824 - Phan 1.csv,False,False,WORD_ORDER
+66c1a261f04ccf07ed6623ca,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824 - Phần 2,2,2,40,IOE 5 Sắp xếp các từ thành câu đúng TEST 180824 - Phan 2.csv,False,False,WORD_ORDER
+66bcb9b21b3e7d4ae7110183,MAKE QUESTIONS 2,MAKE QUESTIONS 2,1,1,50,MAKE QUESTIONS 2.csv,False,False,SENTENCE_TRANSFORM
+66a350bca523da4b90954534,CÂU GIÁN TIẾP: Modal Verbs,CÂU GIÁN TIẾP: Modal Verbs,1,1,44,CÂU GIÁN TIẾP- Modal Verbs.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+66a220325de22251baf06af1,CÂU GIÁN TIẾP Thì Tương Lai Đơn,CÂU GIÁN TIẾP Thì Tương Lai Đơn,1,1,18,CÂU GIÁN TIẾP Thì Tương Lai Đơn.csv,False,False,SENTENCE_TRANSFORM
+66a1f3c51889cd0102f5ef94,CÂU GIÁN TIẾP Tương lai gần,CÂU GIÁN TIẾP Tương lai gần,1,1,23,CÂU GIÁN TIẾP Tương lai gần.csv,False,False,SENTENCE_TRANSFORM
+669a77ed6697570c2b7df1b1,CÂU GIÁN TIẾP QKĐ QKTD,CÂU GIÁN TIẾP QKĐ QKTD - Phần 1,1,2,50,CÂU GIÁN TIẾP QKĐ QKTD - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+669a77ed6697570c2b7df1b1,CÂU GIÁN TIẾP QKĐ QKTD,CÂU GIÁN TIẾP QKĐ QKTD - Phần 2,2,2,7,CÂU GIÁN TIẾP QKĐ QKTD - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+669654dfaab9f2375295ffda,READING 3 SGK T1,READING 3 SGK T1,1,1,40,READING 3 SGK T1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+669500b0981898e629b4c8d5,READING 4 SGK T1,READING 4 SGK T1,1,1,13,READING 4 SGK T1.csv,True,False,SENTENCE_TRANSFORM
+66907f48cad3b30e65dd4a43,IOE 3 Sắp xếp chữ cái thành từ có nghĩa,IOE 3 Sắp xếp chữ cái thành từ có nghĩa - Phần 1,1,2,50,IOE 3 Sắp xếp chữ cái thành từ có nghĩa - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66907f48cad3b30e65dd4a43,IOE 3 Sắp xếp chữ cái thành từ có nghĩa,IOE 3 Sắp xếp chữ cái thành từ có nghĩa - Phần 2,2,2,36,IOE 3 Sắp xếp chữ cái thành từ có nghĩa - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+668bfc033682fc62e2299918,REWRITE 1,REWRITE 1,1,1,30,REWRITE 1.csv,False,False,SENTENCE_TRANSFORM
+668530b9dee29dea9b527ed0,IOE 3: TỪ VỰNG,IOE 3: TỪ VỰNG - Phần 1,1,2,50,IOE 3- TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+668530b9dee29dea9b527ed0,IOE 3: TỪ VỰNG,IOE 3: TỪ VỰNG - Phần 2,2,2,29,IOE 3- TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66829210445cae52e1ecfd14,DỊCH CÁC THÌ QKĐ HTHT,DỊCH CÁC THÌ QKĐ HTHT,1,1,14,DỊCH CÁC THÌ QKĐ HTHT.csv,False,False,SENTENCE_TRANSFORM
+668202f3c4fd97deaf51ebbf,LET 1 NGHE và CHỌN lớp 1 2,LET 1 NGHE và CHỌN lớp 1 2 - Phần 1,1,2,50,LET 1 NGHE và CHỌN lớp 1 2 - Phan 1_1.csv,False,True,SINGLE_CHOICE
+668202f3c4fd97deaf51ebbf,LET 1 NGHE và CHỌN lớp 1 2,LET 1 NGHE và CHỌN lớp 1 2 - Phần 2,2,2,50,LET 1 NGHE và CHỌN lớp 1 2 - Phan 2_1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+66767a6f70d34e10286a225d,BỊ ĐÔNG các thì,BỊ ĐÔNG các thì - Phần 1,1,2,50,BỊ ĐÔNG các thì - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66767a6f70d34e10286a225d,BỊ ĐÔNG các thì,BỊ ĐÔNG các thì - Phần 2,2,2,20,BỊ ĐÔNG các thì - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+667239f0ab5a57e10c8bc414,RELATIVE: Tự luận khó,RELATIVE: Tự luận khó - Phần 1,1,2,50,RELATIVE- Tự luận khó - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+667239f0ab5a57e10c8bc414,RELATIVE: Tự luận khó,RELATIVE: Tự luận khó - Phần 2,2,2,15,RELATIVE- Tự luận khó - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+665f28e85b0df105c02d37f8,TRẬT TỰ CỦA TÍNH TỪ,TRẬT TỰ CỦA TÍNH TỪ,1,1,28,TRẬT TỰ CỦA TÍNH TỪ.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+665827d36e951c9e6fc9e294,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ - Phần 1,1,2,50,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ - Phan 1.csv,False,False,WORD_ORDER
+665827d36e951c9e6fc9e294,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ - Phần 2,2,2,40,SẮP XẾP CÁC TỪ THÀNH CÂU - KHÓ - Phan 2.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+66543621048e417bc3a25658,PRE A1 READING TRUE FALSE: lop 1 2,PRE A1 READING TRUE FALSE: lop 1 2 - Phần 1,1,2,50,PRE A1 READING TRUE FALSE- lop 1 2 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+66543621048e417bc3a25658,PRE A1 READING TRUE FALSE: lop 1 2,PRE A1 READING TRUE FALSE: lop 1 2 - Phần 2,2,2,2,PRE A1 READING TRUE FALSE- lop 1 2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+664d3d4eb706e943a1e3493f,B1 READING 1,B1 READING 1,1,1,5,B1 READING 1.csv,False,False,SENTENCE_TRANSFORM
+664bd9f88ed9f5c44f9e3dfe,A1 READING ĐIỀN TỪ/ TRẢ LỜI,A1 READING ĐIỀN TỪ/ TRẢ LỜI,1,1,45,A1 READING ĐIỀN TỪ- TRẢ LỜI.csv,True,False,SENTENCE_TRANSFORM
+6641ecc5b93a0f3ba3fe8ab3,PRE A1 Every day NGHE CHỌN HÌNH,PRE A1 Every day NGHE CHỌN HÌNH - Phần 1,1,4,50,PRE A1 Every day NGHE CHỌN HÌNH - Phan 1.csv,False,True,SINGLE_CHOICE
+6641ecc5b93a0f3ba3fe8ab3,PRE A1 Every day NGHE CHỌN HÌNH,PRE A1 Every day NGHE CHỌN HÌNH - Phần 2,2,4,50,PRE A1 Every day NGHE CHỌN HÌNH - Phan 2.csv,False,True,SINGLE_CHOICE
+6641ecc5b93a0f3ba3fe8ab3,PRE A1 Every day NGHE CHỌN HÌNH,PRE A1 Every day NGHE CHỌN HÌNH - Phần 3,3,4,50,PRE A1 Every day NGHE CHỌN HÌNH - Phan 3.csv,False,True,SINGLE_CHOICE
+6641ecc5b93a0f3ba3fe8ab3,PRE A1 Every day NGHE CHỌN HÌNH,PRE A1 Every day NGHE CHỌN HÌNH - Phần 4,4,4,6,PRE A1 Every day NGHE CHỌN HÌNH - Phan 4.csv,False,True,SINGLE_CHOICE
+6636d007145593772628ec47,PRE A1 READING fill the gap,PRE A1 READING fill the gap,1,1,28,PRE A1 READING fill the gap.csv,True,False,SENTENCE_TRANSFORM
+6634b80191c20d545a9d6e25,"E 3"" LOOK listen and repeat 1","E 3"" LOOK listen and repeat 1 - Phần 1",1,2,50,E 3- LOOK listen and repeat 1 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6634b80191c20d545a9d6e25,"E 3"" LOOK listen and repeat 1","E 3"" LOOK listen and repeat 1 - Phần 2",2,2,48,E 3- LOOK listen and repeat 1 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+662c6198255e2e5882c98a5d,PRE A1 Listening WORD and PREPOSITION 1 - 10,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phần 1,1,3,50,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+662c6198255e2e5882c98a5d,PRE A1 Listening WORD and PREPOSITION 1 - 10,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phần 2,2,3,50,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+662c6198255e2e5882c98a5d,PRE A1 Listening WORD and PREPOSITION 1 - 10,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phần 3,3,3,8,PRE A1 Listening WORD and PREPOSITION 1 - 10 - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+662b5b224337ca3ff4a7c974,A1 USE of ENGLISH TESTS - Reading close,A1 USE of ENGLISH TESTS - Reading close,1,1,24,A1 USE of ENGLISH TESTS - Reading close.csv,False,False,SENTENCE_TRANSFORM
+662a3fd0dbeaa51a1e956fc3,PRE A 1 LISTENING NUMBER and SPELLING,PRE A 1 LISTENING NUMBER and SPELLING,1,1,27,PRE A 1 LISTENING NUMBER and SPELLING.csv,False,True,SENTENCE_TRANSFORM
+6628bddd1290f020b3afcae1,PRE A1 READING YES NO,PRE A1 READING YES NO,1,1,22,PRE A1 READING YES NO.csv,True,False,SENTENCE_TRANSFORM
+661cfb5a7d9dcce084a10981,NGHE và CHÉP câu lớp 5 U1,NGHE và CHÉP câu lớp 5 U1,1,1,18,NGHE và CHÉP câu lớp 5 U1.csv,False,True,SENTENCE_TRANSFORM
+6617a2d46c73e54f24dab53e,NGHE VÀ VIẾT CÂU lớp 1,NGHE VÀ VIẾT CÂU lớp 1,1,1,38,NGHE VÀ VIẾT CÂU lớp 1.csv,False,True,SENTENCE_TRANSFORM
+660bb4fb8939502d60edab2b,CÁC ĐẠI TỪ 1,CÁC ĐẠI TỪ 1 - Phần 1,1,2,50,CÁC ĐẠI TỪ 1 - Phan 1.csv,False,False,SINGLE_CHOICE
+660bb4fb8939502d60edab2b,CÁC ĐẠI TỪ 1,CÁC ĐẠI TỪ 1 - Phần 2,2,2,10,CÁC ĐẠI TỪ 1 - Phan 2.csv,False,False,SINGLE_CHOICE
+660a76fb751fd3f76ac7853b,IOE 4: TỪ VỰNG,IOE 4: TỪ VỰNG - Phần 1,1,2,50,IOE 4- TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+660a76fb751fd3f76ac7853b,IOE 4: TỪ VỰNG,IOE 4: TỪ VỰNG - Phần 2,2,2,50,IOE 4- TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+66014deab8d8586912bb54d9,IOE 7: ĐIỀN TỪ VỰNG,IOE 7: ĐIỀN TỪ VỰNG - Phần 1,1,2,50,IOE 7- ĐIỀN TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+66014deab8d8586912bb54d9,IOE 7: ĐIỀN TỪ VỰNG,IOE 7: ĐIỀN TỪ VỰNG - Phần 2,2,2,40,IOE 7- ĐIỀN TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65fd2fe94254eb5a8046d0d3,CHIA ĐỘNG TỪ ( CÁC THÌ) dễ,CHIA ĐỘNG TỪ ( CÁC THÌ) dễ,1,1,50,CHIA ĐỘNG TỪ ( CÁC THÌ) dễ.csv,False,False,SENTENCE_TRANSFORM
+65f81560a8ffcb6b9d5fec38,IOE 3: QUESTION 1,IOE 3: QUESTION 1 - Phần 1,1,4,50,IOE 3- QUESTION 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65f81560a8ffcb6b9d5fec38,IOE 3: QUESTION 1,IOE 3: QUESTION 1 - Phần 2,2,4,50,IOE 3- QUESTION 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65f81560a8ffcb6b9d5fec38,IOE 3: QUESTION 1,IOE 3: QUESTION 1 - Phần 3,3,4,50,IOE 3- QUESTION 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+65f81560a8ffcb6b9d5fec38,IOE 3: QUESTION 1,IOE 3: QUESTION 1 - Phần 4,4,4,50,IOE 3- QUESTION 1 - Phan 4.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+65e449143a94f0b80f28d5b0,IOE 3 ĐỔI SANG PHỦ ĐỊNH và NGHI VẤN,IOE 3 ĐỔI SANG PHỦ ĐỊNH và NGHI VẤN,1,1,40,IOE 3 ĐỔI SANG PHỦ ĐỊNH và NGHI VẤN.csv,False,False,SENTENCE_TRANSFORM
+65e039ec8e1cc24d9c0a0cc4,IOE 3: Chủ ngữ số ÍT NHIỀU,IOE 3: Chủ ngữ số ÍT NHIỀU - Phần 1,1,3,50,IOE 3- Chủ ngữ số ÍT NHIỀU - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65e039ec8e1cc24d9c0a0cc4,IOE 3: Chủ ngữ số ÍT NHIỀU,IOE 3: Chủ ngữ số ÍT NHIỀU - Phần 2,2,3,50,IOE 3- Chủ ngữ số ÍT NHIỀU - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65e039ec8e1cc24d9c0a0cc4,IOE 3: Chủ ngữ số ÍT NHIỀU,IOE 3: Chủ ngữ số ÍT NHIỀU - Phần 3,3,3,12,IOE 3- Chủ ngữ số ÍT NHIỀU - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65df2a50ecd8877e0ba6569d,SO TOO NEITHER EITHER - EASY,SO TOO NEITHER EITHER - EASY,1,1,9,SO TOO NEITHER EITHER - EASY.csv,False,False,SENTENCE_TRANSFORM
+65dc3fee5fd55cd1a9894080,IOE 5: Sắp xếp các từ thành câu,IOE 5: Sắp xếp các từ thành câu - Phần 1,1,2,50,IOE 5- Sắp xếp các từ thành câu - Phan 1.csv,False,False,WORD_ORDER
+65dc3fee5fd55cd1a9894080,IOE 5: Sắp xếp các từ thành câu,IOE 5: Sắp xếp các từ thành câu - Phần 2,2,2,27,IOE 5- Sắp xếp các từ thành câu - Phan 2.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+65d95dd3f1effc5583d45251,HTTD TLG TLĐ: Dễ,HTTD TLG TLĐ: Dễ - Phần 1,1,3,50,HTTD TLG TLĐ- Dễ - Phan 1.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+65d95dd3f1effc5583d45251,HTTD TLG TLĐ: Dễ,HTTD TLG TLĐ: Dễ - Phần 2,2,3,50,HTTD TLG TLĐ- Dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65d95dd3f1effc5583d45251,HTTD TLG TLĐ: Dễ,HTTD TLG TLĐ: Dễ - Phần 3,3,3,10,HTTD TLG TLĐ- Dễ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 1,1,7,50,TÔNG HỢP ngữ ÂM - Phan 1.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 2,2,7,50,TÔNG HỢP ngữ ÂM - Phan 2.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 3,3,7,50,TÔNG HỢP ngữ ÂM - Phan 3.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 4,4,7,50,TÔNG HỢP ngữ ÂM - Phan 4.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 5,5,7,50,TÔNG HỢP ngữ ÂM - Phan 5.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 6,6,7,50,TÔNG HỢP ngữ ÂM - Phan 6.csv,False,False,SINGLE_CHOICE
+65d5e5e08a52892d7ef672f6,TÔNG HỢP ngữ ÂM,TÔNG HỢP ngữ ÂM - Phần 7,7,7,10,TÔNG HỢP ngữ ÂM - Phan 7.csv,False,False,SINGLE_CHOICE
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 1,1,6,50,ĐỀ THI lớp 2 TỔNG HỢP - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 2,2,6,50,ĐỀ THI lớp 2 TỔNG HỢP - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 3,3,6,50,ĐỀ THI lớp 2 TỔNG HỢP - Phan 3.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 4,4,6,50,ĐỀ THI lớp 2 TỔNG HỢP - Phan 4.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 5,5,6,50,ĐỀ THI lớp 2 TỔNG HỢP - Phan 5.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65d5b10d09ed76ab5c59adf6,ĐỀ THI lớp 2 TỔNG HỢP,ĐỀ THI lớp 2 TỔNG HỢP - Phần 6,6,6,37,ĐỀ THI lớp 2 TỔNG HỢP - Phan 6.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65bf539f91287b20347547eb,SO SÁNH: Sắp xếp dễ,SO SÁNH: Sắp xếp dễ - Phần 1,1,2,50,SO SÁNH- Sắp xếp dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+65bf539f91287b20347547eb,SO SÁNH: Sắp xếp dễ,SO SÁNH: Sắp xếp dễ - Phần 2,2,2,20,SO SÁNH- Sắp xếp dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65bbb4ec87da343ecc172052,TONG HỢP GIỚI TỪ,TONG HỢP GIỚI TỪ - Phần 1,1,5,50,TONG HỢP GIỚI TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65bbb4ec87da343ecc172052,TONG HỢP GIỚI TỪ,TONG HỢP GIỚI TỪ - Phần 2,2,5,50,TONG HỢP GIỚI TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+65bbb4ec87da343ecc172052,TONG HỢP GIỚI TỪ,TONG HỢP GIỚI TỪ - Phần 3,3,5,50,TONG HỢP GIỚI TỪ - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+65bbb4ec87da343ecc172052,TONG HỢP GIỚI TỪ,TONG HỢP GIỚI TỪ - Phần 4,4,5,50,TONG HỢP GIỚI TỪ - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65bbb4ec87da343ecc172052,TONG HỢP GIỚI TỪ,TONG HỢP GIỚI TỪ - Phần 5,5,5,15,TONG HỢP GIỚI TỪ - Phan 5.csv,False,False,SENTENCE_TRANSFORM
+65bbb2095dccb298451fef35,TÍNH TỪ + GIỚI TỪ: TO,TÍNH TỪ + GIỚI TỪ: TO,1,1,23,TÍNH TỪ + GIỚI TỪ- TO.csv,False,False,SENTENCE_TRANSFORM
+65bae5db1e5cc214e9090a49,GIỚI TỪ TỔNG HỢP: TIỂU HỌC,GIỚI TỪ TỔNG HỢP: TIỂU HỌC - Phần 1,1,3,50,GIỚI TỪ TỔNG HỢP- TIỂU HỌC - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65bae5db1e5cc214e9090a49,GIỚI TỪ TỔNG HỢP: TIỂU HỌC,GIỚI TỪ TỔNG HỢP: TIỂU HỌC - Phần 2,2,3,50,GIỚI TỪ TỔNG HỢP- TIỂU HỌC - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+65bae5db1e5cc214e9090a49,GIỚI TỪ TỔNG HỢP: TIỂU HỌC,GIỚI TỪ TỔNG HỢP: TIỂU HỌC - Phần 3,3,3,30,GIỚI TỪ TỔNG HỢP- TIỂU HỌC - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+65b905bd6a7dbe52281fa940,TÍNH TỪ + GIỚI TỪ: OF,TÍNH TỪ + GIỚI TỪ: OF,1,1,23,TÍNH TỪ + GIỚI TỪ- OF.csv,False,False,SENTENCE_TRANSFORM
+65b9048ecc20fe3ad578a0b6,IOE 4: TỪ VỰNG nhìn TV viết TA,IOE 4: TỪ VỰNG nhìn TV viết TA - Phần 1,1,3,50,IOE 4- TỪ VỰNG nhìn TV viết TA - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65b9048ecc20fe3ad578a0b6,IOE 4: TỪ VỰNG nhìn TV viết TA,IOE 4: TỪ VỰNG nhìn TV viết TA - Phần 2,2,3,50,IOE 4- TỪ VỰNG nhìn TV viết TA - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65b9048ecc20fe3ad578a0b6,IOE 4: TỪ VỰNG nhìn TV viết TA,IOE 4: TỪ VỰNG nhìn TV viết TA - Phần 3,3,3,23,IOE 4- TỪ VỰNG nhìn TV viết TA - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+65b8afd180fc9d00c0f0de2c,TÍNH TỪ + GIỚI TỪ: WITH,TÍNH TỪ + GIỚI TỪ: WITH,1,1,27,TÍNH TỪ + GIỚI TỪ- WITH.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65b8ac13080d89d54411c244,TÍNH TỪ + GIỚI TỪ : AT,TÍNH TỪ + GIỚI TỪ : AT,1,1,12,TÍNH TỪ + GIỚI TỪ - AT.csv,False,False,SENTENCE_TRANSFORM
+65b2260f7c6001151aa08467,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ - Phần 1,1,3,50,CHIA ĐỘNG TỪ- HTHT QKĐ HTĐ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65b2260f7c6001151aa08467,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ - Phần 2,2,3,50,CHIA ĐỘNG TỪ- HTHT QKĐ HTĐ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65b2260f7c6001151aa08467,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ,CHIA ĐỘNG TỪ: HTHT QKĐ HTĐ - Phần 3,3,3,50,CHIA ĐỘNG TỪ- HTHT QKĐ HTĐ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+65b2259fd11ed09874346140,CHIA ĐỘNG TỪ: HTTD HTĐ MV,CHIA ĐỘNG TỪ: HTTD HTĐ MV - Phần 1,1,3,50,CHIA ĐỘNG TỪ- HTTD HTĐ MV - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65b2259fd11ed09874346140,CHIA ĐỘNG TỪ: HTTD HTĐ MV,CHIA ĐỘNG TỪ: HTTD HTĐ MV - Phần 2,2,3,50,CHIA ĐỘNG TỪ- HTTD HTĐ MV - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65b2259fd11ed09874346140,CHIA ĐỘNG TỪ: HTTD HTĐ MV,CHIA ĐỘNG TỪ: HTTD HTĐ MV - Phần 3,3,3,46,CHIA ĐỘNG TỪ- HTTD HTĐ MV - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+65b1ccef77c75a880657c904,VICTORY: NGHE LOP 2 dễ,VICTORY: NGHE LOP 2 dễ - Phần 1,1,2,50,VICTORY- NGHE LOP 2 dễ - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65b1ccef77c75a880657c904,VICTORY: NGHE LOP 2 dễ,VICTORY: NGHE LOP 2 dễ - Phần 2,2,2,50,VICTORY- NGHE LOP 2 dễ - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65b0bad0ae42da2e2d219122,CHIA ĐỘNG TỪ: MV,CHIA ĐỘNG TỪ: MV,1,1,45,CHIA ĐỘNG TỪ- MV.csv,False,False,SENTENCE_TRANSFORM
+65b06bd29ce19e0430cf4d48,CHIA ĐỘNG TỪ: Thì HTHT,CHIA ĐỘNG TỪ: Thì HTHT,1,1,50,CHIA ĐỘNG TỪ- Thì HTHT.csv,False,False,SENTENCE_TRANSFORM
+65b060690a6eac9c34368088,CHIA ĐỘNG TỪ: Thì HTTD,CHIA ĐỘNG TỪ: Thì HTTD - Phần 1,1,2,50,CHIA ĐỘNG TỪ- Thì HTTD - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65b060690a6eac9c34368088,CHIA ĐỘNG TỪ: Thì HTTD,CHIA ĐỘNG TỪ: Thì HTTD - Phần 2,2,2,30,CHIA ĐỘNG TỪ- Thì HTTD - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65af71ffdd67abd63ec50fe2,CHIA ĐỘNG TỪ: Thì QKĐ,CHIA ĐỘNG TỪ: Thì QKĐ - Phần 1,1,2,50,CHIA ĐỘNG TỪ- Thì QKĐ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65af71ffdd67abd63ec50fe2,CHIA ĐỘNG TỪ: Thì QKĐ,CHIA ĐỘNG TỪ: Thì QKĐ - Phần 2,2,2,30,CHIA ĐỘNG TỪ- Thì QKĐ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65af68e03be4751954b88ad7,CHIA ĐỘNG TỪ: THÌ HTĐ,CHIA ĐỘNG TỪ: THÌ HTĐ - Phần 1,1,2,50,CHIA ĐỘNG TỪ- THÌ HTĐ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65af68e03be4751954b88ad7,CHIA ĐỘNG TỪ: THÌ HTĐ,CHIA ĐỘNG TỪ: THÌ HTĐ - Phần 2,2,2,30,CHIA ĐỘNG TỪ- THÌ HTĐ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65ae319c12b39545e41f23d1,IOE 4: CORRECT and INCORRECT,IOE 4: CORRECT and INCORRECT - Phần 1,1,2,50,IOE 4- CORRECT and INCORRECT - Phan 1.csv,False,False,SINGLE_CHOICE
+65ae319c12b39545e41f23d1,IOE 4: CORRECT and INCORRECT,IOE 4: CORRECT and INCORRECT - Phần 2,2,2,30,IOE 4- CORRECT and INCORRECT - Phan 2.csv,False,False,SINGLE_CHOICE
+65a8708f2a5529aaf96a475c,REWRITE 789: Sắp xếp từ và chọn đáp án,REWRITE 789: Sắp xếp từ và chọn đáp án - Phần 1,1,2,50,REWRITE 789- Sắp xếp từ và chọn đáp án - Phan 1.csv,False,False,WORD_ORDER
+65a8708f2a5529aaf96a475c,REWRITE 789: Sắp xếp từ và chọn đáp án,REWRITE 789: Sắp xếp từ và chọn đáp án - Phần 2,2,2,50,REWRITE 789- Sắp xếp từ và chọn đáp án - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65a5e4caec7f17428c75165e,FF 1: Lớp 1,FF 1: Lớp 1 - Phần 1,1,3,50,FF 1- Lớp 1 - Phan 1.csv,True,True,SINGLE_CHOICE | WORD_ORDER
+65a5e4caec7f17428c75165e,FF 1: Lớp 1,FF 1: Lớp 1 - Phần 2,2,3,50,FF 1- Lớp 1 - Phan 2.csv,True,True,SINGLE_CHOICE | WORD_ORDER
+65a5e4caec7f17428c75165e,FF 1: Lớp 1,FF 1: Lớp 1 - Phần 3,3,3,26,FF 1- Lớp 1 - Phan 3.csv,False,True,SINGLE_CHOICE
+65a5034c416e4b1df8e90e61,Động Từ: BQT N. Thể và Quá Khứ,Động Từ: BQT N. Thể và Quá Khứ - Phần 1,1,2,50,Động Từ- BQT N. Thể và Quá Khứ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+65a5034c416e4b1df8e90e61,Động Từ: BQT N. Thể và Quá Khứ,Động Từ: BQT N. Thể và Quá Khứ - Phần 2,2,2,23,Động Từ- BQT N. Thể và Quá Khứ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65a1d907b1f183295a1e8c0d,LỚP 1 2 Sắp xếp các từ thành câu,LỚP 1 2 Sắp xếp các từ thành câu - Phần 1,1,2,50,LỚP 1 2 Sắp xếp các từ thành câu - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+65a1d907b1f183295a1e8c0d,LỚP 1 2 Sắp xếp các từ thành câu,LỚP 1 2 Sắp xếp các từ thành câu - Phần 2,2,2,25,LỚP 1 2 Sắp xếp các từ thành câu - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 1,1,6,50,CÁC THÌ- Dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 2,2,6,50,CÁC THÌ- Dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 3,3,6,50,CÁC THÌ- Dễ - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 4,4,6,50,CÁC THÌ- Dễ - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 5,5,6,50,CÁC THÌ- Dễ - Phan 5.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+659bd5c018fdb7673e836aa5,CÁC THÌ: Dễ,CÁC THÌ: Dễ - Phần 6,6,6,38,CÁC THÌ- Dễ - Phan 6.csv,False,False,SINGLE_CHOICE
+659663f2ff3fff1131bab7e9,TAG QUESTIONS: CÁC THÌ CHỌN dễ,TAG QUESTIONS: CÁC THÌ CHỌN dễ - Phần 1,1,2,50,TAG QUESTIONS- CÁC THÌ CHỌN dễ - Phan 1.csv,False,False,SINGLE_CHOICE
+659663f2ff3fff1131bab7e9,TAG QUESTIONS: CÁC THÌ CHỌN dễ,TAG QUESTIONS: CÁC THÌ CHỌN dễ - Phần 2,2,2,50,TAG QUESTIONS- CÁC THÌ CHỌN dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+659404651b6ff72120dd86a8,THÌ HIỆN TẠI HOÀN THÀNH dễ,THÌ HIỆN TẠI HOÀN THÀNH dễ - Phần 1,1,2,50,THÌ HIỆN TẠI HOÀN THÀNH dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+659404651b6ff72120dd86a8,THÌ HIỆN TẠI HOÀN THÀNH dễ,THÌ HIỆN TẠI HOÀN THÀNH dễ - Phần 2,2,2,50,THÌ HIỆN TẠI HOÀN THÀNH dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65896756e009d8bead87ecd6,MODAL VERBS: Dễ,MODAL VERBS: Dễ - Phần 1,1,3,50,MODAL VERBS- Dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+65896756e009d8bead87ecd6,MODAL VERBS: Dễ,MODAL VERBS: Dễ - Phần 2,2,3,50,MODAL VERBS- Dễ - Phan 2.csv,False,False,SINGLE_CHOICE
+65896756e009d8bead87ecd6,MODAL VERBS: Dễ,MODAL VERBS: Dễ - Phần 3,3,3,8,MODAL VERBS- Dễ - Phan 3.csv,False,False,SINGLE_CHOICE
+658966e9c1c733bcfdbc6059,THÌ TƯƠNG LAI GẦN: Dễ,THÌ TƯƠNG LAI GẦN: Dễ,1,1,45,THÌ TƯƠNG LAI GẦN- Dễ.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+658966adc1c7337826bc6036,THÌ TƯƠNG LAI ĐƠN: Dễ,THÌ TƯƠNG LAI ĐƠN: Dễ - Phần 1,1,2,50,THÌ TƯƠNG LAI ĐƠN- Dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+658966adc1c7337826bc6036,THÌ TƯƠNG LAI ĐƠN: Dễ,THÌ TƯƠNG LAI ĐƠN: Dễ - Phần 2,2,2,21,THÌ TƯƠNG LAI ĐƠN- Dễ - Phan 2.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+6589666be009d8132887ec4a,THÌ QUÁ KHỨ ĐƠN: Dễ,THÌ QUÁ KHỨ ĐƠN: Dễ - Phần 1,1,2,50,THÌ QUÁ KHỨ ĐƠN- Dễ - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6589666be009d8132887ec4a,THÌ QUÁ KHỨ ĐƠN: Dễ,THÌ QUÁ KHỨ ĐƠN: Dễ - Phần 2,2,2,10,THÌ QUÁ KHỨ ĐƠN- Dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6589660e9e81d8035bdbf336,THÌ HIỆN TẠI TIẾP DIỄN: Dễ,THÌ HIỆN TẠI TIẾP DIỄN: Dễ - Phần 1,1,2,50,THÌ HIỆN TẠI TIẾP DIỄN- Dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6589660e9e81d8035bdbf336,THÌ HIỆN TẠI TIẾP DIỄN: Dễ,THÌ HIỆN TẠI TIẾP DIỄN: Dễ - Phần 2,2,2,20,THÌ HIỆN TẠI TIẾP DIỄN- Dễ - Phan 2.csv,False,False,SINGLE_CHOICE
+6589656f9e81d854f0dbf262,THÌ HIỆN TẠI ĐƠN: Dễ,THÌ HIỆN TẠI ĐƠN: Dễ - Phần 1,1,2,50,THÌ HIỆN TẠI ĐƠN- Dễ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6589656f9e81d854f0dbf262,THÌ HIỆN TẠI ĐƠN: Dễ,THÌ HIỆN TẠI ĐƠN: Dễ - Phần 2,2,2,30,THÌ HIỆN TẠI ĐƠN- Dễ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65893c55c1c7335a97bc3306,IOE 8 TỪ VỰNG,IOE 8 TỪ VỰNG - Phần 1,1,2,50,IOE 8 TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65893c55c1c7335a97bc3306,IOE 8 TỪ VỰNG,IOE 8 TỪ VỰNG - Phần 2,2,2,35,IOE 8 TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6587fc130a83f0c903f1d64f,VERBS: Viết dạng đúng của ĐỘNG TỪ,VERBS: Viết dạng đúng của ĐỘNG TỪ - Phần 1,1,3,50,VERBS- Viết dạng đúng của ĐỘNG TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6587fc130a83f0c903f1d64f,VERBS: Viết dạng đúng của ĐỘNG TỪ,VERBS: Viết dạng đúng của ĐỘNG TỪ - Phần 2,2,3,50,VERBS- Viết dạng đúng của ĐỘNG TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6587fc130a83f0c903f1d64f,VERBS: Viết dạng đúng của ĐỘNG TỪ,VERBS: Viết dạng đúng của ĐỘNG TỪ - Phần 3,3,3,20,VERBS- Viết dạng đúng của ĐỘNG TỪ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+6587fa7cd9ed8712360660d4,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phần 1,1,3,50,FF1- NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6587fa7cd9ed8712360660d4,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phần 2,2,3,50,FF1- NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6587fa7cd9ed8712360660d4,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10,FF1: NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phần 3,3,3,17,FF1- NGHE NHÌN và Viết lớp 34 Unit 8-10 - Phan 3.csv,True,True,SINGLE_CHOICE
+6587e10f9376dc37a3473249,CHIA ĐỘNG TỪ: Thì TLG,CHIA ĐỘNG TỪ: Thì TLG,1,1,3,CHIA ĐỘNG TỪ- Thì TLG.csv,False,False,WORD_ORDER
+6587dfa4ab368e86d4bc8834,THÌ QUÁ KHỨ TIẾP DIỄN,THÌ QUÁ KHỨ TIẾP DIỄN,1,1,1,THÌ QUÁ KHỨ TIẾP DIỄN.csv,False,False,SINGLE_CHOICE
+657e4da927dedc24dbfb7be6,IOE 7 TỪ VỰNG nhìn TV viết TA,IOE 7 TỪ VỰNG nhìn TV viết TA - Phần 1,1,2,50,IOE 7 TỪ VỰNG nhìn TV viết TA - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+657e4da927dedc24dbfb7be6,IOE 7 TỪ VỰNG nhìn TV viết TA,IOE 7 TỪ VỰNG nhìn TV viết TA - Phần 2,2,2,6,IOE 7 TỪ VỰNG nhìn TV viết TA - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+657c156de6b85b260abc3361,TÍNH TỪ: ING - ED,TÍNH TỪ: ING - ED - Phần 1,1,2,50,TÍNH TỪ- ING - ED - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+657c156de6b85b260abc3361,TÍNH TỪ: ING - ED,TÍNH TỪ: ING - ED - Phần 2,2,2,40,TÍNH TỪ- ING - ED - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 1,1,8,50,THÌ QKĐ và HTHT - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 2,2,8,50,THÌ QKĐ và HTHT - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 3,3,8,50,THÌ QKĐ và HTHT - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 4,4,8,50,THÌ QKĐ và HTHT - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 5,5,8,50,THÌ QKĐ và HTHT - Phan 5.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 6,6,8,50,THÌ QKĐ và HTHT - Phan 6.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 7,7,8,50,THÌ QKĐ và HTHT - Phan 7.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+657ae4ae0f4ce1c1843444af,THÌ QKĐ và HTHT,THÌ QKĐ và HTHT - Phần 8,8,8,2,THÌ QKĐ và HTHT - Phan 8.csv,True,False,SENTENCE_TRANSFORM
+657a6de856e2fb8323fc4c23,PRE A1: Listen and Choose đáp án daily activity,PRE A1: Listen and Choose đáp án daily activity - Phần 1,1,2,50,PRE A1- Listen and Choose đáp án daily activity - Phan 1.csv,False,True,SINGLE_CHOICE
+657a6de856e2fb8323fc4c23,PRE A1: Listen and Choose đáp án daily activity,PRE A1: Listen and Choose đáp án daily activity - Phần 2,2,2,17,PRE A1- Listen and Choose đáp án daily activity - Phan 2.csv,False,True,SINGLE_CHOICE
+6577c3b5ac676c2fa9f0ef3b,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024 - Phần 1,1,3,50,IOE 3- HÌNH ẢNH THI THỬ 2023 -2024 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6577c3b5ac676c2fa9f0ef3b,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024 - Phần 2,2,3,50,IOE 3- HÌNH ẢNH THI THỬ 2023 -2024 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6577c3b5ac676c2fa9f0ef3b,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024,IOE 3: HÌNH ẢNH THI THỬ 2023 -2024 - Phần 3,3,3,41,IOE 3- HÌNH ẢNH THI THỬ 2023 -2024 - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6576d1f131e07e4057bd4ffa,IOE 5: CORRECT and INCORRECT,IOE 5: CORRECT and INCORRECT - Phần 1,1,2,50,IOE 5- CORRECT and INCORRECT - Phan 1.csv,False,False,SINGLE_CHOICE
+6576d1f131e07e4057bd4ffa,IOE 5: CORRECT and INCORRECT,IOE 5: CORRECT and INCORRECT - Phần 2,2,2,17,IOE 5- CORRECT and INCORRECT - Phan 2.csv,False,False,SINGLE_CHOICE
+657028bc5addc8a0be09bbc2,IOE 3: INCORRECT and CORRECT sentence,IOE 3: INCORRECT and CORRECT sentence - Phần 1,1,2,50,IOE 3- INCORRECT and CORRECT sentence - Phan 1.csv,False,False,SINGLE_CHOICE
+657028bc5addc8a0be09bbc2,IOE 3: INCORRECT and CORRECT sentence,IOE 3: INCORRECT and CORRECT sentence - Phần 2,2,2,40,IOE 3- INCORRECT and CORRECT sentence - Phan 2.csv,False,False,SINGLE_CHOICE
+656945a1445b6bd493242c51,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3 - Phần 1,1,4,50,FF1 U 1 - U 8 NGHE dễ- lớp 1 2 3 - Phan 1.csv,False,True,SINGLE_CHOICE
+656945a1445b6bd493242c51,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3 - Phần 2,2,4,50,FF1 U 1 - U 8 NGHE dễ- lớp 1 2 3 - Phan 2.csv,True,True,SINGLE_CHOICE
+656945a1445b6bd493242c51,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3 - Phần 3,3,4,50,FF1 U 1 - U 8 NGHE dễ- lớp 1 2 3 - Phan 3.csv,False,True,SINGLE_CHOICE
+656945a1445b6bd493242c51,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3,FF1 U 1 - U 8 NGHE dễ: lớp 1 2 3 - Phần 4,4,4,23,FF1 U 1 - U 8 NGHE dễ- lớp 1 2 3 - Phan 4.csv,False,True,SINGLE_CHOICE
+6568cf209c53e15444a8ad7b,FF 1: HOC TỪ VỰNG lớp 1,FF 1: HOC TỪ VỰNG lớp 1,1,1,1,FF 1- HOC TỪ VỰNG lớp 1.csv,False,False,SENTENCE_TRANSFORM
+6565ab61b9aada9e0f4f3cb3,IOE 3: ĐIỀN TỪ Huyen,IOE 3: ĐIỀN TỪ Huyen - Phần 1,1,4,50,IOE 3- ĐIỀN TỪ Huyen - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6565ab61b9aada9e0f4f3cb3,IOE 3: ĐIỀN TỪ Huyen,IOE 3: ĐIỀN TỪ Huyen - Phần 2,2,4,50,IOE 3- ĐIỀN TỪ Huyen - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6565ab61b9aada9e0f4f3cb3,IOE 3: ĐIỀN TỪ Huyen,IOE 3: ĐIỀN TỪ Huyen - Phần 3,3,4,50,IOE 3- ĐIỀN TỪ Huyen - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+6565ab61b9aada9e0f4f3cb3,IOE 3: ĐIỀN TỪ Huyen,IOE 3: ĐIỀN TỪ Huyen - Phần 4,4,4,40,IOE 3- ĐIỀN TỪ Huyen - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+656051637a9847c1432e5a61,NGHE FF1: Điền từ 2,NGHE FF1: Điền từ 2 - Phần 1,1,2,50,NGHE FF1- Điền từ 2 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+656051637a9847c1432e5a61,NGHE FF1: Điền từ 2,NGHE FF1: Điền từ 2 - Phần 2,2,2,39,NGHE FF1- Điền từ 2 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+655ff3dc283447469c0c110d,NGHE FF1: Điền từ 1,NGHE FF1: Điền từ 1 - Phần 1,1,3,50,NGHE FF1- Điền từ 1 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+655ff3dc283447469c0c110d,NGHE FF1: Điền từ 1,NGHE FF1: Điền từ 1 - Phần 2,2,3,50,NGHE FF1- Điền từ 1 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+655ff3dc283447469c0c110d,NGHE FF1: Điền từ 1,NGHE FF1: Điền từ 1 - Phần 3,3,3,11,NGHE FF1- Điền từ 1 - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+655db448639d6954d191ba3e,BỊ ĐỘNG: MV HTĐ HTTD,BỊ ĐỘNG: MV HTĐ HTTD - Phần 1,1,4,50,BỊ ĐỘNG- MV HTĐ HTTD - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+655db448639d6954d191ba3e,BỊ ĐỘNG: MV HTĐ HTTD,BỊ ĐỘNG: MV HTĐ HTTD - Phần 2,2,4,50,BỊ ĐỘNG- MV HTĐ HTTD - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+655db448639d6954d191ba3e,BỊ ĐỘNG: MV HTĐ HTTD,BỊ ĐỘNG: MV HTĐ HTTD - Phần 3,3,4,50,BỊ ĐỘNG- MV HTĐ HTTD - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+655db448639d6954d191ba3e,BỊ ĐỘNG: MV HTĐ HTTD,BỊ ĐỘNG: MV HTĐ HTTD - Phần 4,4,4,33,BỊ ĐỘNG- MV HTĐ HTTD - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6548526c6dd101778661082e,TA MỚI: Nghe UNIT 4,TA MỚI: Nghe UNIT 4 - Phần 1,1,2,50,TA MỚI- Nghe UNIT 4 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6548526c6dd101778661082e,TA MỚI: Nghe UNIT 4,TA MỚI: Nghe UNIT 4 - Phần 2,2,2,31,TA MỚI- Nghe UNIT 4 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6545f8dc8e125897e6735dc0,CÁCH NÓI TIME,CÁCH NÓI TIME - Phần 1,1,3,50,CÁCH NÓI TIME - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6545f8dc8e125897e6735dc0,CÁCH NÓI TIME,CÁCH NÓI TIME - Phần 2,2,3,50,CÁCH NÓI TIME - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6545f8dc8e125897e6735dc0,CÁCH NÓI TIME,CÁCH NÓI TIME - Phần 3,3,3,10,CÁCH NÓI TIME - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 1,1,6,50,QUESTIONS- Tiểu học - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 2,2,6,50,QUESTIONS- Tiểu học - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 3,3,6,50,QUESTIONS- Tiểu học - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 4,4,6,50,QUESTIONS- Tiểu học - Phan 4.csv,False,False,SINGLE_CHOICE
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 5,5,6,50,QUESTIONS- Tiểu học - Phan 5.csv,False,False,SINGLE_CHOICE
+653f81889138d161a98bd37b,QUESTIONS: Tiểu học,QUESTIONS: Tiểu học - Phần 6,6,6,48,QUESTIONS- Tiểu học - Phan 6.csv,False,False,SINGLE_CHOICE
+653cbdf50a779bb0af9c94dc,CÂU GIÁN TIẾP: Quá Khứ tiếp Diễn,CÂU GIÁN TIẾP: Quá Khứ tiếp Diễn,1,1,20,CÂU GIÁN TIẾP- Quá Khứ tiếp Diễn.csv,False,False,SENTENCE_TRANSFORM
+653a29be002a5c2e1b138477,IOE 5: Xác định lỗi sai và sửa,IOE 5: Xác định lỗi sai và sửa - Phần 1,1,3,50,IOE 5- Xác định lỗi sai và sửa - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+653a29be002a5c2e1b138477,IOE 5: Xác định lỗi sai và sửa,IOE 5: Xác định lỗi sai và sửa - Phần 2,2,3,50,IOE 5- Xác định lỗi sai và sửa - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+653a29be002a5c2e1b138477,IOE 5: Xác định lỗi sai và sửa,IOE 5: Xác định lỗi sai và sửa - Phần 3,3,3,8,IOE 5- Xác định lỗi sai và sửa - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+653a127ab1758e7fdc5393e8,CÂU GIÁN TIẾP: QUÁ KHỨ ĐƠN,CÂU GIÁN TIẾP: QUÁ KHỨ ĐƠN,1,1,37,CÂU GIÁN TIẾP- QUÁ KHỨ ĐƠN.csv,False,False,SENTENCE_TRANSFORM
+6538c3e140f2cb436d883fca,IOE 3 HUYỆN: Xác định lỗi sai và sửa,IOE 3 HUYỆN: Xác định lỗi sai và sửa - Phần 1,1,3,50,IOE 3 HUYỆN- Xác định lỗi sai và sửa - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6538c3e140f2cb436d883fca,IOE 3 HUYỆN: Xác định lỗi sai và sửa,IOE 3 HUYỆN: Xác định lỗi sai và sửa - Phần 2,2,3,50,IOE 3 HUYỆN- Xác định lỗi sai và sửa - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6538c3e140f2cb436d883fca,IOE 3 HUYỆN: Xác định lỗi sai và sửa,IOE 3 HUYỆN: Xác định lỗi sai và sửa - Phần 3,3,3,50,IOE 3 HUYỆN- Xác định lỗi sai và sửa - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65378a37da7e17bdd6c9db48,CÂU GIÁN TIẾP: CÁC THÌ,CÂU GIÁN TIẾP: CÁC THÌ - Phần 1,1,3,50,CÂU GIÁN TIẾP- CÁC THÌ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+65378a37da7e17bdd6c9db48,CÂU GIÁN TIẾP: CÁC THÌ,CÂU GIÁN TIẾP: CÁC THÌ - Phần 2,2,3,50,CÂU GIÁN TIẾP- CÁC THÌ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65378a37da7e17bdd6c9db48,CÂU GIÁN TIẾP: CÁC THÌ,CÂU GIÁN TIẾP: CÁC THÌ - Phần 3,3,3,5,CÂU GIÁN TIẾP- CÁC THÌ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+6536290e21319c8274182de4,CÂU GIÁN TIẾP: HIỆN TẠI HOÀN THÀNH,CÂU GIÁN TIẾP: HIỆN TẠI HOÀN THÀNH,1,1,40,CÂU GIÁN TIẾP- HIỆN TẠI HOÀN THÀNH.csv,False,False,SENTENCE_TRANSFORM
+65361d65c13d1736797d5098,CÂU GIÁN TIẾP: HIỆN TẠI ĐƠN,CÂU GIÁN TIẾP: HIỆN TẠI ĐƠN,1,1,50,CÂU GIÁN TIẾP- HIỆN TẠI ĐƠN.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6531e88a4f361bd036ea1ca4,IOE 4: Xác định lỗi sai và sửa,IOE 4: Xác định lỗi sai và sửa - Phần 1,1,4,50,IOE 4- Xác định lỗi sai và sửa - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6531e88a4f361bd036ea1ca4,IOE 4: Xác định lỗi sai và sửa,IOE 4: Xác định lỗi sai và sửa - Phần 2,2,4,50,IOE 4- Xác định lỗi sai và sửa - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6531e88a4f361bd036ea1ca4,IOE 4: Xác định lỗi sai và sửa,IOE 4: Xác định lỗi sai và sửa - Phần 3,3,4,50,IOE 4- Xác định lỗi sai và sửa - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6531e88a4f361bd036ea1ca4,IOE 4: Xác định lỗi sai và sửa,IOE 4: Xác định lỗi sai và sửa - Phần 4,4,4,30,IOE 4- Xác định lỗi sai và sửa - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6531d12eadf51a67c4f4113b,IOE 3: Xác định lỗi sai và sửa,IOE 3: Xác định lỗi sai và sửa,1,1,50,IOE 3- Xác định lỗi sai và sửa.csv,False,False,SENTENCE_TRANSFORM
+65307b2309178d346e5735b2,IOE 4: Hình ảnh thi thử 2023 2024,IOE 4: Hình ảnh thi thử 2023 2024 - Phần 1,1,4,50,IOE 4- Hình ảnh thi thử 2023 2024 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+65307b2309178d346e5735b2,IOE 4: Hình ảnh thi thử 2023 2024,IOE 4: Hình ảnh thi thử 2023 2024 - Phần 2,2,4,50,IOE 4- Hình ảnh thi thử 2023 2024 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+65307b2309178d346e5735b2,IOE 4: Hình ảnh thi thử 2023 2024,IOE 4: Hình ảnh thi thử 2023 2024 - Phần 3,3,4,50,IOE 4- Hình ảnh thi thử 2023 2024 - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+65307b2309178d346e5735b2,IOE 4: Hình ảnh thi thử 2023 2024,IOE 4: Hình ảnh thi thử 2023 2024 - Phần 4,4,4,24,IOE 4- Hình ảnh thi thử 2023 2024 - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+652e4dd144bead5ae01d14ac,BỊ ĐỘNG: MODAL VERBS,BỊ ĐỘNG: MODAL VERBS - Phần 1,1,2,50,BỊ ĐỘNG- MODAL VERBS - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+652e4dd144bead5ae01d14ac,BỊ ĐỘNG: MODAL VERBS,BỊ ĐỘNG: MODAL VERBS - Phần 2,2,2,50,BỊ ĐỘNG- MODAL VERBS - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+652e410044bead12e41d094f,BỊ ĐỘNG: Tương Lai Đơn,BỊ ĐỘNG: Tương Lai Đơn,1,1,40,BỊ ĐỘNG- Tương Lai Đơn.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+652e3d30dab0de230bdf35bd,BỊ ĐỘNG: Quá Khứ Tiếp Diễn,BỊ ĐỘNG: Quá Khứ Tiếp Diễn,1,1,31,BỊ ĐỘNG- Quá Khứ Tiếp Diễn.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+652e37f0ad2a2e6fa41325a4,BỊ ĐỘNG: Quá Khứ Đơn,BỊ ĐỘNG: Quá Khứ Đơn,1,1,20,BỊ ĐỘNG- Quá Khứ Đơn.csv,False,False,SENTENCE_TRANSFORM
+652e32f1c5087dbab020c3f6,BỊ ĐỘNG: Hiện Tại Hòan Thành,BỊ ĐỘNG: Hiện Tại Hòan Thành,1,1,30,BỊ ĐỘNG- Hiện Tại Hòan Thành.csv,False,False,SENTENCE_TRANSFORM
+652df90e345f1f135dc6db83,BỊ ĐỘNG: Hiện tại Tiếp diễn,BỊ ĐỘNG: Hiện tại Tiếp diễn,1,1,50,BỊ ĐỘNG- Hiện tại Tiếp diễn.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+652a9a3408f4224fae277d25,BỊ ĐỘNG: Hiện tại đơn,BỊ ĐỘNG: Hiện tại đơn,1,1,50,BỊ ĐỘNG- Hiện tại đơn.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65249b41174773c6bb1c6475,Odd one OUT : LET 1,Odd one OUT : LET 1 - Phần 1,1,3,50,Odd one OUT - LET 1 - Phan 1.csv,False,False,SINGLE_CHOICE
+65249b41174773c6bb1c6475,Odd one OUT : LET 1,Odd one OUT : LET 1 - Phần 2,2,3,50,Odd one OUT - LET 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65249b41174773c6bb1c6475,Odd one OUT : LET 1,Odd one OUT : LET 1 - Phần 3,3,3,40,Odd one OUT - LET 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 1,1,6,50,TONG HOP WISH + DK 1 2 84 cau truc - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 2,2,6,50,TONG HOP WISH + DK 1 2 84 cau truc - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 3,3,6,50,TONG HOP WISH + DK 1 2 84 cau truc - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 4,4,6,50,TONG HOP WISH + DK 1 2 84 cau truc - Phan 4.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 5,5,6,50,TONG HOP WISH + DK 1 2 84 cau truc - Phan 5.csv,False,False,WORD_ORDER
+651ec8843088c92ef08ba6ad,TONG HOP WISH + DK 1 2 84 cau truc,TONG HOP WISH + DK 1 2 84 cau truc - Phần 6,6,6,41,TONG HOP WISH + DK 1 2 84 cau truc - Phan 6.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6519254d9a0ef72818c9849b,SKILL 1: ACTION VERBS,SKILL 1: ACTION VERBS - Phần 1,1,2,50,SKILL 1- ACTION VERBS - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6519254d9a0ef72818c9849b,SKILL 1: ACTION VERBS,SKILL 1: ACTION VERBS - Phần 2,2,2,50,SKILL 1- ACTION VERBS - Phan 2.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+65155c1231260874ea18607e,SO SANH TONG HOP,SO SANH TONG HOP - Phần 1,1,4,50,SO SANH TONG HOP - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65155c1231260874ea18607e,SO SANH TONG HOP,SO SANH TONG HOP - Phần 2,2,4,50,SO SANH TONG HOP - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65155c1231260874ea18607e,SO SANH TONG HOP,SO SANH TONG HOP - Phần 3,3,4,50,SO SANH TONG HOP - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+65155c1231260874ea18607e,SO SANH TONG HOP,SO SANH TONG HOP - Phần 4,4,4,44,SO SANH TONG HOP - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+6507badd9f6600eddb4af651,IOE 7 TRƯỜNG: GHÉP TỪ THÀNH CÂU,IOE 7 TRƯỜNG: GHÉP TỪ THÀNH CÂU - Phần 1,1,2,50,IOE 7 TRƯỜNG- GHÉP TỪ THÀNH CÂU - Phan 1.csv,False,False,WORD_ORDER
+6507badd9f6600eddb4af651,IOE 7 TRƯỜNG: GHÉP TỪ THÀNH CÂU,IOE 7 TRƯỜNG: GHÉP TỪ THÀNH CÂU - Phần 2,2,2,28,IOE 7 TRƯỜNG- GHÉP TỪ THÀNH CÂU - Phan 2.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+65026b49e4c85181926333db,READING 67,READING 67 - Phần 1,1,4,50,READING 67 - Phan 1.csv,False,False,SINGLE_CHOICE
+65026b49e4c85181926333db,READING 67,READING 67 - Phần 2,2,4,50,READING 67 - Phan 2.csv,False,False,SINGLE_CHOICE
+65026b49e4c85181926333db,READING 67,READING 67 - Phần 3,3,4,50,READING 67 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65026b49e4c85181926333db,READING 67,READING 67 - Phần 4,4,4,10,READING 67 - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 1,1,10,50,ĐÊ TỔNG HOP - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 2,2,10,50,ĐÊ TỔNG HOP - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 3,3,10,50,ĐÊ TỔNG HOP - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 4,4,10,50,ĐÊ TỔNG HOP - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 5,5,10,50,ĐÊ TỔNG HOP - Phan 5.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 6,6,10,50,ĐÊ TỔNG HOP - Phan 6.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 7,7,10,50,ĐÊ TỔNG HOP - Phan 7.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 8,8,10,50,ĐÊ TỔNG HOP - Phan 8.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 9,9,10,50,ĐÊ TỔNG HOP - Phan 9.csv,False,False,SENTENCE_TRANSFORM
+65006dd45febb020069f628e,ĐÊ TỔNG HOP,ĐÊ TỔNG HOP - Phần 10,10,10,50,ĐÊ TỔNG HOP - Phan 10.csv,False,False,SENTENCE_TRANSFORM
+64ff18428c8ca580a2ead570,READING 3,READING 3 - Phần 1,1,5,50,READING 3 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64ff18428c8ca580a2ead570,READING 3,READING 3 - Phần 2,2,5,50,READING 3 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64ff18428c8ca580a2ead570,READING 3,READING 3 - Phần 3,3,5,50,READING 3 - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64ff18428c8ca580a2ead570,READING 3,READING 3 - Phần 4,4,5,50,READING 3 - Phan 4.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64ff18428c8ca580a2ead570,READING 3,READING 3 - Phần 5,5,5,42,READING 3 - Phan 5.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+64fd0b1ae89ae90c0cc4870b,CHỌN TỪ và NGHE,CHỌN TỪ và NGHE - Phần 1,1,3,50,CHỌN TỪ và NGHE - Phan 1.csv,True,False,SINGLE_CHOICE
+64fd0b1ae89ae90c0cc4870b,CHỌN TỪ và NGHE,CHỌN TỪ và NGHE - Phần 2,2,3,50,CHỌN TỪ và NGHE - Phan 2.csv,True,False,SINGLE_CHOICE
+64fd0b1ae89ae90c0cc4870b,CHỌN TỪ và NGHE,CHỌN TỪ và NGHE - Phần 3,3,3,43,CHỌN TỪ và NGHE - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+64fc2e4fe34433053573f031,GET READY: ĐIỀN TỪ,GET READY: ĐIỀN TỪ - Phần 1,1,3,50,GET READY- ĐIỀN TỪ - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+64fc2e4fe34433053573f031,GET READY: ĐIỀN TỪ,GET READY: ĐIỀN TỪ - Phần 2,2,3,50,GET READY- ĐIỀN TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fc2e4fe34433053573f031,GET READY: ĐIỀN TỪ,GET READY: ĐIỀN TỪ - Phần 3,3,3,45,GET READY- ĐIỀN TỪ - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 1,1,10,50,STARTERS TỔNG HỢP - Phan 1.csv,True,False,SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 2,2,10,50,STARTERS TỔNG HỢP - Phan 2.csv,True,False,SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 3,3,10,50,STARTERS TỔNG HỢP - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 4,4,10,50,STARTERS TỔNG HỢP - Phan 4.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 5,5,10,50,STARTERS TỔNG HỢP - Phan 5.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 6,6,10,50,STARTERS TỔNG HỢP - Phan 6.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 7,7,10,50,STARTERS TỔNG HỢP - Phan 7.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 8,8,10,50,STARTERS TỔNG HỢP - Phan 8.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 9,9,10,50,STARTERS TỔNG HỢP - Phan 9.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64fbd3b85f2df314276ec298,STARTERS TỔNG HỢP,STARTERS TỔNG HỢP - Phần 10,10,10,30,STARTERS TỔNG HỢP - Phan 10.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64f7de388da9325b9cb96611,IOE 6: Điền từ đầy đủ,IOE 6: Điền từ đầy đủ,1,1,48,IOE 6- Điền từ đầy đủ.csv,False,False,SENTENCE_TRANSFORM
+64f6f3e4366409d10f832b25,IOE 3: Điền từ cấp trường,IOE 3: Điền từ cấp trường - Phần 1,1,3,50,IOE 3- Điền từ cấp trường - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+64f6f3e4366409d10f832b25,IOE 3: Điền từ cấp trường,IOE 3: Điền từ cấp trường - Phần 2,2,3,50,IOE 3- Điền từ cấp trường - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64f6f3e4366409d10f832b25,IOE 3: Điền từ cấp trường,IOE 3: Điền từ cấp trường - Phần 3,3,3,5,IOE 3- Điền từ cấp trường - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64ec783077e8cc61109bbda8,IOE 5: Sắp xếp các từ thành câu,IOE 5: Sắp xếp các từ thành câu - Phần 1,1,3,50,IOE 5- Sắp xếp các từ thành câu - Phan 1_1.csv,False,False,WORD_ORDER
+64ec783077e8cc61109bbda8,IOE 5: Sắp xếp các từ thành câu,IOE 5: Sắp xếp các từ thành câu - Phần 2,2,3,50,IOE 5- Sắp xếp các từ thành câu - Phan 2_1.csv,False,False,WORD_ORDER
+64ec783077e8cc61109bbda8,IOE 5: Sắp xếp các từ thành câu,IOE 5: Sắp xếp các từ thành câu - Phần 3,3,3,22,IOE 5- Sắp xếp các từ thành câu - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+64eb53181bb6d2e7456355a8,CÂU GIÁN TIẾP: HIỆN TẠI TIẾP DIỄN,CÂU GIÁN TIẾP: HIỆN TẠI TIẾP DIỄN - Phần 1,1,2,50,CÂU GIÁN TIẾP- HIỆN TẠI TIẾP DIỄN - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+64eb53181bb6d2e7456355a8,CÂU GIÁN TIẾP: HIỆN TẠI TIẾP DIỄN,CÂU GIÁN TIẾP: HIỆN TẠI TIẾP DIỄN - Phần 2,2,2,10,CÂU GIÁN TIẾP- HIỆN TẠI TIẾP DIỄN - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+64e8896abf96293dafbe30d4,IOE 3 GHÉP các từ thành câu 2023 - 2024,IOE 3 GHÉP các từ thành câu 2023 - 2024 - Phần 1,1,2,50,IOE 3 GHÉP các từ thành câu 2023 - 2024 - Phan 1.csv,False,False,WORD_ORDER
+64e8896abf96293dafbe30d4,IOE 3 GHÉP các từ thành câu 2023 - 2024,IOE 3 GHÉP các từ thành câu 2023 - 2024 - Phần 2,2,2,50,IOE 3 GHÉP các từ thành câu 2023 - 2024 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+64df1eae09688a00088fafce,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU - Phần 1,1,4,50,IOE 4- SẮP XẾP CÁC TỪ THÀNH CÂU - Phan 1.csv,False,False,WORD_ORDER
+64df1eae09688a00088fafce,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU - Phần 2,2,4,50,IOE 4- SẮP XẾP CÁC TỪ THÀNH CÂU - Phan 2.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+64df1eae09688a00088fafce,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU - Phần 3,3,4,50,IOE 4- SẮP XẾP CÁC TỪ THÀNH CÂU - Phan 3.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+64df1eae09688a00088fafce,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU,IOE 4: SẮP XẾP CÁC TỪ THÀNH CÂU - Phần 4,4,4,31,IOE 4- SẮP XẾP CÁC TỪ THÀNH CÂU - Phan 4.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 1,1,7,50,NGỮ ÂM TỔNG HỢP - Phan 1.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 2,2,7,50,NGỮ ÂM TỔNG HỢP - Phan 2.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 3,3,7,50,NGỮ ÂM TỔNG HỢP - Phan 3.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 4,4,7,50,NGỮ ÂM TỔNG HỢP - Phan 4.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 5,5,7,50,NGỮ ÂM TỔNG HỢP - Phan 5.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 6,6,7,50,NGỮ ÂM TỔNG HỢP - Phan 6.csv,False,False,SINGLE_CHOICE
+64d639099a99790008905aca,NGỮ ÂM TỔNG HỢP,NGỮ ÂM TỔNG HỢP - Phần 7,7,7,10,NGỮ ÂM TỔNG HỢP - Phan 7.csv,False,False,SINGLE_CHOICE
+64d4eca4192f290009c38a8e,E 8 : Sắp xếp các từ thành câu đúng,E 8 : Sắp xếp các từ thành câu đúng,1,1,21,E 8 - Sắp xếp các từ thành câu đúng.csv,False,False,WORD_ORDER
+64d3897b45a5bb00078e1434,LIÊN TỪ: Write and choose,LIÊN TỪ: Write and choose - Phần 1,1,2,50,LIÊN TỪ- Write and choose - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64d3897b45a5bb00078e1434,LIÊN TỪ: Write and choose,LIÊN TỪ: Write and choose - Phần 2,2,2,50,LIÊN TỪ- Write and choose - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64902976e9c00c001d80c941,111 QUESTIONS LViet cau hoi cho phan gach chan,111 QUESTIONS LViet cau hoi cho phan gach chan - Phần 1,1,3,50,111 QUESTIONS LViet cau hoi cho phan gach chan - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+64902976e9c00c001d80c941,111 QUESTIONS LViet cau hoi cho phan gach chan,111 QUESTIONS LViet cau hoi cho phan gach chan - Phần 2,2,3,50,111 QUESTIONS LViet cau hoi cho phan gach chan - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+64902976e9c00c001d80c941,111 QUESTIONS LViet cau hoi cho phan gach chan,111 QUESTIONS LViet cau hoi cho phan gach chan - Phần 3,3,3,23,111 QUESTIONS LViet cau hoi cho phan gach chan - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+648a915e5848c9001e8dd36c,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ - Phần 1,1,2,50,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ - Phan 1.csv,False,False,SINGLE_CHOICE
+648a915e5848c9001e8dd36c,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ - Phần 2,2,2,42,ĐỘNG TỪ TÍNH TỪ + GIỚI TỪ - Phan 2.csv,False,False,SINGLE_CHOICE
+6488ac13286a8b001d7f764d,QUANTIFIERS - LƯỢNG TỪ,QUANTIFIERS - LƯỢNG TỪ - Phần 1,1,3,50,QUANTIFIERS - LƯỢNG TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6488ac13286a8b001d7f764d,QUANTIFIERS - LƯỢNG TỪ,QUANTIFIERS - LƯỢNG TỪ - Phần 2,2,3,50,QUANTIFIERS - LƯỢNG TỪ - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6488ac13286a8b001d7f764d,QUANTIFIERS - LƯỢNG TỪ,QUANTIFIERS - LƯỢNG TỪ - Phần 3,3,3,10,QUANTIFIERS - LƯỢNG TỪ - Phan 3.csv,True,False,SINGLE_CHOICE
+6486f39290cf3c001dd96195,GET READY STARTERS easy,GET READY STARTERS easy - Phần 1,1,3,50,GET READY STARTERS easy - Phan 1.csv,True,False,SINGLE_CHOICE
+6486f39290cf3c001dd96195,GET READY STARTERS easy,GET READY STARTERS easy - Phần 2,2,3,50,GET READY STARTERS easy - Phan 2.csv,True,False,SINGLE_CHOICE
+6486f39290cf3c001dd96195,GET READY STARTERS easy,GET READY STARTERS easy - Phần 3,3,3,20,GET READY STARTERS easy - Phan 3.csv,True,False,SINGLE_CHOICE
+64779576d151d3001d3d0f01,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ - Phần 1,1,4,50,ĐỘNG TỪ BQT - Nguyên Thể + Q Khứ - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64779576d151d3001d3d0f01,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ - Phần 2,2,4,50,ĐỘNG TỪ BQT - Nguyên Thể + Q Khứ - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+64779576d151d3001d3d0f01,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ - Phần 3,3,4,50,ĐỘNG TỪ BQT - Nguyên Thể + Q Khứ - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64779576d151d3001d3d0f01,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ,ĐỘNG TỪ BQT : Nguyên Thể + Q Khứ - Phần 4,4,4,7,ĐỘNG TỪ BQT - Nguyên Thể + Q Khứ - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+646e5f16bc0ffd001df4f8b4,FF1 Conversations songs Dùng để thi nghe,FF1 Conversations songs Dùng để thi nghe - Phần 1,1,5,50,FF1 Conversations songs Dùng để thi nghe - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+646e5f16bc0ffd001df4f8b4,FF1 Conversations songs Dùng để thi nghe,FF1 Conversations songs Dùng để thi nghe - Phần 2,2,5,50,FF1 Conversations songs Dùng để thi nghe - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+646e5f16bc0ffd001df4f8b4,FF1 Conversations songs Dùng để thi nghe,FF1 Conversations songs Dùng để thi nghe - Phần 3,3,5,50,FF1 Conversations songs Dùng để thi nghe - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+646e5f16bc0ffd001df4f8b4,FF1 Conversations songs Dùng để thi nghe,FF1 Conversations songs Dùng để thi nghe - Phần 4,4,5,50,FF1 Conversations songs Dùng để thi nghe - Phan 4.csv,False,True,SENTENCE_TRANSFORM
+646e5f16bc0ffd001df4f8b4,FF1 Conversations songs Dùng để thi nghe,FF1 Conversations songs Dùng để thi nghe - Phần 5,5,5,48,FF1 Conversations songs Dùng để thi nghe - Phan 5.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645d86247ebb68001d32552b,3 MỚI: TỪ dễ: chọn và nghe,3 MỚI: TỪ dễ: chọn và nghe - Phần 1,1,4,50,3 MỚI- TỪ dễ- chọn và nghe - Phan 1.csv,True,False,SINGLE_CHOICE
+645d86247ebb68001d32552b,3 MỚI: TỪ dễ: chọn và nghe,3 MỚI: TỪ dễ: chọn và nghe - Phần 2,2,4,50,3 MỚI- TỪ dễ- chọn và nghe - Phan 2.csv,True,False,SINGLE_CHOICE
+645d86247ebb68001d32552b,3 MỚI: TỪ dễ: chọn và nghe,3 MỚI: TỪ dễ: chọn và nghe - Phần 3,3,4,50,3 MỚI- TỪ dễ- chọn và nghe - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645d86247ebb68001d32552b,3 MỚI: TỪ dễ: chọn và nghe,3 MỚI: TỪ dễ: chọn và nghe - Phần 4,4,4,38,3 MỚI- TỪ dễ- chọn và nghe - Phan 4.csv,False,True,SINGLE_CHOICE | WORD_ORDER
+645b43092199cf001da9331c,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng - Phần 1,1,4,50,ENGLISH 3 MỚI- Mẫu câu vầ từ vựng - Phan 1.csv,False,False,SINGLE_CHOICE
+645b43092199cf001da9331c,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng - Phần 2,2,4,50,ENGLISH 3 MỚI- Mẫu câu vầ từ vựng - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645b43092199cf001da9331c,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng - Phần 3,3,4,50,ENGLISH 3 MỚI- Mẫu câu vầ từ vựng - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645b43092199cf001da9331c,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng,ENGLISH 3 MỚI: Mẫu câu vầ từ vựng - Phần 4,4,4,50,ENGLISH 3 MỚI- Mẫu câu vầ từ vựng - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+6458d07d92b29e001d912fa1,ENGLISH 3 : LESSON 1,ENGLISH 3 : LESSON 1,1,1,2,ENGLISH 3 - LESSON 1.csv,False,True,AUDIO | SINGLE_CHOICE
+645860af361317001dbc01ce,THÌ HIỆN TẠI ĐƠN,THÌ HIỆN TẠI ĐƠN - Phần 1,1,4,50,THÌ HIỆN TẠI ĐƠN - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645860af361317001dbc01ce,THÌ HIỆN TẠI ĐƠN,THÌ HIỆN TẠI ĐƠN - Phần 2,2,4,50,THÌ HIỆN TẠI ĐƠN - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+645860af361317001dbc01ce,THÌ HIỆN TẠI ĐƠN,THÌ HIỆN TẠI ĐƠN - Phần 3,3,4,50,THÌ HIỆN TẠI ĐƠN - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645860af361317001dbc01ce,THÌ HIỆN TẠI ĐƠN,THÌ HIỆN TẠI ĐƠN - Phần 4,4,4,19,THÌ HIỆN TẠI ĐƠN - Phan 4.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+645757bd88ee34001e8128de,11 THÌ HIỆN TẠI TIẾP DIỄN,11 THÌ HIỆN TẠI TIẾP DIỄN - Phần 1,1,4,50,11 THÌ HIỆN TẠI TIẾP DIỄN - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+645757bd88ee34001e8128de,11 THÌ HIỆN TẠI TIẾP DIỄN,11 THÌ HIỆN TẠI TIẾP DIỄN - Phần 2,2,4,50,11 THÌ HIỆN TẠI TIẾP DIỄN - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+645757bd88ee34001e8128de,11 THÌ HIỆN TẠI TIẾP DIỄN,11 THÌ HIỆN TẠI TIẾP DIỄN - Phần 3,3,4,50,11 THÌ HIỆN TẠI TIẾP DIỄN - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+645757bd88ee34001e8128de,11 THÌ HIỆN TẠI TIẾP DIỄN,11 THÌ HIỆN TẠI TIẾP DIỄN - Phần 4,4,4,50,11 THÌ HIỆN TẠI TIẾP DIỄN - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+64571648a19d4a001d0f3a61,55 CLAUSE OF RESULT,55 CLAUSE OF RESULT - Phần 1,1,4,50,55 CLAUSE OF RESULT - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+64571648a19d4a001d0f3a61,55 CLAUSE OF RESULT,55 CLAUSE OF RESULT - Phần 2,2,4,50,55 CLAUSE OF RESULT - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+64571648a19d4a001d0f3a61,55 CLAUSE OF RESULT,55 CLAUSE OF RESULT - Phần 3,3,4,50,55 CLAUSE OF RESULT - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+64571648a19d4a001d0f3a61,55 CLAUSE OF RESULT,55 CLAUSE OF RESULT - Phần 4,4,4,50,55 CLAUSE OF RESULT - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+6452947fcfaaec001de2ceaf,44 CONDITIONAL - WISH- KHÓ,44 CONDITIONAL - WISH- KHÓ - Phần 1,1,4,50,44 CONDITIONAL - WISH- KHÓ - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6452947fcfaaec001de2ceaf,44 CONDITIONAL - WISH- KHÓ,44 CONDITIONAL - WISH- KHÓ - Phần 2,2,4,50,44 CONDITIONAL - WISH- KHÓ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6452947fcfaaec001de2ceaf,44 CONDITIONAL - WISH- KHÓ,44 CONDITIONAL - WISH- KHÓ - Phần 3,3,4,50,44 CONDITIONAL - WISH- KHÓ - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6452947fcfaaec001de2ceaf,44 CONDITIONAL - WISH- KHÓ,44 CONDITIONAL - WISH- KHÓ - Phần 4,4,4,40,44 CONDITIONAL - WISH- KHÓ - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+6450b8bfe1c06d001f68111e,3 MỚI: NGHE ĐIỀN TỪ 2,3 MỚI: NGHE ĐIỀN TỪ 2 - Phần 1,1,4,50,3 MỚI- NGHE ĐIỀN TỪ 2 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6450b8bfe1c06d001f68111e,3 MỚI: NGHE ĐIỀN TỪ 2,3 MỚI: NGHE ĐIỀN TỪ 2 - Phần 2,2,4,50,3 MỚI- NGHE ĐIỀN TỪ 2 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6450b8bfe1c06d001f68111e,3 MỚI: NGHE ĐIỀN TỪ 2,3 MỚI: NGHE ĐIỀN TỪ 2 - Phần 3,3,4,50,3 MỚI- NGHE ĐIỀN TỪ 2 - Phan 3.csv,False,True,SINGLE_CHOICE
+6450b8bfe1c06d001f68111e,3 MỚI: NGHE ĐIỀN TỪ 2,3 MỚI: NGHE ĐIỀN TỪ 2 - Phần 4,4,4,36,3 MỚI- NGHE ĐIỀN TỪ 2 - Phan 4.csv,False,True,SINGLE_CHOICE
+644fe48c5e9b2f001fd15f5e,CÁC THÌ: LÝ THUYẾT,CÁC THÌ: LÝ THUYẾT - Phần 1,1,2,50,CÁC THÌ- LÝ THUYẾT - Phan 1.csv,False,False,SINGLE_CHOICE
+644fe48c5e9b2f001fd15f5e,CÁC THÌ: LÝ THUYẾT,CÁC THÌ: LÝ THUYẾT - Phần 2,2,2,45,CÁC THÌ- LÝ THUYẾT - Phan 2.csv,False,False,SINGLE_CHOICE
+644eb51ce56d22001d655576,222 SEQUENCE OF TENSES,222 SEQUENCE OF TENSES - Phần 1,1,2,50,222 SEQUENCE OF TENSES - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+644eb51ce56d22001d655576,222 SEQUENCE OF TENSES,222 SEQUENCE OF TENSES - Phần 2,2,2,50,222 SEQUENCE OF TENSES - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+644b0f9e53133c001dfed916,3 MỚI : NGHE ĐIỀN TỪ 3,3 MỚI : NGHE ĐIỀN TỪ 3 - Phần 1,1,4,50,3 MỚI - NGHE ĐIỀN TỪ 3 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+644b0f9e53133c001dfed916,3 MỚI : NGHE ĐIỀN TỪ 3,3 MỚI : NGHE ĐIỀN TỪ 3 - Phần 2,2,4,50,3 MỚI - NGHE ĐIỀN TỪ 3 - Phan 2.csv,False,True,SENTENCE_TRANSFORM
+644b0f9e53133c001dfed916,3 MỚI : NGHE ĐIỀN TỪ 3,3 MỚI : NGHE ĐIỀN TỪ 3 - Phần 3,3,4,50,3 MỚI - NGHE ĐIỀN TỪ 3 - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+644b0f9e53133c001dfed916,3 MỚI : NGHE ĐIỀN TỪ 3,3 MỚI : NGHE ĐIỀN TỪ 3 - Phần 4,4,4,12,3 MỚI - NGHE ĐIỀN TỪ 3 - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+643d27ae718e20001d1e07cf,3321 NGHE 3 MỚI : Dễ 1,3321 NGHE 3 MỚI : Dễ 1 - Phần 1,1,3,50,3321 NGHE 3 MỚI - Dễ 1 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+643d27ae718e20001d1e07cf,3321 NGHE 3 MỚI : Dễ 1,3321 NGHE 3 MỚI : Dễ 1 - Phần 2,2,3,50,3321 NGHE 3 MỚI - Dễ 1 - Phan 2.csv,False,True,SINGLE_CHOICE
+643d27ae718e20001d1e07cf,3321 NGHE 3 MỚI : Dễ 1,3321 NGHE 3 MỚI : Dễ 1 - Phần 3,3,3,14,3321 NGHE 3 MỚI - Dễ 1 - Phan 3.csv,False,True,SINGLE_CHOICE
+643ae02c3fd4eb001d47732b,3334 TRẠNG NHÍ 3,3334 TRẠNG NHÍ 3 - Phần 1,1,3,50,3334 TRẠNG NHÍ 3 - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+643ae02c3fd4eb001d47732b,3334 TRẠNG NHÍ 3,3334 TRẠNG NHÍ 3 - Phần 2,2,3,50,3334 TRẠNG NHÍ 3 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+643ae02c3fd4eb001d47732b,3334 TRẠNG NHÍ 3,3334 TRẠNG NHÍ 3 - Phần 3,3,3,39,3334 TRẠNG NHÍ 3 - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+642bd6f986afb9001e16b5e4,666 VIẾT LẠI CÂU 67,666 VIẾT LẠI CÂU 67 - Phần 1,1,2,50,666 VIẾT LẠI CÂU 67 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+642bd6f986afb9001e16b5e4,666 VIẾT LẠI CÂU 67,666 VIẾT LẠI CÂU 67 - Phần 2,2,2,20,666 VIẾT LẠI CÂU 67 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+641834e4f60c5a001dfa96ad,IOE 3: TRƯỜNG: GHÉP từ thành câu,IOE 3: TRƯỜNG: GHÉP từ thành câu,1,1,30,IOE 3- TRƯỜNG- GHÉP từ thành câu.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 1,1,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 2,2,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 3,3,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 4,4,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 4.csv,False,True,SENTENCE_TRANSFORM
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 5,5,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 5.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 6,6,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 6.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 7,7,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 7.csv,True,True,SINGLE_CHOICE
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 8,8,9,50,234 - TRẠNG NHÍ LỚP 2 - Phan 8.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+640441a7dbb081001ef8398b,234 - TRẠNG NHÍ LỚP 2,234 - TRẠNG NHÍ LỚP 2 - Phần 9,9,9,43,234 - TRẠNG NHÍ LỚP 2 - Phan 9.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6400516efe0689001d98694a,G 112 - TỪ LOẠI 89,G 112 - TỪ LOẠI 89,1,1,11,G 112 - TỪ LOẠI 89.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63ff810b53f9d9001dc2dc12,G 111 - TỪ LOẠI 67,G 111 - TỪ LOẠI 67 - Phần 1,1,5,50,G 111 - TỪ LOẠI 67 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+63ff810b53f9d9001dc2dc12,G 111 - TỪ LOẠI 67,G 111 - TỪ LOẠI 67 - Phần 2,2,5,50,G 111 - TỪ LOẠI 67 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+63ff810b53f9d9001dc2dc12,G 111 - TỪ LOẠI 67,G 111 - TỪ LOẠI 67 - Phần 3,3,5,50,G 111 - TỪ LOẠI 67 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+63ff810b53f9d9001dc2dc12,G 111 - TỪ LOẠI 67,G 111 - TỪ LOẠI 67 - Phần 4,4,5,50,G 111 - TỪ LOẠI 67 - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+63ff810b53f9d9001dc2dc12,G 111 - TỪ LOẠI 67,G 111 - TỪ LOẠI 67 - Phần 5,5,5,10,G 111 - TỪ LOẠI 67 - Phan 5.csv,False,False,SENTENCE_TRANSFORM
+63f42973fa1006001da20b62,E304 - DỊCH TA 3,E304 - DỊCH TA 3 - Phần 1,1,2,50,E304 - DỊCH TA 3 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+63f42973fa1006001da20b62,E304 - DỊCH TA 3,E304 - DỊCH TA 3 - Phần 2,2,2,50,E304 - DỊCH TA 3 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+63f13981a11b2c001ea1fdae,E 304: NGHE HKII,E 304: NGHE HKII,1,1,1,E 304- NGHE HKII.csv,False,False,SINGLE_CHOICE
+63d14843fdf469001d68e85b,445 E 4 LISTEN HKII,445 E 4 LISTEN HKII - Phần 1,1,3,50,445 E 4 LISTEN HKII - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63d14843fdf469001d68e85b,445 E 4 LISTEN HKII,445 E 4 LISTEN HKII - Phần 2,2,3,50,445 E 4 LISTEN HKII - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63d14843fdf469001d68e85b,445 E 4 LISTEN HKII,445 E 4 LISTEN HKII - Phần 3,3,3,22,445 E 4 LISTEN HKII - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63d147f05afd48001dc2a7f6,E 555 LISTEN 5 HKII,E 555 LISTEN 5 HKII - Phần 1,1,3,50,E 555 LISTEN 5 HKII - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63d147f05afd48001dc2a7f6,E 555 LISTEN 5 HKII,E 555 LISTEN 5 HKII - Phần 2,2,3,50,E 555 LISTEN 5 HKII - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63d147f05afd48001dc2a7f6,E 555 LISTEN 5 HKII,E 555 LISTEN 5 HKII - Phần 3,3,3,49,E 555 LISTEN 5 HKII - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63ae9ae4a60ca5001d62e9f8,IOE 4: Sap xep cac tu,IOE 4: Sap xep cac tu,1,1,1,IOE 4- Sap xep cac tu.csv,False,False,WORD_ORDER
+63ae91f591d422001d57161f,IOE 3: Sắp xếp các từ thành câu.,IOE 3: Sắp xếp các từ thành câu.,1,1,50,IOE 3- Sắp xếp các từ thành câu.csv,False,False,WORD_ORDER
+63a79dd7ad812f001da5050b,NGHE chọn - LỚP 1,NGHE chọn - LỚP 1 - Phần 1,1,3,50,NGHE chọn - LỚP 1 - Phan 1.csv,True,True,SINGLE_CHOICE
+63a79dd7ad812f001da5050b,NGHE chọn - LỚP 1,NGHE chọn - LỚP 1 - Phần 2,2,3,50,NGHE chọn - LỚP 1 - Phan 2.csv,False,True,SINGLE_CHOICE
+63a79dd7ad812f001da5050b,NGHE chọn - LỚP 1,NGHE chọn - LỚP 1 - Phần 3,3,3,38,NGHE chọn - LỚP 1 - Phan 3.csv,False,True,SINGLE_CHOICE
+63a00ded34b42c001e99e3f2,E 501 - LOOK LISTEN AND REPEAT hk1,E 501 - LOOK LISTEN AND REPEAT hk1 - Phần 1,1,2,50,E 501 - LOOK LISTEN AND REPEAT hk1 - Phan 1.csv,False,True,SINGLE_CHOICE
+63a00ded34b42c001e99e3f2,E 501 - LOOK LISTEN AND REPEAT hk1,E 501 - LOOK LISTEN AND REPEAT hk1 - Phần 2,2,2,50,E 501 - LOOK LISTEN AND REPEAT hk1 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+639bda4952f05c001ea820e8,IOE 3: TỪ VỰNG,IOE 3: TỪ VỰNG - Phần 1,1,2,50,IOE 3- TỪ VỰNG - Phan 1_1.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+639bda4952f05c001ea820e8,IOE 3: TỪ VỰNG,IOE 3: TỪ VỰNG - Phần 2,2,2,33,IOE 3- TỪ VỰNG - Phan 2_1.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+639bc608a40c57001d4b63ee,IOE 3: Xác định lỗi sai và SỬA,IOE 3: Xác định lỗi sai và SỬA - Phần 1,1,2,50,IOE 3- Xác định lỗi sai và SỬA - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+639bc608a40c57001d4b63ee,IOE 3: Xác định lỗi sai và SỬA,IOE 3: Xác định lỗi sai và SỬA - Phần 2,2,2,10,IOE 3- Xác định lỗi sai và SỬA - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+639a002eb805e8001d1a5e82,E 5: Look listen and repeat,E 5: Look listen and repeat - Phần 1,1,2,50,E 5- Look listen and repeat - Phan 1.csv,False,True,SINGLE_CHOICE
+639a002eb805e8001d1a5e82,E 5: Look listen and repeat,E 5: Look listen and repeat - Phần 2,2,2,43,E 5- Look listen and repeat - Phan 2.csv,False,True,SINGLE_CHOICE
+6395fc82034eb3001d19ae82,NGỮ ÂM4 : NHìn phần phát âm viết từ TA .,NGỮ ÂM4 : NHìn phần phát âm viết từ TA .,1,1,45,NGỮ ÂM4 - NHìn phần phát âm viết từ TA.csv,True,False,SENTENCE_TRANSFORM
+63958a0b569a56001dd39a4e,E 104 - Look listen and repeat,E 104 - Look listen and repeat - Phần 1,1,4,50,E 104 - Look listen and repeat - Phan 1.csv,False,True,SINGLE_CHOICE
+63958a0b569a56001dd39a4e,E 104 - Look listen and repeat,E 104 - Look listen and repeat - Phần 2,2,4,50,E 104 - Look listen and repeat - Phan 2.csv,False,True,SINGLE_CHOICE
+63958a0b569a56001dd39a4e,E 104 - Look listen and repeat,E 104 - Look listen and repeat - Phần 3,3,4,50,E 104 - Look listen and repeat - Phan 3.csv,False,True,SINGLE_CHOICE
+63958a0b569a56001dd39a4e,E 104 - Look listen and repeat,E 104 - Look listen and repeat - Phần 4,4,4,26,E 104 - Look listen and repeat - Phan 4.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63937f6ee77afa001d65741f,E 3 NGHE LOOK LISTEN AND REPEAT 2,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phần 1,1,4,50,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63937f6ee77afa001d65741f,E 3 NGHE LOOK LISTEN AND REPEAT 2,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phần 2,2,4,50,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+63937f6ee77afa001d65741f,E 3 NGHE LOOK LISTEN AND REPEAT 2,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phần 3,3,4,50,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phan 3.csv,False,True,SINGLE_CHOICE
+63937f6ee77afa001d65741f,E 3 NGHE LOOK LISTEN AND REPEAT 2,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phần 4,4,4,50,E 3 NGHE LOOK LISTEN AND REPEAT 2 - Phan 4.csv,False,True,SINGLE_CHOICE
+63937e45e77afa001d651d89,FLYERS: 5 6 7 8,FLYERS: 5 6 7 8,1,1,1,FLYERS- 5 6 7 8.csv,False,False,SENTENCE_TRANSFORM
+638f01d8dd1cb1001e00accb,501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học),501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phần 1,1,4,50,501 - IOE 5- XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+638f01d8dd1cb1001e00accb,501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học),501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phần 2,2,4,50,501 - IOE 5- XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+638f01d8dd1cb1001e00accb,501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học),501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phần 3,3,4,50,501 - IOE 5- XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+638f01d8dd1cb1001e00accb,501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học),501 - IOE 5: XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phần 4,4,4,10,501 - IOE 5- XÁC ĐỊNH LỖI SAI và SỬA (Tiểu học) - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+638ea6f97e5296001d28eb59,502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử),502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử) - Phần 1,1,3,50,502 - IOE 5H- ĐIỀN TỪ 1 ( thi thử) - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+638ea6f97e5296001d28eb59,502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử),502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử) - Phần 2,2,3,50,502 - IOE 5H- ĐIỀN TỪ 1 ( thi thử) - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+638ea6f97e5296001d28eb59,502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử),502 - IOE 5H: ĐIỀN TỪ 1 ( thi thử) - Phần 3,3,3,50,502 - IOE 5H- ĐIỀN TỪ 1 ( thi thử) - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+638db402bb13c9001da038fe,111 NGHE 1 next move LỚP 1,111 NGHE 1 next move LỚP 1 - Phần 1,1,2,50,111 NGHE 1 next move LỚP 1 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+638db402bb13c9001da038fe,111 NGHE 1 next move LỚP 1,111 NGHE 1 next move LỚP 1 - Phần 2,2,2,48,111 NGHE 1 next move LỚP 1 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+638b8499d78ac4001df682b3,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phần 1,1,3,50,NGHE- FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+638b8499d78ac4001df682b3,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phần 2,2,3,50,NGHE- FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+638b8499d78ac4001df682b3,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5,NGHE: FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phần 3,3,3,30,NGHE- FF2.2 3 ĐIỀN TỪ lớp 3 4 5 - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+638ab1b34fd3a9001d43d40a,STARTERS: Nhìn hình viết từ: KHÓ 1,STARTERS: Nhìn hình viết từ: KHÓ 1 - Phần 1,1,5,50,STARTERS- Nhìn hình viết từ- KHÓ 1 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+638ab1b34fd3a9001d43d40a,STARTERS: Nhìn hình viết từ: KHÓ 1,STARTERS: Nhìn hình viết từ: KHÓ 1 - Phần 2,2,5,50,STARTERS- Nhìn hình viết từ- KHÓ 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+638ab1b34fd3a9001d43d40a,STARTERS: Nhìn hình viết từ: KHÓ 1,STARTERS: Nhìn hình viết từ: KHÓ 1 - Phần 3,3,5,50,STARTERS- Nhìn hình viết từ- KHÓ 1 - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+638ab1b34fd3a9001d43d40a,STARTERS: Nhìn hình viết từ: KHÓ 1,STARTERS: Nhìn hình viết từ: KHÓ 1 - Phần 4,4,5,50,STARTERS- Nhìn hình viết từ- KHÓ 1 - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+638ab1b34fd3a9001d43d40a,STARTERS: Nhìn hình viết từ: KHÓ 1,STARTERS: Nhìn hình viết từ: KHÓ 1 - Phần 5,5,5,23,STARTERS- Nhìn hình viết từ- KHÓ 1 - Phan 5.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6389a955f22e99001d36c796,NGỮ ÂM: Đuôi ED,NGỮ ÂM: Đuôi ED - Phần 1,1,2,50,NGỮ ÂM- Đuôi ED - Phan 1.csv,False,False,SINGLE_CHOICE
+6389a955f22e99001d36c796,NGỮ ÂM: Đuôi ED,NGỮ ÂM: Đuôi ED - Phần 2,2,2,50,NGỮ ÂM- Đuôi ED - Phan 2.csv,False,False,SINGLE_CHOICE
+6387906e6ffd44001f94e135,NGỮ ÂM TIỂU HỌC 1,NGỮ ÂM TIỂU HỌC 1 - Phần 1,1,2,50,NGỮ ÂM TIỂU HỌC 1 - Phan 1.csv,False,False,SINGLE_CHOICE
+6387906e6ffd44001f94e135,NGỮ ÂM TIỂU HỌC 1,NGỮ ÂM TIỂU HỌC 1 - Phần 2,2,2,50,NGỮ ÂM TIỂU HỌC 1 - Phan 2.csv,False,False,SINGLE_CHOICE
+6385b5fcadb2b2001d585e50,STARTERS: dễ 2,STARTERS: dễ 2 - Phần 1,1,2,50,STARTERS- dễ 2 - Phan 1.csv,True,False,SINGLE_CHOICE
+6385b5fcadb2b2001d585e50,STARTERS: dễ 2,STARTERS: dễ 2 - Phần 2,2,2,48,STARTERS- dễ 2 - Phan 2.csv,True,False,SINGLE_CHOICE
+6382832d3fba9100200421da,E 4.5 LISTEN,E 4.5 LISTEN - Phần 1,1,2,50,E 4.5 LISTEN - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6382832d3fba9100200421da,E 4.5 LISTEN,E 4.5 LISTEN - Phần 2,2,2,40,E 4.5 LISTEN - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+638076cf3c8dac001db06dfb,IOE 3: TEST 2511H,IOE 3: TEST 2511H - Phần 1,1,2,50,IOE 3- TEST 2511H - Phan 1.csv,False,False,WORD_ORDER
+638076cf3c8dac001db06dfb,IOE 3: TEST 2511H,IOE 3: TEST 2511H - Phần 2,2,2,20,IOE 3- TEST 2511H - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+637eb6b459da3f001eaa695b,E 5: 6 LISTEN,E 5: 6 LISTEN - Phần 1,1,2,50,E 5- 6 LISTEN - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+637eb6b459da3f001eaa695b,E 5: 6 LISTEN,E 5: 6 LISTEN - Phần 2,2,2,41,E 5- 6 LISTEN - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+637d758c756976001d3313a6,IOE 5: ĐIỀN TỪ 2,IOE 5: ĐIỀN TỪ 2,1,1,19,IOE 5- ĐIỀN TỪ 2.csv,False,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 1,1,6,50,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 2,2,6,50,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 3,3,6,50,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 4,4,6,50,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 5,5,6,50,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 5.csv,True,False,SENTENCE_TRANSFORM
+637c7c10cf00a7001e4acf51,503 - IOE 5: Hình ảnh điền từ 1(thi thử),503 - IOE 5: Hình ảnh điền từ 1(thi thử) - Phần 6,6,6,16,503 - IOE 5- Hình ảnh điền từ 1(thi thử) - Phan 6.csv,True,False,SENTENCE_TRANSFORM
+637c2cfc1f86fd001d2d617f,IOE 5: ĐIỀN TỪ 1,IOE 5: ĐIỀN TỪ 1 - Phần 1,1,5,50,IOE 5- ĐIỀN TỪ 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+637c2cfc1f86fd001d2d617f,IOE 5: ĐIỀN TỪ 1,IOE 5: ĐIỀN TỪ 1 - Phần 2,2,5,50,IOE 5- ĐIỀN TỪ 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+637c2cfc1f86fd001d2d617f,IOE 5: ĐIỀN TỪ 1,IOE 5: ĐIỀN TỪ 1 - Phần 3,3,5,50,IOE 5- ĐIỀN TỪ 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+637c2cfc1f86fd001d2d617f,IOE 5: ĐIỀN TỪ 1,IOE 5: ĐIỀN TỪ 1 - Phần 4,4,5,50,IOE 5- ĐIỀN TỪ 1 - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+637c2cfc1f86fd001d2d617f,IOE 5: ĐIỀN TỪ 1,IOE 5: ĐIỀN TỪ 1 - Phần 5,5,5,34,IOE 5- ĐIỀN TỪ 1 - Phan 5.csv,False,False,SENTENCE_TRANSFORM
+6377344ad9f262001d674401,I 301 : Hình ảnh điền từ( THI THỬ),I 301 : Hình ảnh điền từ( THI THỬ) - Phần 1,1,5,50,I 301 - Hình ảnh điền từ( THI THỬ) - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6377344ad9f262001d674401,I 301 : Hình ảnh điền từ( THI THỬ),I 301 : Hình ảnh điền từ( THI THỬ) - Phần 2,2,5,50,I 301 - Hình ảnh điền từ( THI THỬ) - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6377344ad9f262001d674401,I 301 : Hình ảnh điền từ( THI THỬ),I 301 : Hình ảnh điền từ( THI THỬ) - Phần 3,3,5,50,I 301 - Hình ảnh điền từ( THI THỬ) - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+6377344ad9f262001d674401,I 301 : Hình ảnh điền từ( THI THỬ),I 301 : Hình ảnh điền từ( THI THỬ) - Phần 4,4,5,50,I 301 - Hình ảnh điền từ( THI THỬ) - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+6377344ad9f262001d674401,I 301 : Hình ảnh điền từ( THI THỬ),I 301 : Hình ảnh điền từ( THI THỬ) - Phần 5,5,5,10,I 301 - Hình ảnh điền từ( THI THỬ) - Phan 5.csv,True,False,SENTENCE_TRANSFORM
+6376ddfe8518b3001ed3b00e,IOE 3: 1811Tr,IOE 3: 1811Tr - Phần 1,1,2,50,IOE 3- 1811Tr - Phan 1.csv,False,False,WORD_ORDER
+6376ddfe8518b3001ed3b00e,IOE 3: 1811Tr,IOE 3: 1811Tr - Phần 2,2,2,41,IOE 3- 1811Tr - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6375f918bcdddb001d51836f,TỪ LOẠI 1: LỚP 6 7,TỪ LOẠI 1: LỚP 6 7 - Phần 1,1,2,50,TỪ LOẠI 1- LỚP 6 7 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6375f918bcdddb001d51836f,TỪ LOẠI 1: LỚP 6 7,TỪ LOẠI 1: LỚP 6 7 - Phần 2,2,2,10,TỪ LOẠI 1- LỚP 6 7 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6375a3dd15a906001dabe082,IOE 4: Nhìn hình viết từ(Thi thử),IOE 4: Nhìn hình viết từ(Thi thử) - Phần 1,1,4,50,IOE 4- Nhìn hình viết từ(Thi thử) - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6375a3dd15a906001dabe082,IOE 4: Nhìn hình viết từ(Thi thử),IOE 4: Nhìn hình viết từ(Thi thử) - Phần 2,2,4,50,IOE 4- Nhìn hình viết từ(Thi thử) - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6375a3dd15a906001dabe082,IOE 4: Nhìn hình viết từ(Thi thử),IOE 4: Nhìn hình viết từ(Thi thử) - Phần 3,3,4,50,IOE 4- Nhìn hình viết từ(Thi thử) - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+6375a3dd15a906001dabe082,IOE 4: Nhìn hình viết từ(Thi thử),IOE 4: Nhìn hình viết từ(Thi thử) - Phần 4,4,4,10,IOE 4- Nhìn hình viết từ(Thi thử) - Phan 4.csv,True,False,SENTENCE_TRANSFORM
+63758abf139996001d40a26d,IOE 7: TEST 1711Tr,IOE 7: TEST 1711Tr - Phần 1,1,2,50,IOE 7- TEST 1711Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+63758abf139996001d40a26d,IOE 7: TEST 1711Tr,IOE 7: TEST 1711Tr - Phần 2,2,2,50,IOE 7- TEST 1711Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6374373b1a5bb0001d0bfb65,IOE 3 SẮP XẾP MẪU CÂU: LỚP 1,IOE 3 SẮP XẾP MẪU CÂU: LỚP 1 - Phần 1,1,2,50,IOE 3 SẮP XẾP MẪU CÂU- LỚP 1 - Phan 1.csv,False,False,WORD_ORDER
+6374373b1a5bb0001d0bfb65,IOE 3 SẮP XẾP MẪU CÂU: LỚP 1,IOE 3 SẮP XẾP MẪU CÂU: LỚP 1 - Phần 2,2,2,50,IOE 3 SẮP XẾP MẪU CÂU- LỚP 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+637337983ec528001e4dcf0a,IOE 5: TEST 1511Tr,IOE 5: TEST 1511Tr - Phần 1,1,2,50,IOE 5- TEST 1511Tr - Phan 1.csv,False,False,WORD_ORDER
+637337983ec528001e4dcf0a,IOE 5: TEST 1511Tr,IOE 5: TEST 1511Tr - Phần 2,2,2,50,IOE 5- TEST 1511Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6372213acc6861001da4fa01,IOE 3: nhìn Hình ảnh điền từ ( TLuyen),IOE 3: nhìn Hình ảnh điền từ ( TLuyen) - Phần 1,1,2,50,IOE 3- nhìn Hình ảnh điền từ ( TLuyen) - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+6372213acc6861001da4fa01,IOE 3: nhìn Hình ảnh điền từ ( TLuyen),IOE 3: nhìn Hình ảnh điền từ ( TLuyen) - Phần 2,2,2,30,IOE 3- nhìn Hình ảnh điền từ ( TLuyen) - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6371ea37fb604c001d048468,IOE 4: TEST 1411Tr,IOE 4: TEST 1411Tr - Phần 1,1,3,50,IOE 4- TEST 1411Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6371ea37fb604c001d048468,IOE 4: TEST 1411Tr,IOE 4: TEST 1411Tr - Phần 2,2,3,50,IOE 4- TEST 1411Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6371ea37fb604c001d048468,IOE 4: TEST 1411Tr,IOE 4: TEST 1411Tr - Phần 3,3,3,1,IOE 4- TEST 1411Tr - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+636f64e674e3ee001dba17e8,IOE 9: TEST 1111H,IOE 9: TEST 1111H - Phần 1,1,2,50,IOE 9- TEST 1111H - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+636f64e674e3ee001dba17e8,IOE 9: TEST 1111H,IOE 9: TEST 1111H - Phần 2,2,2,20,IOE 9- TEST 1111H - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+636db3bc5ca398001dfe1893,IOE 3: TEST 1111Tr,IOE 3: TEST 1111Tr - Phần 1,1,3,50,IOE 3- TEST 1111Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+636db3bc5ca398001dfe1893,IOE 3: TEST 1111Tr,IOE 3: TEST 1111Tr - Phần 2,2,3,50,IOE 3- TEST 1111Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+636db3bc5ca398001dfe1893,IOE 3: TEST 1111Tr,IOE 3: TEST 1111Tr - Phần 3,3,3,10,IOE 3- TEST 1111Tr - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+636ca4068c6b85001e52d82f,222 Listen 2 Next move: LỚP 2,222 Listen 2 Next move: LỚP 2 - Phần 1,1,4,50,222 Listen 2 Next move- LỚP 2 - Phan 1.csv,False,True,SINGLE_CHOICE
+636ca4068c6b85001e52d82f,222 Listen 2 Next move: LỚP 2,222 Listen 2 Next move: LỚP 2 - Phần 2,2,4,50,222 Listen 2 Next move- LỚP 2 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+636ca4068c6b85001e52d82f,222 Listen 2 Next move: LỚP 2,222 Listen 2 Next move: LỚP 2 - Phần 3,3,4,50,222 Listen 2 Next move- LỚP 2 - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+636ca4068c6b85001e52d82f,222 Listen 2 Next move: LỚP 2,222 Listen 2 Next move: LỚP 2 - Phần 4,4,4,28,222 Listen 2 Next move- LỚP 2 - Phan 4.csv,False,True,SENTENCE_TRANSFORM
+636af4118b8ba6001ed5647d,LET1: Chọn TRUE/ FALSE Lớp 1 2 3,LET1: Chọn TRUE/ FALSE Lớp 1 2 3 - Phần 1,1,3,50,LET1- Chọn TRUE- FALSE Lớp 1 2 3 - Phan 1.csv,True,False,SINGLE_CHOICE
+636af4118b8ba6001ed5647d,LET1: Chọn TRUE/ FALSE Lớp 1 2 3,LET1: Chọn TRUE/ FALSE Lớp 1 2 3 - Phần 2,2,3,50,LET1- Chọn TRUE- FALSE Lớp 1 2 3 - Phan 2.csv,True,False,SINGLE_CHOICE
+636af4118b8ba6001ed5647d,LET1: Chọn TRUE/ FALSE Lớp 1 2 3,LET1: Chọn TRUE/ FALSE Lớp 1 2 3 - Phần 3,3,3,20,LET1- Chọn TRUE- FALSE Lớp 1 2 3 - Phan 3.csv,True,False,SINGLE_CHOICE
+6369fdf6e44d83001dc903d0,IOE 8: TEST 811Tr,IOE 8: TEST 811Tr - Phần 1,1,2,50,IOE 8- TEST 811Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6369fdf6e44d83001dc903d0,IOE 8: TEST 811Tr,IOE 8: TEST 811Tr - Phần 2,2,2,50,IOE 8- TEST 811Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6368ca5ee30dcb001dcb0539,IOE 4: TEST 611H,IOE 4: TEST 611H - Phần 1,1,2,50,IOE 4- TEST 611H - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6368ca5ee30dcb001dcb0539,IOE 4: TEST 611H,IOE 4: TEST 611H - Phần 2,2,2,40,IOE 4- TEST 611H - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6364c02c1b3a14001de6d0de,I 302 : CẤP TRƯỜNG,I 302 : CẤP TRƯỜNG - Phần 1,1,2,50,I 302 - CẤP TRƯỜNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6364c02c1b3a14001de6d0de,I 302 : CẤP TRƯỜNG,I 302 : CẤP TRƯỜNG - Phần 2,2,2,50,I 302 - CẤP TRƯỜNG - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+63631304c610d3001ef0103b,E 5.5 LISTEN,E 5.5 LISTEN - Phần 1,1,3,50,E 5.5 LISTEN - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63631304c610d3001ef0103b,E 5.5 LISTEN,E 5.5 LISTEN - Phần 2,2,3,50,E 5.5 LISTEN - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+63631304c610d3001ef0103b,E 5.5 LISTEN,E 5.5 LISTEN - Phần 3,3,3,14,E 5.5 LISTEN - Phan 3.csv,False,False,WORD_ORDER
+6360c3fee287d7001d876a86,IOE 5: TEST 111H,IOE 5: TEST 111H - Phần 1,1,2,50,IOE 5- TEST 111H - Phan 1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6360c3fee287d7001d876a86,IOE 5: TEST 111H,IOE 5: TEST 111H - Phần 2,2,2,20,IOE 5- TEST 111H - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+636068609d362e001dd9b5c4,I 303 : CẤP HUYỆN,I 303 : CẤP HUYỆN - Phần 1,1,5,50,I 303 - CẤP HUYỆN - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+636068609d362e001dd9b5c4,I 303 : CẤP HUYỆN,I 303 : CẤP HUYỆN - Phần 2,2,5,50,I 303 - CẤP HUYỆN - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+636068609d362e001dd9b5c4,I 303 : CẤP HUYỆN,I 303 : CẤP HUYỆN - Phần 3,3,5,50,I 303 - CẤP HUYỆN - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+636068609d362e001dd9b5c4,I 303 : CẤP HUYỆN,I 303 : CẤP HUYỆN - Phần 4,4,5,50,I 303 - CẤP HUYỆN - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+636068609d362e001dd9b5c4,I 303 : CẤP HUYỆN,I 303 : CẤP HUYỆN - Phần 5,5,5,1,I 303 - CẤP HUYỆN - Phan 5.csv,False,False,WORD_ORDER
+635f77ff2ebf1600231529dd,IOE 6: TEST 2810T,IOE 6: TEST 2810T - Phần 1,1,2,50,IOE 6- TEST 2810T - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+635f77ff2ebf1600231529dd,IOE 6: TEST 2810T,IOE 6: TEST 2810T - Phần 2,2,2,20,IOE 6- TEST 2810T - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+635b985c8bae3d00204a063f,IOE 3: TEST 2810T,IOE 3: TEST 2810T - Phần 1,1,2,50,IOE 3- TEST 2810T - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+635b985c8bae3d00204a063f,IOE 3: TEST 2810T,IOE 3: TEST 2810T - Phần 2,2,2,46,IOE 3- TEST 2810T - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6352a6b728b56b001db86a8b,SO TOO NEITHER EITHER,SO TOO NEITHER EITHER,1,1,1,SO TOO NEITHER EITHER.csv,False,False,SENTENCE_TRANSFORM
+6351fe00bb4aef001d96fedc,IOE 3: TEST 2110,IOE 3: TEST 2110 - Phần 1,1,2,50,IOE 3- TEST 2110 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6351fe00bb4aef001d96fedc,IOE 3: TEST 2110,IOE 3: TEST 2110 - Phần 2,2,2,50,IOE 3- TEST 2110 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6350f145036ee7001e5821f2,IOE 4: TEST 2010,IOE 4: TEST 2010 - Phần 1,1,2,50,IOE 4- TEST 2010 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6350f145036ee7001e5821f2,IOE 4: TEST 2010,IOE 4: TEST 2010 - Phần 2,2,2,50,IOE 4- TEST 2010 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+634e7493077d66001e355eef,IOE 5: TEST 1810Tr,IOE 5: TEST 1810Tr - Phần 1,1,2,50,IOE 5- TEST 1810Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+634e7493077d66001e355eef,IOE 5: TEST 1810Tr,IOE 5: TEST 1810Tr - Phần 2,2,2,10,IOE 5- TEST 1810Tr - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+634e0c341f2bc9001db2c4da,TAG- QUESTIONS : easy,TAG- QUESTIONS : easy - Phần 1,1,3,50,TAG- QUESTIONS - easy - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+634e0c341f2bc9001db2c4da,TAG- QUESTIONS : easy,TAG- QUESTIONS : easy - Phần 2,2,3,50,TAG- QUESTIONS - easy - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+634e0c341f2bc9001db2c4da,TAG- QUESTIONS : easy,TAG- QUESTIONS : easy - Phần 3,3,3,50,TAG- QUESTIONS - easy - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+634d152b46fff2001e01e1df,IOE 4: TEST 1710T,IOE 4: TEST 1710T,1,1,35,IOE 4- TEST 1710T.csv,False,False,WORD_ORDER
+6348cb72b680ac001de30723,I 304 : CẤP TỈNH,I 304 : CẤP TỈNH - Phần 1,1,3,50,I 304 - CẤP TỈNH - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6348cb72b680ac001de30723,I 304 : CẤP TỈNH,I 304 : CẤP TỈNH - Phần 2,2,3,50,I 304 - CẤP TỈNH - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6348cb72b680ac001de30723,I 304 : CẤP TỈNH,I 304 : CẤP TỈNH - Phần 3,3,3,29,I 304 - CẤP TỈNH - Phan 3.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6347b942a47c88001d6fe788,Q1112 TỪ VỰNG VÒNG QUỐC GIA,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phần 1,1,3,50,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6347b942a47c88001d6fe788,Q1112 TỪ VỰNG VÒNG QUỐC GIA,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phần 2,2,3,50,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+6347b942a47c88001d6fe788,Q1112 TỪ VỰNG VÒNG QUỐC GIA,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phần 3,3,3,33,Q1112 TỪ VỰNG VÒNG QUỐC GIA - Phan 3.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+63467e44244933001e505540,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phần 1,1,3,50,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+63467e44244933001e505540,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phần 2,2,3,50,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+63467e44244933001e505540,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phần 3,3,3,40,L1112 - NHÌN HÌNH và VIẾT TỪ Lớp 2 - Phan 3.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+63460bdc24de17001e654075,5.4 Listen,5.4 Listen - Phần 1,1,2,50,5.4 Listen - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+63460bdc24de17001e654075,5.4 Listen,5.4 Listen - Phần 2,2,2,50,5.4 Listen - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+634532c2a58801001da2efff,IOE 5: TEST 1110T,IOE 5: TEST 1110T,1,1,23,IOE 5- TEST 1110T.csv,False,False,WORD_ORDER
+6344ce984b0934001dc80091,Giới Từ: DỄ 6 7 8,Giới Từ: DỄ 6 7 8 - Phần 1,1,3,50,Giới Từ- DỄ 6 7 8 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6344ce984b0934001dc80091,Giới Từ: DỄ 6 7 8,Giới Từ: DỄ 6 7 8 - Phần 2,2,3,50,Giới Từ- DỄ 6 7 8 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6344ce984b0934001dc80091,Giới Từ: DỄ 6 7 8,Giới Từ: DỄ 6 7 8 - Phần 3,3,3,46,Giới Từ- DỄ 6 7 8 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+633fcfe05a1afa001ddb9a37,IOE 3: TEST 0710Tr,IOE 3: TEST 0710Tr - Phần 1,1,3,50,IOE 3- TEST 0710Tr - Phan 1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+633fcfe05a1afa001ddb9a37,IOE 3: TEST 0710Tr,IOE 3: TEST 0710Tr - Phần 2,2,3,50,IOE 3- TEST 0710Tr - Phan 2.csv,True,True,SENTENCE_TRANSFORM
+633fcfe05a1afa001ddb9a37,IOE 3: TEST 0710Tr,IOE 3: TEST 0710Tr - Phần 3,3,3,8,IOE 3- TEST 0710Tr - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+633e3b24ed85c7001d8f9940,IOE4: TEST 0610Tr,IOE4: TEST 0610Tr - Phần 1,1,3,50,IOE4- TEST 0610Tr - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+633e3b24ed85c7001d8f9940,IOE4: TEST 0610Tr,IOE4: TEST 0610Tr - Phần 2,2,3,50,IOE4- TEST 0610Tr - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+633e3b24ed85c7001d8f9940,IOE4: TEST 0610Tr,IOE4: TEST 0610Tr - Phần 3,3,3,2,IOE4- TEST 0610Tr - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+633d4a555b9dd8001e3d94db,IOE6: TEST 0510H,IOE6: TEST 0510H,1,1,15,IOE6- TEST 0510H.csv,False,False,WORD_ORDER
+633bde10990879001f09115a,IOE7: TEST 0410H,IOE7: TEST 0410H - Phần 1,1,2,50,IOE7- TEST 0410H - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+633bde10990879001f09115a,IOE7: TEST 0410H,IOE7: TEST 0410H - Phần 2,2,2,39,IOE7- TEST 0410H - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+633a95e20b9f30001d4cf5a0,IOE 6: TEST 0310H,IOE 6: TEST 0310H - Phần 1,1,2,50,IOE 6- TEST 0310H - Phan 1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+633a95e20b9f30001d4cf5a0,IOE 6: TEST 0310H,IOE 6: TEST 0310H - Phần 2,2,2,2,IOE 6- TEST 0310H - Phan 2.csv,False,False,WORD_ORDER
+6336aaf13d6841001e12134f,IOE 3: TEST 3009H,IOE 3: TEST 3009H,1,1,50,IOE 3- TEST 3009H.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+633699c9543ea4001e2a7faa,"ENGLISH 6: TỪ VỰNG U1,2 3 4","ENGLISH 6: TỪ VỰNG U1,2 3 4",1,1,23,"ENGLISH 6- TỪ VỰNG U1,2 3 4.csv",False,False,WORD_ORDER
+6335545c439b03001d1c2cf8,IOE 4: TEST 2909H,IOE 4: TEST 2909H - Phần 1,1,2,50,IOE 4- TEST 2909H - Phan 1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+6335545c439b03001d1c2cf8,IOE 4: TEST 2909H,IOE 4: TEST 2909H - Phần 2,2,2,9,IOE 4- TEST 2909H - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+63354acef67475001d72b4ce,IOE 5: TEST 2909H,IOE 5: TEST 2909H - Phần 1,1,2,50,IOE 5- TEST 2909H - Phan 1.csv,True,True,SENTENCE_TRANSFORM | WORD_ORDER
+63354acef67475001d72b4ce,IOE 5: TEST 2909H,IOE 5: TEST 2909H - Phần 2,2,2,30,IOE 5- TEST 2909H - Phan 2.csv,True,True,SENTENCE_TRANSFORM
+6332bd65ea3f71001ddc7094,GERUND,GERUND - Phần 1,1,3,50,GERUND - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+6332bd65ea3f71001ddc7094,GERUND,GERUND - Phần 2,2,3,50,GERUND - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6332bd65ea3f71001ddc7094,GERUND,GERUND - Phần 3,3,3,30,GERUND - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+63325e1a3c3c22001eab3f63,NP1: ĐẠI TỪ,NP1: ĐẠI TỪ - Phần 1,1,2,50,NP1- ĐẠI TỪ - Phan 1.csv,False,False,SINGLE_CHOICE
+63325e1a3c3c22001eab3f63,NP1: ĐẠI TỪ,NP1: ĐẠI TỪ - Phần 2,2,2,34,NP1- ĐẠI TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+633150c08f2602001de6994e,IOE 4: TEST 2609,IOE 4: TEST 2609 - Phần 1,1,2,50,IOE 4- TEST 2609 - Phan 1.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+633150c08f2602001de6994e,IOE 4: TEST 2609,IOE 4: TEST 2609 - Phần 2,2,2,30,IOE 4- TEST 2609 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+632fbe976f0461001f7eed39,NGHE: FF1.1 2 3 Điền từ lớp 2 3 4 5,NGHE: FF1.1 2 3 Điền từ lớp 2 3 4 5 - Phần 1,1,2,50,NGHE- FF1.1 2 3 Điền từ lớp 2 3 4 5 - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+632fbe976f0461001f7eed39,NGHE: FF1.1 2 3 Điền từ lớp 2 3 4 5,NGHE: FF1.1 2 3 Điền từ lớp 2 3 4 5 - Phần 2,2,2,40,NGHE- FF1.1 2 3 Điền từ lớp 2 3 4 5 - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+632d5c7196567c001d6f5e8a,IOE3 Thi thử Điền từ 1,IOE3 Thi thử Điền từ 1 - Phần 1,1,2,50,IOE3 Thi thử Điền từ 1 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+632d5c7196567c001d6f5e8a,IOE3 Thi thử Điền từ 1,IOE3 Thi thử Điền từ 1 - Phần 2,2,2,11,IOE3 Thi thử Điền từ 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+632c0b79231ab5001da77d33,5.3 Listen,5.3 Listen - Phần 1,1,2,50,5.3 Listen - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+632c0b79231ab5001da77d33,5.3 Listen,5.3 Listen - Phần 2,2,2,30,5.3 Listen - Phan 2.csv,True,True,SENTENCE_TRANSFORM | WORD_ORDER
+632ac93a567bc2001ed10069,E4. 2 LISTEN,E4. 2 LISTEN,1,1,45,E4. 2 LISTEN.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+632a609b94b0c8001e9620aa,E6: ĐỀ THI 1,E6: ĐỀ THI 1,1,1,50,E6- ĐỀ THI 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+632807c336e289001d04c47d,IOE4H: CÂU HỎI 1,IOE4H: CÂU HỎI 1 - Phần 1,1,2,50,IOE4H- CÂU HỎI 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+632807c336e289001d04c47d,IOE4H: CÂU HỎI 1,IOE4H: CÂU HỎI 1 - Phần 2,2,2,50,IOE4H- CÂU HỎI 1 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6320997bc9e9c1001d2380c5,999 TỪ VỰNG 89,999 TỪ VỰNG 89 - Phần 1,1,2,50,999 TỪ VỰNG 89 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6320997bc9e9c1001d2380c5,999 TỪ VỰNG 89,999 TỪ VỰNG 89 - Phần 2,2,2,23,999 TỪ VỰNG 89 - Phan 2.csv,False,False,WORD_ORDER
+631edcc034bc86001e5cb78b,TA 5: UNIT 4 LISTEN,TA 5: UNIT 4 LISTEN,1,1,2,TA 5- UNIT 4 LISTEN.csv,False,True,SINGLE_CHOICE
+631af38b1bee9b001ddc77a7,IOE3 V3: TỪ VỰNG,IOE3 V3: TỪ VỰNG - Phần 1,1,2,50,IOE3 V3- TỪ VỰNG - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+631af38b1bee9b001ddc77a7,IOE3 V3: TỪ VỰNG,IOE3 V3: TỪ VỰNG - Phần 2,2,2,20,IOE3 V3- TỪ VỰNG - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+631a8926e1378900206fe30d,112 Tag- Questions - KHÓ,112 Tag- Questions - KHÓ - Phần 1,1,2,50,112 Tag- Questions - KHÓ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+631a8926e1378900206fe30d,112 Tag- Questions - KHÓ,112 Tag- Questions - KHÓ - Phần 2,2,2,50,112 Tag- Questions - KHÓ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+63199b3e0ddda9001d473ea8,IOE4 Tr THI THỬ: ĐIỀN TỪ 1,IOE4 Tr THI THỬ: ĐIỀN TỪ 1 - Phần 1,1,2,50,IOE4 Tr THI THỬ- ĐIỀN TỪ 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+63199b3e0ddda9001d473ea8,IOE4 Tr THI THỬ: ĐIỀN TỪ 1,IOE4 Tr THI THỬ: ĐIỀN TỪ 1 - Phần 2,2,2,20,IOE4 Tr THI THỬ- ĐIỀN TỪ 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+63185eead42208001e24780d,IOE 5: TEST 06 09 22,IOE 5: TEST 06 09 22 - Phần 1,1,2,50,IOE 5- TEST 06 09 22 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+63185eead42208001e24780d,IOE 5: TEST 06 09 22,IOE 5: TEST 06 09 22 - Phần 2,2,2,50,IOE 5- TEST 06 09 22 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+631397d47b6fc7001df82692,CÂU GIÁN TIẾP: TỔNG HỢP 2 - KHÓ,CÂU GIÁN TIẾP: TỔNG HỢP 2 - KHÓ,1,1,1,CÂU GIÁN TIẾP- TỔNG HỢP 2 - KHÓ.csv,False,False,SENTENCE_TRANSFORM
+631396df46757c001d86047b,CÂU GIÁN TIẾP: CÁC THÌ 2,CÂU GIÁN TIẾP: CÁC THÌ 2,1,1,1,CÂU GIÁN TIẾP- CÁC THÌ 2.csv,False,False,SENTENCE_TRANSFORM
+6313965e9f242f001e02ebe7,CÂU GIÁN TIẾP: CÁC THÌ 1,CÂU GIÁN TIẾP: CÁC THÌ 1,1,1,1,CÂU GIÁN TIẾP- CÁC THÌ 1.csv,False,False,SENTENCE_TRANSFORM
+6313959df028eb001efe00e9,CÂU GIÁN TIẾP: TLĐ + TLG + MV,CÂU GIÁN TIẾP: TLĐ + TLG + MV,1,1,1,CÂU GIÁN TIẾP- TLĐ + TLG + MV.csv,False,False,SENTENCE_TRANSFORM
+6313952a7c1607001f1c4e37,CÂU GIÁN TIẾP: THÌ HTHT + QKHT,CÂU GIÁN TIẾP: THÌ HTHT + QKHT,1,1,1,CÂU GIÁN TIẾP- THÌ HTHT + QKHT.csv,False,False,SENTENCE_TRANSFORM
+631394a085b5140020649817,CÂU GIÁN TIẾP: QKĐ + QKTD,CÂU GIÁN TIẾP: QKĐ + QKTD,1,1,1,CÂU GIÁN TIẾP- QKĐ + QKTD.csv,False,False,SENTENCE_TRANSFORM
+631392a35d8445001d87acde,CÂU GIÁN TIẾP: THÌ HTĐ + HTTD,CÂU GIÁN TIẾP: THÌ HTĐ + HTTD,1,1,31,CÂU GIÁN TIẾP- THÌ HTĐ + HTTD.csv,False,False,SENTENCE_TRANSFORM
+6309c53f0213b8001dd00820,IOE 5 - TEST 278H,IOE 5 - TEST 278H - Phần 1,1,2,50,IOE 5 - TEST 278H - Phan 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+6309c53f0213b8001dd00820,IOE 5 - TEST 278H,IOE 5 - TEST 278H - Phần 2,2,2,50,IOE 5 - TEST 278H - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+6301a06da27139001d9fe16d,O 101 - LISTEN 1,O 101 - LISTEN 1 - Phần 1,1,3,50,O 101 - LISTEN 1 - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6301a06da27139001d9fe16d,O 101 - LISTEN 1,O 101 - LISTEN 1 - Phần 2,2,3,50,O 101 - LISTEN 1 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+6301a06da27139001d9fe16d,O 101 - LISTEN 1,O 101 - LISTEN 1 - Phần 3,3,3,1,O 101 - LISTEN 1 - Phan 3.csv,False,False,SINGLE_CHOICE
+62fdfe31ee2950001db68763,IOE 4 - Sắp xếp 1,IOE 4 - Sắp xếp 1 - Phần 1,1,2,50,IOE 4 - Sắp xếp 1 - Phan 1.csv,False,False,WORD_ORDER
+62fdfe31ee2950001db68763,IOE 4 - Sắp xếp 1,IOE 4 - Sắp xếp 1 - Phần 2,2,2,38,IOE 4 - Sắp xếp 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+62fcf5f16c6a95001dea7f68,84 CẤU TRÚC,84 CẤU TRÚC - Phần 1,1,2,50,84 CẤU TRÚC - Phan 1.csv,False,False,WORD_ORDER
+62fcf5f16c6a95001dea7f68,84 CẤU TRÚC,84 CẤU TRÚC - Phần 2,2,2,50,84 CẤU TRÚC - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+62fa04c7005d7f001d3e0b98,IOE4 - TỪ VỰNG V 1,IOE4 - TỪ VỰNG V 1 - Phần 1,1,2,50,IOE4 - TỪ VỰNG V 1 - Phan 1.csv,True,False,SENTENCE_TRANSFORM
+62fa04c7005d7f001d3e0b98,IOE4 - TỪ VỰNG V 1,IOE4 - TỪ VỰNG V 1 - Phần 2,2,2,9,IOE4 - TỪ VỰNG V 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM
+62f903f12b9502001e35ced5,CÂU BỊ ĐỘNG 1,CÂU BỊ ĐỘNG 1 - Phần 1,1,2,50,CÂU BỊ ĐỘNG 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62f903f12b9502001e35ced5,CÂU BỊ ĐỘNG 1,CÂU BỊ ĐỘNG 1 - Phần 2,2,2,30,CÂU BỊ ĐỘNG 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62f74fd488ab4e001ebd111a,5.2 Listen,5.2 Listen - Phần 1,1,2,50,5.2 Listen - Phan 1.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62f74fd488ab4e001ebd111a,5.2 Listen,5.2 Listen - Phần 2,2,2,50,5.2 Listen - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62f5bd9995635d001e57f192,IOE 6 - TỪ VỰNG - Điền Từ,IOE 6 - TỪ VỰNG - Điền Từ - Phần 1,1,2,50,IOE 6 - TỪ VỰNG - Điền Từ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62f5bd9995635d001e57f192,IOE 6 - TỪ VỰNG - Điền Từ,IOE 6 - TỪ VỰNG - Điền Từ - Phần 2,2,2,21,IOE 6 - TỪ VỰNG - Điền Từ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62f35828417978001d6c9034,NGHE FF1: Lớp 234,NGHE FF1: Lớp 234 - Phần 1,1,2,50,NGHE FF1- Lớp 234 - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62f35828417978001d6c9034,NGHE FF1: Lớp 234,NGHE FF1: Lớp 234 - Phần 2,2,2,46,NGHE FF1- Lớp 234 - Phan 2.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62f0d5838905c6001d0e72f4,555 IOE 5: TỪ VỰNG,555 IOE 5: TỪ VỰNG - Phần 1,1,4,50,555 IOE 5- TỪ VỰNG - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62f0d5838905c6001d0e72f4,555 IOE 5: TỪ VỰNG,555 IOE 5: TỪ VỰNG - Phần 2,2,4,50,555 IOE 5- TỪ VỰNG - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62f0d5838905c6001d0e72f4,555 IOE 5: TỪ VỰNG,555 IOE 5: TỪ VỰNG - Phần 3,3,4,50,555 IOE 5- TỪ VỰNG - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62f0d5838905c6001d0e72f4,555 IOE 5: TỪ VỰNG,555 IOE 5: TỪ VỰNG - Phần 4,4,4,36,555 IOE 5- TỪ VỰNG - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62ecc3ded33440001e8f313b,SOUND GREAT 1,SOUND GREAT 1,1,1,48,SOUND GREAT 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62e8cda9496a20001d114b82,E4.1 - LISTEN,E4.1 - LISTEN,1,1,37,E4.1 - LISTEN.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62e65f72816082001d098f35,IOE 3 - SẮP XẾP 1,IOE 3 - SẮP XẾP 1 - Phần 1,1,2,50,IOE 3 - SẮP XẾP 1 - Phan 1.csv,False,False,WORD_ORDER
+62e65f72816082001d098f35,IOE 3 - SẮP XẾP 1,IOE 3 - SẮP XẾP 1 - Phần 2,2,2,50,IOE 3 - SẮP XẾP 1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+62e46ffdc0421e001dc72277,E333 - NGHE HKII,E333 - NGHE HKII - Phần 1,1,4,50,E333 - NGHE HKII - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+62e46ffdc0421e001dc72277,E333 - NGHE HKII,E333 - NGHE HKII - Phần 2,2,4,50,E333 - NGHE HKII - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62e46ffdc0421e001dc72277,E333 - NGHE HKII,E333 - NGHE HKII - Phần 3,3,4,50,E333 - NGHE HKII - Phan 3.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62e46ffdc0421e001dc72277,E333 - NGHE HKII,E333 - NGHE HKII - Phần 4,4,4,50,E333 - NGHE HKII - Phan 4.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62ded55a85fc4d001ed62e0a,LET 1: LISTEN 1 easily,LET 1: LISTEN 1 easily - Phần 1,1,2,50,LET 1- LISTEN 1 easily - Phan 1.csv,True,True,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62ded55a85fc4d001ed62e0a,LET 1: LISTEN 1 easily,LET 1: LISTEN 1 easily - Phần 2,2,2,10,LET 1- LISTEN 1 easily - Phan 2.csv,False,True,SINGLE_CHOICE
+62dc92d1687521001edf62d3,IOE 5H: Sắp xếp 2.1,IOE 5H: Sắp xếp 2.1 - Phần 1,1,3,50,IOE 5H- Sắp xếp 2.1 - Phan 1.csv,False,False,SINGLE_CHOICE | WORD_ORDER
+62dc92d1687521001edf62d3,IOE 5H: Sắp xếp 2.1,IOE 5H: Sắp xếp 2.1 - Phần 2,2,3,50,IOE 5H- Sắp xếp 2.1 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+62dc92d1687521001edf62d3,IOE 5H: Sắp xếp 2.1,IOE 5H: Sắp xếp 2.1 - Phần 3,3,3,30,IOE 5H- Sắp xếp 2.1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+62dba93f687521001edea821,IOE 5: CHỌN A B,IOE 5: CHỌN A B - Phần 1,1,2,50,IOE 5- CHỌN A B - Phan 1.csv,False,False,SINGLE_CHOICE
+62dba93f687521001edea821,IOE 5: CHỌN A B,IOE 5: CHỌN A B - Phần 2,2,2,20,IOE 5- CHỌN A B - Phan 2.csv,False,False,SINGLE_CHOICE
+62dba8f2687521001edea7e2,IOE 5: ĐIỀN TỪ,IOE 5: ĐIỀN TỪ,1,1,1,IOE 5- ĐIỀN TỪ.csv,False,False,SENTENCE_TRANSFORM
+62da521e5ff7b7001dbee5d2,TAG- Q SO TOO NEITHER EITHER 1,TAG- Q SO TOO NEITHER EITHER 1,1,1,1,TAG- Q SO TOO NEITHER EITHER 1.csv,False,False,SENTENCE_TRANSFORM
+62d7ce2057dfe3001f8c9027,TAG- Q and SO TOO NEITHER EITHER 2,TAG- Q and SO TOO NEITHER EITHER 2 - Phần 1,1,5,50,TAG- Q and SO TOO NEITHER EITHER 2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d7ce2057dfe3001f8c9027,TAG- Q and SO TOO NEITHER EITHER 2,TAG- Q and SO TOO NEITHER EITHER 2 - Phần 2,2,5,50,TAG- Q and SO TOO NEITHER EITHER 2 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d7ce2057dfe3001f8c9027,TAG- Q and SO TOO NEITHER EITHER 2,TAG- Q and SO TOO NEITHER EITHER 2 - Phần 3,3,5,50,TAG- Q and SO TOO NEITHER EITHER 2 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d7ce2057dfe3001f8c9027,TAG- Q and SO TOO NEITHER EITHER 2,TAG- Q and SO TOO NEITHER EITHER 2 - Phần 4,4,5,50,TAG- Q and SO TOO NEITHER EITHER 2 - Phan 4.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d7ce2057dfe3001f8c9027,TAG- Q and SO TOO NEITHER EITHER 2,TAG- Q and SO TOO NEITHER EITHER 2 - Phần 5,5,5,4,TAG- Q and SO TOO NEITHER EITHER 2 - Phan 5.csv,False,False,SENTENCE_TRANSFORM
+62d763901c8dc8001e19a9df,SO SÁNH 1,SO SÁNH 1 - Phần 1,1,2,50,SO SÁNH 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62d763901c8dc8001e19a9df,SO SÁNH 1,SO SÁNH 1 - Phần 2,2,2,50,SO SÁNH 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62d1af1c5fcb08001eafeef5,112 - ĐÊ THI CÁC THÌ : DỄ 1,112 - ĐÊ THI CÁC THÌ : DỄ 1 - Phần 1,1,4,50,112 - ĐÊ THI CÁC THÌ - DỄ 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d1af1c5fcb08001eafeef5,112 - ĐÊ THI CÁC THÌ : DỄ 1,112 - ĐÊ THI CÁC THÌ : DỄ 1 - Phần 2,2,4,50,112 - ĐÊ THI CÁC THÌ - DỄ 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62d1af1c5fcb08001eafeef5,112 - ĐÊ THI CÁC THÌ : DỄ 1,112 - ĐÊ THI CÁC THÌ : DỄ 1 - Phần 3,3,4,50,112 - ĐÊ THI CÁC THÌ - DỄ 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE | WORD_ORDER
+62d1af1c5fcb08001eafeef5,112 - ĐÊ THI CÁC THÌ : DỄ 1,112 - ĐÊ THI CÁC THÌ : DỄ 1 - Phần 4,4,4,40,112 - ĐÊ THI CÁC THÌ - DỄ 1 - Phan 4.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+62d1aec7bcbd81001d2162d4,MV 1,MV 1,1,1,2,MV 1.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+62d1ae655fcb08001eafeeae,THÌ TƯƠNG LAI GẦN 1,THÌ TƯƠNG LAI GẦN 1,1,1,1,THÌ TƯƠNG LAI GẦN 1.csv,False,False,SENTENCE_TRANSFORM
+62d1ae2058ab09001ddc2f76,THÌ TƯƠNG LAI ĐƠN 1,THÌ TƯƠNG LAI ĐƠN 1,1,1,1,THÌ TƯƠNG LAI ĐƠN 1.csv,False,False,SENTENCE_TRANSFORM
+62d1adcf3d0de9001d00bef2,THÌ QUÁ KHỨ TIẾP DIỄN,THÌ QUÁ KHỨ TIẾP DIỄN,1,1,1,THÌ QUÁ KHỨ TIẾP DIỄN - Phan 1_1.csv,False,False,SENTENCE_TRANSFORM
+62d1ad82e1c42a001fd5b344,THÌ QUÁ KHỨ ĐƠN 1,THÌ QUÁ KHỨ ĐƠN 1,1,1,1,THÌ QUÁ KHỨ ĐƠN 1.csv,False,False,SENTENCE_TRANSFORM
+62d1aba7db5f45001f499197,THÌ HIỆN TẠI HOÀN THÀNH 1,THÌ HIỆN TẠI HOÀN THÀNH 1,1,1,1,THÌ HIỆN TẠI HOÀN THÀNH 1.csv,False,False,SENTENCE_TRANSFORM
+62d1ab1a58ab09001ddc2d70,THÌ HIỆN TẠI TIẾP DIỄN 1,THÌ HIỆN TẠI TIẾP DIỄN 1,1,1,1,THÌ HIỆN TẠI TIẾP DIỄN 1.csv,False,False,SENTENCE_TRANSFORM
+62d1aaa93d0de9001d00bcb1,THÌ HIỆN TẠI ĐƠN 1,THÌ HIỆN TẠI ĐƠN 1,1,1,1,THÌ HIỆN TẠI ĐƠN 1.csv,False,False,SENTENCE_TRANSFORM
+62cd197f23bbb5001d060a92,WISH,WISH - Phần 1,1,2,50,WISH - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62cd197f23bbb5001d060a92,WISH,WISH - Phần 2,2,2,28,WISH - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62cd18e72fe6ea001d543272,"CÂU ĐK 1, 2","CÂU ĐK 1, 2 - Phần 1",1,3,50,"CÂU ĐK 1, 2 - Phan 1.csv",False,False,SENTENCE_TRANSFORM
+62cd18e72fe6ea001d543272,"CÂU ĐK 1, 2","CÂU ĐK 1, 2 - Phần 2",2,3,50,"CÂU ĐK 1, 2 - Phan 2.csv",False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62cd18e72fe6ea001d543272,"CÂU ĐK 1, 2","CÂU ĐK 1, 2 - Phần 3",3,3,13,"CÂU ĐK 1, 2 - Phan 3.csv",False,False,SENTENCE_TRANSFORM
+62cd1887cfbb00001d1b68e7,CÂU ĐK LOẠI 3,CÂU ĐK LOẠI 3,1,1,1,CÂU ĐK LOẠI 3.csv,False,False,SENTENCE_TRANSFORM
+62c9463c66b6ad00218e6aac,CÂU ĐK LOẠI 2,CÂU ĐK LOẠI 2 - Phần 1,1,2,50,CÂU ĐK LOẠI 2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62c9463c66b6ad00218e6aac,CÂU ĐK LOẠI 2,CÂU ĐK LOẠI 2 - Phần 2,2,2,10,CÂU ĐK LOẠI 2 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62c92abce833f6001dfe10cf,CÂU ĐK LOẠI 1,CÂU ĐK LOẠI 1 - Phần 1,1,2,50,CÂU ĐK LOẠI 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62c92abce833f6001dfe10cf,CÂU ĐK LOẠI 1,CÂU ĐK LOẠI 1 - Phần 2,2,2,37,CÂU ĐK LOẠI 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM | WORD_ORDER
+62c2b2c2099a77001ee8a707,IOE 5- ĐIỀN TỪ - HUYỆN 1,IOE 5- ĐIỀN TỪ - HUYỆN 1 - Phần 1,1,2,50,IOE 5- ĐIỀN TỪ - HUYỆN 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62c2b2c2099a77001ee8a707,IOE 5- ĐIỀN TỪ - HUYỆN 1,IOE 5- ĐIỀN TỪ - HUYỆN 1 - Phần 2,2,2,35,IOE 5- ĐIỀN TỪ - HUYỆN 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62c15f7be67274001d4266af,IOE3- TỪ VỰNG - V12,IOE3- TỪ VỰNG - V12 - Phần 1,1,4,50,IOE3- TỪ VỰNG - V12 - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62c15f7be67274001d4266af,IOE3- TỪ VỰNG - V12,IOE3- TỪ VỰNG - V12 - Phần 2,2,4,50,IOE3- TỪ VỰNG - V12 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62c15f7be67274001d4266af,IOE3- TỪ VỰNG - V12,IOE3- TỪ VỰNG - V12 - Phần 3,3,4,50,IOE3- TỪ VỰNG - V12 - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62c15f7be67274001d4266af,IOE3- TỪ VỰNG - V12,IOE3- TỪ VỰNG - V12 - Phần 4,4,4,12,IOE3- TỪ VỰNG - V12 - Phan 4.csv,True,False,SINGLE_CHOICE | WORD_ORDER
+62bf5a466182af001e66beaf,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB - Phần 1,1,2,50,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB - Phan 1.csv,False,False,SINGLE_CHOICE
+62bf5a466182af001e66beaf,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB - Phần 2,2,2,20,IOE3- THI THỬ- HUYỆN 1 - CHỌN AB - Phan 2.csv,False,True,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62bf4f24c5e7cc001f5e970b,IOE4H THI THỬ: ĐIỀN TỪ 1,IOE4H THI THỬ: ĐIỀN TỪ 1 - Phần 1,1,3,50,IOE4H THI THỬ- ĐIỀN TỪ 1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62bf4f24c5e7cc001f5e970b,IOE4H THI THỬ: ĐIỀN TỪ 1,IOE4H THI THỬ: ĐIỀN TỪ 1 - Phần 2,2,3,50,IOE4H THI THỬ- ĐIỀN TỪ 1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62bf4f24c5e7cc001f5e970b,IOE4H THI THỬ: ĐIỀN TỪ 1,IOE4H THI THỬ: ĐIỀN TỪ 1 - Phần 3,3,3,50,IOE4H THI THỬ- ĐIỀN TỪ 1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62be6382463b40001ee43118,THÌ Hiện Tại Hoàn Thành,THÌ Hiện Tại Hoàn Thành - Phần 1,1,3,50,THÌ Hiện Tại Hoàn Thành - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62be6382463b40001ee43118,THÌ Hiện Tại Hoàn Thành,THÌ Hiện Tại Hoàn Thành - Phần 2,2,3,50,THÌ Hiện Tại Hoàn Thành - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62be6382463b40001ee43118,THÌ Hiện Tại Hoàn Thành,THÌ Hiện Tại Hoàn Thành - Phần 3,3,3,2,THÌ Hiện Tại Hoàn Thành - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+62bbba6d128dc0001d7c77f3,ĐỘNG TỪ BQT : QUÁ KHỨ + P2,ĐỘNG TỪ BQT : QUÁ KHỨ + P2 - Phần 1,1,2,50,ĐỘNG TỪ BQT - QUÁ KHỨ + P2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62bbba6d128dc0001d7c77f3,ĐỘNG TỪ BQT : QUÁ KHỨ + P2,ĐỘNG TỪ BQT : QUÁ KHỨ + P2 - Phần 2,2,2,24,ĐỘNG TỪ BQT - QUÁ KHỨ + P2 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62bae33612ea9e001e7fdba0,BỊ ĐỘNG - Chuyển,BỊ ĐỘNG - Chuyển - Phần 1,1,5,50,BỊ ĐỘNG - Chuyển - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62bae33612ea9e001e7fdba0,BỊ ĐỘNG - Chuyển,BỊ ĐỘNG - Chuyển - Phần 2,2,5,50,BỊ ĐỘNG - Chuyển - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62bae33612ea9e001e7fdba0,BỊ ĐỘNG - Chuyển,BỊ ĐỘNG - Chuyển - Phần 3,3,5,50,BỊ ĐỘNG - Chuyển - Phan 3.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62bae33612ea9e001e7fdba0,BỊ ĐỘNG - Chuyển,BỊ ĐỘNG - Chuyển - Phần 4,4,5,50,BỊ ĐỘNG - Chuyển - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+62bae33612ea9e001e7fdba0,BỊ ĐỘNG - Chuyển,BỊ ĐỘNG - Chuyển - Phần 5,5,5,40,BỊ ĐỘNG - Chuyển - Phan 5.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62baa236cf6f02001db766c8,LET1- CÂU,LET1- CÂU,1,1,26,LET1- CÂU.csv,True,False,SENTENCE_TRANSFORM
+62b973e642afc3001fa218c9,DỊCH A/V 3.7 - 10,DỊCH A/V 3.7 - 10,1,1,33,DỊCH A-V 3.7 - 10.csv,False,False,SENTENCE_TRANSFORM
+62b95a65319690001df7506e,DỊCH V/A 3.1-6,DỊCH V/A 3.1-6,1,1,40,DỊCH V-A 3.1-6.csv,False,False,SENTENCE_TRANSFORM
+62b8127ade2fd0001d8c9ee9,ĐỘNG TỪ BQT 3 KHÓ,ĐỘNG TỪ BQT 3 KHÓ - Phần 1,1,3,50,ĐỘNG TỪ BQT 3 KHÓ - Phan 1.csv,False,True,SENTENCE_TRANSFORM
+62b8127ade2fd0001d8c9ee9,ĐỘNG TỪ BQT 3 KHÓ,ĐỘNG TỪ BQT 3 KHÓ - Phần 2,2,3,50,ĐỘNG TỪ BQT 3 KHÓ - Phan 2.csv,True,True,SENTENCE_TRANSFORM
+62b8127ade2fd0001d8c9ee9,ĐỘNG TỪ BQT 3 KHÓ,ĐỘNG TỪ BQT 3 KHÓ - Phần 3,3,3,40,ĐỘNG TỪ BQT 3 KHÓ - Phan 3.csv,True,False,SENTENCE_TRANSFORM
+62b6c5a9f412c9001da8201f,THÌ HT ĐƠN + HTT DIẾN,THÌ HT ĐƠN + HTT DIẾN - Phần 1,1,2,50,THÌ HT ĐƠN + HTT DIẾN - Phan 1.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62b6c5a9f412c9001da8201f,THÌ HT ĐƠN + HTT DIẾN,THÌ HT ĐƠN + HTT DIẾN - Phần 2,2,2,17,THÌ HT ĐƠN + HTT DIẾN - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62b5341b009f20001e372edc,ĐỀ THI VÀO 10.1,ĐỀ THI VÀO 10.1 - Phần 1,1,5,50,ĐỀ THI VÀO 10.1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62b5341b009f20001e372edc,ĐỀ THI VÀO 10.1,ĐỀ THI VÀO 10.1 - Phần 2,2,5,50,ĐỀ THI VÀO 10.1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62b5341b009f20001e372edc,ĐỀ THI VÀO 10.1,ĐỀ THI VÀO 10.1 - Phần 3,3,5,50,ĐỀ THI VÀO 10.1 - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+62b5341b009f20001e372edc,ĐỀ THI VÀO 10.1,ĐỀ THI VÀO 10.1 - Phần 4,4,5,50,ĐỀ THI VÀO 10.1 - Phan 4.csv,False,False,SENTENCE_TRANSFORM
+62b5341b009f20001e372edc,ĐỀ THI VÀO 10.1,ĐỀ THI VÀO 10.1 - Phần 5,5,5,20,ĐỀ THI VÀO 10.1 - Phan 5.csv,False,False,SENTENCE_TRANSFORM
+62b4112b9f1dd9001d160774,MODAL VERBS,MODAL VERBS - Phần 1,1,2,50,MODAL VERBS - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62b4112b9f1dd9001d160774,MODAL VERBS,MODAL VERBS - Phần 2,2,2,50,MODAL VERBS - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62b1386110dd86001dcb5df4,THÌ QUÁ KHỨ ĐƠN,THÌ QUÁ KHỨ ĐƠN - Phần 1,1,2,50,THÌ QUÁ KHỨ ĐƠN - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62b1386110dd86001dcb5df4,THÌ QUÁ KHỨ ĐƠN,THÌ QUÁ KHỨ ĐƠN - Phần 2,2,2,30,THÌ QUÁ KHỨ ĐƠN - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62ac2e7d973e38001d23bfa8,L221 - NHÌN HÌNH chọn ĐÁP ÁN: LỚP 1,L221 - NHÌN HÌNH chọn ĐÁP ÁN: LỚP 1 - Phần 1,1,2,50,L221 - NHÌN HÌNH chọn ĐÁP ÁN- LỚP 1 - Phan 1.csv,True,False,SINGLE_CHOICE
+62ac2e7d973e38001d23bfa8,L221 - NHÌN HÌNH chọn ĐÁP ÁN: LỚP 1,L221 - NHÌN HÌNH chọn ĐÁP ÁN: LỚP 1 - Phần 2,2,2,25,L221 - NHÌN HÌNH chọn ĐÁP ÁN- LỚP 1 - Phan 2.csv,True,True,SINGLE_CHOICE
+62abfb3ab319bc001ddf19f4,SO SÁNH: ĐIỀN TỪ 2,SO SÁNH: ĐIỀN TỪ 2 - Phần 1,1,2,50,SO SÁNH- ĐIỀN TỪ 2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62abfb3ab319bc001ddf19f4,SO SÁNH: ĐIỀN TỪ 2,SO SÁNH: ĐIỀN TỪ 2 - Phần 2,2,2,50,SO SÁNH- ĐIỀN TỪ 2 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62aab6bd176b18001d945592,SO SÁNH- ĐIỀN TỪ 3,SO SÁNH- ĐIỀN TỪ 3 - Phần 1,1,2,50,SO SÁNH- ĐIỀN TỪ 3 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62aab6bd176b18001d945592,SO SÁNH- ĐIỀN TỪ 3,SO SÁNH- ĐIỀN TỪ 3 - Phần 2,2,2,50,SO SÁNH- ĐIỀN TỪ 3 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62aab294431737001f7451f0,QUESTIONS 3.1,QUESTIONS 3.1 - Phần 1,1,2,50,QUESTIONS 3.1 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62aab294431737001f7451f0,QUESTIONS 3.1,QUESTIONS 3.1 - Phần 2,2,2,20,QUESTIONS 3.1 - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62aab20501800e001d71de73,QUESTIONS 3.2,QUESTIONS 3.2 - Phần 1,1,2,50,QUESTIONS 3.2 - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62aab20501800e001d71de73,QUESTIONS 3.2,QUESTIONS 3.2 - Phần 2,2,2,50,QUESTIONS 3.2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | WORD_ORDER
+62a9a32498d7a6001d44fc51,Thì,Thì - Phần 1,1,2,50,Thì - Phan 1.csv,False,False,SINGLE_CHOICE
+62a9a32498d7a6001d44fc51,Thì,Thì - Phần 2,2,2,20,Thì - Phan 2.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62a92bf6af96ff001d1af2ea,MĐQH: ĐIỀN TỪ,MĐQH: ĐIỀN TỪ - Phần 1,1,3,50,MĐQH- ĐIỀN TỪ - Phan 1.csv,False,False,SENTENCE_TRANSFORM
+62a92bf6af96ff001d1af2ea,MĐQH: ĐIỀN TỪ,MĐQH: ĐIỀN TỪ - Phần 2,2,3,50,MĐQH- ĐIỀN TỪ - Phan 2.csv,False,False,SENTENCE_TRANSFORM
+62a92bf6af96ff001d1af2ea,MĐQH: ĐIỀN TỪ,MĐQH: ĐIỀN TỪ - Phần 3,3,3,4,MĐQH- ĐIỀN TỪ - Phan 3.csv,False,False,SENTENCE_TRANSFORM
+62a89d72fdceea0021b800b8,bi dong,bi dong,1,1,50,bi dong.csv,False,False,SINGLE_CHOICE
+62a88eca51b80d001df20f17,MĐQH: TRẮC NGHIỆM 1,MĐQH: TRẮC NGHIỆM 1 - Phần 1,1,2,50,MĐQH- TRẮC NGHIỆM 1 - Phan 1.csv,False,False,SINGLE_CHOICE
+62a88eca51b80d001df20f17,MĐQH: TRẮC NGHIỆM 1,MĐQH: TRẮC NGHIỆM 1 - Phần 2,2,2,50,MĐQH- TRẮC NGHIỆM 1 - Phan 2.csv,False,False,SINGLE_CHOICE
+62a83a878838e9001d64939e,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phần 1,1,3,50,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phan 1.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62a83a878838e9001d64939e,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phần 2,2,3,50,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phan 2.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+62a83a878838e9001d64939e,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phần 3,3,3,44,L122 NHÌN HÌNH ĐIỀN TỪ - LỚP 2 - Phan 3.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+61a242b35ba391001dae84f5,CÂU ĐIỀU KIỆN LOẠI 1,CÂU ĐIỀU KIỆN LOẠI 1,1,1,20,CÂU ĐIỀU KIỆN LOẠI 1 - Phan 1_1.csv,True,False,SINGLE_CHOICE
+61a222f478ba7a001dffd784,"A, AN, SOME, ANY","A, AN, SOME, ANY",1,1,15,"A, AN, SOME, ANY.csv",False,False,SINGLE_CHOICE
+5e9c4927c171c6001cbcac30,CẤU TRÚC CÁC LOẠI VIRUT,CẤU TRÚC CÁC LOẠI VIRUT,1,1,10,CẤU TRÚC CÁC LOẠI VIRUT.csv,True,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+5e95c826eaf1cf001be25935,Hệ thống hóa Hidrocacbon,Hệ thống hóa Hidrocacbon,1,1,10,Hệ thống hóa Hidrocacbon.csv,False,False,SINGLE_CHOICE
+5e8f4b7c16b81a001c1efa93,Ai thông minh hơn ?,Ai thông minh hơn ?,1,1,10,Ai thông minh hơn.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+5e8af053b3c192001b780412,RUNG CHUÔNG VÀNG,RUNG CHUÔNG VÀNG,1,1,20,RUNG CHUÔNG VÀNG.csv,True,True,SINGLE_CHOICE
+5e89b0db01e6ee001b18924b,PHÉP CỘNG PHÂN SỐ CÙNG MẪU SỐ,PHÉP CỘNG PHÂN SỐ CÙNG MẪU SỐ,1,1,10,PHÉP CỘNG PHÂN SỐ CÙNG MẪU SỐ.csv,False,False,SENTENCE_TRANSFORM | SINGLE_CHOICE
+5e89a2a3851944001b0c11ce,Ôn tập về các đơn vị đo thời gian,Ôn tập về các đơn vị đo thời gian,1,1,11,Ôn tập về các đơn vị đo thời gian.csv,False,False,SINGLE_CHOICE
+5e8683f9883eba001cf57f0d,Hành động nói,Hành động nói,1,1,10,Hành động nói.csv,False,False,SINGLE_CHOICE
+5e844f7dd5efbf001c64ddb4,Đố vui có thưởng :),Đố vui có thưởng :),1,1,14,Đố vui có thưởng -).csv,True,False,SINGLE_CHOICE
+5e82d442fbce3a001bce35a8,Đố vui có thưởng,Đố vui có thưởng,1,1,14,Đố vui có thưởng.csv,True,False,SINGLE_CHOICE
+5ddbce90499b5d001b5df5a0,quizz,quizz,1,1,9,quizz.csv,False,False,SINGLE_CHOICE

@@ -1,0 +1,3 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Using the correct form of verb. Dùng dạng đúng của động từ trong ngoặc. How (she go) to school since yesterday?,1.00,has she gone,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Using the correct form of verb. Dùng dạng đúng của động từ trong ngoặc. Who (Linda lend) money for 4 months?,1.00,has Linda lent,,,,,,A,,,,,Tiếng Anh,,,

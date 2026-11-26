@@ -1,0 +1,47 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. What her hobbies?,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. What are her hoies?,1.00,hobbies,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My bag is very hvy.,1.00,heavy,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Mary’s bedroom is very lae.,1.00,large,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Mary’s beom is very large.,1.00,bedroom,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. She is shrt but big.,1.00,short,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Is your batom new?,1.00,bathroom,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My books on the bookshelf.,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My books are on the booelf.,1.00,bookshelf,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Do you like listening music?,1.00,to,,,,,,A,,,,,Tiếng Anh,,,
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Do you like to music?,1.00,listening,,,,,,A,,,,,Tiếng Anh,,,
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My mother is forty-four old.,1.00,years,,,,,,A,,,,,Tiếng Anh,,,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Do you have ay pets?,1.00,any,,,,,,A,,,,,Tiếng Anh,,,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My mother’s birthday is February.,1.00,in,,,,,,A,,,,,Tiếng Anh,,,
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My mother’s biray is in February.,1.00,birthday,,,,,,A,,,,,Tiếng Anh,,,
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. My mother’s birthday is in Feby.,1.00,February,,,,,,A,,,,,Tiếng Anh,,,
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. Is your granather old?,1.00,grandfather,,,,,,A,,,,,Tiếng Anh,,,
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. This robot is you.,1.00,for,,,,,,A,,,,,Tiếng Anh,,,
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. What colour your notebooks?,1.00,are,,,,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. She h a new yellow hat.,1.00,has,,,,,,A,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. I can’t see my coat in the warobe.,1.00,wardrobe,,,,,,A,,,,,Tiếng Anh,,,
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Điền từ đầy đủ còn thiếu vào chỗ trống. London school is a big prary school in the City.,1.00,primary,,,,,,A,,,,,Tiếng Anh,,,
+23,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,Can you|My mother is|There is a dining room|There are two|She is,,,,,,,,,,,Tiếng Anh,,,
+24,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,A small fish is|How many apples|Is this|Is your school garden|It is a red,,,,,,,,,,,Tiếng Anh,,,
+25,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,Does Susan like|My brother has|What do you|I don’t go to school|Do you have,,,,,,,,,,,Tiếng Anh,,,
+26,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,Da Nang is near Hue but|Is there a yard|Tim doesn’t|Does Santa Claus|Is that your,,,,,,,,,,,Tiếng Anh,,,
+27,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,What pet|Where are|Tim likes playing|It is a|What are,,,,,,,,,,,Tiếng Anh,,,
+28,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,My bag|Her house is|Mary’s bedroom|She is|I can sing,,,,,,,,,,,Tiếng Anh,,,
+29,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,Is your|My books are|Do you like|My mother|Do you,,,,,,,,,,,Tiếng Anh,,,
+30,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,My mother’s birthday|Is your grandfather|What is|Pleased to meet|This robot is,,,,,,,,,,,Tiếng Anh,,,
+31,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,Our class is|Is she your|What colour are|She has|Glad to,,,,,,,,,,,Tiếng Anh,,,
+32,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép từ/cụm từ thành câu đúng.,1.00,I can’t see my coat|London school is a big primary school|My mother’s birthday|Do you like|My books,,,,,,,,,,,Tiếng Anh,,,
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,car,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6f594427-474d-419b-9f36-778cebce4a14
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,fish tank,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e8483237-43cc-45f9-a185-cb28d2454175
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,pillow,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0751266e-cea8-4611-a635-32c6f6df40e5
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,box,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2d7468cb-a9b7-42e7-839c-80aaf82d2c06
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,curtain,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/09a198a9-1acc-410e-808d-ddc5ea647854
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is an,1.00,elephant,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c00c1dbe-2428-44aa-aa3d-32353f9b5bc2
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,window,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/71f7f860-8f4b-42a0-bfcb-2e2054c09d4f
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,horse,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8e31dfab-bde3-4f5c-a6bd-40f6a4018506
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,baby,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0b0f2513-d674-413b-b4bb-28b17b74b343
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,ball,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0984344d-4990-4d4b-8974-395c6e339182
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,skirt,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/80ba160a-3248-4438-a806-18ecd6446352
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,bike,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: bike | bicycle,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4ad3bf3a-1c85-40a6-9c18-4061aed109f4
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,clock,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2d75f707-2028-4a38-b80d-ec4fbdcfb207
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Nhìn hình và viết đầy đủ từ Tiếng Anh tương ứng. There is a,1.00,flower vase,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/49b94905-065d-45ff-a296-b670d862d48a

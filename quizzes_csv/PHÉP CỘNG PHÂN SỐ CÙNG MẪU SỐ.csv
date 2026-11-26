@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,Tính: 59+89=?\frac{5}{9}+\frac{8}{9}=?95 +98 =?,1.00,1318\frac{13}{18}1813,139\frac{13}{9}913,1813\frac{18}{13}1318,913\frac{9}{13}139,,,B,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,Phép tính: 37+27=3+27+7=514 \frac{3}{7}+\frac{2}{7}=\frac{3+2}{7+7}=\frac{5}{14}\ 73 +72 =7+73+2 =145 Đúng hay Sai?,1.00,Đúng,Sai,,,,,B,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,"613+713=a13=b\frac{6}{13}+\frac{7}{13}=\frac{a}{13}=b136 +137 =13a =b a, b lần lượt là:",1.00,"a = 42, b = 2","a= 42, b = 1","a = 13, b = 1","a = 13, b = 2",,,C,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,Điền phân số thích hợp vào chỗ trống: ...−714=814...-\frac{7}{14}=\frac{8}{14}...−147 =148,1.00,15/14,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,Điền phân số thích hợp vào chỗ trống: 34+...=1\frac{3}{4}+...=143 +...=1 (viết phân số có dạng a/b),1.00,1/4,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,Điền phân số thích hợp vào chỗ trống: 720+920+120=...\frac{7}{20}+\frac{9}{20}+\frac{1}{20}=...207 +209 +201 =... (viết phân số có dạng a/b),1.00,17/20,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,Điền phân số thích hợp vào chỗ trống: 1921+021=...\frac{19}{21}+\frac{0}{21}=...2119 +210 =... (viết phân số có dạng a/b),1.00,19/21,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,Điền phân số thích hợp vào chỗ trống: 6365+...=9665+6365\frac{63}{65}+...=\frac{96}{65}+\frac{63}{65}6563 +...=6596 +6563 (viết phân số có dạng a/b),1.00,96/65,,,,,,A,,,,,Tiếng Anh,,,
+9,SINGLE_CHOICE,READING,STANDARD,Một hình chữ nhật có chiều dài 57\frac{5}{7}75 m và chiều rộng 17\frac{1}{7}71 m. Nửa chu vi của hình chữ nhật đó là:,1.00,67m\frac{6}{7}m76 m,614m\frac{6}{14}m146 m,127m\frac{12}{7}m712 m,1214m\frac{12}{14}m1412 m,,,A,,,,,Tiếng Anh,,,
+10,SINGLE_CHOICE,READING,STANDARD,"Một vòi nước giờ thứ nhất chảy được 25\frac{2}{5}52 bể nước, giờ thứ hai chảy được 15\frac{1}{5}51 bể nước . Hỏi sau hai giờ vòi nước đó chảy được bao nhiêu phần bể nước?",1.00,Đầy bể nước,310\frac{3}{10}103 bể nước,225\frac{2}{25}252 bể nước,35\frac{3}{5}53 bể nước,,,D,,,,,Tiếng Anh,,,

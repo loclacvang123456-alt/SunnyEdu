@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc He'll leave as soon as he (hear) the news,1.00,hears,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc How long you (study) in this school?,1.00,Have you studied,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Where are you? I'm upstairs. I (have) a bath,1.00,am having,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Hurry up! The train (come).,1.00,is coming,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Be quiet! The teacher (be) angry,1.00,is,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Why didn't you listen while I (speak) to you?,1.00,was speaking,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Some animals (not eat) during winter,1.00,don't eat,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: don't eat | don't eat | do not eat,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc I (finish) the book before my next birthday,1.00,will have finished,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: will have finished | will have finished,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc John (watch) TV at 8 last evening,1.00,was watching,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: was watching | was watching,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của ĐỘNG TỪ trong ngoặc Mr Pike (live) here since last October,1.00,has lived,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: has lived | has lived,

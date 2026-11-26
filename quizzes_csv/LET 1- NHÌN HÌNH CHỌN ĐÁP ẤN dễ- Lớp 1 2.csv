@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pencil case,pencil,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e1a91e5a-8075-4a08-9a18-b5da8db037f1
+2,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,pen,pens,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/45deb39b-c37d-41fc-aa29-05ad12ddd231
+3,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,bag,pen,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d445c71c-c23a-41d5-ae46-8d5f7b590925
+4,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,book,bookcase,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fe089af6-3f11-47bf-b9ac-79aaf1efb995
+5,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,chair,desk,,,,,B,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c51f2e4e-fce6-49c7-96f9-3339252dc964
+6,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Look and choose the best answer.,1.00,ruler,pen,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/10d0e554-ea44-4e60-8e8c-644cd6983ab3
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,pen,1.00,pencil,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/da812c76-f1ba-48d0-991e-534509deb904
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,bo,1.00,book,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a7c46284-379c-475c-8dfa-7f88a1fddc31
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,bd,1.00,bird,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/cdcadd77-2f2c-44bf-a476-87e6e23a7023
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,mker,1.00,marker,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/81a489c5-0f49-45dd-8192-7ff72eef4f33

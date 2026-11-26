@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Cô ấy đang đọc tiếng anh bây giờ -->,1.00,She is reading English now,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: She is reading English now | She is reading English right now | She is reading English at the moment | She is reading English at present,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Anh ấy đang không nói tiếng anh -->,1.00,He is not speaking English,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: He is not speaking English | He isn't speaking English,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Họ đang lái xe hơi cũ phải không? -->,1.00,Are they driving an old car?,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Cô ấy đang đi đâu? -->,1.00,Where is she going?,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Có phải họ đang chơi bóng đá không? -->,1.00,Are they playing football?,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: Are they playing football? | Are they playing soccer?,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Tại sao họ đang học tiếng Anh -->,1.00,Why are they learning english?,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Bố của bạn đang làm gì? -->,1.00,What is your father doing?,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Tôi đang đọc một quyển sách -->,1.00,I am reading a book,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: I am reading a book | I'm reading a book,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Bố của cô ấy đang chơi cờ -->,1.00,Her father is playing chess,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dịch câu sau sang TIẾNG ANH Có phải Jim đang uống sữa không? -->,1.00,Is Jim drinking milk?,,,,,,A,,,,,Tiếng Anh,,,

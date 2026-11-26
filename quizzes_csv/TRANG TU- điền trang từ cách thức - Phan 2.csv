@@ -1,0 +1,5 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển từ TÍNH TỪ sang TRẠNG TỪ good --->,1.00,well,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển từ TÍNH TỪ sang TRẠNG TỪ hard --->,1.00,hard,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển từ TÍNH TỪ sang TRẠNG TỪ late --->,1.00,late,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Chuyển từ TÍNH TỪ sang TRẠNG TỪ fast --->,1.00,fast,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He could,1.00,fall,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/191b4a6d-895b-4ffe-94e8-2a4879043182-v2
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He may tired,1.00,feel,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/9ad07a7e-f74f-414d-baf8-175f8ded468b-v2
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He will a mistake,1.00,find,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/76b6c2da-a006-4f80-b765-744ef1378f60-v2
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He might my address,1.00,forget,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/a6548539-f6e4-4365-beba-66842cedbe03-v2
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He can a gift,1.00,give,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/00e92b98-1d49-40c1-9170-8e308e9aa2eb-v2
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write She can a gift,1.00,get,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/0a37eba6-bed1-4ede-884f-ad4afcc8db16-v2
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write My mother must a tree,1.00,grow,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/3a9d07a7-3427-4fd6-9f25-becac4da4ce3-v2
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He can the news,1.00,hear,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/b9a7431a-3e9d-4d73-9a2d-67e10d6c19e8-v2
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He used to his hand,1.00,hurt,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/e7dca082-4b42-4f81-b44a-d1db54ac0b9c-v2
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write He can't k the answer,1.00,know,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/3ed2c78e-f674-4bd6-a66e-85be030b92e3-v2
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write They may me.,1.00,forgive,,,,,,A,,,,,Tiếng Anh,,,https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/bf600295-98eb-4392-9749-524c4bc3d96b-v2
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/kept: giữ,1.00,keep/kept,,,,,,A,,,,,Tiếng Anh,,,
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/known: biết,1.00,know/knew,,,,,,A,,,,,Tiếng Anh,,,
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/led: dẫn dắt,1.00,lead/led,,,,,,A,,,,,Tiếng Anh,,,
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/ learnt/ learned: học,1.00,learn/learnt/learned,,,,,,A,,,,,Tiếng Anh,,,
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/left: ra đi,1.00,leave/left,,,,,,A,,,,,Tiếng Anh,,,
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/lent: cho mượn (vay),1.00,lend/lent,,,,,,A,,,,,Tiếng Anh,,,
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/let: cho phép,1.00,let/let,,,,,,A,,,,,Tiếng Anh,,,
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/lost: làm mất,1.00,lose/lost,,,,,,A,,,,,Tiếng Anh,,,
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/made: chế tạo,1.00,make/made,,,,,,A,,,,,Tiếng Anh,,,
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/met: gặp mặt,1.00,meet/met,,,,,,A,,,,,Tiếng Anh,,,
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/paid: trả (tiền),1.00,pay/paid,,,,,,A,,,,,Tiếng Anh,,,
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/put: đặt; để,1.00,put/put,,,,,,A,,,,,Tiếng Anh,,,
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/read : đọc,1.00,read/read,,,,,,A,,,,,Tiếng Anh,,,
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/ridden: cưỡi,1.00,ride/rode,,,,,,A,,,,,Tiếng Anh,,,
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/rung: rung chuông,1.00,ring/rang,,,,,,A,,,,,Tiếng Anh,,,
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/risen: đứng dậy; mọc,1.00,rise/rose,,,,,,A,,,,,Tiếng Anh,,,
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/run: chạy,1.00,run/ran,,,,,,A,,,,,Tiếng Anh,,,
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/said: nói,1.00,say/said,,,,,,A,,,,,Tiếng Anh,,,
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/seen: nhìn thấy,1.00,see/saw,,,,,,A,,,,,Tiếng Anh,,,
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/sold: bán,1.00,sell/sold,,,,,,A,,,,,Tiếng Anh,,,
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/sent: gửi,1.00,send/sent,,,,,,A,,,,,Tiếng Anh,,,
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/shut: đóng lại,1.00,shut/shut,,,,,,A,,,,,Tiếng Anh,,,
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/sung: ca hát,1.00,sing/sang,,,,,,A,,,,,Tiếng Anh,,,
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/sat : ngồi,1.00,sit/sat,,,,,,A,,,,,Tiếng Anh,,,
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/slept: ngủ,1.00,sleep/slept,,,,,,A,,,,,Tiếng Anh,,,
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/smelt: ngửi,1.00,smell/smelt,,,,,,A,,,,,Tiếng Anh,,,
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/spoken: nói,1.00,speak/spoke,,,,,,A,,,,,Tiếng Anh,,,
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/spent: tiêu sài,1.00,spend/spent,,,,,,A,,,,,Tiếng Anh,,,
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/stood: đứng,1.00,stand/stood,,,,,,A,,,,,Tiếng Anh,,,
+41,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/stolen: đánh cắp,1.00,steal/stole,,,,,,A,,,,,Tiếng Anh,,,
+42,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/swept: quét,1.00,sweep/swept,,,,,,A,,,,,Tiếng Anh,,,
+43,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/swum: bơi lội,1.00,swim/swam,,,,,,A,,,,,Tiếng Anh,,,
+44,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/taken: cầm,1.00,take/took,,,,,,A,,,,,Tiếng Anh,,,
+45,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/taught: dạy,1.00,teach/taught,,,,,,A,,,,,Tiếng Anh,,,
+46,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/told: kể,1.00,tell/told,,,,,,A,,,,,Tiếng Anh,,,
+47,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/thought: suy nghĩ,1.00,think/thought,,,,,,A,,,,,Tiếng Anh,,,
+48,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/thrown: ném,1.00,throw/threw,,,,,,A,,,,,Tiếng Anh,,,
+49,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/understood: hiểu,1.00,understand/understood,,,,,,A,,,,,Tiếng Anh,,,
+50,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH - Look and write …./…/worn: mặc,1.00,wear/wore,,,,,,A,,,,,Tiếng Anh,,,

@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt Is it half (hơn)nine? - Yes, it is.",1.00,past,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt Tam likes making (hoa giấy).,1.00,paper flowers,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt Let's paint some masks for (Trung Thu).,1.00,Mid-Autumn,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt I have (giờ giải lao)from nine to nine fifteen.,1.00,break time,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt His name is Jim, and he has a brown (ria).",1.00,moustache,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt I wear sunglasses on sunny days to (bảo vệ)my eyes.,1.00,protect,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt Dolphins live in the sea. They can (bơi nhanh).,1.00,swim quickly,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt I don’t like snakes because they look (đáng sợ).,1.00,scary,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt My sister can teach (thú cưng mới của cô ấy)some words.,1.00,her new pet,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết từ/ cum từ T. Anh tương ứng với Tiếng Việt I wash every day to keep my skin (lau dọn).,1.00,clean,,,,,,A,,,,,Tiếng Anh,,,

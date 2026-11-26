@@ -19,6 +19,8 @@ urlpatterns = [
     path("assets", views.assets, name="owner-assets"),
     path("assets/<uuid:asset_id>/content", views.asset_content, name="owner-asset-content"),
     path("imports/preview", views.import_preview, name="owner-import-preview"),
+    path("imports/batch-preview", views.batch_import_preview, name="owner-batch-import-preview"),
+    path("imports/batch-commit", views.batch_import_commit, name="owner-batch-import-commit"),
     path("imports/<uuid:batch_id>", views.import_detail, name="owner-import-detail"),
     path("imports/<uuid:batch_id>/commit", views.import_commit, name="owner-import-commit"),
 ]

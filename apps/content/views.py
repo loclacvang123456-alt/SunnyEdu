@@ -1,11 +1,14 @@
 """Owner API views for exams, versions, passages, questions, tags, imports, and prompt audio assets."""
 import os
+import re
 from pathlib import Path
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.db import transaction
 from django.http import FileResponse, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
@@ -371,11 +374,21 @@ def asset_content(request, asset_id):
     return resp
 
 
+def _clean_default_title(filename):
+    if not filename:
+        return "Đề thi mới"
+    name = Path(filename).stem
+    clean = re.sub(r'[_]+', ' ', name).strip('. ')
+    if not clean or clean.lower() in ('csv', 'xlsx'):
+        return "Đề thi mới"
+    return clean[:200]
+
+
 @never_cache
 @require_POST
 @owner_api_required
 def import_preview(request):
-    upload = request.FILES.get("file")
+    upload = request.FILES.get("file") or (request.FILES.getlist("files")[0] if request.FILES.getlist("files") else None)
     kind = request.POST.get("kind", "")
     if not upload or kind not in ("QUESTIONS", "STUDENTS"):
         return api_error("INVALID_INPUT", "Cần chọn tệp và loại QUESTIONS hoặc STUDENTS.", 422)
@@ -384,9 +397,50 @@ def import_preview(request):
     try:
         raw = upload.read()
         batch = preview_question_import(request.user, raw, upload.name) if kind == "QUESTIONS" else preview_student_import(request.user, raw, upload.name)
-        return JsonResponse({"data": {"id": str(batch.id), "kind": batch.kind, "source_digest": batch.source_digest, "expires_at": batch.expires_at.isoformat(), "rows": batch.payload_json}}, status=201)
+        default_title = _clean_default_title(upload.name)
+        return JsonResponse({"data": {"id": str(batch.id), "kind": batch.kind, "source_digest": batch.source_digest, "expires_at": batch.expires_at.isoformat(), "rows": batch.payload_json, "default_title": default_title, "filename": upload.name}}, status=201)
     except ValidationError as exc:
         return _fail(exc)
+
+
+@never_cache
+@require_POST
+@owner_api_required
+def batch_import_preview(request):
+    files = request.FILES.getlist("files") or request.FILES.getlist("file")
+    if not files:
+        return api_error("INVALID_INPUT", "Cần chọn ít nhất một tệp CSV hoặc XLSX.", 422)
+    results = []
+    total_questions = 0
+    errors = []
+    for upload in files:
+        if upload.size > 2 * 1024 * 1024:
+            errors.append(f"Tệp {upload.name} vượt quá 2 MiB.")
+            continue
+        try:
+            raw = upload.read()
+            batch = preview_question_import(request.user, raw, upload.name)
+            q_count = len(batch.payload_json)
+            total_questions += q_count
+            results.append({
+                "batch_id": str(batch.id),
+                "filename": upload.name,
+                "default_title": _clean_default_title(upload.name),
+                "question_count": q_count,
+                "expected_digest": batch.source_digest,
+            })
+        except ValidationError as exc:
+            msg = "; ".join(exc.messages) if hasattr(exc, "messages") else str(exc)
+            errors.append(f"Tệp {upload.name}: {msg}")
+    if errors:
+        return api_error("IMPORT_VALIDATION_ERROR", "\n".join(errors), 422)
+    return JsonResponse({
+        "data": {
+            "total_files": len(results),
+            "total_questions": total_questions,
+            "batches": results,
+        }
+    }, status=201)
 
 
 @never_cache
@@ -408,7 +462,40 @@ def import_commit(request, batch_id):
             result = commit_student_import(request.user, batch.id, data.get("expected_digest"), data.get("class_id"))
             return JsonResponse({"data": result}, status=200)
         exam = get_object_or_404(Exam, pk=data["target_exam_id"], created_by=request.user) if data.get("target_exam_id") else None
-        version = commit_question_import(request.user, batch.id, data.get("expected_digest"), data.get("title", ""), exam)
+        title = (data.get("title") or data.get("default_title") or "").strip()
+        if not title:
+            title = f"Đề thi mới ({timezone.now().strftime('%d/%m/%Y %H:%M')})"
+        version = commit_question_import(request.user, batch.id, data.get("expected_digest"), title, exam)
         return JsonResponse({"data": {"exam_id": str(version.exam_id), "version_id": str(version.id), "number": version.number, "status": version.status}}, status=200)
+    except ValidationError as exc:
+        return _fail(exc)
+
+
+@never_cache
+@require_POST
+@owner_api_required
+def batch_import_commit(request):
+    data = read_json_body(request)
+    items = data.get("items", [])
+    if not items or not isinstance(items, list):
+        return api_error("INVALID_INPUT", "Danh sách tệp xác nhận không hợp lệ.", 422)
+    created = []
+    try:
+        with transaction.atomic():
+            for item in items:
+                batch_id = item.get("batch_id")
+                expected_digest = item.get("expected_digest")
+                title = (item.get("title") or item.get("default_title") or "").strip()
+                if not title:
+                    title = f"Đề thi mới ({timezone.now().strftime('%d/%m/%Y %H:%M')})"
+                batch = get_object_or_404(ImportBatch, pk=batch_id, owner=request.user)
+                version = commit_question_import(request.user, batch.id, expected_digest, title)
+                created.append({
+                    "exam_id": str(version.exam_id),
+                    "version_id": str(version.id),
+                    "title": version.exam.title,
+                    "number": version.number,
+                })
+        return JsonResponse({"data": {"created_count": len(created), "exams": created}}, status=200)
     except ValidationError as exc:
         return _fail(exc)

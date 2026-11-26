@@ -1,0 +1,9 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,They could speak English,They could speaks English,They could to speak English,,,,A,,,,,Tiếng Anh,,,
+2,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,John might buying a car,John might buy a car,John might to buy a car,,,,B,,,,,Tiếng Anh,,,
+3,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,Mary must listen to music,Mary must to listen to music,Mary must listening to music,,,,A,,,,,Tiếng Anh,,,
+4,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,Jim has to write English,Jim has write English,Jim have to write English,,,,A,,,,,Tiếng Anh,,,
+5,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,We have to drive a car,We have to driving a car,We have drive a car,,,,A,,,,,Tiếng Anh,,,
+6,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,They had to drink water,They has to drink water,They had to drinking water,,,,A,,,,,Tiếng Anh,,,
+7,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,Jane used to ride a bike,Jane used ride a bike,Jane use to ride a bike,,,,A,,,,,Tiếng Anh,,,
+8,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Chọn đáp án đúng,1.00,You ought to watch this film,You ought watch this film,You ought to watching this film,,,,A,,,,,Tiếng Anh,,,

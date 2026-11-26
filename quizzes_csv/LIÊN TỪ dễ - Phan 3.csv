@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Liên từ kết hợp ( for, or, yet, so and, nor, but,) The book was long, ……. I finished it in one day",1.00,yet,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: yet | but,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Liên từ kết hợp ( for, or, yet, so and, nor, but,) It was cold, ……… she didn’t wear a jacket",1.00,yet,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: yet | but,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Liên từ kết hợp ( for, or, yet, so and, nor, but,) He studied hard, …… he didn’t pass the test",1.00,yet,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: yet | but,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Liên từ kết hợp ( for, or, yet, so and, nor, but,) He was injured, ………. he continued playing",1.00,yet,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: yet | but,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp you study hard, or you fail the exam",1.00,Either,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp he nor his friends like horror movies,1.00,Neither,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp my brother and I love playing soccer,1.00,Both,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp is she talented, but she is also hardworking",1.00,Not only,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp The book was not only interesting educational,1.00,but also,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng một LIÊN TỪ phù hợp She speaks both English French fluently,1.00,and,,,,,,A,,,,,Tiếng Anh,,,

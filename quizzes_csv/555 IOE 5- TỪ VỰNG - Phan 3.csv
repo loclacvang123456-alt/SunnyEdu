@@ -1,0 +1,51 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép tranh với từ Tiếng Anh tương ứng.,1.00,Phương án 1,Phương án 2,,,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/bb3b619d-eda1-48ab-8c3b-26e11a835007
+2,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép tranh với từ Tiếng Anh tương ứng.,1.00,Phương án 1,Phương án 2,,,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d2eafec5-9923-400c-b490-b06485a36fc2
+3,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép tranh với từ Tiếng Anh tương ứng.,1.00,Phương án 1,Phương án 2,,,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b9527b5c-5c3d-414a-9b9d-79bc14c1081d
+4,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép tranh với từ Tiếng Anh tương ứng.,1.00,Phương án 1,Phương án 2,,,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f96b11cf-2284-40be-afbc-cb2584c40a73
+5,SINGLE_CHOICE,READING,STANDARD,TIẾNG ANH THẦY BÍCH Ghép tranh với từ Tiếng Anh tương ứng.,1.00,Phương án 1,Phương án 2,,,,,A,,,,,Tiếng Anh|CAN_RA_SOAT_DAP_AN,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/861b2251-7ea7-405e-bd42-594da6e35bcd
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,bus-stop,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/45d5b6dd-0687-4a2f-94a1-7376767eea30
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,They are newrs,1.00,newspapers,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8f77c76b-fde2-4eba-88f2-f0fd48ca009a
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,They are,1.00,coins,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ed12f3b4-9b1d-4cc8-b00b-4e07c4e7609d
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,biscuit,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9e060940-d9d5-4d32-8301-b34cb1ed63ca
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,They are,1.00,biscuits,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/327a3527-1ebe-48ad-8e50-fca32b1800b4
+11,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,potato,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/8d4f8c58-997e-4f64-b460-64a5c2055bf6
+12,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,butterfly,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/9511d9c8-c2e8-4875-bda1-476b28076828
+13,SENTENCE_TRANSFORM,WRITING,STANDARD,They can,1.00,play volleyball,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/26032c42-75a6-4956-8c2d-ad2d8095f0f0
+14,SENTENCE_TRANSFORM,WRITING,STANDARD,There are many,1.00,potatoes,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1865e774-a82a-4683-bace-41024c1968c0
+15,SENTENCE_TRANSFORM,WRITING,STANDARD,They can,1.00,play football,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e988b254-2e94-4f57-8c89-be6d67e47f5f
+16,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,snail,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/472c752e-f60e-4447-828d-3cd24ae38f5e
+17,SENTENCE_TRANSFORM,WRITING,STANDARD,He can drink a of water.,1.00,glass,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/1c6a246d-a88a-4bdd-a67f-67c018e8b0a7
+18,SENTENCE_TRANSFORM,WRITING,STANDARD,There is an,1.00,umbrella,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/98ec3eb9-b5bd-4784-a1db-604733fb9e81
+19,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,leaf,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/00e1f1a6-aee9-461c-97a2-dcfeecc198f2
+20,SENTENCE_TRANSFORM,WRITING,STANDARD,They are,1.00,leaves,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d05e7929-c3e8-44c4-9a51-9feef7feeebd
+21,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a ........... ..............,1.00,white cup,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/99e29649-4b83-4704-8652-b2f26b313dea
+22,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a ........... ..............,1.00,black cup,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/a7764f5e-bbb0-4654-8a2c-1049ac729d2e
+23,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,carrot,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/3b470f21-ab2c-4b92-8648-dfda9dcb2f82
+24,SENTENCE_TRANSFORM,WRITING,STANDARD,There are ............ .............,1.00,seven carrots,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2eb071fa-e52a-4e49-bc3b-b9471c4106f4
+25,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,fly,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/e80fdc68-4f20-448e-ab5b-fa7c68523aa6
+26,SENTENCE_TRANSFORM,WRITING,STANDARD,She is a,1.00,singer,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/4829bc4f-f556-46ae-b381-89c12f34f75a
+27,SENTENCE_TRANSFORM,WRITING,STANDARD,I can go to the to send a letter.,1.00,post office,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f3171fe0-b488-43b6-96c4-e0f91ef3554d
+28,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,tomato,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/504e337b-9b66-4cc1-ad9d-b39a1058dfe4
+29,SENTENCE_TRANSFORM,WRITING,STANDARD,There are many,1.00,tomatoes,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/f6277668-f389-4b7d-9752-a1983556dc2e
+30,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,bike,,,,,,A,,,,,Tiếng Anh,,Các đáp án được chấp nhận: bike | bicycle,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/d70011c4-20e1-432b-8599-a474bbc625ad
+31,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,bowl,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c63afb68-9088-49d1-b4b4-d0bf7e03d90b
+32,SENTENCE_TRANSFORM,WRITING,STANDARD,Would you like ?,1.00,orange juice,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/553f2b53-de4c-4ac4-831e-1dc7146bf2c7
+33,SENTENCE_TRANSFORM,WRITING,STANDARD,There are two,1.00,bottles,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/591f0899-5ba4-43f0-be3b-eee3faf77320
+34,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,worm,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/573ed05c-17e0-4a68-a6b6-1917fcf2d5a3
+35,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,computer,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/7fb4a88d-a57d-4cda-a7ed-aa342705373a
+36,SENTENCE_TRANSFORM,WRITING,STANDARD,I like,1.00,spaghetti,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/ab3a1407-8c10-4f06-b3e4-3410e90bedd0
+37,SENTENCE_TRANSFORM,WRITING,STANDARD,They can English,1.00,speak,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/6e03c397-1fe9-4826-be5b-9286ff33a959
+38,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,living room,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/2795bf8e-fb41-45ac-acc0-1c5f8685ccdf
+39,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,kitchen,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/fcf6dfb6-4828-417b-8c9e-420661fe3cd9
+40,SENTENCE_TRANSFORM,WRITING,STANDARD,There is a,1.00,supermarket,,,,,,A,,,,,Tiếng Anh,,,https://quizizz.com/media/resource/gs/quizizz-media/quizzes/c024ebb9-01a0-4249-abf0-48606822437e
+41,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,man|rarely|careful|in the east|for lunch,,,,,,,,,,,Tiếng Anh,,,
+42,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,for lunch|at night|often|go to the zoo|player,,,,,,,,,,,Tiếng Anh,,,
+43,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,rarely|sometimes|big suitcase|collect shells|on the beach,,,,,,,,,,,Tiếng Anh,,,
+44,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,on the beach|The Eiffel Tower|neighborhood|take a train|answers,,,,,,,,,,,Tiếng Anh,,,
+45,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,exercise book|in the morning|in the kitchen|win the game|because,,,,,,,,,,,Tiếng Anh,,,
+46,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,painful|buffalo|plow the fields|pull the carts|at the library,,,,,,,,,,,Tiếng Anh,,,
+47,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,at the moment|tired|go to school|At the concert|started,,,,,,,,,,,Tiếng Anh,,,
+48,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,play tennis|a type of fish|at the zoo|many kids|leave home,,,,,,,,,,,Tiếng Anh,,,
+49,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,stay at home|learn Maths|basketball|have a picnic|go sailing,,,,,,,,,,,Tiếng Anh,,,
+50,WORD_ORDER,READING,STANDARD,TIẾNG ANH THẦY BÍCH Match English and Vietnamese.,1.00,cook some rice|on her shoulders|listen to the radio|cross the roads|five times a week,,,,,,,,,,,Tiếng Anh,,,

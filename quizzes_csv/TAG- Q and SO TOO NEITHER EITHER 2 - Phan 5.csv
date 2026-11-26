@@ -1,0 +1,5 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,"My friends are cooking right now, ………. they?",1.00,aren't,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,"You are going climbing now, …….. you?",1.00,aren't,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,"We are going shopping at present, …….. we?",1.00,aren't,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,"They are going skiing at the moment, ……… they?",1.00,aren't,,,,,,A,,,,,Tiếng Anh,,,

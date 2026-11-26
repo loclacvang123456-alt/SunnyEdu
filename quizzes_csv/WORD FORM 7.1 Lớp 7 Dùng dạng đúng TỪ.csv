@@ -1,0 +1,11 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc My uncle is a stamp ……... He has a large collection from Asia. (collect),1.00,collector,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc Hoa finds wood carving very ……... She spends hours working on it. (interest):,1.00,interesting,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc Watching birds is a ……... . It helps me feel peaceful. (relax),1.00,relaxing,,,,,,A,,,,,Tiếng Anh,,,
+4,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc We enjoy ……... paper flowers together at the weekend. (make).,1.00,making,,,,,,A,,,,,Tiếng Anh,,,
+5,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc I think ……... is a great way to stay healthy and make friends. (cycle),1.00,cycling,,,,,,A,,,,,Tiếng Anh,,,
+6,SENTENCE_TRANSFORM,WRITING,STANDARD,"TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc Minh is very ……... He can paint, draw, and design posters very well. (create)",1.00,creative,,,,,,A,,,,,Tiếng Anh,,,
+7,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc I love taking photos. ……... is one of my favorite hobbies. (photograph),1.00,photography,,,,,,A,,,,,Tiếng Anh,,,
+8,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc Playing the piano ……... helps me forget stress (regular),1.00,regularly,,,,,,A,,,,,Tiếng Anh,,,
+9,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc My little brother shows great ……... in building models. (interest),1.00,interest,,,,,,A,,,,,Tiếng Anh,,,
+10,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Dùng dạng đúng của TỪ LOẠI trong ngoặc Her paintings are so ……... that everyone wants to buy them(beauty),1.00,beautiful,,,,,,A,,,,,Tiếng Anh,,,

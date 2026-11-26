@@ -1,0 +1,4 @@
+﻿position,type,skill,difficulty,prompt,max_points,option_a,option_b,option_c,option_d,option_e,option_f,correct_options,passage_ref,passage_text,audio_asset_id,transcript,topic_tags,error_tags,explanation,image_url
+1,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết 6 câu với mẫu: This is .... 1 .... 2 ... 3 .... 4....... 5 ..... 6 .....,1.00,1 This is a classroom 2 This is a table 3 This is a computer 4 This is a peg 5 This is a pencil case 6 This is a board,,,,,,A,,,,,Tiếng Anh,,,
+2,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết 1 câu hỏi và câu trả lời Bạn thích đồ chơi gì? Tớ thích xe tải,1.00,What toys do you like? I like trucks,,,,,,A,,,,,Tiếng Anh,,,
+3,SENTENCE_TRANSFORM,WRITING,STANDARD,TIẾNG ANH THẦY BÍCH Viết câu hỏi và câu trả lời Bạn thích đồ chơi gì? Tớ thích búp bê,1.00,What toys do you like? I like dolls,,,,,,A,,,,,Tiếng Anh,,,
