@@ -5,6 +5,7 @@ const TYPE_LABELS = {
   STRESS_CHOICE: "Chọn trọng âm",
   MATCH_IMAGE: "Nối tranh với từ",
   SENTENCE_TRANSFORM: "Đổi câu / Viết lại câu",
+  WORD_FORM: "Điền dạng đúng của từ",
   TEXT: "Tự luận / Viết",
   AUDIO: "Nói / Thu âm",
 };
@@ -20,6 +21,7 @@ const DEFAULT_PROMPTS = {
   STRESS_CHOICE: "Chọn âm tiết mang trọng âm chính của từ.",
   MATCH_IMAGE: "Nối hình ảnh với từ vựng tương ứng.",
   SENTENCE_TRANSFORM: "Viết lại câu sau sao cho nghĩa không đổi:",
+  WORD_FORM: "Dùng dạng đúng của từ trong ngoặc:",
 };
 
 const CONTEXT_ELIGIBLE = new Set(["SINGLE_CHOICE", "MULTIPLE_CHOICE", "STRESS_CHOICE"]);
@@ -97,6 +99,8 @@ function initVersionEditor() {
   const qWordTokens = document.getElementById("q-word-tokens");
   const qWordPreview = document.getElementById("q-word-preview");
   const qTransformBox = document.getElementById("q-transform-box");
+  const qTransformLabel = document.getElementById("q-transform-label");
+  const qTransformHint = document.getElementById("q-transform-hint");
   const qTransformStandard = document.getElementById("q-transform-standard");
   const qStressBox = document.getElementById("q-stress-box");
   const qStressSyllables = document.getElementById("q-stress-syllables");
@@ -306,7 +310,7 @@ function initVersionEditor() {
     const t = qType.value;
     if (t === "TEXT") qSkill.value = "WRITING";
     else if (t === "AUDIO") qSkill.value = "SPEAKING";
-    else if (t === "WORD_ORDER" || t === "SENTENCE_TRANSFORM") {
+    else if (t === "WORD_ORDER" || t === "SENTENCE_TRANSFORM" || t === "WORD_FORM") {
       const current = state.questions.find((x) => x.id === selectedId);
       qSkill.value = current?.skill === "READING" ? "READING" : "WRITING";
     } else if (currentContext === "LISTENING") {
@@ -468,7 +472,7 @@ function initVersionEditor() {
     const isWordOrder = t === "WORD_ORDER";
     const isStress = t === "STRESS_CHOICE";
     const isMatch = t === "MATCH_IMAGE";
-    const isTransform = t === "SENTENCE_TRANSFORM";
+    const isTransform = t === "SENTENCE_TRANSFORM" || t === "WORD_FORM";
     qTypeGrid?.querySelectorAll(".type-chip").forEach((chip) => {
       chip.classList.toggle("is-selected", chip.dataset.qgroup === "choice" ? isChoice : chip.dataset.qtype === t);
     });
@@ -500,7 +504,20 @@ function initVersionEditor() {
     if (isChoice) {
       renderChoiceRows(existingOptions);
     } else if (isTransform) {
+      if (qTransformLabel) {
+        qTransformLabel.textContent = t === "WORD_FORM"
+          ? "Đáp án đúng (nếu có nhiều đáp án, cách nhau bằng dấu /)"
+          : "Câu trả lời chuẩn của giáo viên (để tự động chấm)";
+      }
+      if (qTransformHint) {
+        qTransformHint.textContent = t === "WORD_FORM"
+          ? "Hệ thống chấm tự động không phân biệt chữ hoa/thường và khoảng trắng thừa. Nếu có nhiều đáp án đúng, phân cách bằng dấu / (VD: cleverer/prettier)."
+          : "Hệ thống sẽ so sánh câu của học sinh với câu chuẩn này: nếu sai cấu trúc chuyển đổi sẽ trừ hết điểm, nếu chỉ sai chính tả/dấu câu/viết hoa sẽ trừ 0.5 điểm mỗi lỗi và hiển thị mũi tên đỏ chỉ lỗi.";
+      }
       if (qTransformStandard) {
+        qTransformStandard.placeholder = t === "WORD_FORM"
+          ? "Ví dụ: friendly hoặc cleverer/prettier"
+          : "Ví dụ: He said that he was watching TV.";
         qTransformStandard.value = existingOptions[0]?.content || "";
       }
     } else if (isWordOrder) {
@@ -665,7 +682,7 @@ function initVersionEditor() {
           }));
         }
         card.append(optsGrid);
-      } else if (q.type === "SENTENCE_TRANSFORM") {
+      } else if (q.type === "SENTENCE_TRANSFORM" || q.type === "WORD_FORM") {
         const wrap = el("div", { className: "hint", style: "margin-top:6px;background:#f8fafc;padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0;" });
         wrap.append(el("strong", { text: "Đáp án chuẩn: " }), document.createTextNode(q.options?.[0]?.content || ""));
         card.append(wrap);
@@ -999,10 +1016,10 @@ function initVersionEditor() {
         showFormError("Hãy chọn từ 2 đáp án đúng trở lên.");
         return;
       }
-    } else if (qType.value === "SENTENCE_TRANSFORM") {
+    } else if (qType.value === "SENTENCE_TRANSFORM" || qType.value === "WORD_FORM") {
       const std = qTransformStandard ? qTransformStandard.value.trim() : "";
       if (!std) {
-        showFormError("Giáo viên cần nhập câu trả lời chuẩn.");
+        showFormError("Giáo viên cần nhập đáp án chuẩn.");
         return;
       }
       body.standard_answer = std;

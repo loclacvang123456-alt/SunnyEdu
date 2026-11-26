@@ -83,6 +83,7 @@ class Question(Entity):
         STRESS_CHOICE = "STRESS_CHOICE"
         MATCH_IMAGE = "MATCH_IMAGE"
         SENTENCE_TRANSFORM = "SENTENCE_TRANSFORM"
+        WORD_FORM = "WORD_FORM"
         TEXT = "TEXT"
         AUDIO = "AUDIO"
 
@@ -115,7 +116,7 @@ class Question(Entity):
             models.UniqueConstraint(fields=["version", "position"], name="content_question_position_unique"),
             models.CheckConstraint(condition=Q(position__gte=1, position__lte=100), name="content_question_position_range"),
             models.CheckConstraint(condition=Q(max_points__gte=Decimal("0.01"), max_points__lte=Decimal("100")), name="content_question_points_range"),
-            models.CheckConstraint(condition=(Q(type__in=["SINGLE_CHOICE", "MULTIPLE_CHOICE", "STRESS_CHOICE", "MATCH_IMAGE"], skill__in=["READING", "LISTENING"]) | Q(type__in=["WORD_ORDER", "SENTENCE_TRANSFORM"], skill__in=["READING", "WRITING"]) | Q(type="TEXT", skill="WRITING") | Q(type="AUDIO", skill="SPEAKING")), name="content_question_type_skill"),
+            models.CheckConstraint(condition=(Q(type__in=["SINGLE_CHOICE", "MULTIPLE_CHOICE", "STRESS_CHOICE", "MATCH_IMAGE"], skill__in=["READING", "LISTENING"]) | Q(type__in=["WORD_ORDER", "SENTENCE_TRANSFORM", "WORD_FORM"], skill__in=["READING", "WRITING"]) | Q(type="TEXT", skill="WRITING") | Q(type="AUDIO", skill="SPEAKING")), name="content_question_type_skill"),
         ]
 
 

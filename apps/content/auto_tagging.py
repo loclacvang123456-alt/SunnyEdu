@@ -164,6 +164,11 @@ AUTO_TAG_RULES = (
         (("WORD_ORDER", "Sắp xếp câu", CourseTag.Kind.EXAM),),
     ),
     (
+        re.compile(r"(?i)(?:word\s*form|dùng\s+dạng\s+đúng\s+của\s+từ|từ\s+loại)"),
+        ("Điền dạng đúng của từ",),
+        (("WORD_FORM", "Word form", CourseTag.Kind.EXAM),),
+    ),
+    (
         re.compile(r"(?i)(?:viết\s*lại\s*câu|đổi\s*câu|sentence\s+transform|rewrite)"),
         ("Viết lại câu",),
         (("SENTENCE_TRANSFORM", "Viết lại câu", CourseTag.Kind.EXAM),),
@@ -192,6 +197,7 @@ QUESTION_TYPE_DEFAULTS = {
     "WORD_ORDER": (("Sắp xếp câu",), (("WORD_ORDER", "Sắp xếp câu", CourseTag.Kind.EXAM),)),
     "MATCH_IMAGE": (("Từ vựng & Nối tranh", "Từ vựng"), (("MATCHING", "Nối tranh & từ", CourseTag.Kind.EXAM), ("VOCABULARY", "Từ vựng", CourseTag.Kind.VOCAB))),
     "SENTENCE_TRANSFORM": (("Viết lại câu",), (("SENTENCE_TRANSFORM", "Viết lại câu", CourseTag.Kind.EXAM),)),
+    "WORD_FORM": (("Điền dạng đúng của từ",), (("WORD_FORM", "Word form", CourseTag.Kind.EXAM),)),
     "TEXT": (("Viết tự luận",), ()),
     "AUDIO": (("Phát âm & Nói",), ()),
 }
@@ -307,6 +313,8 @@ def infer_question_error_names(
         if re.search(r"(?i)(?:tường\s*thuật|gián\s*tiếp|reported\s+speech)", blob):
             return ["Ngữ pháp: câu tường thuật"]
         return ["Viết lại câu"]
+    if q_type == "WORD_FORM":
+        return ["Từ vựng: dạng đúng của từ (Word form)"]
     if q_type == "MATCH_IMAGE":
         return ["Từ vựng: nối tranh và từ"]
     if q_type == "TEXT":

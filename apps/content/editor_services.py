@@ -39,6 +39,7 @@ ALLOWED_TYPE_SKILLS = {
     "STRESS_CHOICE": {"READING", "LISTENING"},
     "MATCH_IMAGE": {"READING", "LISTENING"},
     "SENTENCE_TRANSFORM": {"READING", "WRITING"},
+    "WORD_FORM": {"READING", "WRITING"},
     "TEXT": {"WRITING"},
     "AUDIO": {"SPEAKING"},
 }
@@ -283,7 +284,7 @@ def _validate_question_payload(version, data):
             if not isinstance(token, str) or not token.strip() or len(token.strip()) > 80:
                 raise ValidationError("Mỗi ô từ phải có từ 1 đến 80 ký tự.")
             options.append((chr(ord("A") + idx), idx + 1, token.strip()))
-    if q_type == "SENTENCE_TRANSFORM":
+    if q_type in ("SENTENCE_TRANSFORM", "WORD_FORM"):
         std_ans = (data.get("standard_answer") or (data.get("options") and data["options"][0].get("content")) or "").strip()
         if not std_ans or len(std_ans) > 2000:
             raise ValidationError("Giáo viên cần nhập câu trả lời chuẩn (tối đa 2.000 ký tự).")

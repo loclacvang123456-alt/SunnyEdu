@@ -418,6 +418,8 @@
             <span class="q-type-badge">
               {% if q.type == 'SENTENCE_TRANSFORM' %}
                 Biến đổi câu
+              {% elif q.type == 'WORD_FORM' %}
+                Điền dạng đúng của từ
               {% elif q.type == 'WORD_ORDER' %}
                 Sắp xếp từ
               {% elif q.type == 'MATCH_IMAGE' %}
@@ -491,6 +493,25 @@
               <span>{{ q.standard_answer }}</span>
             </div>
 
+            {% if q.feedback_message %}
+              <div class="feedback-box {% if q.is_correct %}clean{% endif %}">
+                <strong>Nhận xét:</strong> {{ q.feedback_message }}
+              </div>
+            {% endif %}
+          </div>
+
+        {% elif q.type == 'WORD_FORM' %}
+          <div class="diff-section">
+            <div style="margin-bottom:10px;font-size:15px;">
+              <strong>Đáp án của em:</strong>
+              <span style="font-weight:700;color:{% if q.is_correct %}#15803d{% else %}#b91c1c{% endif %};">
+                {{ q.student_answer|default:"(Chưa trả lời)" }}
+              </span>
+            </div>
+            <div class="standard-box">
+              <strong>Đáp án đúng:</strong>
+              <span>{{ q.standard_answer }}</span>
+            </div>
             {% if q.feedback_message %}
               <div class="feedback-box {% if q.is_correct %}clean{% endif %}">
                 <strong>Nhận xét:</strong> {{ q.feedback_message }}

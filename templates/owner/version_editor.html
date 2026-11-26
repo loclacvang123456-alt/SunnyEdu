@@ -119,6 +119,10 @@
               <span class="type-chip-head">🔄 Đổi câu / Viết lại câu</span>
               <span class="type-chip-body">Trực tiếp sang gián tiếp, thì, bị động</span>
             </button>
+            <button type="button" class="type-chip" data-qtype="WORD_FORM">
+              <span class="type-chip-head">📝 Điền dạng đúng của từ</span>
+              <span class="type-chip-body">Word form — chia đúng loại từ trong ngoặc</span>
+            </button>
             <button type="button" class="type-chip" data-qtype="STRESS_CHOICE">
               <span class="type-chip-head">🗣️ Chọn trọng âm</span>
               <span class="type-chip-body">Nhấn vào âm tiết mang trọng âm</span>
@@ -205,9 +209,9 @@
         </div>
 
         <div id="q-transform-box" class="field-group" style="margin-bottom:0" hidden>
-          <label for="q-transform-standard">Câu trả lời chuẩn của giáo viên (để tự động chấm)</label>
+          <label id="q-transform-label" for="q-transform-standard">Câu trả lời chuẩn của giáo viên (để tự động chấm)</label>
           <textarea id="q-transform-standard" rows="3" placeholder="Ví dụ: He said that he was watching TV."></textarea>
-          <p class="hint" style="margin:4px 0">Hệ thống sẽ so sánh câu của học sinh với câu chuẩn này: nếu sai cấu trúc chuyển đổi sẽ trừ hết điểm, nếu chỉ sai chính tả/dấu câu/viết hoa sẽ trừ 0.5 điểm mỗi lỗi và hiển thị mũi tên đỏ chỉ lỗi.</p>
+          <p id="q-transform-hint" class="hint" style="margin:4px 0">Hệ thống sẽ so sánh câu của học sinh với câu chuẩn này: nếu sai cấu trúc chuyển đổi sẽ trừ hết điểm, nếu chỉ sai chính tả/dấu câu/viết hoa sẽ trừ 0.5 điểm mỗi lỗi và hiển thị mũi tên đỏ chỉ lỗi.</p>
         </div>
 
         <div id="q-stress-box" class="field-group" style="margin-bottom:0" hidden>
@@ -316,4 +320,4 @@
 
 <script id="editor-bootstrap" type="application/json">{{ editor_json|safe }}</script>
 {% endblock %}
-{% block extra_scripts %}<script type="module" src="{% static 'js/owner_editor.js' %}?v=20261121v4"></script>{% endblock %}
+{% block extra_scripts %}<script type="module" src="{% static 'js/owner_editor.js' %}?v=20261127v1"></script>{% endblock %}

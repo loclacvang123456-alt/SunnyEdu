@@ -12,6 +12,7 @@ EXERCISE_TYPES = (
     ('SINGLE_CHOICE', 'Trắc nghiệm một đáp án'), ('MULTIPLE_CHOICE', 'Trắc nghiệm nhiều đáp án'),
     ('WORD_ORDER', 'Sắp xếp từ'), ('MATCH_IMAGE', 'Nối tranh với từ'),
     ('SENTENCE_TRANSFORM', 'Biến đổi câu'),
+    ('WORD_FORM', 'Điền dạng đúng của từ'),
     ('STRESS_CHOICE', 'Chọn trọng âm'), ('TEXT', 'Tự luận'), ('AUDIO', 'Ghi âm'),
 )
 

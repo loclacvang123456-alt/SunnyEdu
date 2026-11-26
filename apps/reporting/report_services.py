@@ -37,6 +37,7 @@ QUESTION_TYPE_TOPIC_LABELS = {
     "WORD_ORDER": "Sắp xếp câu",
     "MATCH_IMAGE": "Từ vựng & Nối tranh",
     "SENTENCE_TRANSFORM": "Viết lại câu",
+    "WORD_FORM": "Điền dạng đúng của từ",
     "SINGLE_CHOICE": "Ngữ pháp & Từ vựng",
     "MULTIPLE_CHOICE": "Ngữ pháp & Từ vựng",
     "TEXT": "Viết tự luận",
@@ -49,6 +50,7 @@ QUESTION_FORMAT_LABELS = {
     "STRESS_CHOICE": "Chọn trọng âm",
     "MATCH_IMAGE": "Nối tranh với từ vựng",
     "SENTENCE_TRANSFORM": "Viết lại câu",
+    "WORD_FORM": "Điền dạng đúng của từ",
     "TEXT": "Viết tự luận",
     "AUDIO": "Thu âm phát âm / Nói",
 }
@@ -313,7 +315,7 @@ def _format_question_answers(q_obj, resp=None, is_wrong=False):
                 student_answer = " ".join(by_id.get(str(oid), str(oid)) for oid in resp.ordered_option_ids)
             elif resp.text_answer:
                 student_answer = resp.text_answer.strip()
-    elif qtype == "SENTENCE_TRANSFORM":
+    elif qtype in ("SENTENCE_TRANSFORM", "WORD_FORM"):
         if options:
             correct_answer = options[0].content
         elif q_obj.explanation:

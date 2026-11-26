@@ -436,7 +436,7 @@ def student_assignment_result(request, assignment_id):
 
     from apps.assignments.models import AssignmentRecipient
     from apps.assignments.services import course_access_allowed
-    from apps.assignments.sentence_transform_service import grade_sentence_transform
+    from apps.assignments.sentence_transform_service import grade_sentence_transform, grade_word_form
 
     recipient = get_object_or_404(
         AssignmentRecipient.objects.select_related('assignment__version', 'current_attempt'),
@@ -517,6 +517,23 @@ def student_assignment_result(request, assignment_id):
             q_data['feedback_message'] = feedback_data.get('feedback', '')
             q_data['minor_errors'] = feedback_data.get('minor_errors', 0)
             q_data['major_errors'] = feedback_data.get('major_errors', 0)
+
+        elif q.type == 'WORD_FORM':
+            opts = list(q.options.all())
+            standard_answer = opts[0].content if opts else (q.explanation or '')
+            student_answer = resp.text_answer if resp else ''
+            feedback_data = None
+            if grade and grade.feedback:
+                try:
+                    feedback_data = json.loads(grade.feedback)
+                except Exception:
+                    feedback_data = None
+            if not feedback_data:
+                feedback_data = grade_word_form(student_answer, standard_answer, max_pts)
+
+            q_data['student_answer'] = student_answer
+            q_data['standard_answer'] = standard_answer
+            q_data['feedback_message'] = feedback_data.get('feedback', '')
 
         elif q.type in ('SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'STRESS_CHOICE'):
             selected_ids = {o.id for o in resp.options.all()} if resp else set()

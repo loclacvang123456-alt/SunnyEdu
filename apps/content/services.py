@@ -133,6 +133,8 @@ def parse_questions(data, filename):
                         q_type = 'WORD_ORDER'
                     elif '-' in options[0] and row['correct_options']:
                         q_type = 'STRESS_CHOICE'
+                    elif 'dùng dạng đúng của từ trong ngoặc' in prompt_low or 'word form' in prompt_low:
+                        q_type = 'WORD_FORM'
                     else:
                         q_type = 'SENTENCE_TRANSFORM'
                 elif len(filled_opts) >= 2:
@@ -153,7 +155,7 @@ def parse_questions(data, filename):
                     skill = 'LISTENING'
                 elif q_type == 'AUDIO':
                     skill = 'SPEAKING'
-                elif q_type in ('TEXT', 'WORD_ORDER', 'SENTENCE_TRANSFORM'):
+                elif q_type in ('TEXT', 'WORD_ORDER', 'SENTENCE_TRANSFORM', 'WORD_FORM'):
                     skill = 'WRITING'
                 else:
                     skill = 'READING'
@@ -167,6 +169,7 @@ def parse_questions(data, filename):
                 'STRESS_CHOICE': {'READING', 'LISTENING'},
                 'WORD_ORDER': {'READING', 'WRITING'},
                 'SENTENCE_TRANSFORM': {'READING', 'WRITING'},
+                'WORD_FORM': {'READING', 'WRITING'},
                 'TEXT': {'WRITING'},
                 'AUDIO': {'SPEAKING'},
             }
@@ -188,9 +191,9 @@ def parse_questions(data, filename):
                 _extract_import_stress(options, answer)
             elif row['type'] == 'WORD_ORDER':
                 _extract_import_word_order(options, answer)
-            elif row['type'] == 'SENTENCE_TRANSFORM':
+            elif row['type'] in ('SENTENCE_TRANSFORM', 'WORD_FORM'):
                 if not options[0] or len(options[0]) > 2000 or any(options[1:]) or (answer and answer != ['A']):
-                    raise ValueError('Câu viết lại cần điền đáp án chuẩn ở option_a')
+                    raise ValueError('Câu viết lại / Word form cần điền đáp án chuẩn ở option_a')
                 if not row['correct_options']:
                     row['correct_options'] = 'A'
             elif any(options) or answer:
@@ -249,7 +252,7 @@ def create_imported_exam(owner, title, rows, exam=None):
         elif row['type'] == 'WORD_ORDER':
             for idx, tok in enumerate(_extract_import_word_order(options, answer), 1):
                 QuestionOption.objects.create(question=question, key=chr(ord('A') + idx - 1), position=idx, content=tok)
-        elif row['type'] == 'SENTENCE_TRANSFORM':
+        elif row['type'] in ('SENTENCE_TRANSFORM', 'WORD_FORM'):
             option = QuestionOption.objects.create(question=question, key='A', position=1, content=row['option_a'])
             AnswerKeyOption.objects.create(question=question, option=option)
         else:
@@ -312,9 +315,9 @@ def publish_version(version_id, expected_revision):
         elif q.type == 'WORD_ORDER':
             if not 2 <= len(options) <= 20 or any(not o.content.strip() or len(o.content) > 80 for o in options) or answers:
                 raise ValidationError('Câu sắp xếp cần 2 đến 20 ô từ hợp lệ.')
-        elif q.type == 'SENTENCE_TRANSFORM':
+        elif q.type in ('SENTENCE_TRANSFORM', 'WORD_FORM'):
             if len(options) != 1 or not options[0].content.strip():
-                raise ValidationError('Câu đổi câu cần một câu trả lời chuẩn của giáo viên.')
+                raise ValidationError('Câu đổi câu / điền dạng từ cần một đáp án chuẩn của giáo viên.')
         else:
             criteria = list(q.criteria.all())
             if len(criteria) != 4 or any(set(c.level_descriptions) != {'0','1','2','3','4'} or not all(c.level_descriptions.values()) for c in criteria):

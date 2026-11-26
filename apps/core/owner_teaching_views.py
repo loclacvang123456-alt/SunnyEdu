@@ -152,7 +152,7 @@ def _version_publish_issues(version):
         elif q.type == "WORD_ORDER":
             if not 2 <= q.options.count() <= 20:
                 issues.append(f"Câu {q.position} cần 2 đến 20 ô từ.")
-        elif q.type == "SENTENCE_TRANSFORM":
+        elif q.type in ("SENTENCE_TRANSFORM", "WORD_FORM"):
             if q.options.count() != 1 or not q.options.first().content.strip():
                 issues.append(f"Câu {q.position} cần một câu trả lời chuẩn của giáo viên.")
         elif q.criteria.count() != 4:

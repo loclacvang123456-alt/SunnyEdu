@@ -101,6 +101,26 @@ class ImportIntegrationTests(TestCase):
         dvs = wb['questions'].data_validations.dataValidation
         self.assertEqual(len(dvs), 3)
 
+    def test_word_form_csv_import_explicit_and_autodetect(self):
+        from .services import FIELDS
+        owner = get_user_model().objects.create_user(username='owner-wf', role='OWNER', display_name='Owner WF')
+        header = ','.join(FIELDS)
+        row1 = {f: '' for f in FIELDS}
+        row1.update(position='1', type='WORD_FORM', skill='WRITING', difficulty='STANDARD', prompt='He is very ......... (friend)', max_points='1.00', option_a='friendly', correct_options='A', topic_tags='Từ loại')
+        row2 = {f: '' for f in FIELDS}
+        row2.update(position='2', skill='WRITING', difficulty='STANDARD', prompt='Dùng dạng đúng của từ trong ngoặc: My house is ......... than yours. (big)', max_points='1.00', option_a='bigger')
+        csv_content = '\n'.join([
+            header,
+            ','.join(row1[f] for f in FIELDS),
+            ','.join(row2[f] for f in FIELDS),
+        ]).encode('utf-8')
+        batch = preview_question_import(owner, csv_content, 'word-form-test.csv')
+        version = commit_question_import(owner, batch.id, batch.source_digest, 'Word Form Exam')
+        types = list(version.questions.order_by('position').values_list('type', flat=True))
+        self.assertEqual(types, ['WORD_FORM', 'WORD_FORM'])
+        published = publish_version(version.pk, version.revision)
+        self.assertEqual(published.status, ExamVersion.Status.PUBLISHED)
+
 
 class QuestionGameModeTests(TestCase):
     def test_question_game_choice_is_validated_preserved_and_cloned(self):

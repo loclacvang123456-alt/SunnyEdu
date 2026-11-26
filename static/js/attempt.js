@@ -121,7 +121,7 @@ function make(tag, text, className) {
 }
 
 function readInput(state) {
-  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM') return {text_answer: state.input.value};
+  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM' || state.type === 'WORD_FORM') return {text_answer: state.input.value};
   if (state.gameMode) return {option_ids: state.shot ? [state.shot.option_id] : []};
   if (state.type === 'WORD_ORDER') return {ordered_option_ids: [...state.answer.querySelectorAll(':scope > .word-tile')].map(tile => tile.dataset.optionId)};
   if (state.type === 'MATCH_IMAGE') return {match_pairs: [...state.matches].map(([image_id, word_id]) => ({image_id, word_id}))};
@@ -129,7 +129,7 @@ function readInput(state) {
 }
 
 function writeInput(state, data) {
-  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM') state.input.value = data.text_answer || '';
+  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM' || state.type === 'WORD_FORM') state.input.value = data.text_answer || '';
   else if (state.gameMode) return;
   else if (state.type === 'WORD_ORDER') {
     const tiles = new Map([...state.field.querySelectorAll('.word-tile')].map(tile => [tile.dataset.optionId, tile]));
@@ -1001,6 +1001,23 @@ function renderQuestion(question, editable, gameEnabled, questionIndex = 0, tota
     input.addEventListener('input', () => changed(state));
     field.append(instruction, label, input);
     state.input = input;
+  } else if (question.type === 'WORD_FORM') {
+    const id = `answer-${question.question_id}`;
+    const instruction = make('p', 'Điền dạng đúng của từ trong ngoặc:');
+    const label = make('label', 'Đáp án của em:');
+    label.htmlFor = id;
+    const input = make('input');
+    input.id = id;
+    input.type = 'text';
+    input.placeholder = 'Nhập dạng đúng của từ...';
+    input.maxLength = 200;
+    input.autocomplete = 'off';
+    input.style.fontSize = '16px';
+    input.style.padding = '10px 14px';
+    input.style.width = '100%';
+    input.addEventListener('input', () => changed(state));
+    field.append(instruction, label, input);
+    state.input = input;
   } else if (question.type === 'TEXT') {
     const id = `answer-${question.question_id}`;
     const label = make('label', 'Câu trả lời của em');
@@ -1084,7 +1101,7 @@ function lockAnswers(locked) {
 }
 
 function isBlank(state) {
-  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM') return !state.input.value.trim();
+  if (state.type === 'TEXT' || state.type === 'SENTENCE_TRANSFORM' || state.type === 'WORD_FORM') return !state.input.value.trim();
   if (state.gameMode) return !state.shot;
   if (state.type === 'WORD_ORDER') return !state.answer.querySelector(':scope > .word-tile');
   if (state.type === 'MATCH_IMAGE') return state.matches.size === 0;

@@ -198,3 +198,45 @@ def grade_sentence_transform(student_text, standard_text, max_points):
         "major_errors": major_error_count,
         "feedback": feedback,
     }
+
+
+def _normalize_word_form(text):
+    return re.sub(r"\s+", " ", (text or "").strip()).lower()
+
+
+def grade_word_form(student_text, standard_text, max_points):
+    max_pts = Decimal(str(max_points))
+    s_raw = (student_text or "").strip()
+    t_raw = (standard_text or "").strip()
+
+    if not s_raw:
+        return {
+            "points": Decimal("0.00"),
+            "max_points": float(max_pts),
+            "status": "wrong",
+            "student_answer": s_raw,
+            "standard_answer": t_raw,
+            "feedback": "Chưa nhập đáp án (0 điểm).",
+        }
+
+    variants = [v.strip() for v in re.split(r"\s*[/|]\s*", t_raw) if v.strip()]
+    normalized_variants = {_normalize_word_form(v) for v in variants} if variants else {_normalize_word_form(t_raw)}
+
+    if _normalize_word_form(s_raw) in normalized_variants:
+        return {
+            "points": max_pts,
+            "max_points": float(max_pts),
+            "status": "correct",
+            "student_answer": s_raw,
+            "standard_answer": t_raw,
+            "feedback": "Chính xác! Đạt điểm tối đa.",
+        }
+
+    return {
+        "points": Decimal("0.00"),
+        "max_points": float(max_pts),
+        "status": "wrong",
+        "student_answer": s_raw,
+        "standard_answer": t_raw,
+        "feedback": f"Chưa chính xác. Đáp án đúng là: {t_raw}.",
+    }

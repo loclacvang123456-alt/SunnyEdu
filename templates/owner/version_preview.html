@@ -32,6 +32,8 @@
       {% for o in q.options.all %}
         <div class="option"><input disabled type="{% if q.type == 'SINGLE_CHOICE' %}radio{% else %}checkbox{% endif %}"> <span>{{ o.key }}. {{ o.content }}</span></div>
       {% endfor %}
+    {% elif q.type == 'SENTENCE_TRANSFORM' or q.type == 'WORD_FORM' %}
+      <input disabled type="text" placeholder="{% if q.type == 'WORD_FORM' %}Nhập dạng đúng của từ...{% else %}Nhập câu trả lời của học sinh…{% endif %}">
     {% elif q.type == 'TEXT' %}
       <textarea disabled rows="4" placeholder="Bài viết của học sinh…"></textarea>
     {% else %}

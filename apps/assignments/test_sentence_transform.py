@@ -9,7 +9,7 @@ from django.utils import timezone
 
 from apps.accounts.models import User
 from apps.assignments.models import Assignment, AssignmentRecipient
-from apps.assignments.sentence_transform_service import grade_sentence_transform
+from apps.assignments.sentence_transform_service import grade_sentence_transform, grade_word_form
 from apps.assignments.services import save_response, start_attempt, submit_attempt
 from apps.content.models import Exam, ExamVersion, Question, QuestionOption
 from apps.grading.models import Grade
@@ -159,3 +159,96 @@ class SentenceTransformTests(TestCase):
         dash_content = dash_res.content.decode('utf-8')
         self.assertIn('Xem kết quả', dash_content)
         self.assertIn(result_url, dash_content)
+
+
+class WordFormTests(TestCase):
+    def setUp(self):
+        self.teacher = User.objects.create_user(username='teacher_wf', role='OWNER', display_name='Teacher')
+        self.student = User.objects.create_user(username='student_wf', role='STUDENT', display_name='Student')
+
+    def test_word_form_grading_logic(self):
+        # 1. Exact, case-insensitive, extra spaces
+        for ans in ('friendly', 'FRIENDLY', '  Friendly  '):
+            with self.subTest(ans=ans):
+                res = grade_word_form(ans, 'friendly', Decimal('1.00'))
+                self.assertEqual(res['points'], Decimal('1.00'))
+                self.assertEqual(res['status'], 'correct')
+
+        # 2. Multi-variant answers separated by /
+        for ans in ('cleverer', 'PRETTIER', 'prettier'):
+            with self.subTest(ans=ans):
+                res = grade_word_form(ans, 'cleverer/prettier', Decimal('1.00'))
+                self.assertEqual(res['points'], Decimal('1.00'))
+                self.assertEqual(res['status'], 'correct')
+
+        # 3. Wrong spelling -> 0 points
+        res_wrong = grade_word_form('frendly', 'friendly', Decimal('1.00'))
+        self.assertEqual(res_wrong['points'], Decimal('0.00'))
+        self.assertEqual(res_wrong['status'], 'wrong')
+        self.assertIn('friendly', res_wrong['feedback'])
+
+        # 4. Blank -> 0 points
+        res_blank = grade_word_form('   ', 'friendly', Decimal('1.00'))
+        self.assertEqual(res_blank['points'], Decimal('0.00'))
+        self.assertEqual(res_blank['status'], 'wrong')
+
+    def test_word_form_flow_no_leak_and_result_view(self):
+        exam = Exam.objects.create(title='Word Form Test', created_by=self.teacher)
+        version = ExamVersion.objects.create(exam=exam, number=1, status='PUBLISHED')
+        q = Question.objects.create(
+            version=version,
+            position=1,
+            type='WORD_FORM',
+            skill='WRITING',
+            difficulty='STANDARD',
+            prompt='Dùng dạng đúng của từ trong ngoặc\n\nHe said good morning in a most ......... way. (friend)',
+            max_points='1.00',
+        )
+        QuestionOption.objects.create(question=q, key='A', position=1, content='friendly')
+
+        now = timezone.now()
+        assignment = Assignment.objects.create(
+            version=version,
+            title='Bài tập Word form',
+            code='HW-WF01',
+            status='PUBLISHED',
+            opens_at=now - timedelta(hours=1),
+            due_at=now + timedelta(hours=2),
+            late_until=now + timedelta(days=1),
+        )
+        recipient = AssignmentRecipient.objects.create(assignment=assignment, student=self.student)
+        attempt, _ = start_attempt(recipient.pk, self.student)
+
+        # Log in student and verify attempt payload does NOT leak standard answer
+        from apps.accounts.services import rotate_code
+        code = rotate_code(self.student, actor=self.teacher)
+        login_res = self.client.post(
+            '/api/v1/auth/student-login/',
+            data=json.dumps({'code': code, 'remember_device': True}),
+            content_type='application/json',
+        )
+        self.assertEqual(login_res.status_code, 200)
+
+        payload_res = self.client.get(f'/api/v1/attempts/{attempt.id}/')
+        self.assertEqual(payload_res.status_code, 200)
+        self.assertNotContains(payload_res, 'friendly')
+        q_item = payload_res.json()['data']['questions'][0]
+        self.assertEqual(q_item['type'], 'WORD_FORM')
+        self.assertEqual(q_item['options'], [])
+
+        # Save answer & submit
+        resp, attempt = save_response(attempt.id, q.id, self.student, 0, text_answer='Friendly')
+        submit_res = submit_attempt(attempt.id, self.student, attempt.revision, uuid4())
+        self.assertEqual(submit_res['status'], 'GRADED')
+
+        grade = Grade.objects.get(response=resp)
+        self.assertEqual(grade.points, Decimal('1.00'))
+
+        # Result view
+        result_url = reverse('student_assignment_result', args=[assignment.id])
+        res = self.client.get(result_url)
+        self.assertEqual(res.status_code, 200)
+        content = res.content.decode('utf-8')
+        self.assertIn('Điền dạng đúng của từ', content)
+        self.assertIn('Friendly', content)
+        self.assertIn('friendly', content)

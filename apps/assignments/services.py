@@ -111,7 +111,7 @@ def save_response(attempt_id, question_id, student, expected_revision, text_answ
         if not set(normalized) <= allowed:
             raise ValidationError('Ô từ không thuộc câu hỏi.')
         response.ordered_option_ids = normalized
-    elif question.type in ('TEXT', 'SENTENCE_TRANSFORM'):
+    elif question.type in ('TEXT', 'SENTENCE_TRANSFORM', 'WORD_FORM'):
         if not isinstance(text_answer, str) or len(text_answer) > 10000:
             raise ValidationError('Câu trả lời không hợp lệ.')
         response.text_answer = text_answer
@@ -242,6 +242,20 @@ def submit_attempt(attempt_id, student, expected_revision, key):
             standard_answer = options[0].content if options else (q.explanation or '')
             student_answer = response.text_answer or ''
             res = grade_sentence_transform(student_answer, standard_answer, q.max_points)
+            grade = Grade.objects.create(
+                response=response,
+                source='AUTO',
+                points=res['points'],
+                feedback=json.dumps(res, default=str),
+                graded_at=now,
+            )
+        elif q.type == 'WORD_FORM':
+            import json
+            from .sentence_transform_service import grade_word_form
+            options = list(q.options.all())
+            standard_answer = options[0].content if options else (q.explanation or '')
+            student_answer = response.text_answer or ''
+            res = grade_word_form(student_answer, standard_answer, q.max_points)
             grade = Grade.objects.create(
                 response=response,
                 source='AUTO',

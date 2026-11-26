@@ -85,7 +85,7 @@ function initGradingDetail() {
         const selected = (r.ordered_option_ids || []).map((id) => wordsById.get(id)).filter(Boolean);
         leftCol.append(el("p", { text: `Học sinh sắp xếp: ${selected.join(" ") || "(Học sinh bỏ trống)"}` }));
         leftCol.append(el("p", { text: `Thứ tự đúng: ${(r.options || []).map((opt) => opt.content).join(" ")}` }));
-      } else if (r.type === "SENTENCE_TRANSFORM") {
+      } else if (r.type === "SENTENCE_TRANSFORM" || r.type === "WORD_FORM") {
         leftCol.append(el("p", { text: `Học sinh trả lời: ${r.text_answer || "(Học sinh bỏ trống)"}` }));
         const stdOpt = (r.options || [])[0];
         if (stdOpt) leftCol.append(el("p", { style: "color:#15803d;font-weight:600", text: `Đáp án chuẩn: ${stdOpt.content}` }));
@@ -110,7 +110,7 @@ function initGradingDetail() {
 
       const rightCol = el("div", { className: "card-stack" });
 
-      if (r.type === "SINGLE_CHOICE" || r.type === "MULTIPLE_CHOICE" || r.type === "WORD_ORDER" || r.type === "STRESS_CHOICE" || r.type === "MATCH_IMAGE" || r.type === "SENTENCE_TRANSFORM") {
+      if (r.type === "SINGLE_CHOICE" || r.type === "MULTIPLE_CHOICE" || r.type === "WORD_ORDER" || r.type === "STRESS_CHOICE" || r.type === "MATCH_IMAGE" || r.type === "SENTENCE_TRANSFORM" || r.type === "WORD_FORM") {
         const scoreClass = !r.grade ? "pill-warning" : Number(r.grade.points) < Number(r.max_points) ? "pill-danger" : "pill-success";
         const scoreText = r.grade ? `Đã chấm tự động: ${r.grade.points} / ${r.max_points} điểm` : "Chưa có điểm";
         rightCol.append(el("div", { className: `pill ${scoreClass}`, text: scoreText }));
