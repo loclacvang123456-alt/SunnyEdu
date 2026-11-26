@@ -12,7 +12,7 @@
           <label for="quick-assign-exam-search" style="font-weight:600;">Chọn bài tập cần giao</label>
           <input type="search" id="quick-assign-exam-search" placeholder="🔍 Tìm bài tập theo tên..." autocomplete="off">
           <div class="checkbox-list" id="quick-assign-exam-list" style="max-height:140px;overflow-y:auto;margin-top:8px;background:var(--bg-subtle,#f8fafc);padding:8px 12px;border-radius:6px;border:1px solid var(--border,#e2e8f0);">
-            {% for version in quick_versions %}
+            {% for version in quick_versions_preview|default:quick_versions %}
               <label><input type="checkbox" name="version_ids" value="{{ version.id }}" data-title="{{ version.exam.title }}" data-has-game="{% if version.has_game_questions %}true{% else %}false{% endif %}"> <span>{{ version.exam.title }} · v{{ version.number }}</span></label>
             {% empty %}<p class="empty">Chưa có đề đã phát hành.</p>{% endfor %}
           </div>
@@ -197,20 +197,58 @@
 document.addEventListener('DOMContentLoaded', function () {
   const normalizeQuickSearch = value => String(value || '').toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 
-  // Search in exam list
+  // Search in exam list with lazy server search
   const examSearch = document.getElementById('quick-assign-exam-search');
-  const examLabels = Array.from(document.querySelectorAll('#quick-assign-exam-list label'));
+  const listEl = document.getElementById('quick-assign-exam-list');
+  let searchTimer = null;
+
+  function filterLocalExams() {
+    const query = normalizeQuickSearch(examSearch?.value.trim());
+    let visible = 0;
+    const labels = listEl?.querySelectorAll('label') || [];
+    labels.forEach(label => {
+      const matches = !query || normalizeQuickSearch(label.textContent).includes(query);
+      label.style.display = matches ? '' : 'none';
+      if (matches) visible++;
+    });
+    const emptyEl = document.getElementById('quick-assign-exam-empty');
+    if (emptyEl) emptyEl.hidden = !query || visible > 0;
+  }
+
   if (examSearch) {
     examSearch.addEventListener('input', function () {
-      const query = normalizeQuickSearch(this.value.trim());
-      let visible = 0;
-      examLabels.forEach(label => {
-        const matches = normalizeQuickSearch(label.textContent).includes(query);
-        label.style.display = matches ? '' : 'none';
-        if (matches) visible++;
-      });
-      const emptyEl = document.getElementById('quick-assign-exam-empty');
-      if (emptyEl) emptyEl.hidden = !query || visible > 0;
+      filterLocalExams();
+      const rawQuery = this.value.trim();
+      if (rawQuery.length >= 2) {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(async () => {
+          try {
+            const res = await fetch(`/api/v1/owner/exams/quick-search?q=${encodeURIComponent(rawQuery)}`);
+            if (!res.ok) return;
+            const payload = await res.json();
+            const items = payload.data || [];
+            let added = false;
+            items.forEach(item => {
+              if (!listEl.querySelector(`input[name="version_ids"][value="${item.id}"]`)) {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.name = 'version_ids';
+                input.value = item.id;
+                input.dataset.title = item.title;
+                input.dataset.hasGame = String(item.has_game);
+                input.addEventListener('change', syncQuickAssignment);
+                const span = document.createElement('span');
+                span.textContent = `${item.title} · v${item.version_number}`;
+                label.append(input, span);
+                listEl.append(label);
+                added = true;
+              }
+            });
+            if (added) filterLocalExams();
+          } catch (e) {}
+        }, 200);
+      }
     });
   }
 
@@ -234,10 +272,12 @@ document.addEventListener('DOMContentLoaded', function () {
     quickAssignedByVersion = JSON.parse(quickAssignedDataEl?.textContent || '{}');
   } catch (e) {}
 
-  const quickExamChecks = Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
+  function getQuickExamChecks() {
+    return Array.from(document.querySelectorAll('#quick-assign-exam-list input[name="version_ids"]'));
+  }
 
   function syncQuickAssignment() {
-    const selected = quickExamChecks.filter(input => input.checked);
+    const selected = getQuickExamChecks().filter(input => input.checked);
     const titleEl = document.getElementById('quick-assign-title');
     if (titleEl) {
       titleEl.textContent = selected.length === 1 ? `Giao bài: ${selected[0].dataset.title}` : (selected.length > 1 ? `Giao ${selected.length} bài tập` : 'Giao bài tập');
@@ -302,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  quickExamChecks.forEach(input => input.addEventListener('change', syncQuickAssignment));
+  getQuickExamChecks().forEach(input => input.addEventListener('change', syncQuickAssignment));
 
   document.addEventListener('click', function (event) {
     const button = event.target.closest('[data-modal-open="modal-quick-assign"]');
@@ -312,9 +352,29 @@ document.addEventListener('DOMContentLoaded', function () {
     selectQuickTab('class');
     if (examSearch) {
       examSearch.value = '';
-      examSearch.dispatchEvent(new Event('input'));
+      filterLocalExams();
     }
-    quickExamChecks.forEach(input => { input.checked = input.value === button.dataset.versionId; });
+    const targetVid = button.dataset.versionId;
+    if (targetVid) {
+      let existingInput = listEl?.querySelector(`input[name="version_ids"][value="${targetVid}"]`);
+      if (!existingInput && listEl) {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.name = 'version_ids';
+        input.value = targetVid;
+        input.dataset.title = button.dataset.examTitle || '';
+        input.dataset.hasGame = button.dataset.hasGame || 'false';
+        input.checked = true;
+        input.addEventListener('change', syncQuickAssignment);
+        const span = document.createElement('span');
+        span.textContent = button.dataset.examTitle || 'Bài tập đã chọn';
+        label.append(input, span);
+        listEl.prepend(label);
+        existingInput = input;
+      }
+    }
+    getQuickExamChecks().forEach(input => { input.checked = input.value === targetVid; });
     syncQuickAssignment();
   });
 });

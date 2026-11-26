@@ -44,7 +44,7 @@
 
 <section class="panel">
   <div class="table-wrap">
-    <table class="data-table" data-sortable-table data-page-size="10" data-fixed-page-size="1">
+    <table class="data-table" data-sortable-table>
       <thead><tr><th>Tên đề</th><th>Phiên bản</th><th>Trạng thái</th><th>Số câu</th><th>Thao tác</th></tr></thead>
       <tbody>
         {% for row in exam_rows %}
@@ -98,6 +98,17 @@
       </tbody>
     </table>
   </div>
+  {% if exam_page.paginator.num_pages > 1 %}
+  <div class="table-pagination" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg-subtle,#f8fafc);border-top:1px solid var(--border,#e2e8f0);margin-top:12px;border-radius:6px;">
+    <span>Trang {{ exam_page.number }} / {{ exam_page.paginator.num_pages }} (Tổng {{ exam_page.paginator.count }} đề thi)</span>
+    <div class="table-pagination-controls">
+      {% if exam_page.has_previous %}<a class="button secondary" href="?{% if q %}q={{ q|urlencode }}&amp;{% endif %}page={{ exam_page.previous_page_number }}">Trước</a>{% else %}<button type="button" class="button secondary" disabled>Trước</button>{% endif %}
+      {% if exam_page.has_next %}<a class="button secondary" href="?{% if q %}q={{ q|urlencode }}&amp;{% endif %}page={{ exam_page.next_page_number }}">Sau</a>{% else %}<button type="button" class="button secondary" disabled>Sau</button>{% endif %}
+    </div>
+  </div>
+  {% elif exam_page.paginator.count > 0 %}
+  <div style="padding:10px 16px;font-size:14px;color:var(--text-muted,#64748b);">Tổng số: {{ exam_page.paginator.count }} đề thi</div>
+  {% endif %}
 </section>
 
 {% include "owner/_quick_assign.html" %}

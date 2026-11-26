@@ -6,6 +6,7 @@ from pathlib import Path
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from django.db.models import Exists, OuterRef
 from django.http import FileResponse, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -501,3 +502,29 @@ def batch_import_commit(request):
         return JsonResponse({"data": {"created_count": len(created), "exams": created}}, status=200)
     except ValidationError as exc:
         return _fail(exc)
+
+
+@never_cache
+@require_GET
+@owner_api_required
+def quick_search_exam_versions(request):
+    q = request.GET.get("q", "").strip()
+    game_questions = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
+    qs = ExamVersion.objects.filter(
+        exam__created_by=request.user,
+        exam__archived_at__isnull=True,
+        status=ExamVersion.Status.PUBLISHED,
+    ).select_related("exam").annotate(has_game_questions=Exists(game_questions))
+    if q:
+        qs = qs.filter(exam__title__icontains=q)
+    versions = qs.order_by("exam__title", "-number")[:30]
+    data = [
+        {
+            "id": str(v.id),
+            "title": v.exam.title,
+            "version_number": v.number,
+            "has_game": bool(v.has_game_questions),
+        }
+        for v in versions
+    ]
+    return JsonResponse({"data": data})

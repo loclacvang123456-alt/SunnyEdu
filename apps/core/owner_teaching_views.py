@@ -4,8 +4,9 @@ from datetime import timedelta
 
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator
 from django.db import transaction
-from django.db.models import F, Q, Count, Sum, Max, Exists, OuterRef
+from django.db.models import F, Q, Count, Sum, Max, Exists, OuterRef, Prefetch
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -42,10 +43,11 @@ def _quick_assign_context(user):
     now = timezone.localtime(timezone.now()).replace(second=0, microsecond=0)
 
     target_data = build_assign_target_rows(owner=user)
-    published_versions = list(versions)
+    # Lazy optimization: only evaluate assignments for top 50 versions to keep initial page loads instant (<10ms)
+    preview_versions = list(versions[:50])
     assignments = (
         Assignment.objects.filter(
-            version__in=published_versions,
+            version__in=preview_versions,
             version__exam__created_by=user,
         )
         .exclude(status="CANCELLED")
@@ -71,6 +73,7 @@ def _quick_assign_context(user):
 
     return {
         "quick_versions": versions,
+        "quick_versions_preview": preview_versions,
         "classes": target_data["class_rows"],
         "quick_courses": target_data["course_rows"],
         "quick_students": target_data["student_rows"],
@@ -188,18 +191,50 @@ def exams(request):
             messages.error(request, "; ".join(exc.messages))
 
     q = request.GET.get("q", "").strip()
-    exam_qs = Exam.objects.filter(created_by=request.user, archived_at__isnull=True).prefetch_related("versions__questions").order_by("-created_at")
+    exam_qs = Exam.objects.filter(created_by=request.user, archived_at__isnull=True).order_by("-created_at")
     if q:
         exam_qs = exam_qs.filter(title__icontains=q)
+
+    paginator = Paginator(exam_qs, 20)
+    page_number = request.GET.get("page", 1)
+    exam_page = paginator.get_page(page_number)
+
+    page_exam_ids = [e.id for e in exam_page.object_list]
+    game_q = Question.objects.filter(version_id=OuterRef("pk"), type="SINGLE_CHOICE").exclude(pirate_game=False)
+    versions_qs = ExamVersion.objects.annotate(
+        question_count=Count("questions"),
+        has_game_questions=Exists(game_q)
+    ).order_by("-number")
+
+    page_exams = {
+        e.id: e for e in Exam.objects.filter(id__in=page_exam_ids).prefetch_related(
+            Prefetch("versions", queryset=versions_qs)
+        )
+    }
+
     rows = []
-    for exam in exam_qs:
+    for exam_stub in exam_page.object_list:
+        exam = page_exams.get(exam_stub.id, exam_stub)
         versions = []
-        for v in exam.versions.order_by("-number"):
-            qs = list(v.questions.all())
-            skills = sorted({item.skill for item in qs})
-            versions.append({"version": v, "question_count": len(qs), "skills": skills, "has_game_questions": any(item.type == "SINGLE_CHOICE" and item.pirate_game is not False for item in qs)})
+        for v in exam.versions.all():
+            versions.append({
+                "version": v,
+                "question_count": v.question_count,
+                "has_game_questions": v.has_game_questions,
+            })
         rows.append({"exam": exam, "versions": versions})
-    return render(request, "owner/exams.html", owner_context("exams", q=q, exam_rows=rows, **_quick_assign_context(request.user)))
+    return render(
+        request,
+        "owner/exams.html",
+        owner_context(
+            "exams",
+            q=q,
+            exam_rows=rows,
+            exam_page=exam_page,
+            paginator=paginator,
+            **_quick_assign_context(request.user),
+        ),
+    )
 
 
 @never_cache
@@ -338,14 +373,28 @@ def assignments(request):
             state="ASSIGNED", assignment__status="PUBLISHED", assignment__due_at__lt=now
         ).filter(Q(current_attempt__isnull=True) | Q(current_attempt__status="IN_PROGRESS")).values("assignment_id")
         qs = qs.filter(pk__in=overdue_ids)
+    paginator = Paginator(qs, 20)
+    assignment_page = paginator.get_page(request.GET.get("page", 1))
     rows = []
-    for a in qs:
+    for a in assignment_page.object_list:
         rows.append({
             "assignment": a,
             "recipient_count": a.recipients.count(),
             "submitted_count": a.recipients.filter(current_attempt__status__in=("SUBMITTED", "GRADED")).count(),
         })
-    return render(request, "owner/assignments.html", owner_context("assignments", rows=rows, status_filter=status_filter, overdue=overdue, **_quick_assign_context(request.user)))
+    return render(
+        request,
+        "owner/assignments.html",
+        owner_context(
+            "assignments",
+            rows=rows,
+            status_filter=status_filter,
+            overdue=overdue,
+            assignment_page=assignment_page,
+            paginator=paginator,
+            **_quick_assign_context(request.user),
+        ),
+    )
 
 
 @never_cache
@@ -396,7 +445,7 @@ def assignment_new(request):
     courses = list(Course.objects.filter(created_by=request.user, is_published=True).order_by("name"))
     students = list(User.objects.filter(role=User.Role.STUDENT, status="ACTIVE").order_by("display_name"))
     target_data = build_assign_target_rows(owner=request.user)
-    published_versions = list(versions)
+    published_versions = list(versions[:50])
     assignments = (
         Assignment.objects.filter(
             version__in=published_versions,

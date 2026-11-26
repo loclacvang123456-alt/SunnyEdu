@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path("exams", views.exams, name="owner-exams"),
+    path("exams/quick-search", views.quick_search_exam_versions, name="owner-exams-quick-search"),
     path("exams/<uuid:exam_id>", views.exam_detail, name="owner-exam-detail"),
     path("exams/<uuid:exam_id>/archive", views.exam_archive, name="owner-exam-archive"),
     path("exams/<uuid:exam_id>/versions", views.exam_versions, name="owner-exam-versions"),
