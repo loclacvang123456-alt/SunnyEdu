@@ -338,6 +338,7 @@ body.is-pirate-game-mode .student-main {
   font-weight: 800;
   color: #0f172a;
   line-height: 1.35;
+  white-space: pre-line;
 }
 
 .pirate-bubble-feedback {

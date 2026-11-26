@@ -18,7 +18,7 @@
       </div>
     {% endif %}
     <span class="question-number">Câu {{ q.position }} · {{ q.skill }} · {{ q.max_points }} điểm</span>
-    <p><strong>{{ q.prompt }}</strong></p>
+    <p style="white-space:pre-line"><strong>{{ q.prompt }}</strong></p>
     {% if q.image_url %}
       <div style="margin: 10px 0 14px 0;">
         {% if "_audio" in q.image_url %}

@@ -84,6 +84,7 @@ body.exercise-practice-page .practice-heading .pill[data-state="pending"] {
   font-weight: 750;
   line-height: 1.35;
   overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 #exercise[data-mode="PRACTICE"][data-game-enabled="false"] .question-number {
@@ -290,7 +291,7 @@ body.exercise-practice-page .practice-heading .pill[data-state="pending"] {
 }
 #exercise[data-mode="EXAM"] .question:last-child { margin-bottom: 0; }
 #exercise[data-mode="EXAM"] fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
-#exercise[data-mode="EXAM"] legend { width: 100%; color: #25385d; font-size: 19px; line-height: 1.4; }
+#exercise[data-mode="EXAM"] legend { width: 100%; color: #25385d; font-size: 19px; line-height: 1.4; white-space: pre-line; }
 #exercise[data-mode="EXAM"] .question-number { color: #7353ba; font-weight: 800; }
 #exercise[data-mode="EXAM"] .option,
 #exercise[data-mode="PRACTICE"][data-game-enabled="false"] .option {
